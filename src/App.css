@@ -1,0 +1,16 @@
+#containerDiv {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(60, 60, 60) !important;
+  background-size: 50px 50px;
+  display: flex;
+
+  background-image:
+    linear-gradient(to right, grey 1px, transparent 1px),
+    linear-gradient(to bottom, grey 1px, transparent 1px);
+}
+#containerDiv > * {
+    height: 100%;
+    width: 100%;
+  }
+  
