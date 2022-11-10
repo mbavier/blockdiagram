@@ -41,6 +41,7 @@ let selectedPart;
 function process(allText) {
   var allTextLines = allText.split('\r\n')
   var headers = allTextLines[0].split(',');
+  console.log(allTextLines, headers);
   for (var i=1; i<allTextLines.length; i++) {
     console.log(data);
     var data = allTextLines[i].split(',');
