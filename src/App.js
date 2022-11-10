@@ -12,6 +12,8 @@ import {
 import Select from 'react-select';
 import $ from 'jquery';
 
+import { dictOfParts, partOptions } from "./data";
+
 import './App.css';
 
 const customStyles = {
@@ -21,43 +23,47 @@ const customStyles = {
   })
 }
 
-$(document).ready(function() {
-  $.ajax({
-    type: "GET",
-    url: "parts.csv",
-    dataType: "text",
-    success: function(data) {process(data);}
-  });
-});
-
-var dictOfParts = {};
-var partOptions = [];
-
 let selectedPart;
   function handleChange(selectedOption)  {
     selectedPart = selectedOption;
   }
 
-function process(allText) {
-  var allTextLines = allText.split('\r\n')
-  var headers = allTextLines[0].split(',');
-  console.log(allTextLines, headers);
-  for (var i=1; i<allTextLines.length; i++) {
-    console.log(i);
-    var data = allTextLines[i].split(',');
-        if (data.length == headers.length) {
-            dictOfParts[data[0]] = {}
-            partOptions[i] = {value: data[0], label: data[0]}
-            for (var j=1; j<headers.length; j++) {
-              console.log(data[0], data[j])
-                dictOfParts[data[0]][headers[j]] = data[j];
-            }
-        }
+// $(document).ready(function() {
+//   $.ajax({
+//     type: "GET",
+//     url: "parts.csv",
+//     dataType: "text",
+//     success: function(data) {process(data);}
+//   });
+// });
 
-  }
-  console.log(dictOfParts);
-  console.log(partOptions)
-}
+
+
+// var dictOfParts = {};
+// var partOptions = [];
+
+
+
+// function process(allText) {
+//   var allTextLines = allText.split('\r\n')
+//   var headers = allTextLines[0].split(',');
+//   console.log(allTextLines, headers);
+//   for (var i=1; i<allTextLines.length; i++) {
+//     console.log(i);
+//     var data = allTextLines[i].split(',');
+//         if (data.length == headers.length) {
+//             dictOfParts[data[0]] = {}
+//             partOptions[i] = {value: data[0], label: data[0]}
+//             for (var j=1; j<headers.length; j++) {
+//               console.log(data[0], data[j])
+//                 dictOfParts[data[0]][headers[j]] = data[j];
+//             }
+//         }
+
+//   }
+//   console.log(dictOfParts);
+//   console.log(partOptions)
+// }
 
 var selectedNodeX, selectedNodeY, selectedNodeWidth, selectedNodeHeight, selectedNode;
 function addNewNode(engine, partName) {
