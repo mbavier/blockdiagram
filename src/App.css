@@ -14,3 +14,53 @@
     width: 100%;
   }
   
+.infoDiv {
+  position: absolute;
+  display: block;
+  bottom:0;
+  padding-left: 10px;
+  padding-right: 10px;
+  width:20%;
+  z-index: -1;
+  background-color: darkslategray;
+  opacity: 50%;
+  color: white;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size:small;
+}
+
+.infoDiv:hover {
+  opacity: 100%;
+}
+
+.newPortDiv {
+  display:none;
+  background-color: darkslategray;
+  width:25%;
+
+  margin-left: 37.5%;
+  margin-right:37.5%;
+  margin-top: 5px;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.newPortText {
+  font-size:medium;
+  margin-left: 5%;
+  color: white;
+}
+
+#portInput {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.portButton {
+  margin-left: 15%;
+}
+/* .css-jpiblr:hover {
+  background-color: rgb(255, 55, 0);
+}
+*/
