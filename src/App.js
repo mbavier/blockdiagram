@@ -43,7 +43,7 @@ function process(allText) {
   var headers = allTextLines[0].split(',');
   console.log(allTextLines, headers);
   for (var i=1; i<allTextLines.length; i++) {
-    console.log(data);
+    console.log(i);
     var data = allTextLines[i].split(',');
         if (data.length == headers.length) {
             dictOfParts[data[0]] = {}
@@ -106,10 +106,6 @@ function addNewPort(type, name) {
   }
   $("div.newPortDiv").css("display","none");
   $("input#portInput")[0].value = null;
-}
-
-function removeLinks(currentModel, link) {
-  currentModel.removeLink(link)
 }
 
 function deleteNode() {
