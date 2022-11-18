@@ -121,28 +121,19 @@ function addNewNode(engine, partName, partInfo) {
     },
 
   })
+  console.log(engine);
   engine.repaintCanvas();
 }
 
 
 
 export default function DiagramApp(props) {
-
-  var newPart = props.newPart;
-  var currentPart;
   //1) setup the diagram engine
   var engine = createEngine({
     registerDefaultDeleteItemsAction: false
   });
   //2) setup the diagram model
   var model = new DiagramModel();
-
-  useEffect(() => {
-    if (newPart != currentPart) {
-      addNewNode(engine, newPart[0], newPart[1]);
-      currentPart = newPart;
-    }
-  });
 
   //5) load model into engine
   engine.setModel(model);
@@ -158,7 +149,7 @@ export default function DiagramApp(props) {
           <button className="portButton" onClick={() => deleteNode(engine)}> Delete </button>
         </div>
     </div>
-    <div id='containerDiv' style={{zIndex:'-1', position:'absolute', left:0, top:0}} onMouseDown={(e) => handleClick(e)} >
+    <div id='containerDiv' style={{zIndex:'-1', position:'absolute', left:0, top:0}} onMouseDown={(e) => handleClick(e)}  >
       <CanvasWidget engine={engine} />
       </div>
     <div className='infoDiv'></div>
