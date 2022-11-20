@@ -1,4 +1,4 @@
-export const dictOfParts = {
+export const defaultDictOfParts = {
     "TPS61033": {
         "Description": "5-V 5-A boost converter with PG and PFM/PWM control",
         "Ordering & quality": "Ordering & quality",
@@ -22225,7 +22225,7 @@ export const dictOfParts = {
     }
 };
 
-export const partOptions = [
+export const defaultPartOptions = [
     {
         "value": "TPS61033",
         "label": "TPS61033"

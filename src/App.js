@@ -1,11 +1,7 @@
-<<<<<<< Updated upstream
-import React from "react";
-=======
 import React, {useRef} from "react";
 import Select from 'react-select';
 
 import { defaultDictOfParts, defaultPartOptions } from "./data";
->>>>>>> Stashed changes
 import createEngine, { 
   /*DefaultLinkModel, */
   DefaultNodeModel,
@@ -16,10 +12,7 @@ import {
   CanvasWidget,
 } from '@projectstorm/react-canvas-core';
 
-import Select from 'react-select';
 import $ from 'jquery';
-
-import { dictOfParts, partOptions } from "./data";
 
 import './App.css';
 // $(document).ready(function() {
@@ -71,92 +64,58 @@ function handleFileSelect(e, setDictOfParts, setPartOptions) {
     setPartOptions(newPartOptions)
   }
 
-const customStyles = {
-  menu: (provided) => ({
-    ...provided,
-    zIndex: 100
-  })
-}
+function handleFileSelect(e, setDictOfParts, setPartOptions) {
+  let file = e.target.files;
+  let f = file[0];
 
-let selectedPart;
-  function handleChange(selectedOption)  {
-    selectedPart = selectedOption;
-  }
+  let reader = new FileReader();
 
-// $(document).ready(function() {
-//   $.ajax({
-//     type: "GET",
-//     url: "parts.csv",
-//     dataType: "text",
-//     success: function(data) {process(data);}
-//   });
-// });
-
-
-
-// var dictOfParts = {};
-// var partOptions = [];
-
-
-
-// function process(allText) {
-//   var allTextLines = allText.split('\r\n')
-//   var headers = allTextLines[0].split(',');
-//   console.log(allTextLines, headers);
-//   for (var i=1; i<allTextLines.length; i++) {
-//     console.log(i);
-//     var data = allTextLines[i].split(',');
-//         if (data.length == headers.length) {
-//             dictOfParts[data[0]] = {}
-//             partOptions[i] = {value: data[0], label: data[0]}
-//             for (var j=1; j<headers.length; j++) {
-//               console.log(data[0], data[j])
-//                 dictOfParts[data[0]][headers[j]] = data[j];
-//             }
-//         }
-
-//   }
-//   console.log(dictOfParts);
-//   console.log(partOptions)
-// }
-
-var selectedNodeX, selectedNodeY, selectedNodeWidth, selectedNodeHeight, selectedNode;
-function addNewNode(engine, partName) {
-  let numOfNodes = Object.keys(engine.getModel().getActiveNodeLayer().getModels()).length;
-  let node = new DefaultNodeModel({
-    name: partName,
-    color: "rgb(0,192,255)"
+  reader.onload = (function(e) {
+    process(e.currentTarget.result, setDictOfParts, setPartOptions);
   });
-  node.setPosition(200 + numOfNodes*5, 200 + numOfNodes*5);
-  node.addInPort("In");
-  node.addOutPort("Out");
-  engine.getModel().addNode(node);
-  node.registerListener({
-    selectionChanged: (e) => {
-      if (e.isSelected) {
-        $("div.infoDiv").css("display", "block");
-        console.log(node);
-        Object.keys(dictOfParts[partName]).map((block) => $("div.infoDiv").append("<p>" + block + ": " + dictOfParts[partName][block] + "</p>"));
-        selectedNodeX = node.position.x;
-        selectedNodeY = node.position.y;
-        selectedNodeWidth = node.width;
-        selectedNodeHeight = node.height;
-        selectedNode = node;
-      } else{
-        $("div.infoDiv").css("display", "none");
-        $("div.infoDiv").html("");
-      }
-    },
+    
 
-  })
-  engine.repaintCanvas()
+  reader.readAsText(f);
+}
+function process(allText, setDictOfParts, setPartOptions) {
+  let newDictOfParts = {};
+  let newPartOptions = [];
+  var allTextLines = allText.split('\r\n')
+  var headers = allTextLines[0].split(',');
+  console.log(allTextLines, headers);
+  for (var i=1; i<allTextLines.length; i++) {
+    console.log(i);
+    var data = allTextLines[i].split(',');
+        if (data.length == headers.length) {
+          newDictOfParts[data[0]] = {}
+          newPartOptions[i] = {value: data[0], label: data[0]}
+            for (var j=1; j<headers.length; j++) {
+              console.log(data[0], data[j])
+              newDictOfParts[data[0]][headers[j]] = data[j];
+            }
+        }
+
+  }
+  setDictOfParts(newDictOfParts);
+  setPartOptions(newPartOptions)
 }
 
-var engine;
 
-var lastClick;
 
-function addNewPort(type, name) {
+export default function App () {
+
+  return (
+     <div>
+      <PartSelect />
+      <DiagramApp />
+    </div>
+    );
+}
+
+
+var lastClick, selectedNode;
+
+function addNewPort(type, name, engine) {
   if (name != "") {
     if (type === "output") {
       selectedNode.addOutPort(name);
@@ -169,7 +128,7 @@ function addNewPort(type, name) {
   $("input#portInput")[0].value = null;
 }
 
-function deleteNode() {
+function deleteNode(engine) {
   let currentModel = engine.getModel();
   let inPort = selectedNode.getInPorts();
   let outPort = selectedNode.getOutPorts();
@@ -186,19 +145,52 @@ function deleteNode() {
 
 
 function handleClick(e) {
-  if (e.clientX > selectedNodeX && e.clientX < selectedNodeX + selectedNodeWidth) {
-    if (e.clientY > selectedNodeY && e.clientY < selectedNodeY + selectedNodeHeight) {
-      if (e.timeStamp - lastClick < 200) {
-        $("div.newPortDiv").css("display","block");
-      }
+    if (selectedNode != undefined) {
+        console.log(selectedNode)
+        if (e.clientX > selectedNode.position.x && e.clientX < selectedNode.position.x + selectedNode.width) {
+            if (e.clientY > selectedNode.position.y && e.clientY < selectedNode.position.y + selectedNode.height) {
+            if (e.timeStamp - lastClick < 200) {
+                $("div.newPortDiv").css("display","block");
+            }
+            }
+        }
+        
+        lastClick = e.timeStamp;
     }
-  }
-  lastClick = e.timeStamp;
 }
 
-export default () => {
 
-  
+function addNewNode(engine, partName, partInfo) {
+  console.log(partName);
+  let numOfNodes = Object.keys(engine.getModel().getActiveNodeLayer().getModels()).length;
+  let node = new DefaultNodeModel({
+    name: partName,
+    color: "rgb(0,192,255)"
+  });
+  node.setPosition(200 + numOfNodes*5, 200 + numOfNodes*5);
+  node.addInPort("In");
+  node.addOutPort("Out");
+  engine.getModel().addNode(node);
+  node.registerListener({
+    selectionChanged: (e) => {
+      if (e.isSelected) {
+        $("div.infoDiv").css("display", "block");
+        console.log(node);
+        Object.keys(partInfo).map((block) => $("div.infoDiv").append("<p>" + block + ": " + partInfo[block] + "</p>"));
+        selectedNode = node;
+      } else{
+        $("div.infoDiv").css("display", "none");
+        $("div.infoDiv").html("");
+      }
+    },
+
+  })
+  console.log(engine);
+  engine.repaintCanvas();
+}
+
+var engine;
+function DiagramApp() {
   //1) setup the diagram engine
   engine = createEngine({
     registerDefaultDeleteItemsAction: false
@@ -208,36 +200,25 @@ export default () => {
 
   //5) load model into engine
   engine.setModel(model);
-
   //6) render the diagram!
   return (
     <div>
-    <Select className="partInput" defaultValue={partOptions[0]} options={partOptions} styles={customStyles} onChange={handleChange} onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            console.log(selectedPart);
-            addNewNode(engine, selectedPart.value);
-          }
-        }}
-          
-        />
     <div className="newPortDiv">
         <div className="newPortText">Add a new port:</div>
         <input id="portInput" type="text" placeholder="Node Name"></input>
         <div className="buttonDiv">
-          <button className="portButton" onClick={() => addNewPort("input", document.getElementById("portInput").value)}> Input </button>
-          <button className="portButton" onClick={() => addNewPort("output", document.getElementById("portInput").value)}> Output </button>
-          <button className="portButton" onClick={() => deleteNode()}> Delete </button>
+          <button className="portButton" onClick={() => addNewPort("input", document.getElementById("portInput").value, engine)}> Input </button>
+          <button className="portButton" onClick={() => addNewPort("output", document.getElementById("portInput").value, engine)}> Output </button>
+          <button className="portButton" onClick={() => deleteNode(engine)}> Delete </button>
         </div>
     </div>
-    <div id='containerDiv' style={{zIndex:'-1', position:'absolute', left:0, top:0}} onMouseDown={(e) => handleClick(e)} >
+    <div id='containerDiv' style={{zIndex:'-1', position:'absolute', left:0, top:0}} onMouseDown={(e) => handleClick(e)}  >
       <CanvasWidget engine={engine} />
       </div>
     <div className='infoDiv'></div>
     </div>
   );
 };
-<<<<<<< Updated upstream
-=======
 
 const customStyles = {
   menu: (provided) => ({
@@ -277,4 +258,4 @@ function PartSelect() {
    </div>
   );
 }
->>>>>>> Stashed changes
+
