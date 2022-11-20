@@ -15,6 +15,54 @@ import {
 import $ from 'jquery';
 
 import './App.css';
+// $(document).ready(function() {
+//     $("#file").on('change', function() {
+//       let reader = new FileReader();
+//       console.log($(reader.readAsText("#file").prop('files')[0]));
+//     })
+//   });
+  
+function handleFileSelect(e, setDictOfParts, setPartOptions) {
+  let file = e.target.files;
+  let f = file[0];
+
+  let reader = new FileReader();
+
+  reader.onload = (function(e) {
+    process(e.currentTarget.result, setDictOfParts, setPartOptions);
+  });
+    
+
+  reader.readAsText(f);
+}
+  
+  
+  
+  
+  
+  
+  function process(allText, setDictOfParts, setPartOptions) {
+    let newDictOfParts = {};
+    let newPartOptions = [];
+    var allTextLines = allText.split('\r\n')
+    var headers = allTextLines[0].split(',');
+    console.log(allTextLines, headers);
+    for (var i=1; i<allTextLines.length; i++) {
+      console.log(i);
+      var data = allTextLines[i].split(',');
+          if (data.length == headers.length) {
+            newDictOfParts[data[0]] = {}
+            newPartOptions[i] = {value: data[0], label: data[0]}
+              for (var j=1; j<headers.length; j++) {
+                console.log(data[0], data[j])
+                newDictOfParts[data[0]][headers[j]] = data[j];
+              }
+          }
+  
+    }
+    setDictOfParts(newDictOfParts);
+    setPartOptions(newPartOptions)
+  }
 
 function handleFileSelect(e, setDictOfParts, setPartOptions) {
   let file = e.target.files;
@@ -210,3 +258,4 @@ function PartSelect() {
    </div>
   );
 }
+
