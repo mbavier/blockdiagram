@@ -173,6 +173,13 @@ function DiagramApp() {
 };
 
 const customStyles = {
+  container: (provided) => ({
+    ...provided,
+    margin:"4px",
+    width: "300px",
+    float: "left",
+    fontFamily: "Arial"
+  }),
   menu: (provided) => ({
     ...provided,
     zIndex: 100
@@ -196,17 +203,26 @@ function PartSelect() {
   }
 
   return (
-    <div>
+    <div id="selectDiv">
+      <button id="selectBtns" style={{float:"none", width:"408px"}} onClick={onInputBtnClick}>Change BoM</button>
+      <div>
         <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setDictOfParts, setPartOptions)}}/>
-         
-  <Select className="partInput" defaultValue={partOptions[0]} options={partOptions} styles={customStyles} onChange={(e) => {handleChange(e, dictOfParts[e.value])}} onKeyDown={(e) => {
-    if (e.key === 'Enter') {
-        console.log(selectedPart)
-        addNewNode(engine, selectedPart[0], selectedPart[1]);
-    }
-  }}
-  />
-  <button onClick={onInputBtnClick}> Change input</button>
+        
+        <Select className="partInput" defaultValue={partOptions[0]} options={partOptions} styles={customStyles} onChange={(e) => {handleChange(e, dictOfParts[e.value])}} onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+              console.log(selectedPart)
+              addNewNode(engine, selectedPart[0], selectedPart[1]);
+          }
+        }}/>
+        <button id="selectBtns" onClick={() => {
+          addNewNode(engine, selectedPart[0], selectedPart[1]);
+        }}> Add </button>
+      </div>
+      <div id="selectText">Ti.com Page: </div>
+      <div id="selectText">Part Type: </div>
+      <div id="selectText">Qty on BoM: </div>
+      <div id="selectText">Qty on Diagram: </div>
+      
    </div>
   );
 }
