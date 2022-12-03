@@ -38,6 +38,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { ThemeProvider, createTheme } from '@mui/material';
+
 
 import './App.css';
 import { ListSubheader } from "@mui/material";
@@ -126,6 +128,9 @@ function deleteNode(engine) {
   $("div.newPortDiv").css("display","none");
   $("div.infoDiv").css("display", "none");
   $("div.infoDiv").html("");
+  selectedNode = undefined;
+  setDisabled(true);
+  $("div#selectedPartName").html("")
 }
 
 
@@ -170,6 +175,11 @@ function addNewNode(engine, partName, partInfo) {
         $("div#selectedPartName").html("")
       }
     },
+    entityRemoved: (e) => {
+      selectedNode = undefined;
+      setDisabled(true);
+      $("div#selectedPartName").html("")
+    }
 
   })
   engine.repaintCanvas();
@@ -227,7 +237,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 function selectInfo(partOptions, dictOfParts) {
   return (<>
-  <Select className="partInput" defaultValue={partOptions[0]} options={partOptions} styles={customStyles} onChange={(e) => {handleChange(e, dictOfParts[e.value])}} onKeyDown={(e) => {
+  <Select 
+  onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+  className="partInput" defaultValue={partOptions[0]} options={partOptions} styles={customStyles} onChange={(e) => {handleChange(e, dictOfParts[e.value])}} onKeyDown={(e) => {
     if (e.key === 'Enter') {
         addNewNode(engine, selectedPart[0], selectedPart[1]);
     }
@@ -259,11 +271,21 @@ function portButtons(disabledSection) {
 
 
 function PersistentDrawerLeft(props) {
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [disabledSection, setDisabledSection] = React.useState(true);
   setDisabled = setDisabledSection;
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#3d94f6"
+      },
+      secondary: {
+        main: "#606060"
+      }
+    },
+    direction: "ltr"
+  })
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -274,6 +296,7 @@ function PersistentDrawerLeft(props) {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
@@ -299,13 +322,17 @@ function PersistentDrawerLeft(props) {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            background: "#6F6F6F"
           },
         }}
         variant="persistent"
         anchor="left"
         open={open}
       >
-        <DrawerHeader>
+        <DrawerHeader sx={{
+          background: "#3d94f6",
+          color: "white"
+        }}>
           <ListItemText>
             Edit
           </ListItemText> 
@@ -323,9 +350,13 @@ function PersistentDrawerLeft(props) {
                 <ListItemText primary={selectInfo(props.parts, props.dict)} />
         </ListItem>
         <Divider/>
-        <ListSubheader>
-          Part Selected: <div id="selectedPartName" style={{display:"inline-block"}}></div>
-          </ListSubheader>
+        <ListItem>
+          <ListItemText sx={{
+            color: "white"
+          }}>
+            Part Selected: <div id="selectedPartName" style={{display:"inline-block"}}></div>
+          </ListItemText>
+          </ListItem>
           <ListItem key="NewPortText" disablePadding disabled={disabledSection}>
                 <ListItemText primary={portInput(disabledSection)} />
           </ListItem>
@@ -339,6 +370,7 @@ function PersistentDrawerLeft(props) {
         <Divider />
       </Drawer>
     </Box>
+    </ThemeProvider>
   );
 }
 
@@ -348,7 +380,7 @@ const customStyles = {
     margin:"4px",
     width: "300px",
     float: "left",
-    fontFamily: "Arial"
+    fontFamily: ["Roboto","Helvetica","Arial","sans-serif"]
   }),
   menu: (provided) => ({
     ...provided,
