@@ -5,7 +5,12 @@ import { defaultDictOfParts, defaultPartOptions } from "./data";
 import createEngine, { 
   /*DefaultLinkModel, */
   DefaultNodeModel,
-  DiagramModel 
+  DiagramModel ,
+  //PathFindingLinkFactory,
+  DefaultPortModel,
+  RightAngleLinkFactory,
+	LinkModel,
+	RightAngleLinkModel
 } from '@projectstorm/react-diagrams';
 
 import {
@@ -36,6 +41,13 @@ import MailIcon from '@mui/icons-material/Mail';
 
 import './App.css';
 import { ListSubheader } from "@mui/material";
+
+export class RightAnglePortModel extends DefaultPortModel {
+	createLinkModel() {
+		return new RightAngleLinkModel();
+	}
+}
+
 
 function handleFileSelect(e, setDictOfParts, setPartOptions) {
   let file = e.target.files;
@@ -91,9 +103,9 @@ var lastClick, selectedNode;
 function addNewPort(type, name, engine) {
   if (name != "") {
     if (type === "output") {
-      selectedNode.addOutPort(name);
+      selectedNode.addPort(new RightAnglePortModel(false, `${name}$-${selectedNode.options['id']}`, name));;
     } else {
-      selectedNode.addInPort(name);
+      selectedNode.addPort(new RightAnglePortModel(true, `${name}$-${selectedNode.options['id']}`, name));
     }
     engine.repaintCanvas();
   }
@@ -139,8 +151,8 @@ function addNewNode(engine, partName, partInfo) {
     color: "rgb(0,192,255)"
   });
   node.setPosition( ($(document ).width())/2 + numOfNodes*5, ($(document).height())/2 + numOfNodes*5);
-  node.addInPort("In");
-  node.addOutPort("Out");
+  node.addPort(new RightAnglePortModel(true, `in${partName}-${numOfNodes}`, "In"));
+  node.addPort(new RightAnglePortModel(false, `out${partName}-${numOfNodes}`, "Out"));;
   engine.getModel().addNode(node);
   node.registerListener({
     selectionChanged: (e) => {
@@ -164,14 +176,17 @@ function addNewNode(engine, partName, partInfo) {
 }
 
 var engine;
+
+// var pathfinding; // For use when importing
 function DiagramApp() {
   //1) setup the diagram engine
   engine = createEngine({
-    registerDefaultDeleteItemsAction: false
+   //registerDefaultDeleteItemsAction: false
   });
+  engine.getLinkFactories().registerFactory(new RightAngleLinkFactory());
   //2) setup the diagram model
   var model = new DiagramModel();
-
+  // pathfinding = engine.getLinkFactories().getFactory(PathFindingLinkFactory.NAME); // For use when importing, see smart routing example
   //5) load model into engine
   engine.setModel(model);
   //6) render the diagram!
@@ -229,7 +244,7 @@ function bomChange(onInputBtnClick) {
 
 function portInput(disabledSection) {
   return (
-      <input disabled={disabledSection} id="portInput" type="text" placeholder="New Port Name"></input>
+      <input onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)} disabled={disabledSection} id="portInput" type="text" placeholder="New Port Name"></input>
   )
 }
 
