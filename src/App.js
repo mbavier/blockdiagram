@@ -229,7 +229,7 @@ function bomChange(onInputBtnClick) {
 
 function portInput(disabledSection) {
   return (
-      <input disabled={disabledSection} id="portInput" type="text" placeholder="Node Name"></input>
+      <input disabled={disabledSection} id="portInput" type="text" placeholder="New Port Name"></input>
   )
 }
 
