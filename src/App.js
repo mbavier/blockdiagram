@@ -9,7 +9,6 @@ import createEngine, {
   //PathFindingLinkFactory,
   DefaultPortModel,
   RightAngleLinkFactory,
-	LinkModel,
 	RightAngleLinkModel
 } from '@projectstorm/react-diagrams';
 
@@ -19,7 +18,7 @@ import {
 
 import $ from 'jquery';
 
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -33,16 +32,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { ThemeProvider, createTheme } from '@mui/material';
 
 
 import './App.css';
-import { ListSubheader } from "@mui/material";
+import CsvProcessor from "./CsvProcessor";
 
 export class RightAnglePortModel extends DefaultPortModel {
 	createLinkModel() {
@@ -73,7 +68,7 @@ function process(allText, setDictOfParts, setPartOptions) {
   for (var i=1; i<allTextLines.length; i++) {
     console.log(i);
     var data = allTextLines[i].split(',');
-        if (data.length == headers.length) {
+        if (data.length === headers.length) {
           newDictOfParts[data[0]] = {}
           newPartOptions[i] = {value: data[0], label: data[0]}
             for (var j=1; j<headers.length; j++) {
@@ -103,7 +98,7 @@ export default function App () {
 var lastClick, selectedNode;
 
 function addNewPort(type, name, engine) {
-  if (name != "") {
+  if (name !== "") {
     if (type === "output") {
       selectedNode.addPort(new RightAnglePortModel(false, `${name}$-${selectedNode.options['id']}`, name));;
     } else {
@@ -120,9 +115,17 @@ function deleteNode(engine) {
   let inPort = selectedNode.getInPorts();
   let outPort = selectedNode.getOutPorts();
   inPort.map((port) => {
-    Object.keys(port.links).map((link) => {currentModel.removeLink(link)})});
+    Object.keys(port.links).map((link) => {
+      currentModel.removeLink(link);
+      return 1;
+    });
+    return 1;});
   outPort.map((port) => {
-    Object.keys(port.links).map((link) => {currentModel.removeLink(link)})});
+    Object.keys(port.links).map((link) => {
+      currentModel.removeLink(link);
+      return 1;
+    });
+    return 1;});
   currentModel.removeNode(selectedNode);
   engine.repaintCanvas();
   $("div.newPortDiv").css("display","none");
@@ -135,7 +138,7 @@ function deleteNode(engine) {
 
 
 function handleClick(e) {
-    if (selectedNode != undefined) {
+    if (selectedNode !== undefined) {
         if (e.clientX > selectedNode.position.x && e.clientX < selectedNode.position.x + selectedNode.width) {
             if (e.clientY > selectedNode.position.y && e.clientY < selectedNode.position.y + selectedNode.height) {
             if (e.timeStamp - lastClick < 200) {
@@ -235,40 +238,19 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-function selectInfo(partOptions, dictOfParts) {
-  return (<>
-  <Select 
-  onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
-  className="partInput" defaultValue={partOptions[0]} options={partOptions} styles={customStyles} onChange={(e) => {handleChange(e, dictOfParts[e.value])}} onKeyDown={(e) => {
-    if (e.key === 'Enter') {
-        addNewNode(engine, selectedPart[0], selectedPart[1]);
-    }
-      }}/>
-      <button id="selectBtns" onClick={() => {
-        addNewNode(engine, selectedPart[0], selectedPart[1]);
-      }}> Add </button></>
-      )
+const customStyles = {
+  container: (provided) => ({
+    ...provided,
+    margin:"4px",
+    width: "300px",
+    float: "left",
+    fontFamily: ["Roboto","Helvetica","Arial","sans-serif"]
+  }),
+  menu: (provided) => ({
+    ...provided,
+    zIndex: 100
+  })
 }
-
-function bomChange(onInputBtnClick) {
-  return (<button id="selectBtns" onClick={onInputBtnClick} style={{width:drawerWidth-15}}>Change BoM</button>)
-}
-
-function portInput(disabledSection) {
-  return (
-      <input onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)} disabled={disabledSection} id="portInput" type="text" placeholder="New Port Name"></input>
-  )
-}
-
-function portButtons(disabledSection) {
-  return (
-    <>
-      <button disabled={disabledSection} class="portButton" onClick={() => addNewPort("input", document.getElementById("portInput").value, engine)}> Input </button>
-      <button disabled={disabledSection} class="portButton" onClick={() => addNewPort("output", document.getElementById("portInput").value, engine)}> Output </button>
-    </>
-  )
-}
-
 
 function PersistentDrawerLeft(props) {
   const [open, setOpen] = React.useState(false);
@@ -294,6 +276,44 @@ function PersistentDrawerLeft(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  function selectInfo(partOptions, dictOfParts) {
+    return (<>
+    <Select 
+    onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+    className="partInput" defaultValue={partOptions[0]} options={partOptions} styles={customStyles} onChange={(e) => {handleChange(e, dictOfParts[e.value])}} onKeyDown={(e) => {
+      if (e.key === 'Enter') {
+          addNewNode(engine, selectedPart[0], selectedPart[1]);
+      }
+        }}/>
+        <button id="selectBtns" onClick={() => {
+          addNewNode(engine, selectedPart[0], selectedPart[1]);
+        }}> Add </button></>
+        )
+  }
+  
+  function bomChange(onInputBtnClick) {
+    return (<div>
+      <CsvProcessor setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
+      <button id="selectBtns" onClick={onInputBtnClick} style={{width:drawerWidth-15}}>Change BoM</button>
+      </div>)
+  }
+  
+  function portInput() {
+    return (
+        <input onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)} disabled={disabledSection} id="portInput" type="text" placeholder="New Port Name"></input>
+    )
+  }
+  
+  function portButtons() {
+    return (
+      <>
+        <button disabled={disabledSection} className="portButton" onClick={() => addNewPort("input", document.getElementById("portInput").value, engine)}> Input </button>
+        <button disabled={disabledSection} className="portButton" onClick={() => addNewPort("output", document.getElementById("portInput").value, engine)}> Output </button>
+      </>
+    )
+  }
+  
 
   return (
     <ThemeProvider theme={theme}>
@@ -364,7 +384,7 @@ function PersistentDrawerLeft(props) {
                 <ListItemText primary={portButtons(disabledSection)} />
           </ListItem>
           <ListItem disablePadding disabled={disabledSection}>
-          <button disabled={disabledSection} style={{minWidth:"95%"}}className="portButton" onClick={() => deleteNode(engine)}> Delete </button>
+          <button disabled={disabledSection} style={{minWidth:"95%"}} className="portButton" onClick={() => deleteNode(engine)}> Delete </button>
           </ListItem>
         </List>
         <Divider />
@@ -374,19 +394,7 @@ function PersistentDrawerLeft(props) {
   );
 }
 
-const customStyles = {
-  container: (provided) => ({
-    ...provided,
-    margin:"4px",
-    width: "300px",
-    float: "left",
-    fontFamily: ["Roboto","Helvetica","Arial","sans-serif"]
-  }),
-  menu: (provided) => ({
-    ...provided,
-    zIndex: 100
-  })
-}
+
 
 var selectedPart;
 function handleChange(selectedOption, partInfo)  {
@@ -406,8 +414,8 @@ function PartSelect() {
 
   return (
     <div id="selectDiv">
-        <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setDictOfParts, setPartOptions)}}/>
-        <PersistentDrawerLeft parts={partOptions} dict={dictOfParts} inputFileInfo={[onInputBtnClick, inputFile]}> </PersistentDrawerLeft>
+        <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setDictOfParts, setPartOptions);}}/>
+        <PersistentDrawerLeft setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} parts={partOptions} dict={dictOfParts} inputFileInfo={[onInputBtnClick, inputFile]}> </PersistentDrawerLeft>
    </div>
   );
 }
