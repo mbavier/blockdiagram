@@ -241,8 +241,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const customStyles = {
   container: (provided) => ({
     ...provided,
-    margin:"4px",
-    width: "300px",
+    marginLeft:"2.5%",
+    marginRight:"0%",
+    width: "70%",
     float: "left",
     fontFamily: ["Roboto","Helvetica","Arial","sans-serif"]
   }),
@@ -292,10 +293,9 @@ function PersistentDrawerLeft(props) {
         )
   }
   
-  function bomChange(onInputBtnClick) {
+  function bomChange() {
     return (<div>
-      <CsvProcessor setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
-      <button id="selectBtns" onClick={onInputBtnClick} style={{width:drawerWidth-15}}>Change BoM</button>
+      <CsvProcessor drawerWidth={drawerWidth} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
       </div>)
   }
   
@@ -317,7 +317,7 @@ function PersistentDrawerLeft(props) {
 
   return (
     <ThemeProvider theme={theme}>
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex'}}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -343,7 +343,7 @@ function PersistentDrawerLeft(props) {
             width: drawerWidth,
             boxSizing: 'border-box',
             background: "#6F6F6F"
-          },
+          }
         }}
         variant="persistent"
         anchor="left"
@@ -363,7 +363,7 @@ function PersistentDrawerLeft(props) {
         <Divider />
         <List>
         <ListItem key="BoM" disablePadding>
-          <ListItemText primary={bomChange(props.inputFileInfo[0])}></ListItemText>
+          {bomChange()}
         </ListItem>
         <Divider/>
         <ListItem key="Selection" disablePadding>

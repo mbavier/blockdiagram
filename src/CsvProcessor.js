@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import Checkbox from '@mui/material/Checkbox'
+import ListItemText from '@mui/material/ListItemText'
 
 const primarySelectLabel = { inputProps: { 'aria-label': 'primarySelect' } };
 const headerLabel = { inputProps: { 'aria-label': 'headerSelect' } };
@@ -34,7 +35,6 @@ function submitHeaders(primary, allTextLines, setDictOfParts, setPartOptions, he
             }
     
       }
-      console.log(newDictOfParts);
       setDictOfParts(newDictOfParts);
       setPartOptions(newPartOptions)
 
@@ -42,7 +42,6 @@ function submitHeaders(primary, allTextLines, setDictOfParts, setPartOptions, he
 
 function handleSelectedHeader(selectedHeaders, index) {
     selectedHeaders[index] = !selectedHeaders[index];
-    console.log(selectedHeaders);
 }
 
 function handleChecked(setChecked, index) {
@@ -53,7 +52,13 @@ function Checkboxes(props) {
     const [checked, setChecked] = React.useState();
     let checkboxes = [];
     let selectedHeaders = [];
-    console.log(props.headers.length===0)
+
+    function handleSetHeadersClick(e) {
+        submitHeaders(checked, props.allTextLines, props.setDictOfParts, props.setPartOptions, props.headers, selectedHeaders); 
+        props.setHeaders([]); 
+        props.setAllTextLines(undefined); 
+        props.setBomUploadDisable(false);
+    }
     props.headers.map((object, i) => {
         selectedHeaders = [...selectedHeaders, false];
         checkboxes = [...checkboxes, <div key={i}>
@@ -63,7 +68,7 @@ function Checkboxes(props) {
                                     </div> ]; 
         return 1;
     });
-    checkboxes = [...checkboxes, <button style={{display: props.headers.length===0 ? "none" : ""}} key="headerButton" id="selectBtns" onClick={ (e) => {submitHeaders(checked, props.allTextLines, props.setDictOfParts, props.setPartOptions, props.headers, selectedHeaders)}}>Set Headers</button>]
+    checkboxes = [...checkboxes, <button style={{width: `${props.drawerWidth*.95}px`, display: props.headers.length===0 ? "none" : ""}} key="headerButton" id="selectBtns" onClick={ (e) => handleSetHeadersClick(e)}>Set Headers</button>]
     return (checkboxes);
 }
 
@@ -80,16 +85,31 @@ export default function CsvProcessor (props) {
     var setPartOptions = props.setPartOptions;
     var [headers, setHeaders] = React.useState([]);
     var [allTextLines, setAllTextLines] = React.useState();
+    var [bomUploadDisable, setBomUploadDisable] = React.useState(false);
     const inputFile = useRef(null);
 
     const onInputBtnClick = () => {
         inputFile.current.click();
+        setBomUploadDisable(true)
+    }
+
+    const createCheckboxes = () => {
+        return (
+        <Checkboxes key="Checkboxes" setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} headers={headers} setHeaders={setHeaders} allTextLines={allTextLines} setAllTextLines={setAllTextLines} setBomUploadDisable={setBomUploadDisable} drawerWidth={props.drawerWidth}/>
+        );
+    }
+    const createButton = () => {
+        return (
+            <button id="selectBtns" onClick={onInputBtnClick} style={{width:`${props.drawerWidth*.95}px`, display:(bomUploadDisable ? "none" : "")}}>Manual BoM Upload</button>
+        );
     }
 
     return (
-       <div>
+       <>
            <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders)}}/>
-           <div id="headerOptions"> <Checkboxes key="Checkboxes" setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} headers={headers} allTextLines={allTextLines}/> </div>
-      </div>
+           <ListItemText primary={createCheckboxes()}/>
+           <ListItemText primary={createButton()}/>
+           
+        </>
       );
   }
