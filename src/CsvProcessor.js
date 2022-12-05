@@ -2,21 +2,36 @@ import React, {useRef} from "react";
 import Checkbox from '@mui/material/Checkbox'
 import ListItemText from '@mui/material/ListItemText'
 
+const XLSX = require('xlsx');
+
 const primarySelectLabel = { inputProps: { 'aria-label': 'primarySelect' } };
 const headerLabel = { inputProps: { 'aria-label': 'headerSelect' } };
 
-function handleFileSelect(e, setDictOfParts, setPartOptions) {
+async function handleFileSelect(e, setDictOfParts, setPartOptions) {
     let file = e.target.files;
     let f = file[0];
-  
+    
     let reader = new FileReader();
   
     reader.onload = (function(e) {
-      process(e.currentTarget.result, setDictOfParts, setPartOptions);
+        let processData = e.target.result;
+        if (typeof(processData) === 'object') {
+            var workBook = XLSX.read(processData); 
+            console.log(workBook)
+            processData = XLSX.utils.sheet_to_csv(workBook.Sheets[workBook.SheetNames[0]], {RS: '\r\n'});
+            
+        }
+        console.log(processData)
+
+      process(processData, setDictOfParts, setPartOptions);
     });
       
-  
-    reader.readAsText(f);
+    if (f.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+        reader.readAsArrayBuffer(f);
+    } else {
+        reader.readAsText(f);
+    }
+    
   }
 
 function submitHeaders(primary, allTextLines, setDictOfParts, setPartOptions, headers, selectedHeaders) {
