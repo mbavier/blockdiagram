@@ -38,6 +38,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 
 import './App.css';
 import CsvProcessor from "./CsvProcessor";
+import Exporter from "./Exporter";
 
 export class RightAnglePortModel extends DefaultPortModel {
 	createLinkModel() {
@@ -384,7 +385,11 @@ function PersistentDrawerLeft(props) {
                 <ListItemText primary={portButtons(disabledSection)} />
           </ListItem>
           <ListItem disablePadding disabled={disabledSection}>
-          <button disabled={disabledSection} style={{minWidth:"95%"}} className="portButton" onClick={() => deleteNode(engine)}> Delete </button>
+          <button disabled={disabledSection} style={{minWidth:"95%", marginBottom:"5px"}} className="portButton" onClick={() => deleteNode(engine)}> Delete </button>
+          </ListItem>
+          <Divider />
+          <ListItem disablePadding>
+            <Exporter drawerWidth={drawerWidth} engine={engine} dictOfParts={props.dict}/>
           </ListItem>
         </List>
         <Divider />
