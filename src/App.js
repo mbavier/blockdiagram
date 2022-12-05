@@ -130,8 +130,6 @@ function deleteNode(engine) {
   currentModel.removeNode(selectedNode);
   engine.repaintCanvas();
   $("div.newPortDiv").css("display","none");
-  $("div.infoDiv").css("display", "none");
-  $("div.infoDiv").html("");
   selectedNode = undefined;
   setDisabled(true);
   $("div#selectedPartName").html("")
@@ -153,7 +151,15 @@ function handleClick(e) {
 }
 
 
+
 function addNewNode(engine, partName, partInfo) {
+
+  function getPartDetails() {
+    Object.keys(partInfo).map((key) => {
+       $("div#PartInfoDetails").append("<div>" + key + ": " + partInfo[key] + "</div>");
+       return 1})
+   }
+
   let numOfNodes = Object.keys(engine.getModel().getActiveNodeLayer().getModels()).length;
   let node = new DefaultNodeModel({
     name: partName,
@@ -166,17 +172,17 @@ function addNewNode(engine, partName, partInfo) {
   node.registerListener({
     selectionChanged: (e) => {
       if (e.isSelected) {
-        $("div.infoDiv").css("display", "block");
-        Object.keys(partInfo).map((block) => $("div.infoDiv").append("<p>" + block + ": " + partInfo[block] + "</p>"));
         selectedNode = node;
         setDisabled(false);
         $("div#selectedPartName").html(partName)
-      } else{
-        $("div.infoDiv").css("display", "none");
-        $("div.infoDiv").html("");
+        $("div#PartInfoName").html(partName)
+        getPartDetails()
+      } else {
         selectedNode = undefined;
         setDisabled(true);
         $("div#selectedPartName").html("")
+        $("div#PartInfoName").html("")
+        $("div#PartInfoDetails").html("")
       }
     },
     entityRemoved: (e) => {
@@ -315,7 +321,6 @@ function PersistentDrawerLeft(props) {
     )
   }
   
-
   return (
     <ThemeProvider theme={theme}>
     <Box sx={{ display: 'flex'}}>
@@ -385,7 +390,14 @@ function PersistentDrawerLeft(props) {
                 <ListItemText primary={portButtons(disabledSection)} />
           </ListItem>
           <ListItem disablePadding disabled={disabledSection}>
-          <button disabled={disabledSection} style={{minWidth:"95%", marginBottom:"5px"}} className="portButton" onClick={() => deleteNode(engine)}> Delete </button>
+            <button disabled={disabledSection} style={{minWidth:"95%", marginBottom:"5px"}} className="portButton" onClick={() => deleteNode(engine)}> Delete </button>
+          </ListItem>
+          <Divider />
+          <ListItem key="PartInfoSection">
+            <ListItemText key="PartInfoText">
+            <div id="PartInfoName" style={{fontSize:16}}> </div>
+            <div id="PartInfoDetails" style={{fontSize:12}}> </div>
+            </ListItemText>
           </ListItem>
           <Divider />
           <ListItem disablePadding>
