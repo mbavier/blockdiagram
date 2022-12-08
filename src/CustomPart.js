@@ -88,7 +88,7 @@ export default function CustomPart(props) {
 
   const createButton = () => {
     return (
-        <button id="selectBtns" onClick={onInputBtnClick} style={{width:`${props.drawerWidth*.95}px`}}>Search For Part</button>
+        <button id="selectBtns" onClick={onInputBtnClick} style={{width:`${props.drawerWidth*.95}px`}}>Add Part</button>
     );
 }
   
