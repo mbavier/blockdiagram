@@ -6,11 +6,10 @@ import { writeFile, utils } from "xlsx";
 function beginExport(engine, dict) {
     let models = engine.getModel().activeNodeLayer.models;
     let headerArray = ["Name", ...Object.keys(dict[Object.keys(dict)[0]])];
-    
     let pageArray = [headerArray];
     var wb = utils.book_new();
     for (var node in models) {
-        pageArray = [...pageArray, [models[node].options['name'], ...Object.values(dict[models[node].options['name']])]];
+        pageArray = [...pageArray, [models[node].options['name'], ...Object.values(models[node].miscInfo)]];
     }
     var ws = utils.aoa_to_sheet(pageArray);
     utils.book_append_sheet(wb, ws, "Sheet1");

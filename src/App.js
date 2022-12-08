@@ -1,6 +1,7 @@
 import React, {useRef} from "react";
 import Select from 'react-select';
 
+
 import { defaultDictOfParts, defaultPartOptions } from "./data";
 import createEngine, { 
   /*DefaultLinkModel, */
@@ -38,6 +39,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 
 import './App.css';
 import CsvProcessor from "./CsvProcessor";
+import CustomPart from "./CustomPart";
 import Exporter from "./Exporter";
 
 export class RightAnglePortModel extends DefaultPortModel {
@@ -153,7 +155,7 @@ function handleClick(e) {
 
 
 function addNewNode(engine, partName, partInfo) {
-
+  console.log(partName, partInfo)
   function getPartDetails() {
     Object.keys(partInfo).map((key) => {
        $("div#PartInfoDetails").append("<div>" + key + ": " + partInfo[key] + "</div>");
@@ -168,6 +170,7 @@ function addNewNode(engine, partName, partInfo) {
   node.setPosition( ($(document ).width())/2 + numOfNodes*5, ($(document).height())/2 + numOfNodes*5);
   node.addPort(new RightAnglePortModel(true, `in${partName}-${numOfNodes}`, "In"));
   node.addPort(new RightAnglePortModel(false, `out${partName}-${numOfNodes}`, "Out"));;
+  node.miscInfo = partInfo;
   engine.getModel().addNode(node);
   node.registerListener({
     selectionChanged: (e) => {
@@ -216,6 +219,7 @@ function DiagramApp() {
     </div>
   );
 };
+
 
 
 const drawerWidth = 425;
@@ -375,6 +379,8 @@ function PersistentDrawerLeft(props) {
         <ListItem key="Selection" disablePadding>
                 <ListItemText primary={selectInfo(props.parts, props.dict)} />
         </ListItem>
+        <Divider/>
+           <CustomPart drawerWidth={drawerWidth} addNode={addNewNode} engine={engine} dict={props.dict}/>
         <Divider/>
         <ListItem>
           <ListItemText sx={{
