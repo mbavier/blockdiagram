@@ -16,6 +16,9 @@ import createEngine, {
 import {
   CanvasWidget,
 } from '@projectstorm/react-canvas-core';
+import { DeviceNodeFactory } from './components/Device/DeviceNodeFactory';
+import { DeviceNodeModel } from './components/Device/DeviceNodeModel';
+
 
 import $ from 'jquery';
 
@@ -97,6 +100,105 @@ export default function App () {
     );
 }
 
+let statusOptions = [
+  {
+    label: "Loss",
+    value: -1
+  },
+  {
+    label: "Pending",
+    value: 0
+  },
+  {
+    label: "Win",
+    value: 1
+  }]
+  
+let statusColors = [
+  "rgb(255,60,50)",
+  "rgb(255,235,110)",
+  "rgb(150,255,110)"
+]
+
+function PartInfoInput(props) {
+  var [partVal, setPartVal] = new React.useState(props.partInfo);
+  return (<input 
+    onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+    type='text' style={{width:'100%'}} value= {partVal} onChange={(val) => {
+      setPartVal(val.target.value)
+      props.currentNode.miscInfo[props.dictKey] = val.target.value;
+    }}/>);
+}
+
+function GetPartDetails(props) {
+  if (props.currentNode !== undefined) {
+  let partInfo =  props.currentNode.miscInfo;
+  return(Object.keys(partInfo).map((key) => {
+      return (<div id="infoHeader" key={`PartInfo${key}`}> {key}: 
+              < PartInfoInput dictKey={key} partInfo={partInfo[key]} currentNode={props.currentNode}/>
+            </div>)}));
+  } else {
+    return ""
+  }
+}
+
+  function SelectStatus(props) {
+  if (props.currentNode !== undefined) {
+    return (<Select options={statusOptions}
+    className="partInput"
+    style={customStyles}
+    defaultValue={statusOptions[props.currentNode.deviceStatus+1]}
+    onChange={(e)=> {
+      props.currentNode.deviceStatus = e.value
+      props.currentNode.options.color = statusColors[e.value+1]
+      engine.repaintCanvas();
+    }
+    }
+    />)
+  } else {
+    return ""
+  }
+  }
+
+  function GetUserComments(props) {
+  if (props.currentNode !== undefined) {
+    var [userNotes, setUserNotes] = new React.useState(props.currentNode.userComments);
+    return (
+      <div id="infoHeader"> Comments:
+    <textarea 
+      onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+      style={{width:'100%', height:"100px"}} value= {userNotes} onChange={(val) => {
+        setUserNotes(val.target.value)
+        props.currentNode.userComments = val.target.value;
+      }}/>
+      </div>)
+  } else {
+    return ""
+  }
+  }
+
+function PartInfo(props) {
+  let partName = ""
+  if (props.currentNode !== undefined) {
+    partName = props.currentNode.options.name
+  }
+  if (props.currentNode !== undefined && props.currentNode.options.name !== partName) {
+    partName = props.currentNode.options.name
+  }
+
+  
+
+  
+  return (
+    <div key="PartInfoTop">
+      <div id="infoHeader"> {partName} </div>
+      < SelectStatus currentNode={props.currentNode} />
+      < GetPartDetails currentNode={props.currentNode} />
+      < GetUserComments currentNode={props.currentNode} />
+    </div>
+  )
+}
+
 
 var lastClick, selectedNode;
 
@@ -154,49 +256,44 @@ function handleClick(e) {
 
 
 
-function addNewNode(engine, partName, partInfo) {
-  console.log(partName, partInfo)
-  function getPartDetails() {
-    Object.keys(partInfo).map((key) => {
-       $("div#PartInfoDetails").append("<div>" + key + ": " + partInfo[key] + "</div>");
-       return 1})
-   }
 
+
+function addNewNode(engine, partName, partInfo, setCurrentNode) {
   let numOfNodes = Object.keys(engine.getModel().getActiveNodeLayer().getModels()).length;
   let node = new DefaultNodeModel({
     name: partName,
-    color: "rgb(0,192,255)"
+    color: "rgb(255,235,110)"
   });
   node.setPosition( ($(document ).width())/2 + numOfNodes*5, ($(document).height())/2 + numOfNodes*5);
   node.addPort(new RightAnglePortModel(true, `in${partName}-${numOfNodes}`, "In"));
   node.addPort(new RightAnglePortModel(false, `out${partName}-${numOfNodes}`, "Out"));;
   node.miscInfo = partInfo;
+  node.deviceStatus = 0
+  node.userComments = ""
   engine.getModel().addNode(node);
   node.registerListener({
     selectionChanged: (e) => {
       if (e.isSelected) {
         selectedNode = node;
+        setCurrentNode(node);
         setDisabled(false);
-        $("div#selectedPartName").html(partName)
-        $("div#PartInfoName").html(partName)
-        getPartDetails()
       } else {
         selectedNode = undefined;
         setDisabled(true);
-        $("div#selectedPartName").html("")
-        $("div#PartInfoName").html("")
-        $("div#PartInfoDetails").html("")
+        setCurrentNode(undefined);
       }
     },
     entityRemoved: (e) => {
       selectedNode = undefined;
       setDisabled(true);
-      $("div#selectedPartName").html("")
     }
 
   })
   engine.repaintCanvas();
 }
+
+
+
 
 var engine;
 
@@ -207,12 +304,22 @@ function DiagramApp() {
    //registerDefaultDeleteItemsAction: false
   });
   engine.getLinkFactories().registerFactory(new RightAngleLinkFactory());
+  engine.getNodeFactories().registerFactory(new DeviceNodeFactory());
+  const state = engine.getStateMachine().getCurrentState();
+  state.dragNewLink.config.allowLooseLinks = false;
+
   //2) setup the diagram model
   var model = new DiagramModel();
   // pathfinding = engine.getLinkFactories().getFactory(PathFindingLinkFactory.NAME); // For use when importing, see smart routing example
   //5) load model into engine
+
+  // const deviceNode = new DeviceNodeModel({color: 'rgb(192, 255, 0)', name: 'Test'});
+  // deviceNode.setPosition(100, 100);
+  // model.addNode(deviceNode);
+  console.log(model)
   engine.setModel(model);
   //6) render the diagram!
+  
   return (
     <div id='containerDiv' style={{zIndex:'-1', position:'absolute', left:0, top:0}} onMouseDown={(e) => handleClick(e)}  >
       <CanvasWidget engine={engine} />
@@ -256,17 +363,18 @@ const customStyles = {
     marginRight:"0%",
     width: "70%",
     float: "left",
-    fontFamily: ["Roboto","Helvetica","Arial","sans-serif"]
+    fontFamily: ["Roboto","Helvetica","Arial","sans-serif"],
   }),
   menu: (provided) => ({
     ...provided,
-    zIndex: 100
+    zIndex: 100,
   })
 }
 
 function PersistentDrawerLeft(props) {
   const [open, setOpen] = React.useState(false);
   const [disabledSection, setDisabledSection] = React.useState(true);
+  var [currentNode, setCurrentNode] = React.useState();
   setDisabled = setDisabledSection;
 
   const theme = createTheme({
@@ -293,13 +401,13 @@ function PersistentDrawerLeft(props) {
     return (<>
     <Select 
     onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
-    className="partInput" defaultValue={partOptions[0]} options={partOptions} styles={customStyles} onChange={(e) => {handleChange(e, dictOfParts[e.value])}} onKeyDown={(e) => {
+    className="partInput" options={partOptions} styles={customStyles} onChange={(e) => {handleChange(e, dictOfParts[e.value])}} onKeyDown={(e) => {
       if (e.key === 'Enter') {
-          addNewNode(engine, selectedPart[0], selectedPart[1]);
+          addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
       }
         }}/>
         <button id="selectBtns" onClick={() => {
-          addNewNode(engine, selectedPart[0], selectedPart[1]);
+          addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
         }}> Add </button></>
         )
   }
@@ -380,7 +488,7 @@ function PersistentDrawerLeft(props) {
                 <ListItemText primary={selectInfo(props.parts, props.dict)} />
         </ListItem>
         <Divider/>
-           <CustomPart drawerWidth={drawerWidth} addNode={addNewNode} engine={engine} dict={props.dict}/>
+           <CustomPart drawerWidth={drawerWidth} addNode={addNewNode} setCurrentNode={setCurrentNode} engine={engine} dict={props.dict}/>
         <Divider/>
         <ListItem>
           <ListItemText sx={{
@@ -401,8 +509,9 @@ function PersistentDrawerLeft(props) {
           <Divider />
           <ListItem key="PartInfoSection">
             <ListItemText key="PartInfoText">
-            <div id="PartInfoName" style={{fontSize:16}}> </div>
-            <div id="PartInfoDetails" style={{fontSize:12}}> </div>
+              <PartInfo key="PartFunction" currentNode={currentNode}/>
+            {/* <div id="PartInfoName" style={{fontSize:16}}> </div>
+            <div id="PartInfoDetails" style={{fontSize:12}}> </div> */}
             </ListItemText>
           </ListItem>
           <Divider />

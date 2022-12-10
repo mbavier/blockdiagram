@@ -80,7 +80,7 @@ export default function CustomPart(props) {
       }
     })
     //console.log(newPartInfo)
-    props.addNode(props.engine, newPartName, newPartInfo)
+    props.addNode(props.engine, newPartName, newPartInfo, props.setCurrentNode)
     setValue([])
 }
 

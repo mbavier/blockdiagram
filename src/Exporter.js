@@ -5,11 +5,13 @@ import { writeFile, utils } from "xlsx";
 
 function beginExport(engine, dict) {
     let models = engine.getModel().activeNodeLayer.models;
-    let headerArray = ["Name", ...Object.keys(dict[Object.keys(dict)[0]])];
+    let headerArray = ["Name", ...Object.keys(dict[Object.keys(dict)[0]]), "Device Status", "Comments"];
     let pageArray = [headerArray];
     var wb = utils.book_new();
+    let possibleStatus = ["Loss", "Pending", "Win"]
+
     for (var node in models) {
-        pageArray = [...pageArray, [models[node].options['name'], ...Object.values(models[node].miscInfo)]];
+        pageArray = [...pageArray, [models[node].options['name'], ...Object.values(models[node].miscInfo), possibleStatus[models[node].deviceStatus+1], models[node].userComments]];
     }
     var ws = utils.aoa_to_sheet(pageArray);
     utils.book_append_sheet(wb, ws, "Sheet1");
