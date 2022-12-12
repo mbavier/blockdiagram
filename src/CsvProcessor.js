@@ -3,29 +3,41 @@ import Checkbox from '@mui/material/Checkbox'
 import ListItemText from '@mui/material/ListItemText'
 import { read, utils } from "xlsx";
 
+import { DiagramModel } from "@projectstorm/react-diagrams"
+
 const primarySelectLabel = { inputProps: { 'aria-label': 'primarySelect' } };
 const headerLabel = { inputProps: { 'aria-label': 'headerSelect' } };
 
-async function handleFileSelect(e, setDictOfParts, setPartOptions) {
+async function handleFileSelect(e, setDictOfParts, setPartOptions, engine, setMBDUploaded, setBomUploadDisable) {
     let file = e.target.files;
     let f = file[0];
-    
+    let type = f.name.split(".")[1];
     let reader = new FileReader();
   
     reader.onload = (function(e) {
-        let processData = e.target.result;
-        if (typeof(processData) === 'object') {
-            var workBook = read(processData); 
-            processData = utils.sheet_to_csv(workBook.Sheets[workBook.SheetNames[0]], {RS: '\r\n'});
-            
-        }
+        if (type === "mbd") {
+            let uploadedModel = new DiagramModel();
+            uploadedModel.deserializeModel(JSON.parse(e.target.result), engine)
+            engine.setModel(uploadedModel);
+            setMBDUploaded(true);
+            setBomUploadDisable(false);
+        } else {
+            let processData = e.target.result;
+            if (typeof(processData) === 'object') {
+                var workBook = read(processData); 
+                processData = utils.sheet_to_csv(workBook.Sheets[workBook.SheetNames[0]], {RS: '\r\n'});
+                
+            }
 
-      process(processData, setDictOfParts, setPartOptions);
+            process(processData, setDictOfParts, setPartOptions);
+        }
     });
       
     if (f.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
         reader.readAsArrayBuffer(f);
-    } else {
+    } else if (f.type === "text/csv") {
+        reader.readAsText(f);
+    } else if (f.name.includes(".mbd")) {
         reader.readAsText(f);
     }
     
@@ -112,13 +124,13 @@ export default function CsvProcessor (props) {
     }
     const createButton = () => {
         return (
-            <button id="selectBtns" onClick={onInputBtnClick} style={{width:`${props.drawerWidth*.95}px`, display:(bomUploadDisable ? "none" : "")}}>Manual BoM Upload</button>
+            <button id="selectBtns" onClick={onInputBtnClick} style={{width:`${props.drawerWidth*.95}px`, display:(bomUploadDisable ? "none" : "")}}>BoM/MBD Upload</button>
         );
     }
 
     return (
        <>
-           <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders)}}/>
+           <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders, props.engine, props.setMBDUploaded, setBomUploadDisable)}}/>
            <ListItemText primary={createCheckboxes()}/>
            <ListItemText primary={createButton()}/>
            

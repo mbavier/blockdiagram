@@ -112,64 +112,70 @@ let statusOptions = [
   {
     label: "Win",
     value: 1
-  }]
+  }];
   
 let statusColors = [
   "rgb(255,60,50)",
   "rgb(255,235,110)",
   "rgb(150,255,110)"
-]
+];
 
 function PartInfoInput(props) {
   var [partVal, setPartVal] = new React.useState(props.partInfo);
   return (<input 
     onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
-    type='text' style={{width:'100%'}} value= {partVal} onChange={(val) => {
+    type='text' style={{width:'100%'}} value= {props.currentNode.options.extras.miscInfo[props.dictKey]} onChange={(val) => {
       setPartVal(val.target.value)
-      props.currentNode.miscInfo[props.dictKey] = val.target.value;
+      props.currentNode.options.extras.miscInfo[props.dictKey] = val.target.value;
     }}/>);
 }
 
 function GetPartDetails(props) {
   if (props.currentNode !== undefined) {
-  let partInfo =  props.currentNode.miscInfo;
+  let partInfo =  props.currentNode.options.extras.miscInfo;
   return(Object.keys(partInfo).map((key) => {
       return (<div id="infoHeader" key={`PartInfo${key}`}> {key}: 
               < PartInfoInput dictKey={key} partInfo={partInfo[key]} currentNode={props.currentNode}/>
             </div>)}));
   } else {
-    return ""
+    return "";
   }
 }
 
   function SelectStatus(props) {
   if (props.currentNode !== undefined) {
-    return (<Select options={statusOptions}
-    className="partInput"
-    style={customStyles}
-    defaultValue={statusOptions[props.currentNode.deviceStatus+1]}
-    onChange={(e)=> {
-      props.currentNode.deviceStatus = e.value
-      props.currentNode.options.color = statusColors[e.value+1]
-      engine.repaintCanvas();
+    var [currentStatus, setCurrentStatus] = new React.useState(statusOptions[props.currentNode.options.extras.deviceStatus+1]);
+    if (statusOptions[props.currentNode.options.extras.deviceStatus+1] !== currentStatus) {
+      setCurrentStatus(statusOptions[props.currentNode.options.extras.deviceStatus+1]);
     }
-    }
-    />)
+    return (<Select 
+              options={statusOptions}
+              className="partInput"
+              style={customStyles}
+              value={currentStatus}
+              onChange={(e)=> {
+                  props.currentNode.options.extras.deviceStatus = e.value;
+                  props.currentNode.options.color = statusColors[e.value+1];
+                  setCurrentStatus(statusOptions[props.currentNode.options.extras.deviceStatus+1]);
+                  engine.repaintCanvas();
+                }
+              }
+            />);
   } else {
-    return ""
+    return "";
   }
   }
 
   function GetUserComments(props) {
   if (props.currentNode !== undefined) {
-    var [userNotes, setUserNotes] = new React.useState(props.currentNode.userComments);
+    var [userNotes, setUserNotes] = new React.useState(props.currentNode.options.extras.userComments);
     return (
       <div id="infoHeader"> Comments:
     <textarea 
       onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
-      style={{width:'100%', height:"100px"}} value= {userNotes} onChange={(val) => {
+      style={{width:'100%', height:"100px"}} value= {props.currentNode.options.extras.userComments} onChange={(val) => {
         setUserNotes(val.target.value)
-        props.currentNode.userComments = val.target.value;
+        props.currentNode.options.extras.userComments = val.target.value;
       }}/>
       </div>)
   } else {
@@ -260,16 +266,20 @@ function handleClick(e) {
 
 function addNewNode(engine, partName, partInfo, setCurrentNode) {
   let numOfNodes = Object.keys(engine.getModel().getActiveNodeLayer().getModels()).length;
-  let node = new DefaultNodeModel({
+  let node = new DeviceNodeModel({
     name: partName,
-    color: "rgb(255,235,110)"
+    subname: Object.values(partInfo)[0],
+    color: "rgb(255,235,110)",
+    extras: {
+      miscInfo: {...partInfo},
+      deviceStatus: 0,
+      userComments: ""
+    }
   });
   node.setPosition( ($(document ).width())/2 + numOfNodes*5, ($(document).height())/2 + numOfNodes*5);
   node.addPort(new RightAnglePortModel(true, `in${partName}-${numOfNodes}`, "In"));
   node.addPort(new RightAnglePortModel(false, `out${partName}-${numOfNodes}`, "Out"));;
-  node.miscInfo = partInfo;
-  node.deviceStatus = 0
-  node.userComments = ""
+  console.log(node)
   engine.getModel().addNode(node);
   node.registerListener({
     selectionChanged: (e) => {
@@ -280,12 +290,15 @@ function addNewNode(engine, partName, partInfo, setCurrentNode) {
       } else {
         selectedNode = undefined;
         setDisabled(true);
+        engine.getModel().setLocked(false)
         setCurrentNode(undefined);
       }
     },
     entityRemoved: (e) => {
       selectedNode = undefined;
       setDisabled(true);
+      engine.getModel().setLocked(false)
+      setCurrentNode(undefined);
     }
 
   })
@@ -313,10 +326,6 @@ function DiagramApp() {
   // pathfinding = engine.getLinkFactories().getFactory(PathFindingLinkFactory.NAME); // For use when importing, see smart routing example
   //5) load model into engine
 
-  // const deviceNode = new DeviceNodeModel({color: 'rgb(192, 255, 0)', name: 'Test'});
-  // deviceNode.setPosition(100, 100);
-  // model.addNode(deviceNode);
-  console.log(model)
   engine.setModel(model);
   //6) render the diagram!
   
@@ -373,6 +382,7 @@ const customStyles = {
 
 function PersistentDrawerLeft(props) {
   const [open, setOpen] = React.useState(false);
+  const [mbdUploaded, setMBDUploaded] = React.useState(false);
   const [disabledSection, setDisabledSection] = React.useState(true);
   var [currentNode, setCurrentNode] = React.useState();
   setDisabled = setDisabledSection;
@@ -413,8 +423,36 @@ function PersistentDrawerLeft(props) {
   }
   
   function bomChange() {
+    
+    if (mbdUploaded) {
+      let models = engine.getModel().getActiveNodeLayer().getModels();
+      Object.values(models).map((node) => {
+        node.registerListener({
+          selectionChanged: (e) => {
+            if (e.isSelected) {
+              selectedNode = node;
+              setCurrentNode(node);
+              setDisabled(false);
+            } else {
+              selectedNode = undefined;
+              setDisabled(true);
+              engine.getModel().setLocked(false)
+              setCurrentNode(undefined);
+            }
+          },
+          entityRemoved: (e) => {
+            selectedNode = undefined;
+            setDisabled(true);
+            engine.getModel().setLocked(false)
+            setCurrentNode(undefined);
+          }
+      
+        })
+      });
+      setMBDUploaded(false);
+    }
     return (<div>
-      <CsvProcessor drawerWidth={drawerWidth} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
+      <CsvProcessor setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={drawerWidth} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
       </div>)
   }
   

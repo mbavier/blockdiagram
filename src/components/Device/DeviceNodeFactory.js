@@ -5,7 +5,7 @@ import { AbstractReactFactory } from '@projectstorm/react-canvas-core';
 
 export class DeviceNodeFactory extends AbstractReactFactory {
 	constructor() {
-		super('js-custom-node');
+		super('device');
 	}
 
 	generateModel(event) {
