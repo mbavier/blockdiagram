@@ -81,7 +81,7 @@ export class DeviceNodeModel extends NodeModel {
         }
         return this.addPort(p);
     }
-	
+
 	deserialize(event) {
         super.deserialize(event);
         this.options.name = event.data.name;
@@ -89,7 +89,7 @@ export class DeviceNodeModel extends NodeModel {
 		this.options.subname = event.data.subname;
 		this.options.extras = event.data.extras;
         this.portsIn = _.map(event.data.portsInOrder, (id) => {
-            return this.getPortFromID(id);
+			return this.getPortFromID(id);
         });
         this.portsOut = _.map(event.data.portsOutOrder, (id) => {
             return this.getPortFromID(id);

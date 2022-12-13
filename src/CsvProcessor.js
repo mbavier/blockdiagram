@@ -4,11 +4,13 @@ import ListItemText from '@mui/material/ListItemText'
 import { read, utils } from "xlsx";
 
 import { DiagramModel } from "@projectstorm/react-diagrams"
+import { DeviceNodeModel, RightAnglePortModel } from './components/Device/DeviceNodeModel';
 
 const primarySelectLabel = { inputProps: { 'aria-label': 'primarySelect' } };
 const headerLabel = { inputProps: { 'aria-label': 'headerSelect' } };
 
-async function handleFileSelect(e, setDictOfParts, setPartOptions, engine, setMBDUploaded, setBomUploadDisable) {
+async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
+                                    setMBDUploaded, setBomUploadDisable, addNewNode) {
     let file = e.target.files;
     let f = file[0];
     let type = f.name.split(".")[1];
@@ -16,9 +18,45 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine, setMB
   
     reader.onload = (function(e) {
         if (type === "mbd") {
-            let uploadedModel = new DiagramModel();
-            uploadedModel.deserializeModel(JSON.parse(e.target.result), engine)
-            engine.setModel(uploadedModel);
+            let newModel = new DiagramModel();
+            let uploadedModel = JSON.parse(e.target.result);
+            newModel.setOffset(uploadedModel.offsetX, uploadedModel.offsetY);
+            newModel.setZoomLevel(uploadedModel.zoom);
+            newModel.setGridSize(uploadedModel.gridSize);
+            let nodeLayer, linkLayer;
+            for (let layer in uploadedModel.layers) {
+                if (uploadedModel.layers[layer].type === 'diagram-nodes') {
+                    nodeLayer = layer;
+                } else if (uploadedModel.layers[layer].type === 'diagram-links') {
+                    linkLayer = layer;
+                }
+            }
+            Object.values(uploadedModel.layers[nodeLayer].models).map((node) => {
+                let newNode = new DeviceNodeModel({
+                    name: node.name,
+                    subname: node.subname,
+                    color: node.color,
+                    id: node.id,
+                    extras: node.extras
+                })
+                newNode.setPosition(node.x, node.y)
+                node.ports.map((port) => {
+                    let newPort = new RightAnglePortModel(port.in, port.name, port.label)
+                    newPort.options.id = port.id;
+                    
+                    newNode.addPort(newPort);
+                    console.log(port.id, newPort.id)
+                })
+                newModel.addNode(newNode);
+                return 1;
+            })
+            Object.values(uploadedModel.layers[linkLayer].models).map((link) => {
+                let newLink = newModel.getNode(link.source).getPortFromID(link.sourcePort).link(newModel.getNode(link.target).getPortFromID(link.targetPort));
+                newModel.addLink(newLink)
+                return 1;
+            })
+            //uploadedModel.deserializeModel(JSON.parse(e.target.result), engine)
+            engine.setModel(newModel);
             setMBDUploaded(true);
             setBomUploadDisable(false);
         } else {
@@ -130,7 +168,8 @@ export default function CsvProcessor (props) {
 
     return (
        <>
-           <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders, props.engine, props.setMBDUploaded, setBomUploadDisable)}}/>
+           <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders, props.engine, 
+                                                                                                                    props.setMBDUploaded, setBomUploadDisable, props.addNewNode)}}/>
            <ListItemText primary={createCheckboxes()}/>
            <ListItemText primary={createButton()}/>
            

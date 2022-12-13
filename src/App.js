@@ -7,7 +7,7 @@ import createEngine, {
   /*DefaultLinkModel, */
   DefaultNodeModel,
   DiagramModel ,
-  //PathFindingLinkFactory,
+  PathFindingLinkFactory,
   DefaultPortModel,
   RightAngleLinkFactory,
 	RightAngleLinkModel
@@ -310,7 +310,6 @@ function addNewNode(engine, partName, partInfo, setCurrentNode) {
 
 var engine;
 
-// var pathfinding; // For use when importing
 function DiagramApp() {
   //1) setup the diagram engine
   engine = createEngine({
@@ -323,7 +322,7 @@ function DiagramApp() {
 
   //2) setup the diagram model
   var model = new DiagramModel();
-  // pathfinding = engine.getLinkFactories().getFactory(PathFindingLinkFactory.NAME); // For use when importing, see smart routing example
+  // For use when importing, see smart routing example
   //5) load model into engine
 
   engine.setModel(model);
