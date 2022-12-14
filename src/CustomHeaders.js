@@ -44,6 +44,7 @@ export default function CustomHeaders(props) {
         props.setDictOfParts(blankDict)
         props.setSubheading(subheading)
         props.setPartOptions([])
+        setOpen(!open);
     }
 
     const createButton = () => {

@@ -13,6 +13,7 @@ export default function CustomPart(props) {
     }
     const onInputBtnClick = () => {
         props.addNode(props.engine, blockName, userOptions, props.setCurrentNode)
+        setOpen(!open);
     }
 
     const createButton = () => {
@@ -32,7 +33,7 @@ export default function CustomPart(props) {
         }
 
         let output = blockOptions.map((header) => {
-            return (<ListItem key={header} style={{marginLeft:"2.5%"}} disablePadding> <TextField style={{width:"95%"}} id="standard-basic" label={header} variant="standard" onChange={(e) => handleChange(e, header)} /> </ListItem>)
+            return (<ListItem key={header} style={{marginLeft:"2.5%"}} disablePadding> <TextField style={{width:"95%"}} value={userOptions.header} id="standard-basic" label={header} variant="standard" onChange={(e) => handleChange(e, header)} /> </ListItem>)
         });
         return (
             output
