@@ -1,6 +1,5 @@
 import React, {useRef} from "react";
-import Checkbox from '@mui/material/Checkbox'
-import ListItemText from '@mui/material/ListItemText'
+import { ListItem, Checkbox, ListItemText, Radio, Grid } from "@mui/material";
 import { read, utils } from "xlsx";
 
 import { DiagramModel } from "@projectstorm/react-diagrams"
@@ -102,42 +101,93 @@ function submitHeaders(primary, allTextLines, setDictOfParts, setPartOptions, he
 
 }
 
-function handleSelectedHeader(selectedHeaders, index) {
-    selectedHeaders[index] = !selectedHeaders[index];
+function handleSelectedHeader(selectedHeaders, index, subChecked, targetChecked) {
+    if (index === subChecked) {
+        selectedHeaders[index] = true;
+    } else {
+        selectedHeaders[index] = targetChecked;
+    }
+    console.log(selectedHeaders[index])
 }
 
-function handleChecked(setChecked, index) {
-    setChecked(index)
+function handleChecked(checked, setChecked, index) {
+    if (index === checked && index !== undefined) {
+        setChecked(undefined);
+    } else {
+        setChecked(index);
+    }
 }
 
 function Checkboxes(props) {
     const [checked, setChecked] = React.useState();
+    const [subChecked, setSubChecked] = React.useState();
     let checkboxes = [];
     let selectedHeaders = [];
 
+    function titleSet() {
+        if (props.headers.length > 0) {
+            return (
+            <React.Fragment key="GridHeaders">
+            <Grid key={"ItemHeader"} item xs={6}>
+                <div style={{marginLeft:"2.5%"}}> Item </div>
+            </Grid>
+            <Grid key={"HeaderHeader"} item xs={2}>
+                Header
+            </Grid>
+            <Grid key={"SubtextHeader"} item xs={2}>
+                Subtext 
+            </Grid>
+            <Grid key={"MiscHeader"} item xs={2}>
+                Misc
+            </Grid>
+            </React.Fragment>
+            )
+        } else {
+            return
+        }
+    }
+
     function handleSetHeadersClick(e) {
         submitHeaders(checked, props.allTextLines, props.setDictOfParts, props.setPartOptions, props.headers, selectedHeaders); 
+        props.setSubheading(props.headers[subChecked])
         props.setHeaders([]); 
         props.setAllTextLines(undefined); 
         props.setBomUploadDisable(false);
     }
-    props.headers.map((object, i) => {
+    checkboxes = 
+    <Grid key="GridForChecks" container spacing={0}>
+    {titleSet()}
+    {props.headers.map((object, i) => {
         selectedHeaders = [...selectedHeaders, false];
-        checkboxes = [...checkboxes, <div key={i}>
-                                        <Checkbox checked={i === checked} key={"primary" + i} {...primarySelectLabel} onClick={() => handleChecked(setChecked, i)}/>
-                                            {object} 
-                                        <Checkbox key={"header" + i} {...headerLabel} onClick={() => {handleSelectedHeader(selectedHeaders, i);}}/>
-                                    </div> ]; 
-        return 1;
-    });
-    checkboxes = [...checkboxes, <button style={{width: `${props.drawerWidth*.95}px`, display: props.headers.length===0 ? "none" : ""}} key="headerButton" id="selectBtns" onClick={ (e) => handleSetHeadersClick(e)}>Set Headers</button>]
-    return (checkboxes);
+        return ( 
+            <React.Fragment key={`GridOption${i}`}>
+            <Grid key={`Object${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`, display:"flex", alignItems:"center"}} item xs={6}>
+                <div style={{marginLeft:"2.5%"}}>{object}</div>
+            </Grid>
+            <Grid key={`primary${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`}} item xs={2}>
+                <Radio checked={i === checked} key={"primarySwitch" + i} {...primarySelectLabel} onClick={() => handleChecked(checked, setChecked, i)}/>            </Grid>
+            <Grid key={`Subheader${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`}} item xs={2}>
+                <Radio checked={i === subChecked} key={"subheaderSwitch" + i} {...primarySelectLabel} onClick={() => {handleChecked(subChecked, setSubChecked, i); handleSelectedHeader(selectedHeaders, i, subChecked);}}/>
+            </Grid>
+            <Grid key={`Misc${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`}} item xs={2}>
+                <Checkbox edge="end" key={"header" + i} {...headerLabel} onClick={(e) => {handleSelectedHeader(selectedHeaders, i, subChecked, e.target.checked);}}/>
+            </Grid>
+            </React.Fragment> ); 
+        })}
+        <button style={{width: `${props.drawerWidth*.95}px`, display: props.headers.length===0 ? "none" : ""}} key="headerButton" id="selectBtns" onClick={ (e) => handleSetHeadersClick(e)}>Set Headers</button>
+    </Grid>
+    
+    
+    return (
+        checkboxes
+        );
 }
 
 function process(allText, setAllTextLines, setHeaders) {
     var allTextLines = allText.split('\r\n')
     var headers = allTextLines[0].split(',');
     setHeaders(headers)
+    
     setAllTextLines(allTextLines);
   }
 
@@ -157,7 +207,7 @@ export default function CsvProcessor (props) {
 
     const createCheckboxes = () => {
         return (
-        <Checkboxes key="Checkboxes" setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} headers={headers} setHeaders={setHeaders} allTextLines={allTextLines} setAllTextLines={setAllTextLines} setBomUploadDisable={setBomUploadDisable} drawerWidth={props.drawerWidth}/>
+            <Checkboxes key="Checkboxes" setSubheading={props.setSubheading} setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} headers={headers} setHeaders={setHeaders} allTextLines={allTextLines} setAllTextLines={setAllTextLines} setBomUploadDisable={setBomUploadDisable} drawerWidth={props.drawerWidth}/>
         );
     }
     const createButton = () => {

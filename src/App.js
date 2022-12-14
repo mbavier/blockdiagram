@@ -42,8 +42,10 @@ import { ThemeProvider, createTheme } from '@mui/material';
 
 import './App.css';
 import CsvProcessor from "./CsvProcessor";
-import CustomPart from "./CustomPart";
+import PartSearch from "./PartSearch";
 import Exporter from "./Exporter";
+import CustomPart from "./CustomPart";
+import CustomHeaders from "./CustomHeaders";
 
 export class RightAnglePortModel extends DefaultPortModel {
 	createLinkModel() {
@@ -51,44 +53,7 @@ export class RightAnglePortModel extends DefaultPortModel {
 	}
 }
 
-
-function handleFileSelect(e, setDictOfParts, setPartOptions) {
-  let file = e.target.files;
-  let f = file[0];
-
-  let reader = new FileReader();
-
-  reader.onload = (function(e) {
-    process(e.currentTarget.result, setDictOfParts, setPartOptions);
-  });
-    
-
-  reader.readAsText(f);
-}
-function process(allText, setDictOfParts, setPartOptions) {
-  let newDictOfParts = {};
-  let newPartOptions = [];
-  var allTextLines = allText.split('\r\n')
-  var headers = allTextLines[0].split(',');
-  console.log(allTextLines, headers);
-  for (var i=1; i<allTextLines.length; i++) {
-    console.log(i);
-    var data = allTextLines[i].split(',');
-        if (data.length === headers.length) {
-          newDictOfParts[data[0]] = {}
-          newPartOptions[i] = {value: data[0], label: data[0]}
-            for (var j=1; j<headers.length; j++) {
-              console.log(data[0], data[j])
-              newDictOfParts[data[0]][headers[j]] = data[j];
-            }
-        }
-
-  }
-  setDictOfParts(newDictOfParts);
-  setPartOptions(newPartOptions)
-}
-
-let setDisabled;
+let setDisabled, subtitle;
 
 export default function App () {
 
@@ -268,7 +233,7 @@ function addNewNode(engine, partName, partInfo, setCurrentNode) {
   let numOfNodes = Object.keys(engine.getModel().getActiveNodeLayer().getModels()).length;
   let node = new DeviceNodeModel({
     name: partName,
-    subname: Object.values(partInfo)[0],
+    subname: partInfo[subtitle],
     color: "rgb(255,235,110)",
     extras: {
       miscInfo: {...partInfo},
@@ -383,7 +348,9 @@ function PersistentDrawerLeft(props) {
   const [open, setOpen] = React.useState(false);
   const [mbdUploaded, setMBDUploaded] = React.useState(false);
   const [disabledSection, setDisabledSection] = React.useState(true);
+  const [subheading, setSubheading] = React.useState("");
   var [currentNode, setCurrentNode] = React.useState();
+  subtitle = subheading;
   setDisabled = setDisabledSection;
 
   const theme = createTheme({
@@ -451,7 +418,7 @@ function PersistentDrawerLeft(props) {
       setMBDUploaded(false);
     }
     return (<div>
-      <CsvProcessor setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={drawerWidth} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
+      <CsvProcessor setSubheading={setSubheading} setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={drawerWidth} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
       </div>)
   }
   
@@ -525,7 +492,11 @@ function PersistentDrawerLeft(props) {
                 <ListItemText primary={selectInfo(props.parts, props.dict)} />
         </ListItem>
         <Divider/>
-           <CustomPart drawerWidth={drawerWidth} addNode={addNewNode} setCurrentNode={setCurrentNode} engine={engine} dict={props.dict}/>
+        <CustomHeaders setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setSubheading={setSubheading}/>
+        <Divider/>
+        <CustomPart headers={Object.keys(Object.values(props.dict)[0])} addNode={addNewNode} engine={engine} setCurrentNode={setCurrentNode}/>
+        <Divider/>
+           <PartSearch drawerWidth={drawerWidth} addNode={addNewNode} setCurrentNode={setCurrentNode} engine={engine} dict={props.dict}/>
         <Divider/>
         <ListItem>
           <ListItemText sx={{
@@ -583,7 +554,6 @@ function PartSelect() {
 
   return (
     <div id="selectDiv">
-        <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setDictOfParts, setPartOptions);}}/>
         <PersistentDrawerLeft setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} parts={partOptions} dict={dictOfParts} inputFileInfo={[onInputBtnClick, inputFile]}> </PersistentDrawerLeft>
    </div>
   );
