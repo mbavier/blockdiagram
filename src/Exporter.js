@@ -1,8 +1,6 @@
 import React from "react";
 import ListItemText from '@mui/material/ListItemText'
 import { writeFile, utils } from "xlsx";
-import jspdf from "jspdf";
-import html2canvas from "html2canvas"
 import { DiagramModel } from "@projectstorm/react-diagrams"
 
 
