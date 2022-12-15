@@ -14,7 +14,7 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
     let f = file[0];
     let type = f.name.split(".")[1];
     let reader = new FileReader();
-  
+    
     reader.onload = (function(e) {
         if (type === "mbd") {
             let newModel = new DiagramModel();
@@ -77,20 +77,20 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
     } else if (f.name.includes(".mbd")) {
         reader.readAsText(f);
     }
-    
+    e.target.value = null;
   }
 
 function submitHeaders(primary, allTextLines, setDictOfParts, setPartOptions, headers, selectedHeaders) {
     let newDictOfParts = {};
     let newPartOptions = [];
     for (var i=1; i<allTextLines.length; i++) {
-        var data = allTextLines[i].split(',');
+        var data = allTextLines[i].split(/(?!\B"[^"]*),(?![^"]*"\B)/g);
             if (data.length === headers.length) {
               newDictOfParts[data[primary]] = {}
               newPartOptions[i] = {value: data[primary], label: data[primary]}
                 for (var j=0; j<headers.length; j++) {
                   if (selectedHeaders[j] && j !== primary) {
-                      newDictOfParts[data[primary]][headers[j]] = data[j];
+                      newDictOfParts[data[primary]][headers[j]] = data[j].replace(/\r\n/g, ' ').replace(/^"(.+(?="$))"$/, '$1');
                   }
                 }
             }
@@ -107,7 +107,6 @@ function handleSelectedHeader(selectedHeaders, index, subChecked, targetChecked)
     } else {
         selectedHeaders[index] = targetChecked;
     }
-    console.log(selectedHeaders[index])
 }
 
 function handleChecked(checked, setChecked, index) {
@@ -148,8 +147,9 @@ function Checkboxes(props) {
     }
 
     function handleSetHeadersClick(e) {
-        submitHeaders(checked, props.allTextLines, props.setDictOfParts, props.setPartOptions, props.headers, selectedHeaders); 
-        props.setSubheading(props.headers[subChecked])
+        selectedHeaders[subChecked] = true;
+        submitHeaders(checked, props.allTextLines, props.setDictOfParts, props.setPartOptions, props.headers, selectedHeaders);
+        props.setSubheading(props.headers[subChecked].replace(/\r\n/g, ' ').replace(/^"(.+(?="$))"$/, '$1'))
         props.setHeaders([]); 
         props.setAllTextLines(undefined); 
         props.setBomUploadDisable(false);
@@ -165,9 +165,10 @@ function Checkboxes(props) {
                 <div style={{marginLeft:"2.5%"}}>{object}</div>
             </Grid>
             <Grid key={`primary${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`}} item xs={2}>
-                <Radio checked={i === checked} key={"primarySwitch" + i} {...primarySelectLabel} onClick={() => handleChecked(checked, setChecked, i)}/>            </Grid>
+                <Radio checked={i === checked} key={"primarySwitch" + i} {...primarySelectLabel} onClick={() => handleChecked(checked, setChecked, i)}/>
+            </Grid>
             <Grid key={`Subheader${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`}} item xs={2}>
-                <Radio checked={i === subChecked} key={"subheaderSwitch" + i} {...primarySelectLabel} onClick={() => {handleChecked(subChecked, setSubChecked, i); handleSelectedHeader(selectedHeaders, i, subChecked);}}/>
+                <Radio checked={i === subChecked} key={"subheaderSwitch" + i} {...primarySelectLabel} onClick={(e) => {handleChecked(subChecked, setSubChecked, i); handleSelectedHeader(selectedHeaders, i, subChecked, e.target.checked);}}/>
             </Grid>
             <Grid key={`Misc${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`}} item xs={2}>
                 <Checkbox edge="end" key={"header" + i} {...headerLabel} onClick={(e) => {handleSelectedHeader(selectedHeaders, i, subChecked, e.target.checked);}}/>
@@ -184,8 +185,8 @@ function Checkboxes(props) {
 }
 
 function process(allText, setAllTextLines, setHeaders) {
-    var allTextLines = allText.split('\r\n')
-    var headers = allTextLines[0].split(',');
+    var allTextLines = allText.match(/(?:[^\r\n"]+|"[^"]*")+/g)
+    var headers = allTextLines[0].match(/(?:[^,"]+|"[^"]*")+/g);
     setHeaders(headers)
     
     setAllTextLines(allTextLines);
@@ -219,7 +220,7 @@ export default function CsvProcessor (props) {
     return (
        <>
            <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders, props.engine, 
-                                                                                                                    props.setMBDUploaded, setBomUploadDisable, props.addNewNode)}}/>
+                                                                                                                    props.setMBDUploaded, setBomUploadDisable, props.addNewNode);}}/>
            <ListItemText primary={createCheckboxes()}/>
            <ListItemText primary={createButton()}/>
            
