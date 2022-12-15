@@ -52,14 +52,14 @@
   color: white;
 }
 
-#portInput {
+/* #portInput {
   height: 38px;
   float: left;
   width: 95%;
   text-align:center;
   margin-left:2.5%;
   margin-right: 2.5%;
-}
+} */
 
 .portButton {
   box-shadow:inset 0px 1px 0px 0px #97c4fe;

@@ -1,12 +1,5 @@
 import React from "react";
-import CreatableSelect from 'react-select/creatable';
-
-import { ListItem } from "@mui/material";
-
-
-const components = {
-  DropdownIndicator: null,
-};
+import { ListItem, TextField, Chip, Autocomplete } from "@mui/material";
 
 const createOption = (label, value) => ({
   label,
@@ -94,26 +87,34 @@ export default function PartSearch(props) {
   
   return (
     <div>
-    <ListItem key="SelectDevices" disablePadding>
-          <CreatableSelect
-            components={components}
-            inputValue={inputValue}
-            isClearable
-            isMulti
-            //menuIsOpen={false}
-            styles={customStyles}
-            onChange={(newValue) => setValue(newValue)}
-            onInputChange={(newValue) => setInputValue(newValue)}
-            onKeyDown={handleKeyDown}
-            placeholder="Select Header, then type info and press Enter"
-            value={value}
-            options={options}
-            onFocus={()=>{props.engine.getModel().setLocked(true)}} onBlur={()=>props.engine.getModel().setLocked(false)}
-          />
-        </ListItem>
+      <ListItem key="SelectDevices" disablePadding>
+        <Autocomplete
+          multiple
+          id="part-search-select"
+          style={{margin:"1%",
+          marginLeft:"2.5%",
+          marginRight:"0%",
+          width:"95%"}}
+          options={options}
+          freeSolo
+          renderTags={(value, getTagProps) =>
+            value.map((option, index) => (
+              <Chip variant="outlined" label={option.value} {...getTagProps({ index })} />
+            ))
+          }
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="standard"
+              label="Search For Part"
+              placeholder="Favorites"
+            />
+          )}
+        />
+      </ListItem>
       <ListItem disablePadding>
         {createButton()}
       </ListItem>
-      </div>
+    </div>
   );
   }

@@ -25,6 +25,7 @@ export default function CustomHeaders(props) {
         }
         return ( <ListItem key={label} style={{marginLeft:"2.5%"}} disablePadding> 
                     <TextField style={{width:"95%"}} id="standard-basic" label={label} variant="standard" 
+                    onFocus={()=>{props.engine.getModel().setLocked(true)}} onBlur={()=>props.engine.getModel().setLocked(false)} 
                             onChange={(e) => handleChange(e, i)} /> 
                 </ListItem>)
     }

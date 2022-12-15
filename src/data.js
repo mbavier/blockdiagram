@@ -22225,7413 +22225,1855 @@ export const defaultDictOfParts = {
     }
 };
 
-export const defaultPartOptions = [
-    {
-        "value": "TPS61033",
-        "label": "TPS61033"
-    },
-    {
-        "value": "TPS568231",
-        "label": "TPS568231"
-    },
-    {
-        "value": "TPS62992-Q1",
-        "label": "TPS62992-Q1"
-    },
-    {
-        "value": "TPS62993-Q1",
-        "label": "TPS62993-Q1"
-    },
-    {
-        "value": "LM5149-Q1",
-        "label": "LM5149-Q1"
-    },
-    {
-        "value": "TPSM365R6",
-        "label": "TPSM365R6"
-    },
-    {
-        "value": "LM5012",
-        "label": "LM5012"
-    },
-    {
-        "value": "LM5012-Q1",
-        "label": "LM5012-Q1"
-    },
-    {
-        "value": "LM5013",
-        "label": "LM5013"
-    },
-    {
-        "value": "LM5169",
-        "label": "LM5169"
-    },
-    {
-        "value": "TPS51383",
-        "label": "TPS51383"
-    },
-    {
-        "value": "TPS61376",
-        "label": "TPS61376"
-    },
-    {
-        "value": "TPS563252",
-        "label": "TPS563252"
-    },
-    {
-        "value": "TPS563257",
-        "label": "TPS563257"
-    },
-    {
-        "value": "TLV61070A",
-        "label": "TLV61070A"
-    },
-    {
-        "value": "TPS62873-Q1",
-        "label": "TPS62873-Q1"
-    },
-    {
-        "value": "TPS544C26",
-        "label": "TPS544C26"
-    },
-    {
-        "value": "TPS55289",
-        "label": "TPS55289"
-    },
-    {
-        "value": "LM5168-Q1",
-        "label": "LM5168-Q1"
-    },
-    {
-        "value": "LM5169-Q1",
-        "label": "LM5169-Q1"
-    },
-    {
-        "value": "TPS543B22",
-        "label": "TPS543B22"
-    },
-    {
-        "value": "TPSM8D6B24",
-        "label": "TPSM8D6B24"
-    },
-    {
-        "value": "TPS56C231",
-        "label": "TPS56C231"
-    },
-    {
-        "value": "TPS62872-Q1",
-        "label": "TPS62872-Q1"
-    },
-    {
-        "value": "TPS62933O",
-        "label": "TPS62933O"
-    },
-    {
-        "value": "TPS62A02A",
-        "label": "TPS62A02A"
-    },
-    {
-        "value": "TPS628513",
-        "label": "TPS628513"
-    },
-    {
-        "value": "LMR51420",
-        "label": "LMR51420"
-    },
-    {
-        "value": "TPS62A02",
-        "label": "TPS62A02"
-    },
-    {
-        "value": "TPS62870-Q1",
-        "label": "TPS62870-Q1"
-    },
-    {
-        "value": "TPS563300",
-        "label": "TPS563300"
-    },
-    {
-        "value": "TPS62933F",
-        "label": "TPS62933F"
-    },
-    {
-        "value": "TPS62933P",
-        "label": "TPS62933P"
-    },
-    {
-        "value": "TPS63901",
-        "label": "TPS63901"
-    },
-    {
-        "value": "TPS62441-Q1",
-        "label": "TPS62441-Q1"
-    },
-    {
-        "value": "TPS62442-Q1",
-        "label": "TPS62442-Q1"
-    },
-    {
-        "value": "LMR51430",
-        "label": "LMR51430"
-    },
-    {
-        "value": "TPS628503",
-        "label": "TPS628503"
-    },
-    {
-        "value": "LM25143-Q1",
-        "label": "LM25143-Q1"
-    },
-    {
-        "value": "LM5143A-Q1",
-        "label": "LM5143A-Q1"
-    },
-    {
-        "value": "LM5177",
-        "label": "LM5177"
-    },
-    {
-        "value": "TLVM13620",
-        "label": "TLVM13620"
-    },
-    {
-        "value": "TPSM63602",
-        "label": "TPSM63602"
-    },
-    {
-        "value": "TPSM63603E",
-        "label": "TPSM63603E"
-    },
-    {
-        "value": "TPS62A01A",
-        "label": "TPS62A01A"
-    },
-    {
-        "value": "TPS564242",
-        "label": "TPS564242"
-    },
-    {
-        "value": "TPS565242",
-        "label": "TPS565242"
-    },
-    {
-        "value": "TPS565247",
-        "label": "TPS565247"
-    },
-    {
-        "value": "TPS566242",
-        "label": "TPS566242"
-    },
-    {
-        "value": "TPS566247",
-        "label": "TPS566247"
-    },
-    {
-        "value": "TPS62903-Q1",
-        "label": "TPS62903-Q1"
-    },
-    {
-        "value": "TPS62871-Q1",
-        "label": "TPS62871-Q1"
-    },
-    {
-        "value": "TLVM13640",
-        "label": "TLVM13640"
-    },
-    {
-        "value": "TLVM13660",
-        "label": "TLVM13660"
-    },
-    {
-        "value": "TPSM63604",
-        "label": "TPSM63604"
-    },
-    {
-        "value": "TPSM63606E",
-        "label": "TPSM63606E"
-    },
-    {
-        "value": "LM5152-Q1",
-        "label": "LM5152-Q1"
-    },
-    {
-        "value": "LM51521-Q1",
-        "label": "LM51521-Q1"
-    },
-    {
-        "value": "TPS629203-Q1",
-        "label": "TPS629203-Q1"
-    },
-    {
-        "value": "LM5013-Q1",
-        "label": "LM5013-Q1"
-    },
-    {
-        "value": "LMR43610-Q1",
-        "label": "LMR43610-Q1"
-    },
-    {
-        "value": "TPS62A01",
-        "label": "TPS62A01"
-    },
-    {
-        "value": "TPS629203",
-        "label": "TPS629203"
-    },
-    {
-        "value": "TPS629206",
-        "label": "TPS629206"
-    },
-    {
-        "value": "TPS629206-Q1",
-        "label": "TPS629206-Q1"
-    },
-    {
-        "value": "TPS629210E",
-        "label": "TPS629210E"
-    },
-    {
-        "value": "TPS629211-Q1",
-        "label": "TPS629211-Q1"
-    },
-    {
-        "value": "LM25143",
-        "label": "LM25143"
-    },
-    {
-        "value": "LM5143",
-        "label": "LM5143"
-    },
-    {
-        "value": "TPSM82903",
-        "label": "TPSM82903"
-    },
-    {
-        "value": "TPS62442",
-        "label": "TPS62442"
-    },
-    {
-        "value": "TPS62932",
-        "label": "TPS62932"
-    },
-    {
-        "value": "LMQ66430",
-        "label": "LMQ66430"
-    },
-    {
-        "value": "LMQ66430-Q1",
-        "label": "LMQ66430-Q1"
-    },
-    {
-        "value": "TPS62824",
-        "label": "TPS62824"
-    },
-    {
-        "value": "TLVM13630",
-        "label": "TLVM13630"
-    },
-    {
-        "value": "TPS7H4003-SEP",
-        "label": "TPS7H4003-SEP"
-    },
-    {
-        "value": "LMR38010",
-        "label": "LMR38010"
-    },
-    {
-        "value": "TPS629210",
-        "label": "TPS629210"
-    },
-    {
-        "value": "TPSM5D1806E",
-        "label": "TPSM5D1806E"
-    },
-    {
-        "value": "TPS62843",
-        "label": "TPS62843"
-    },
-    {
-        "value": "TPS631000",
-        "label": "TPS631000"
-    },
-    {
-        "value": "LMR54406",
-        "label": "LMR54406"
-    },
-    {
-        "value": "LM63460-Q1",
-        "label": "LM63460-Q1"
-    },
-    {
-        "value": "TPS62810M",
-        "label": "TPS62810M"
-    },
-    {
-        "value": "TPS62812M",
-        "label": "TPS62812M"
-    },
-    {
-        "value": "TPSM8D6C24",
-        "label": "TPSM8D6C24"
-    },
-    {
-        "value": "TPS62816-Q1",
-        "label": "TPS62816-Q1"
-    },
-    {
-        "value": "LM5123-Q1",
-        "label": "LM5123-Q1"
-    },
-    {
-        "value": "TPSM82864A",
-        "label": "TPSM82864A"
-    },
-    {
-        "value": "TPSM82866A",
-        "label": "TPSM82866A"
-    },
-    {
-        "value": "TPS536C9",
-        "label": "TPS536C9"
-    },
-    {
-        "value": "LM25148",
-        "label": "LM25148"
-    },
-    {
-        "value": "LM25149",
-        "label": "LM25149"
-    },
-    {
-        "value": "LMR43620-Q1",
-        "label": "LMR43620-Q1"
-    },
-    {
-        "value": "TPSM63606",
-        "label": "TPSM63606"
-    },
-    {
-        "value": "TPSM8A28",
-        "label": "TPSM8A28"
-    },
-    {
-        "value": "TPSM8A29",
-        "label": "TPSM8A29"
-    },
-    {
-        "value": "TPS62933",
-        "label": "TPS62933"
-    },
-    {
-        "value": "LM5168",
-        "label": "LM5168"
-    },
-    {
-        "value": "LM61480",
-        "label": "LM61480"
-    },
-    {
-        "value": "LM61495",
-        "label": "LM61495"
-    },
-    {
-        "value": "LM62460",
-        "label": "LM62460"
-    },
-    {
-        "value": "TPS62089A",
-        "label": "TPS62089A"
-    },
-    {
-        "value": "TPS629210-Q1",
-        "label": "TPS629210-Q1"
-    },
-    {
-        "value": "TPSM63603",
-        "label": "TPSM63603"
-    },
-    {
-        "value": "LMR54410",
-        "label": "LMR54410"
-    },
-    {
-        "value": "TPSM82821A",
-        "label": "TPSM82821A"
-    },
-    {
-        "value": "TPSM82822A",
-        "label": "TPSM82822A"
-    },
-    {
-        "value": "TPSM82823A",
-        "label": "TPSM82823A"
-    },
-    {
-        "value": "LMR38020",
-        "label": "LMR38020"
-    },
-    {
-        "value": "TPS62088A",
-        "label": "TPS62088A"
-    },
-    {
-        "value": "LM61430-Q1",
-        "label": "LM61430-Q1"
-    },
-    {
-        "value": "TPS562212",
-        "label": "TPS562212"
-    },
-    {
-        "value": "TPS61094",
-        "label": "TPS61094"
-    },
-    {
-        "value": "TPS563212",
-        "label": "TPS563212"
-    },
-    {
-        "value": "LM5158",
-        "label": "LM5158"
-    },
-    {
-        "value": "LM5158-Q1",
-        "label": "LM5158-Q1"
-    },
-    {
-        "value": "LM51581",
-        "label": "LM51581"
-    },
-    {
-        "value": "LM51581-Q1",
-        "label": "LM51581-Q1"
-    },
-    {
-        "value": "TPS63807",
-        "label": "TPS63807"
-    },
-    {
-        "value": "TPS628503-Q1",
-        "label": "TPS628503-Q1"
-    },
-    {
-        "value": "TPS53689",
-        "label": "TPS53689"
-    },
-    {
-        "value": "TPSM5601R5",
-        "label": "TPSM5601R5"
-    },
-    {
-        "value": "TPSM560R6",
-        "label": "TPSM560R6"
-    },
-    {
-        "value": "TPSM560R6H",
-        "label": "TPSM560R6H"
-    },
-    {
-        "value": "TPS62811M",
-        "label": "TPS62811M"
-    },
-    {
-        "value": "TPS62813M",
-        "label": "TPS62813M"
-    },
-    {
-        "value": "TPS562211",
-        "label": "TPS562211"
-    },
-    {
-        "value": "TPS563211",
-        "label": "TPS563211"
-    },
-    {
-        "value": "TPS7H4002-SP",
-        "label": "TPS7H4002-SP"
-    },
-    {
-        "value": "TPS628510",
-        "label": "TPS628510"
-    },
-    {
-        "value": "TPS628511",
-        "label": "TPS628511"
-    },
-    {
-        "value": "TPS628512",
-        "label": "TPS628512"
-    },
-    {
-        "value": "LM61480-Q1",
-        "label": "LM61480-Q1"
-    },
-    {
-        "value": "TPS628501",
-        "label": "TPS628501"
-    },
-    {
-        "value": "TPS628502",
-        "label": "TPS628502"
-    },
-    {
-        "value": "TPSM831D31",
-        "label": "TPSM831D31"
-    },
-    {
-        "value": "TPS548B27",
-        "label": "TPS548B27"
-    },
-    {
-        "value": "LM5157",
-        "label": "LM5157"
-    },
-    {
-        "value": "LMR33620AP-Q1",
-        "label": "LMR33620AP-Q1"
-    },
-    {
-        "value": "LMR33630AP-Q1",
-        "label": "LMR33630AP-Q1"
-    },
-    {
-        "value": "LM25148-Q1",
-        "label": "LM25148-Q1"
-    },
-    {
-        "value": "LM5157-Q1",
-        "label": "LM5157-Q1"
-    },
-    {
-        "value": "LM5145-Q1",
-        "label": "LM5145-Q1"
-    },
-    {
-        "value": "LM5146",
-        "label": "LM5146"
-    },
-    {
-        "value": "LM62460-Q1",
-        "label": "LM62460-Q1"
-    },
-    {
-        "value": "TPSM82823",
-        "label": "TPSM82823"
-    },
-    {
-        "value": "TPS61379-Q1",
-        "label": "TPS61379-Q1"
-    },
-    {
-        "value": "TPS62865",
-        "label": "TPS62865"
-    },
-    {
-        "value": "TPS62867",
-        "label": "TPS62867"
-    },
-    {
-        "value": "LM61495-Q1",
-        "label": "LM61495-Q1"
-    },
-    {
-        "value": "TPS541620",
-        "label": "TPS541620"
-    },
-    {
-        "value": "TPS62901",
-        "label": "TPS62901"
-    },
-    {
-        "value": "TPS62902",
-        "label": "TPS62902"
-    },
-    {
-        "value": "TPS62903",
-        "label": "TPS62903"
-    },
-    {
-        "value": "TPS62912",
-        "label": "TPS62912"
-    },
-    {
-        "value": "TPS62913",
-        "label": "TPS62913"
-    },
-    {
-        "value": "TPSM5D1806",
-        "label": "TPSM5D1806"
-    },
-    {
-        "value": "TPSM13604H",
-        "label": "TPSM13604H"
-    },
-    {
-        "value": "TPSM5601R5H",
-        "label": "TPSM5601R5H"
-    },
-    {
-        "value": "TPSM5601R5HE",
-        "label": "TPSM5601R5HE"
-    },
-    {
-        "value": "LM51571-Q1",
-        "label": "LM51571-Q1"
-    },
-    {
-        "value": "TPS62824A",
-        "label": "TPS62824A"
-    },
-    {
-        "value": "TPS62827A",
-        "label": "TPS62827A"
-    },
-    {
-        "value": "LM5156",
-        "label": "LM5156"
-    },
-    {
-        "value": "LM51561",
-        "label": "LM51561"
-    },
-    {
-        "value": "TPS566231",
-        "label": "TPS566231"
-    },
-    {
-        "value": "TPS566238",
-        "label": "TPS566238"
-    },
-    {
-        "value": "TPS62868",
-        "label": "TPS62868"
-    },
-    {
-        "value": "LMR36015S",
-        "label": "LMR36015S"
-    },
-    {
-        "value": "LMR36503",
-        "label": "LMR36503"
-    },
-    {
-        "value": "LMR36506",
-        "label": "LMR36506"
-    },
-    {
-        "value": "TLV62595",
-        "label": "TLV62595"
-    },
-    {
-        "value": "TPS543820E",
-        "label": "TPS543820E"
-    },
-    {
-        "value": "TPS53676",
-        "label": "TPS53676"
-    },
-    {
-        "value": "TPS543820",
-        "label": "TPS543820"
-    },
-    {
-        "value": "TPS628501-Q1",
-        "label": "TPS628501-Q1"
-    },
-    {
-        "value": "TPS55288-Q1",
-        "label": "TPS55288-Q1"
-    },
-    {
-        "value": "TPS552882-Q1",
-        "label": "TPS552882-Q1"
-    },
-    {
-        "value": "LM25149-Q1",
-        "label": "LM25149-Q1"
-    },
-    {
-        "value": "TPS536C7",
-        "label": "TPS536C7"
-    },
-    {
-        "value": "TPS543320",
-        "label": "TPS543320"
-    },
-    {
-        "value": "TPS61288",
-        "label": "TPS61288"
-    },
-    {
-        "value": "TPS54622-EP",
-        "label": "TPS54622-EP"
-    },
-    {
-        "value": "TPS548B28",
-        "label": "TPS548B28"
-    },
-    {
-        "value": "LMQ62440-Q1",
-        "label": "LMQ62440-Q1"
-    },
-    {
-        "value": "TPS62869",
-        "label": "TPS62869"
-    },
-    {
-        "value": "TPSM265R1",
-        "label": "TPSM265R1"
-    },
-    {
-        "value": "TPSM41615",
-        "label": "TPSM41615"
-    },
-    {
-        "value": "TPSM41625",
-        "label": "TPSM41625"
-    },
-    {
-        "value": "TPSM82810",
-        "label": "TPSM82810"
-    },
-    {
-        "value": "TPSM82813",
-        "label": "TPSM82813"
-    },
-    {
-        "value": "TPS62825A",
-        "label": "TPS62825A"
-    },
-    {
-        "value": "TPS62826A",
-        "label": "TPS62826A"
-    },
-    {
-        "value": "LMQ61460",
-        "label": "LMQ61460"
-    },
-    {
-        "value": "TPS552882",
-        "label": "TPS552882"
-    },
-    {
-        "value": "TPSM82821",
-        "label": "TPSM82821"
-    },
-    {
-        "value": "TPSM82822",
-        "label": "TPSM82822"
-    },
-    {
-        "value": "TPS7H4010-SEP",
-        "label": "TPS7H4010-SEP"
-    },
-    {
-        "value": "TPS542A52",
-        "label": "TPS542A52"
-    },
-    {
-        "value": "TPS543620",
-        "label": "TPS543620"
-    },
-    {
-        "value": "TPS628502-Q1",
-        "label": "TPS628502-Q1"
-    },
-    {
-        "value": "TPS562207S",
-        "label": "TPS562207S"
-    },
-    {
-        "value": "LMR50410",
-        "label": "LMR50410"
-    },
-    {
-        "value": "TPS542A50",
-        "label": "TPS542A50"
-    },
-    {
-        "value": "TPS546A24A",
-        "label": "TPS546A24A"
-    },
-    {
-        "value": "TPS54J061",
-        "label": "TPS54J061"
-    },
-    {
-        "value": "TPS562202S",
-        "label": "TPS562202S"
-    },
-    {
-        "value": "TPS563202S",
-        "label": "TPS563202S"
-    },
-    {
-        "value": "TPS563207S",
-        "label": "TPS563207S"
-    },
-    {
-        "value": "LMQ61460-Q1",
-        "label": "LMQ61460-Q1"
-    },
-    {
-        "value": "TPS63900",
-        "label": "TPS63900"
-    },
-    {
-        "value": "TPS51397A",
-        "label": "TPS51397A"
-    },
-    {
-        "value": "TPS562202",
-        "label": "TPS562202"
-    },
-    {
-        "value": "TPS563207",
-        "label": "TPS563207"
-    },
-    {
-        "value": "LM34966-Q1",
-        "label": "LM34966-Q1"
-    },
-    {
-        "value": "TPS61378-Q1",
-        "label": "TPS61378-Q1"
-    },
-    {
-        "value": "LM51561H",
-        "label": "LM51561H"
-    },
-    {
-        "value": "LM51561H-Q1",
-        "label": "LM51561H-Q1"
-    },
-    {
-        "value": "LM5156H",
-        "label": "LM5156H"
-    },
-    {
-        "value": "LM5156H-Q1",
-        "label": "LM5156H-Q1"
-    },
-    {
-        "value": "TPS62860",
-        "label": "TPS62860"
-    },
-    {
-        "value": "TPS53688",
-        "label": "TPS53688"
-    },
-    {
-        "value": "TPS546B24A",
-        "label": "TPS546B24A"
-    },
-    {
-        "value": "LMR36503-Q1",
-        "label": "LMR36503-Q1"
-    },
-    {
-        "value": "TPS562207",
-        "label": "TPS562207"
-    },
-    {
-        "value": "TPS54618C-Q1",
-        "label": "TPS54618C-Q1"
-    },
-    {
-        "value": "TPS55288",
-        "label": "TPS55288"
-    },
-    {
-        "value": "LM60430",
-        "label": "LM60430"
-    },
-    {
-        "value": "LM60440",
-        "label": "LM60440"
-    },
-    {
-        "value": "TPS563202",
-        "label": "TPS563202"
-    },
-    {
-        "value": "TPS62861",
-        "label": "TPS62861"
-    },
-    {
-        "value": "TPS54JB20",
-        "label": "TPS54JB20"
-    },
-    {
-        "value": "LMR50410-Q1",
-        "label": "LMR50410-Q1"
-    },
-    {
-        "value": "LM76005",
-        "label": "LM76005"
-    },
-    {
-        "value": "LM76005-Q1",
-        "label": "LM76005-Q1"
-    },
-    {
-        "value": "LM63610-Q1",
-        "label": "LM63610-Q1"
-    },
-    {
-        "value": "TPS53820",
-        "label": "TPS53820"
-    },
-    {
-        "value": "TPS548A28",
-        "label": "TPS548A28"
-    },
-    {
-        "value": "TPS548A29",
-        "label": "TPS548A29"
-    },
-    {
-        "value": "LMR36506-Q1",
-        "label": "LMR36506-Q1"
-    },
-    {
-        "value": "LM60430-Q1",
-        "label": "LM60430-Q1"
-    },
-    {
-        "value": "LM60440-Q1",
-        "label": "LM60440-Q1"
-    },
-    {
-        "value": "LM5156-Q1",
-        "label": "LM5156-Q1"
-    },
-    {
-        "value": "LM51561-Q1",
-        "label": "LM51561-Q1"
-    },
-    {
-        "value": "TPS51215A",
-        "label": "TPS51215A"
-    },
-    {
-        "value": "LM62435-Q1",
-        "label": "LM62435-Q1"
-    },
-    {
-        "value": "LM62440-Q1",
-        "label": "LM62440-Q1"
-    },
-    {
-        "value": "TPS62864",
-        "label": "TPS62864"
-    },
-    {
-        "value": "TPS62866",
-        "label": "TPS62866"
-    },
-    {
-        "value": "TPS7H4001-SP",
-        "label": "TPS7H4001-SP"
-    },
-    {
-        "value": "TPS54J060",
-        "label": "TPS54J060"
-    },
-    {
-        "value": "LM61440",
-        "label": "LM61440"
-    },
-    {
-        "value": "TPS54JA20",
-        "label": "TPS54JA20"
-    },
-    {
-        "value": "LM61440-Q1",
-        "label": "LM61440-Q1"
-    },
-    {
-        "value": "TPS59632-Q1",
-        "label": "TPS59632-Q1"
-    },
-    {
-        "value": "LM61435-Q1",
-        "label": "LM61435-Q1"
-    },
-    {
-        "value": "LM61460",
-        "label": "LM61460"
-    },
-    {
-        "value": "LMR36510",
-        "label": "LMR36510"
-    },
-    {
-        "value": "LMR36520",
-        "label": "LMR36520"
-    },
-    {
-        "value": "LM63635-Q1",
-        "label": "LM63635-Q1"
-    },
-    {
-        "value": "LM5163H-Q1",
-        "label": "LM5163H-Q1"
-    },
-    {
-        "value": "TPS652353",
-        "label": "TPS652353"
-    },
-    {
-        "value": "LM61460-Q1",
-        "label": "LM61460-Q1"
-    },
-    {
-        "value": "TPS546D24A",
-        "label": "TPS546D24A"
-    },
-    {
-        "value": "LM5170",
-        "label": "LM5170"
-    },
-    {
-        "value": "TPSM53602",
-        "label": "TPSM53602"
-    },
-    {
-        "value": "TPSM53603",
-        "label": "TPSM53603"
-    },
-    {
-        "value": "TPSM53604",
-        "label": "TPSM53604"
-    },
-    {
-        "value": "TPS61023",
-        "label": "TPS61023"
-    },
-    {
-        "value": "TPS61391",
-        "label": "TPS61391"
-    },
-    {
-        "value": "LMR33640",
-        "label": "LMR33640"
-    },
-    {
-        "value": "LMR33610",
-        "label": "LMR33610"
-    },
-    {
-        "value": "LM5163",
-        "label": "LM5163"
-    },
-    {
-        "value": "TPS63810",
-        "label": "TPS63810"
-    },
-    {
-        "value": "TPS63811",
-        "label": "TPS63811"
-    },
-    {
-        "value": "TPS543C20A",
-        "label": "TPS543C20A"
-    },
-    {
-        "value": "LM63615-Q1",
-        "label": "LM63615-Q1"
-    },
-    {
-        "value": "LM63625-Q1",
-        "label": "LM63625-Q1"
-    },
-    {
-        "value": "TPS63802",
-        "label": "TPS63802"
-    },
-    {
-        "value": "LM5143-Q1",
-        "label": "LM5143-Q1"
-    },
-    {
-        "value": "TPS56C230",
-        "label": "TPS56C230"
-    },
-    {
-        "value": "TPS56637",
-        "label": "TPS56637"
-    },
-    {
-        "value": "TPS560430-Q1",
-        "label": "TPS560430-Q1"
-    },
-    {
-        "value": "TPS63806",
-        "label": "TPS63806"
-    },
-    {
-        "value": "TPS62811-Q1",
-        "label": "TPS62811-Q1"
-    },
-    {
-        "value": "TPS62812-Q1",
-        "label": "TPS62812-Q1"
-    },
-    {
-        "value": "TPS62840",
-        "label": "TPS62840"
-    },
-    {
-        "value": "TPS62152A-Q1",
-        "label": "TPS62152A-Q1"
-    },
-    {
-        "value": "LM51551-Q1",
-        "label": "LM51551-Q1"
-    },
-    {
-        "value": "LM5155-Q1",
-        "label": "LM5155-Q1"
-    },
-    {
-        "value": "TLV61048",
-        "label": "TLV61048"
-    },
-    {
-        "value": "TPS61390",
-        "label": "TPS61390"
-    },
-    {
-        "value": "TPS62810-Q1",
-        "label": "TPS62810-Q1"
-    },
-    {
-        "value": "TPS62813-Q1",
-        "label": "TPS62813-Q1"
-    },
-    {
-        "value": "LM5163-Q1",
-        "label": "LM5163-Q1"
-    },
-    {
-        "value": "TPS54A24",
-        "label": "TPS54A24"
-    },
-    {
-        "value": "TPS56339",
-        "label": "TPS56339"
-    },
-    {
-        "value": "LMR34215-Q1",
-        "label": "LMR34215-Q1"
-    },
-    {
-        "value": "LMR34206-Q1",
-        "label": "LMR34206-Q1"
-    },
-    {
-        "value": "TPS566235",
-        "label": "TPS566235"
-    },
-    {
-        "value": "TPS562231",
-        "label": "TPS562231"
-    },
-    {
-        "value": "TPS568230",
-        "label": "TPS568230"
-    },
-    {
-        "value": "TPS61022",
-        "label": "TPS61022"
-    },
-    {
-        "value": "TPS62827",
-        "label": "TPS62827"
-    },
-    {
-        "value": "LM5164-Q1",
-        "label": "LM5164-Q1"
-    },
-    {
-        "value": "TPS51396A",
-        "label": "TPS51396A"
-    },
-    {
-        "value": "TPS563231",
-        "label": "TPS563231"
-    },
-    {
-        "value": "TPS62807",
-        "label": "TPS62807"
-    },
-    {
-        "value": "TPS62808",
-        "label": "TPS62808"
-    },
-    {
-        "value": "TPS54340B",
-        "label": "TPS54340B"
-    },
-    {
-        "value": "TPS54540B",
-        "label": "TPS54540B"
-    },
-    {
-        "value": "TPS54560B",
-        "label": "TPS54560B"
-    },
-    {
-        "value": "TPS563249",
-        "label": "TPS563249"
-    },
-    {
-        "value": "TPS563240",
-        "label": "TPS563240"
-    },
-    {
-        "value": "LM5164",
-        "label": "LM5164"
-    },
-    {
-        "value": "TPS6283810",
-        "label": "TPS6283810"
-    },
-    {
-        "value": "LM51551",
-        "label": "LM51551"
-    },
-    {
-        "value": "LM34936-Q1",
-        "label": "LM34936-Q1"
-    },
-    {
-        "value": "LM5155",
-        "label": "LM5155"
-    },
-    {
-        "value": "LMR36006",
-        "label": "LMR36006"
-    },
-    {
-        "value": "TPS54360B",
-        "label": "TPS54360B"
-    },
-    {
-        "value": "TPS61372",
-        "label": "TPS61372"
-    },
-    {
-        "value": "TPS61088-Q1",
-        "label": "TPS61088-Q1"
-    },
-    {
-        "value": "LM5146-Q1",
-        "label": "LM5146-Q1"
-    },
-    {
-        "value": "LMR36015",
-        "label": "LMR36015"
-    },
-    {
-        "value": "LMR36015-Q1",
-        "label": "LMR36015-Q1"
-    },
-    {
-        "value": "LM5122ZA",
-        "label": "LM5122ZA"
-    },
-    {
-        "value": "LMR33620-Q1",
-        "label": "LMR33620-Q1"
-    },
-    {
-        "value": "LMR33630-Q1",
-        "label": "LMR33630-Q1"
-    },
-    {
-        "value": "LMR36006-Q1",
-        "label": "LMR36006-Q1"
-    },
-    {
-        "value": "LMZM33604",
-        "label": "LMZM33604"
-    },
-    {
-        "value": "LMZM33606",
-        "label": "LMZM33606"
-    },
-    {
-        "value": "TPS63805",
-        "label": "TPS63805"
-    },
-    {
-        "value": "LM2775-Q1",
-        "label": "LM2775-Q1"
-    },
-    {
-        "value": "LM5176-Q1",
-        "label": "LM5176-Q1"
-    },
-    {
-        "value": "TPS61281D",
-        "label": "TPS61281D"
-    },
-    {
-        "value": "TPS61282D",
-        "label": "TPS61282D"
-    },
-    {
-        "value": "LM34936",
-        "label": "LM34936"
-    },
-    {
-        "value": "TPS62422-Q1",
-        "label": "TPS62422-Q1"
-    },
-    {
-        "value": "TPS62423-Q1",
-        "label": "TPS62423-Q1"
-    },
-    {
-        "value": "TPS62424-Q1",
-        "label": "TPS62424-Q1"
-    },
-    {
-        "value": "TPS62800",
-        "label": "TPS62800"
-    },
-    {
-        "value": "TPS62802",
-        "label": "TPS62802"
-    },
-    {
-        "value": "TPS62823",
-        "label": "TPS62823"
-    },
-    {
-        "value": "TPS62825",
-        "label": "TPS62825"
-    },
-    {
-        "value": "TPS62826",
-        "label": "TPS62826"
-    },
-    {
-        "value": "LM51501-Q1",
-        "label": "LM51501-Q1"
-    },
-    {
-        "value": "TLV62568A",
-        "label": "TLV62568A"
-    },
-    {
-        "value": "TLV62569A",
-        "label": "TLV62569A"
-    },
-    {
-        "value": "TPS560430",
-        "label": "TPS560430"
-    },
-    {
-        "value": "TPS62806",
-        "label": "TPS62806"
-    },
-    {
-        "value": "TPS62822",
-        "label": "TPS62822"
-    },
-    {
-        "value": "TPSM84209",
-        "label": "TPSM84209"
-    },
-    {
-        "value": "LMZM23600",
-        "label": "LMZM23600"
-    },
-    {
-        "value": "LMZM23601",
-        "label": "LMZM23601"
-    },
-    {
-        "value": "TPS62147",
-        "label": "TPS62147"
-    },
-    {
-        "value": "TPS62148",
-        "label": "TPS62148"
-    },
-    {
-        "value": "TPSM84624",
-        "label": "TPSM84624"
-    },
-    {
-        "value": "LMR14010A",
-        "label": "LMR14010A"
-    },
-    {
-        "value": "TPSM82480",
-        "label": "TPSM82480"
-    },
-    {
-        "value": "LMR23615",
-        "label": "LMR23615"
-    },
-    {
-        "value": "LMR23615-Q1",
-        "label": "LMR23615-Q1"
-    },
-    {
-        "value": "TPS62243-Q1",
-        "label": "TPS62243-Q1"
-    },
-    {
-        "value": "TPS62244-Q1",
-        "label": "TPS62244-Q1"
-    },
-    {
-        "value": "LMZM33602",
-        "label": "LMZM33602"
-    },
-    {
-        "value": "LMZM33603",
-        "label": "LMZM33603"
-    },
-    {
-        "value": "TPS62801",
-        "label": "TPS62801"
-    },
-    {
-        "value": "LMR33620",
-        "label": "LMR33620"
-    },
-    {
-        "value": "LMR33630",
-        "label": "LMR33630"
-    },
-    {
-        "value": "TPS62821",
-        "label": "TPS62821"
-    },
-    {
-        "value": "TPSM84424",
-        "label": "TPSM84424"
-    },
-    {
-        "value": "TPSM84824",
-        "label": "TPSM84824"
-    },
-    {
-        "value": "TPS65268-Q1",
-        "label": "TPS65268-Q1"
-    },
-    {
-        "value": "TPSM846C24",
-        "label": "TPSM846C24"
-    },
-    {
-        "value": "TPSM846C23",
-        "label": "TPSM846C23"
-    },
-    {
-        "value": "TPS61322",
-        "label": "TPS61322"
-    },
-    {
-        "value": "TPS61280D",
-        "label": "TPS61280D"
-    },
-    {
-        "value": "TPS62097-Q1",
-        "label": "TPS62097-Q1"
-    },
-    {
-        "value": "LM73605-Q1",
-        "label": "LM73605-Q1"
-    },
-    {
-        "value": "LM73606-Q1",
-        "label": "LM73606-Q1"
-    },
-    {
-        "value": "LM76002-Q1",
-        "label": "LM76002-Q1"
-    },
-    {
-        "value": "LM76003-Q1",
-        "label": "LM76003-Q1"
-    },
-    {
-        "value": "TPS40345",
-        "label": "TPS40345"
-    },
-    {
-        "value": "TPS53119",
-        "label": "TPS53119"
-    },
-    {
-        "value": "TPS62088",
-        "label": "TPS62088"
-    },
-    {
-        "value": "TPS55160-Q1",
-        "label": "TPS55160-Q1"
-    },
-    {
-        "value": "TPS55162-Q1",
-        "label": "TPS55162-Q1"
-    },
-    {
-        "value": "TPS55165-Q1",
-        "label": "TPS55165-Q1"
-    },
-    {
-        "value": "TPS61085A-Q1",
-        "label": "TPS61085A-Q1"
-    },
-    {
-        "value": "LM2623-Q1",
-        "label": "LM2623-Q1"
-    },
-    {
-        "value": "LM76002",
-        "label": "LM76002"
-    },
-    {
-        "value": "LM76003",
-        "label": "LM76003"
-    },
-    {
-        "value": "LM5150-Q1",
-        "label": "LM5150-Q1"
-    },
-    {
-        "value": "TPS63710",
-        "label": "TPS63710"
-    },
-    {
-        "value": "LM73605",
-        "label": "LM73605"
-    },
-    {
-        "value": "LM73606",
-        "label": "LM73606"
-    },
-    {
-        "value": "TPS565208",
-        "label": "TPS565208"
-    },
-    {
-        "value": "LMS3655-Q1",
-        "label": "LMS3655-Q1"
-    },
-    {
-        "value": "LMS3635-Q1",
-        "label": "LMS3635-Q1"
-    },
-    {
-        "value": "TPS565201",
-        "label": "TPS565201"
-    },
-    {
-        "value": "TLV62585",
-        "label": "TLV62585"
-    },
-    {
-        "value": "LV14360",
-        "label": "LV14360"
-    },
-    {
-        "value": "LMS3655",
-        "label": "LMS3655"
-    },
-    {
-        "value": "TPS54424",
-        "label": "TPS54424"
-    },
-    {
-        "value": "TPSM84203",
-        "label": "TPSM84203"
-    },
-    {
-        "value": "TPSM84205",
-        "label": "TPSM84205"
-    },
-    {
-        "value": "TPSM84212",
-        "label": "TPSM84212"
-    },
-    {
-        "value": "TPS543B20",
-        "label": "TPS543B20"
-    },
-    {
-        "value": "TPS82140",
-        "label": "TPS82140"
-    },
-    {
-        "value": "TPS82150",
-        "label": "TPS82150"
-    },
-    {
-        "value": "TPS53681",
-        "label": "TPS53681"
-    },
-    {
-        "value": "LM25145",
-        "label": "LM25145"
-    },
-    {
-        "value": "TPS549B22",
-        "label": "TPS549B22"
-    },
-    {
-        "value": "LM5176",
-        "label": "LM5176"
-    },
-    {
-        "value": "TPS54308",
-        "label": "TPS54308"
-    },
-    {
-        "value": "LM5145",
-        "label": "LM5145"
-    },
-    {
-        "value": "TPS65263-1Q1",
-        "label": "TPS65263-1Q1"
-    },
-    {
-        "value": "TPS561201",
-        "label": "TPS561201"
-    },
-    {
-        "value": "TPS561208",
-        "label": "TPS561208"
-    },
-    {
-        "value": "TLV61046A",
-        "label": "TLV61046A"
-    },
-    {
-        "value": "TPS61096A",
-        "label": "TPS61096A"
-    },
-    {
-        "value": "TPS57112C-Q1",
-        "label": "TPS57112C-Q1"
-    },
-    {
-        "value": "TPS61253A",
-        "label": "TPS61253A"
-    },
-    {
-        "value": "TPS62136",
-        "label": "TPS62136"
-    },
-    {
-        "value": "TPS53627",
-        "label": "TPS53627"
-    },
-    {
-        "value": "LM25141",
-        "label": "LM25141"
-    },
-    {
-        "value": "LM5141",
-        "label": "LM5141"
-    },
-    {
-        "value": "TPS54560B-Q1",
-        "label": "TPS54560B-Q1"
-    },
-    {
-        "value": "TPS61178",
-        "label": "TPS61178"
-    },
-    {
-        "value": "LM25141-Q1",
-        "label": "LM25141-Q1"
-    },
-    {
-        "value": "TPS6213013A-Q1",
-        "label": "TPS6213013A-Q1"
-    },
-    {
-        "value": "TPS54340B-Q1",
-        "label": "TPS54340B-Q1"
-    },
-    {
-        "value": "TPS54360B-Q1",
-        "label": "TPS54360B-Q1"
-    },
-    {
-        "value": "TPS54540B-Q1",
-        "label": "TPS54540B-Q1"
-    },
-    {
-        "value": "TPS61256C",
-        "label": "TPS61256C"
-    },
-    {
-        "value": "TPS568215OA",
-        "label": "TPS568215OA"
-    },
-    {
-        "value": "TPS62672",
-        "label": "TPS62672"
-    },
-    {
-        "value": "TPS548B22",
-        "label": "TPS548B22"
-    },
-    {
-        "value": "TPS65235-1",
-        "label": "TPS65235-1"
-    },
-    {
-        "value": "TPS54260-EP",
-        "label": "TPS54260-EP"
-    },
-    {
-        "value": "TPS54262-EP",
-        "label": "TPS54262-EP"
-    },
-    {
-        "value": "TPSM84A21",
-        "label": "TPSM84A21"
-    },
-    {
-        "value": "TPSM84A22",
-        "label": "TPSM84A22"
-    },
-    {
-        "value": "LMR23625-Q1",
-        "label": "LMR23625-Q1"
-    },
-    {
-        "value": "TPS63027",
-        "label": "TPS63027"
-    },
-    {
-        "value": "LM5166",
-        "label": "LM5166"
-    },
-    {
-        "value": "LMR23610-Q1",
-        "label": "LMR23610-Q1"
-    },
-    {
-        "value": "LMR23630-Q1",
-        "label": "LMR23630-Q1"
-    },
-    {
-        "value": "TLV62568",
-        "label": "TLV62568"
-    },
-    {
-        "value": "TLV62569",
-        "label": "TLV62569"
-    },
-    {
-        "value": "LM53603",
-        "label": "LM53603"
-    },
-    {
-        "value": "TPS62162-Q1",
-        "label": "TPS62162-Q1"
-    },
-    {
-        "value": "TPS562210A",
-        "label": "TPS562210A"
-    },
-    {
-        "value": "TPS562219A",
-        "label": "TPS562219A"
-    },
-    {
-        "value": "TPS563210A",
-        "label": "TPS563210A"
-    },
-    {
-        "value": "TPS563219A",
-        "label": "TPS563219A"
-    },
-    {
-        "value": "TPS54824",
-        "label": "TPS54824"
-    },
-    {
-        "value": "LM5170-Q1",
-        "label": "LM5170-Q1"
-    },
-    {
-        "value": "TPS53622",
-        "label": "TPS53622"
-    },
-    {
-        "value": "TPS53659",
-        "label": "TPS53659"
-    },
-    {
-        "value": "TPS53679",
-        "label": "TPS53679"
-    },
-    {
-        "value": "TPS568215",
-        "label": "TPS568215"
-    },
-    {
-        "value": "TPS65266-1",
-        "label": "TPS65266-1"
-    },
-    {
-        "value": "LM53602",
-        "label": "LM53602"
-    },
-    {
-        "value": "LM27762",
-        "label": "LM27762"
-    },
-    {
-        "value": "TPS62171-Q1",
-        "label": "TPS62171-Q1"
-    },
-    {
-        "value": "TLV62084A",
-        "label": "TLV62084A"
-    },
-    {
-        "value": "TPS53667",
-        "label": "TPS53667"
-    },
-    {
-        "value": "TPS62135",
-        "label": "TPS62135"
-    },
-    {
-        "value": "TPS546C23",
-        "label": "TPS546C23"
-    },
-    {
-        "value": "LM5141-Q1",
-        "label": "LM5141-Q1"
-    },
-    {
-        "value": "TPS61099",
-        "label": "TPS61099"
-    },
-    {
-        "value": "LM5161-Q1",
-        "label": "LM5161-Q1"
-    },
-    {
-        "value": "TPS546C20A",
-        "label": "TPS546C20A"
-    },
-    {
-        "value": "TPS548D21",
-        "label": "TPS548D21"
-    },
-    {
-        "value": "TPS549D22",
-        "label": "TPS549D22"
-    },
-    {
-        "value": "TPS61230A",
-        "label": "TPS61230A"
-    },
-    {
-        "value": "TPS63070",
-        "label": "TPS63070"
-    },
-    {
-        "value": "TPS54335-2A",
-        "label": "TPS54335-2A"
-    },
-    {
-        "value": "TPS54388C-Q1",
-        "label": "TPS54388C-Q1"
-    },
-    {
-        "value": "TPS57114C-Q1",
-        "label": "TPS57114C-Q1"
-    },
-    {
-        "value": "LMR23610",
-        "label": "LMR23610"
-    },
-    {
-        "value": "LMR23625",
-        "label": "LMR23625"
-    },
-    {
-        "value": "LMR23630",
-        "label": "LMR23630"
-    },
-    {
-        "value": "TPS61235P",
-        "label": "TPS61235P"
-    },
-    {
-        "value": "TPS61236P",
-        "label": "TPS61236P"
-    },
-    {
-        "value": "TPS53626",
-        "label": "TPS53626"
-    },
-    {
-        "value": "TPS54302",
-        "label": "TPS54302"
-    },
-    {
-        "value": "TPS61021A",
-        "label": "TPS61021A"
-    },
-    {
-        "value": "TLV627432",
-        "label": "TLV627432"
-    },
-    {
-        "value": "TPS560200-Q1",
-        "label": "TPS560200-Q1"
-    },
-    {
-        "value": "TPS612592",
-        "label": "TPS612592"
-    },
-    {
-        "value": "LMR16010",
-        "label": "LMR16010"
-    },
-    {
-        "value": "LMR16020",
-        "label": "LMR16020"
-    },
-    {
-        "value": "LMR16030",
-        "label": "LMR16030"
-    },
-    {
-        "value": "LM53635-Q1",
-        "label": "LM53635-Q1"
-    },
-    {
-        "value": "LM53625-Q1",
-        "label": "LM53625-Q1"
-    },
-    {
-        "value": "TPS564201",
-        "label": "TPS564201"
-    },
-    {
-        "value": "TPS54202H",
-        "label": "TPS54202H"
-    },
-    {
-        "value": "TPS548D22",
-        "label": "TPS548D22"
-    },
-    {
-        "value": "LMZ34202",
-        "label": "LMZ34202"
-    },
-    {
-        "value": "TPS610987",
-        "label": "TPS610987"
-    },
-    {
-        "value": "TPS61089",
-        "label": "TPS61089"
-    },
-    {
-        "value": "TPS54A20",
-        "label": "TPS54A20"
-    },
-    {
-        "value": "LM5175-Q1",
-        "label": "LM5175-Q1"
-    },
-    {
-        "value": "TPS54202",
-        "label": "TPS54202"
-    },
-    {
-        "value": "TPS564208",
-        "label": "TPS564208"
-    },
-    {
-        "value": "TLV62095",
-        "label": "TLV62095"
-    },
-    {
-        "value": "TPS62770",
-        "label": "TPS62770"
-    },
-    {
-        "value": "LM5165",
-        "label": "LM5165"
-    },
-    {
-        "value": "LM5165-Q1",
-        "label": "LM5165-Q1"
-    },
-    {
-        "value": "TPS56C215",
-        "label": "TPS56C215"
-    },
-    {
-        "value": "LM5022-Q1",
-        "label": "LM5022-Q1"
-    },
-    {
-        "value": "TPS82130",
-        "label": "TPS82130"
-    },
-    {
-        "value": "TPS62480",
-        "label": "TPS62480"
-    },
-    {
-        "value": "LM27761",
-        "label": "LM27761"
-    },
-    {
-        "value": "TPS562208",
-        "label": "TPS562208"
-    },
-    {
-        "value": "LM5140-Q1",
-        "label": "LM5140-Q1"
-    },
-    {
-        "value": "TPS563208",
-        "label": "TPS563208"
-    },
-    {
-        "value": "TPS610985",
-        "label": "TPS610985"
-    },
-    {
-        "value": "TPS610986",
-        "label": "TPS610986"
-    },
-    {
-        "value": "LMR14020-Q1",
-        "label": "LMR14020-Q1"
-    },
-    {
-        "value": "LMR14030-Q1",
-        "label": "LMR14030-Q1"
-    },
-    {
-        "value": "LMR14050-Q1",
-        "label": "LMR14050-Q1"
-    },
-    {
-        "value": "LM53600-Q1",
-        "label": "LM53600-Q1"
-    },
-    {
-        "value": "LM53601-Q1",
-        "label": "LM53601-Q1"
-    },
-    {
-        "value": "TPS562201",
-        "label": "TPS562201"
-    },
-    {
-        "value": "LM25122-Q1",
-        "label": "LM25122-Q1"
-    },
-    {
-        "value": "TPS563201",
-        "label": "TPS563201"
-    },
-    {
-        "value": "TPS548A20",
-        "label": "TPS548A20"
-    },
-    {
-        "value": "TPS549A20",
-        "label": "TPS549A20"
-    },
-    {
-        "value": "TPS62097",
-        "label": "TPS62097"
-    },
-    {
-        "value": "TPS65265",
-        "label": "TPS65265"
-    },
-    {
-        "value": "TPS63020-Q1",
-        "label": "TPS63020-Q1"
-    },
-    {
-        "value": "TPS65235",
-        "label": "TPS65235"
-    },
-    {
-        "value": "TLV62085",
-        "label": "TLV62085"
-    },
-    {
-        "value": "TPS40210-EP",
-        "label": "TPS40210-EP"
-    },
-    {
-        "value": "TPS54335-1A",
-        "label": "TPS54335-1A"
-    },
-    {
-        "value": "LMZ36002",
-        "label": "LMZ36002"
-    },
-    {
-        "value": "TPS62748",
-        "label": "TPS62748"
-    },
-    {
-        "value": "TPS65400-Q1",
-        "label": "TPS65400-Q1"
-    },
-    {
-        "value": "TPS57140-EP",
-        "label": "TPS57140-EP"
-    },
-    {
-        "value": "TPS82084",
-        "label": "TPS82084"
-    },
-    {
-        "value": "LM46002-Q1",
-        "label": "LM46002-Q1"
-    },
-    {
-        "value": "LM43601-Q1",
-        "label": "LM43601-Q1"
-    },
-    {
-        "value": "LM46001-Q1",
-        "label": "LM46001-Q1"
-    },
-    {
-        "value": "LM43600-Q1",
-        "label": "LM43600-Q1"
-    },
-    {
-        "value": "LM46000-Q1",
-        "label": "LM46000-Q1"
-    },
-    {
-        "value": "TPS610982",
-        "label": "TPS610982"
-    },
-    {
-        "value": "LMR16006Y-Q1",
-        "label": "LMR16006Y-Q1"
-    },
-    {
-        "value": "LM53602-Q1",
-        "label": "LM53602-Q1"
-    },
-    {
-        "value": "LM53603-Q1",
-        "label": "LM53603-Q1"
-    },
-    {
-        "value": "LM5160-Q1",
-        "label": "LM5160-Q1"
-    },
-    {
-        "value": "TPS50601A-SP",
-        "label": "TPS50601A-SP"
-    },
-    {
-        "value": "TPS61098",
-        "label": "TPS61098"
-    },
-    {
-        "value": "TPS62745",
-        "label": "TPS62745"
-    },
-    {
-        "value": "TPS627451",
-        "label": "TPS627451"
-    },
-    {
-        "value": "LM2776",
-        "label": "LM2776"
-    },
-    {
-        "value": "TPS62746",
-        "label": "TPS62746"
-    },
-    {
-        "value": "TPS8268120",
-        "label": "TPS8268120"
-    },
-    {
-        "value": "TPS8268180",
-        "label": "TPS8268180"
-    },
-    {
-        "value": "TPS610981",
-        "label": "TPS610981"
-    },
-    {
-        "value": "TPS62743",
-        "label": "TPS62743"
-    },
-    {
-        "value": "TPS53647",
-        "label": "TPS53647"
-    },
-    {
-        "value": "TPS51275B-1",
-        "label": "TPS51275B-1"
-    },
-    {
-        "value": "TPS54334",
-        "label": "TPS54334"
-    },
-    {
-        "value": "LM2775",
-        "label": "LM2775"
-    },
-    {
-        "value": "TPS544B25",
-        "label": "TPS544B25"
-    },
-    {
-        "value": "TPS544C25",
-        "label": "TPS544C25"
-    },
-    {
-        "value": "TPS61088",
-        "label": "TPS61088"
-    },
-    {
-        "value": "LM43602-Q1",
-        "label": "LM43602-Q1"
-    },
-    {
-        "value": "LM43603-Q1",
-        "label": "LM43603-Q1"
-    },
-    {
-        "value": "TPS82085",
-        "label": "TPS82085"
-    },
-    {
-        "value": "TPS61046",
-        "label": "TPS61046"
-    },
-    {
-        "value": "TPS566250",
-        "label": "TPS566250"
-    },
-    {
-        "value": "TPS826716",
-        "label": "TPS826716"
-    },
-    {
-        "value": "LM5175",
-        "label": "LM5175"
-    },
-    {
-        "value": "LMR14020",
-        "label": "LMR14020"
-    },
-    {
-        "value": "LMR14030",
-        "label": "LMR14030"
-    },
-    {
-        "value": "LMR14050",
-        "label": "LMR14050"
-    },
-    {
-        "value": "TPS62184",
-        "label": "TPS62184"
-    },
-    {
-        "value": "TPS61093-Q1",
-        "label": "TPS61093-Q1"
-    },
-    {
-        "value": "LM5160A",
-        "label": "LM5160A"
-    },
-    {
-        "value": "TPS62134D",
-        "label": "TPS62134D"
-    },
-    {
-        "value": "TPS62067-Q1",
-        "label": "TPS62067-Q1"
-    },
-    {
-        "value": "TPS65263-Q1",
-        "label": "TPS65263-Q1"
-    },
-    {
-        "value": "TPS62160-Q1",
-        "label": "TPS62160-Q1"
-    },
-    {
-        "value": "TPS62170-Q1",
-        "label": "TPS62170-Q1"
-    },
-    {
-        "value": "TPS62172-Q1",
-        "label": "TPS62172-Q1"
-    },
-    {
-        "value": "TPS54335A",
-        "label": "TPS54335A"
-    },
-    {
-        "value": "TPS54336A",
-        "label": "TPS54336A"
-    },
-    {
-        "value": "TPS61175-Q1",
-        "label": "TPS61175-Q1"
-    },
-    {
-        "value": "TPS62406-Q1",
-        "label": "TPS62406-Q1"
-    },
-    {
-        "value": "TPS62407-Q1",
-        "label": "TPS62407-Q1"
-    },
-    {
-        "value": "LMZ20501",
-        "label": "LMZ20501"
-    },
-    {
-        "value": "LMZ20502",
-        "label": "LMZ20502"
-    },
-    {
-        "value": "TPS53625",
-        "label": "TPS53625"
-    },
-    {
-        "value": "TPS63024",
-        "label": "TPS63024"
-    },
-    {
-        "value": "TPS630241",
-        "label": "TPS630241"
-    },
-    {
-        "value": "TPS630242",
-        "label": "TPS630242"
-    },
-    {
-        "value": "LM3281",
-        "label": "LM3281"
-    },
-    {
-        "value": "TPS65400",
-        "label": "TPS65400"
-    },
-    {
-        "value": "TPS8268090",
-        "label": "TPS8268090"
-    },
-    {
-        "value": "TPS8268105",
-        "label": "TPS8268105"
-    },
-    {
-        "value": "TPS8268150",
-        "label": "TPS8268150"
-    },
-    {
-        "value": "LMZ21700",
-        "label": "LMZ21700"
-    },
-    {
-        "value": "LMZ21701",
-        "label": "LMZ21701"
-    },
-    {
-        "value": "LMR16006",
-        "label": "LMR16006"
-    },
-    {
-        "value": "LV2862",
-        "label": "LV2862"
-    },
-    {
-        "value": "TPS826721",
-        "label": "TPS826721"
-    },
-    {
-        "value": "TPS563209",
-        "label": "TPS563209"
-    },
-    {
-        "value": "TPS51623",
-        "label": "TPS51623"
-    },
-    {
-        "value": "TPS51633",
-        "label": "TPS51633"
-    },
-    {
-        "value": "TPS61291",
-        "label": "TPS61291"
-    },
-    {
-        "value": "TPS563200",
-        "label": "TPS563200"
-    },
-    {
-        "value": "TPS53632",
-        "label": "TPS53632"
-    },
-    {
-        "value": "TPS54561-Q1",
-        "label": "TPS54561-Q1"
-    },
-    {
-        "value": "TPS62180",
-        "label": "TPS62180"
-    },
-    {
-        "value": "TPS62182",
-        "label": "TPS62182"
-    },
-    {
-        "value": "LM43600",
-        "label": "LM43600"
-    },
-    {
-        "value": "LM43601",
-        "label": "LM43601"
-    },
-    {
-        "value": "TPS51632-Q1",
-        "label": "TPS51632-Q1"
-    },
-    {
-        "value": "TPS62134A",
-        "label": "TPS62134A"
-    },
-    {
-        "value": "TPS62742",
-        "label": "TPS62742"
-    },
-    {
-        "value": "TPS57114-EP",
-        "label": "TPS57114-EP"
-    },
-    {
-        "value": "LM46000",
-        "label": "LM46000"
-    },
-    {
-        "value": "LM46001",
-        "label": "LM46001"
-    },
-    {
-        "value": "TPS65263",
-        "label": "TPS65263"
-    },
-    {
-        "value": "TPS54060-EP",
-        "label": "TPS54060-EP"
-    },
-    {
-        "value": "TPS55340-EP",
-        "label": "TPS55340-EP"
-    },
-    {
-        "value": "TPS53631",
-        "label": "TPS53631"
-    },
-    {
-        "value": "TPS53641",
-        "label": "TPS53641"
-    },
-    {
-        "value": "TPS53661",
-        "label": "TPS53661"
-    },
-    {
-        "value": "TPS53640",
-        "label": "TPS53640"
-    },
-    {
-        "value": "TPS53640A",
-        "label": "TPS53640A"
-    },
-    {
-        "value": "TPS62133A-Q1",
-        "label": "TPS62133A-Q1"
-    },
-    {
-        "value": "TPS62153A-Q1",
-        "label": "TPS62153A-Q1"
-    },
-    {
-        "value": "TPS82740A",
-        "label": "TPS82740A"
-    },
-    {
-        "value": "TPS82740B",
-        "label": "TPS82740B"
-    },
-    {
-        "value": "TPS55340-Q1",
-        "label": "TPS55340-Q1"
-    },
-    {
-        "value": "TPS626765",
-        "label": "TPS626765"
-    },
-    {
-        "value": "TPS62130A-Q1",
-        "label": "TPS62130A-Q1"
-    },
-    {
-        "value": "TPS62150A-Q1",
-        "label": "TPS62150A-Q1"
-    },
-    {
-        "value": "TPS40428",
-        "label": "TPS40428"
-    },
-    {
-        "value": "TPS544B20",
-        "label": "TPS544B20"
-    },
-    {
-        "value": "TPS544C20",
-        "label": "TPS544C20"
-    },
-    {
-        "value": "TPS630250",
-        "label": "TPS630250"
-    },
-    {
-        "value": "TPS630251",
-        "label": "TPS630251"
-    },
-    {
-        "value": "TPS630252",
-        "label": "TPS630252"
-    },
-    {
-        "value": "TPS62095",
-        "label": "TPS62095"
-    },
-    {
-        "value": "LM5001-Q1",
-        "label": "LM5001-Q1"
-    },
-    {
-        "value": "TPS54361-Q1",
-        "label": "TPS54361-Q1"
-    },
-    {
-        "value": "TPS62684",
-        "label": "TPS62684"
-    },
-    {
-        "value": "LM43602",
-        "label": "LM43602"
-    },
-    {
-        "value": "LM43603",
-        "label": "LM43603"
-    },
-    {
-        "value": "LM46002",
-        "label": "LM46002"
-    },
-    {
-        "value": "TPS61230",
-        "label": "TPS61230"
-    },
-    {
-        "value": "TPS82692",
-        "label": "TPS82692"
-    },
-    {
-        "value": "TPS826951",
-        "label": "TPS826951"
-    },
-    {
-        "value": "TPS40425",
-        "label": "TPS40425"
-    },
-    {
-        "value": "TLV62084",
-        "label": "TLV62084"
-    },
-    {
-        "value": "TPS63050",
-        "label": "TPS63050"
-    },
-    {
-        "value": "TPS562200",
-        "label": "TPS562200"
-    },
-    {
-        "value": "TPS562209",
-        "label": "TPS562209"
-    },
-    {
-        "value": "TPS61097A-33",
-        "label": "TPS61097A-33"
-    },
-    {
-        "value": "LMZ10500",
-        "label": "LMZ10500"
-    },
-    {
-        "value": "LMZ10501",
-        "label": "LMZ10501"
-    },
-    {
-        "value": "TPS65279",
-        "label": "TPS65279"
-    },
-    {
-        "value": "TPS63060-EP",
-        "label": "TPS63060-EP"
-    },
-    {
-        "value": "TPS626751",
-        "label": "TPS626751"
-    },
-    {
-        "value": "LMZ31520",
-        "label": "LMZ31520"
-    },
-    {
-        "value": "LMZ31530",
-        "label": "LMZ31530"
-    },
-    {
-        "value": "TPS65261",
-        "label": "TPS65261"
-    },
-    {
-        "value": "TPS65261-1",
-        "label": "TPS65261-1"
-    },
-    {
-        "value": "TPS54341",
-        "label": "TPS54341"
-    },
-    {
-        "value": "TPS54361",
-        "label": "TPS54361"
-    },
-    {
-        "value": "TPS54561",
-        "label": "TPS54561"
-    },
-    {
-        "value": "TPS54541",
-        "label": "TPS54541"
-    },
-    {
-        "value": "LMR14006",
-        "label": "LMR14006"
-    },
-    {
-        "value": "TPS82697",
-        "label": "TPS82697"
-    },
-    {
-        "value": "TPS563900",
-        "label": "TPS563900"
-    },
-    {
-        "value": "TPS53915",
-        "label": "TPS53915"
-    },
-    {
-        "value": "TPS53513",
-        "label": "TPS53513"
-    },
-    {
-        "value": "TPS53515",
-        "label": "TPS53515"
-    },
-    {
-        "value": "TPS54418A",
-        "label": "TPS54418A"
-    },
-    {
-        "value": "TPS56520",
-        "label": "TPS56520"
-    },
-    {
-        "value": "TPS56628",
-        "label": "TPS56628"
-    },
-    {
-        "value": "TPS56C20",
-        "label": "TPS56C20"
-    },
-    {
-        "value": "TPS62740",
-        "label": "TPS62740"
-    },
-    {
-        "value": "TPS51678",
-        "label": "TPS51678"
-    },
-    {
-        "value": "LMZ31704",
-        "label": "LMZ31704"
-    },
-    {
-        "value": "LMZ31707",
-        "label": "LMZ31707"
-    },
-    {
-        "value": "TPS40007-DIE",
-        "label": "TPS40007-DIE"
-    },
-    {
-        "value": "TLV62565",
-        "label": "TLV62565"
-    },
-    {
-        "value": "TLV62566",
-        "label": "TLV62566"
-    },
-    {
-        "value": "TPS62085",
-        "label": "TPS62085"
-    },
-    {
-        "value": "TPS62086",
-        "label": "TPS62086"
-    },
-    {
-        "value": "TPS62087",
-        "label": "TPS62087"
-    },
-    {
-        "value": "LM5116-HT",
-        "label": "LM5116-HT"
-    },
-    {
-        "value": "LM3248",
-        "label": "LM3248"
-    },
-    {
-        "value": "TPS51624",
-        "label": "TPS51624"
-    },
-    {
-        "value": "TPS65581",
-        "label": "TPS65581"
-    },
-    {
-        "value": "LM5121",
-        "label": "LM5121"
-    },
-    {
-        "value": "LM5121-Q1",
-        "label": "LM5121-Q1"
-    },
-    {
-        "value": "TPS560200",
-        "label": "TPS560200"
-    },
-    {
-        "value": "TPS65580",
-        "label": "TPS65580"
-    },
-    {
-        "value": "LMZ30604",
-        "label": "LMZ30604"
-    },
-    {
-        "value": "LMZ30606",
-        "label": "LMZ30606"
-    },
-    {
-        "value": "LMZ31503",
-        "label": "LMZ31503"
-    },
-    {
-        "value": "LMZ31506",
-        "label": "LMZ31506"
-    },
-    {
-        "value": "LMZ31506H",
-        "label": "LMZ31506H"
-    },
-    {
-        "value": "LMZ31710",
-        "label": "LMZ31710"
-    },
-    {
-        "value": "LMZ35003",
-        "label": "LMZ35003"
-    },
-    {
-        "value": "LMZ30602",
-        "label": "LMZ30602"
-    },
-    {
-        "value": "LMZ34002",
-        "label": "LMZ34002"
-    },
-    {
-        "value": "TPS51622A",
-        "label": "TPS51622A"
-    },
-    {
-        "value": "TPS51631A",
-        "label": "TPS51631A"
-    },
-    {
-        "value": "LM27403",
-        "label": "LM27403"
-    },
-    {
-        "value": "LM34919C-Q1",
-        "label": "LM34919C-Q1"
-    },
-    {
-        "value": "LMR12007",
-        "label": "LMR12007"
-    },
-    {
-        "value": "TPS61232",
-        "label": "TPS61232"
-    },
-    {
-        "value": "TPS54625",
-        "label": "TPS54625"
-    },
-    {
-        "value": "TPS54626",
-        "label": "TPS54626"
-    },
-    {
-        "value": "TPS62090-Q1",
-        "label": "TPS62090-Q1"
-    },
-    {
-        "value": "TPS62065-Q1",
-        "label": "TPS62065-Q1"
-    },
-    {
-        "value": "TPS63051",
-        "label": "TPS63051"
-    },
-    {
-        "value": "TPS82698",
-        "label": "TPS82698"
-    },
-    {
-        "value": "TPS62130A",
-        "label": "TPS62130A"
-    },
-    {
-        "value": "TPS62737",
-        "label": "TPS62737"
-    },
-    {
-        "value": "LM3017",
-        "label": "LM3017"
-    },
-    {
-        "value": "TLV62150A",
-        "label": "TLV62150A"
-    },
-    {
-        "value": "TPS62150A",
-        "label": "TPS62150A"
-    },
-    {
-        "value": "TPS62140A",
-        "label": "TPS62140A"
-    },
-    {
-        "value": "LM3263",
-        "label": "LM3263"
-    },
-    {
-        "value": "TLV62130A",
-        "label": "TLV62130A"
-    },
-    {
-        "value": "TPS65133",
-        "label": "TPS65133"
-    },
-    {
-        "value": "LM5122",
-        "label": "LM5122"
-    },
-    {
-        "value": "LM5122-Q1",
-        "label": "LM5122-Q1"
-    },
-    {
-        "value": "TPS65132",
-        "label": "TPS65132"
-    },
-    {
-        "value": "TPS54540",
-        "label": "TPS54540"
-    },
-    {
-        "value": "TPS55330",
-        "label": "TPS55330"
-    },
-    {
-        "value": "TPS62402-Q1",
-        "label": "TPS62402-Q1"
-    },
-    {
-        "value": "TPS62405-Q1",
-        "label": "TPS62405-Q1"
-    },
-    {
-        "value": "TPS54531",
-        "label": "TPS54531"
-    },
-    {
-        "value": "TPS54627",
-        "label": "TPS54627"
-    },
-    {
-        "value": "TPS54628",
-        "label": "TPS54628"
-    },
-    {
-        "value": "TPS65251-1",
-        "label": "TPS65251-1"
-    },
-    {
-        "value": "TPS65251-2",
-        "label": "TPS65251-2"
-    },
-    {
-        "value": "TPS65251-3",
-        "label": "TPS65251-3"
-    },
-    {
-        "value": "TPS56428",
-        "label": "TPS56428"
-    },
-    {
-        "value": "TPS56528",
-        "label": "TPS56528"
-    },
-    {
-        "value": "TPS51285A",
-        "label": "TPS51285A"
-    },
-    {
-        "value": "TPS51285B",
-        "label": "TPS51285B"
-    },
-    {
-        "value": "TPS40170-EP",
-        "label": "TPS40170-EP"
-    },
-    {
-        "value": "TPS51632",
-        "label": "TPS51632"
-    },
-    {
-        "value": "TPS62400-Q1",
-        "label": "TPS62400-Q1"
-    },
-    {
-        "value": "TPS53511",
-        "label": "TPS53511"
-    },
-    {
-        "value": "TPS84A20",
-        "label": "TPS84A20"
-    },
-    {
-        "value": "LM3279",
-        "label": "LM3279"
-    },
-    {
-        "value": "TPS51622",
-        "label": "TPS51622"
-    },
-    {
-        "value": "TPS54061-Q1",
-        "label": "TPS54061-Q1"
-    },
-    {
-        "value": "TPS62736",
-        "label": "TPS62736"
-    },
-    {
-        "value": "TPS51275B",
-        "label": "TPS51275B"
-    },
-    {
-        "value": "TPS51362",
-        "label": "TPS51362"
-    },
-    {
-        "value": "TPS51363",
-        "label": "TPS51363"
-    },
-    {
-        "value": "TPS51367",
-        "label": "TPS51367"
-    },
-    {
-        "value": "TPS65273V",
-        "label": "TPS65273V"
-    },
-    {
-        "value": "TPS65276V",
-        "label": "TPS65276V"
-    },
-    {
-        "value": "TPS65279V",
-        "label": "TPS65279V"
-    },
-    {
-        "value": "TPS82693",
-        "label": "TPS82693"
-    },
-    {
-        "value": "TPS43060",
-        "label": "TPS43060"
-    },
-    {
-        "value": "TPS54020",
-        "label": "TPS54020"
-    },
-    {
-        "value": "TPS54560",
-        "label": "TPS54560"
-    },
-    {
-        "value": "TPS53624",
-        "label": "TPS53624"
-    },
-    {
-        "value": "TPS65131-Q1",
-        "label": "TPS65131-Q1"
-    },
-    {
-        "value": "LM25119Q",
-        "label": "LM25119Q"
-    },
-    {
-        "value": "LM5119Q",
-        "label": "LM5119Q"
-    },
-    {
-        "value": "TPS54239",
-        "label": "TPS54239"
-    },
-    {
-        "value": "TPS54239E",
-        "label": "TPS54239E"
-    },
-    {
-        "value": "TPS54339",
-        "label": "TPS54339"
-    },
-    {
-        "value": "TPS54010-EP",
-        "label": "TPS54010-EP"
-    },
-    {
-        "value": "LM25017",
-        "label": "LM25017"
-    },
-    {
-        "value": "LM25018",
-        "label": "LM25018"
-    },
-    {
-        "value": "LM25019",
-        "label": "LM25019"
-    },
-    {
-        "value": "TPS50601-SP",
-        "label": "TPS50601-SP"
-    },
-    {
-        "value": "TPS826745",
-        "label": "TPS826745"
-    },
-    {
-        "value": "TPS51631",
-        "label": "TPS51631"
-    },
-    {
-        "value": "TPS54339E",
-        "label": "TPS54339E"
-    },
-    {
-        "value": "TPS62698",
-        "label": "TPS62698"
-    },
-    {
-        "value": "TPS62693",
-        "label": "TPS62693"
-    },
-    {
-        "value": "TPS50301-HT",
-        "label": "TPS50301-HT"
-    },
-    {
-        "value": "TPS62732",
-        "label": "TPS62732"
-    },
-    {
-        "value": "TPS43061",
-        "label": "TPS43061"
-    },
-    {
-        "value": "TPS62733",
-        "label": "TPS62733"
-    },
-    {
-        "value": "TPS53819A",
-        "label": "TPS53819A"
-    },
-    {
-        "value": "TPS54340",
-        "label": "TPS54340"
-    },
-    {
-        "value": "TPS62175",
-        "label": "TPS62175"
-    },
-    {
-        "value": "TPS62177",
-        "label": "TPS62177"
-    },
-    {
-        "value": "TPS826765",
-        "label": "TPS826765"
-    },
-    {
-        "value": "LM22673-Q1",
-        "label": "LM22673-Q1"
-    },
-    {
-        "value": "LM22679-Q1",
-        "label": "LM22679-Q1"
-    },
-    {
-        "value": "TPS40021-EP",
-        "label": "TPS40021-EP"
-    },
-    {
-        "value": "TPS51312",
-        "label": "TPS51312"
-    },
-    {
-        "value": "TPS51313",
-        "label": "TPS51313"
-    },
-    {
-        "value": "TPS61222-EP",
-        "label": "TPS61222-EP"
-    },
-    {
-        "value": "TPS54360",
-        "label": "TPS54360"
-    },
-    {
-        "value": "TPS5402",
-        "label": "TPS5402"
-    },
-    {
-        "value": "TPS5403",
-        "label": "TPS5403"
-    },
-    {
-        "value": "TPS53015",
-        "label": "TPS53015"
-    },
-    {
-        "value": "TPS54362-HT",
-        "label": "TPS54362-HT"
-    },
-    {
-        "value": "LM3262",
-        "label": "LM3262"
-    },
-    {
-        "value": "TPS84259",
-        "label": "TPS84259"
-    },
-    {
-        "value": "TPS63036",
-        "label": "TPS63036"
-    },
-    {
-        "value": "TPS61259",
-        "label": "TPS61259"
-    },
-    {
-        "value": "TPS84250",
-        "label": "TPS84250"
-    },
-    {
-        "value": "LMR10530",
-        "label": "LMR10530"
-    },
-    {
-        "value": "LMR12015",
-        "label": "LMR12015"
-    },
-    {
-        "value": "LMR12020",
-        "label": "LMR12020"
-    },
-    {
-        "value": "LMR61428",
-        "label": "LMR61428"
-    },
-    {
-        "value": "LM5018",
-        "label": "LM5018"
-    },
-    {
-        "value": "LM5019",
-        "label": "LM5019"
-    },
-    {
-        "value": "TPS62203-DIE",
-        "label": "TPS62203-DIE"
-    },
-    {
-        "value": "TPS62366A",
-        "label": "TPS62366A"
-    },
-    {
-        "value": "TPS62366B",
-        "label": "TPS62366B"
-    },
-    {
-        "value": "TPS542951",
-        "label": "TPS542951"
-    },
-    {
-        "value": "TPS542941",
-        "label": "TPS542941"
-    },
-    {
-        "value": "LM3269",
-        "label": "LM3269"
-    },
-    {
-        "value": "LMR70503",
-        "label": "LMR70503"
-    },
-    {
-        "value": "TPS54678",
-        "label": "TPS54678"
-    },
-    {
-        "value": "TPS5405",
-        "label": "TPS5405"
-    },
-    {
-        "value": "TPS51275",
-        "label": "TPS51275"
-    },
-    {
-        "value": "TPS51275C",
-        "label": "TPS51275C"
-    },
-    {
-        "value": "TPS53318",
-        "label": "TPS53318"
-    },
-    {
-        "value": "TPS54394",
-        "label": "TPS54394"
-    },
-    {
-        "value": "TPS54395",
-        "label": "TPS54395"
-    },
-    {
-        "value": "TPS54494",
-        "label": "TPS54494"
-    },
-    {
-        "value": "TPS54495",
-        "label": "TPS54495"
-    },
-    {
-        "value": "TPS826711",
-        "label": "TPS826711"
-    },
-    {
-        "value": "TPS54525",
-        "label": "TPS54525"
-    },
-    {
-        "value": "TPS54526",
-        "label": "TPS54526"
-    },
-    {
-        "value": "TPS53319",
-        "label": "TPS53319"
-    },
-    {
-        "value": "TPS54719",
-        "label": "TPS54719"
-    },
-    {
-        "value": "TPS81256",
-        "label": "TPS81256"
-    },
-    {
-        "value": "TLV61220",
-        "label": "TLV61220"
-    },
-    {
-        "value": "TPS59641",
-        "label": "TPS59641"
-    },
-    {
-        "value": "TPS53014",
-        "label": "TPS53014"
-    },
-    {
-        "value": "TPS54061",
-        "label": "TPS54061"
-    },
-    {
-        "value": "TPS54140A",
-        "label": "TPS54140A"
-    },
-    {
-        "value": "TPS54160A",
-        "label": "TPS54160A"
-    },
-    {
-        "value": "TPS55340",
-        "label": "TPS55340"
-    },
-    {
-        "value": "TPS61253",
-        "label": "TPS61253"
-    },
-    {
-        "value": "TPS61258",
-        "label": "TPS61258"
-    },
-    {
-        "value": "TPS62125",
-        "label": "TPS62125"
-    },
-    {
-        "value": "LM2700Q-Q1",
-        "label": "LM2700Q-Q1"
-    },
-    {
-        "value": "TPS82670",
-        "label": "TPS82670"
-    },
-    {
-        "value": "TPS82673",
-        "label": "TPS82673"
-    },
-    {
-        "value": "LM25117-Q1",
-        "label": "LM25117-Q1"
-    },
-    {
-        "value": "TPS40170-Q1",
-        "label": "TPS40170-Q1"
-    },
-    {
-        "value": "TPS54386-Q1",
-        "label": "TPS54386-Q1"
-    },
-    {
-        "value": "TPS62242-Q1",
-        "label": "TPS62242-Q1"
-    },
-    {
-        "value": "TLV62090",
-        "label": "TLV62090"
-    },
-    {
-        "value": "TPS54233-Q1",
-        "label": "TPS54233-Q1"
-    },
-    {
-        "value": "TPS62090",
-        "label": "TPS62090"
-    },
-    {
-        "value": "TPS62091",
-        "label": "TPS62091"
-    },
-    {
-        "value": "TPS62092",
-        "label": "TPS62092"
-    },
-    {
-        "value": "TPS62093",
-        "label": "TPS62093"
-    },
-    {
-        "value": "TPS62650-Q1",
-        "label": "TPS62650-Q1"
-    },
-    {
-        "value": "TPS62080A",
-        "label": "TPS62080A"
-    },
-    {
-        "value": "TPS54040A",
-        "label": "TPS54040A"
-    },
-    {
-        "value": "TPS54060A",
-        "label": "TPS54060A"
-    },
-    {
-        "value": "TPS62363",
-        "label": "TPS62363"
-    },
-    {
-        "value": "TPS54120",
-        "label": "TPS54120"
-    },
-    {
-        "value": "TPS5432",
-        "label": "TPS5432"
-    },
-    {
-        "value": "LM26420-Q1",
-        "label": "LM26420-Q1"
-    },
-    {
-        "value": "TPS51463",
-        "label": "TPS51463"
-    },
-    {
-        "value": "TPS59650",
-        "label": "TPS59650"
-    },
-    {
-        "value": "TLV62080",
-        "label": "TLV62080"
-    },
-    {
-        "value": "SM72445",
-        "label": "SM72445"
-    },
-    {
-        "value": "TLV62130",
-        "label": "TLV62130"
-    },
-    {
-        "value": "TLV62150",
-        "label": "TLV62150"
-    },
-    {
-        "value": "TPS51225",
-        "label": "TPS51225"
-    },
-    {
-        "value": "TPS51225B",
-        "label": "TPS51225B"
-    },
-    {
-        "value": "LM5017",
-        "label": "LM5017"
-    },
-    {
-        "value": "TPS82695",
-        "label": "TPS82695"
-    },
-    {
-        "value": "TPS82672",
-        "label": "TPS82672"
-    },
-    {
-        "value": "TPS51650",
-        "label": "TPS51650"
-    },
-    {
-        "value": "TPS51640A",
-        "label": "TPS51640A"
-    },
-    {
-        "value": "TPS59640",
-        "label": "TPS59640"
-    },
-    {
-        "value": "TPS82674",
-        "label": "TPS82674"
-    },
-    {
-        "value": "LM3253-C",
-        "label": "LM3253-C"
-    },
-    {
-        "value": "TPS51225C",
-        "label": "TPS51225C"
-    },
-    {
-        "value": "TPS40422",
-        "label": "TPS40422"
-    },
-    {
-        "value": "LM3102-Q1",
-        "label": "LM3102-Q1"
-    },
-    {
-        "value": "LM3243",
-        "label": "LM3243"
-    },
-    {
-        "value": "TPS53219A",
-        "label": "TPS53219A"
-    },
-    {
-        "value": "TPS51462",
-        "label": "TPS51462"
-    },
-    {
-        "value": "TPS61087-Q1",
-        "label": "TPS61087-Q1"
-    },
-    {
-        "value": "TPS62231-Q1",
-        "label": "TPS62231-Q1"
-    },
-    {
-        "value": "TPS622314-Q1",
-        "label": "TPS622314-Q1"
-    },
-    {
-        "value": "TPS63060",
-        "label": "TPS63060"
-    },
-    {
-        "value": "TPS63061",
-        "label": "TPS63061"
-    },
-    {
-        "value": "TPIC74101-Q1",
-        "label": "TPIC74101-Q1"
-    },
-    {
-        "value": "TPS53316",
-        "label": "TPS53316"
-    },
-    {
-        "value": "LM25118",
-        "label": "LM25118"
-    },
-    {
-        "value": "TPS51518",
-        "label": "TPS51518"
-    },
-    {
-        "value": "TPS84621",
-        "label": "TPS84621"
-    },
-    {
-        "value": "LM3671-Q1",
-        "label": "LM3671-Q1"
-    },
-    {
-        "value": "TPS54294",
-        "label": "TPS54294"
-    },
-    {
-        "value": "TPS54428",
-        "label": "TPS54428"
-    },
-    {
-        "value": "TPS84610",
-        "label": "TPS84610"
-    },
-    {
-        "value": "TPS62150",
-        "label": "TPS62150"
-    },
-    {
-        "value": "TPS62151",
-        "label": "TPS62151"
-    },
-    {
-        "value": "TPS62152",
-        "label": "TPS62152"
-    },
-    {
-        "value": "TPS62153",
-        "label": "TPS62153"
-    },
-    {
-        "value": "TPS54295",
-        "label": "TPS54295"
-    },
-    {
-        "value": "TPS54427",
-        "label": "TPS54427"
-    },
-    {
-        "value": "TPS62130",
-        "label": "TPS62130"
-    },
-    {
-        "value": "TPS62131",
-        "label": "TPS62131"
-    },
-    {
-        "value": "TPS62132",
-        "label": "TPS62132"
-    },
-    {
-        "value": "TPS62133",
-        "label": "TPS62133"
-    },
-    {
-        "value": "TPS62140",
-        "label": "TPS62140"
-    },
-    {
-        "value": "TPS62141",
-        "label": "TPS62141"
-    },
-    {
-        "value": "TPS62142",
-        "label": "TPS62142"
-    },
-    {
-        "value": "TPS62143",
-        "label": "TPS62143"
-    },
-    {
-        "value": "TPS65135",
-        "label": "TPS65135"
-    },
-    {
-        "value": "TPS62160",
-        "label": "TPS62160"
-    },
-    {
-        "value": "TPS62161",
-        "label": "TPS62161"
-    },
-    {
-        "value": "TPS62162",
-        "label": "TPS62162"
-    },
-    {
-        "value": "TPS62163",
-        "label": "TPS62163"
-    },
-    {
-        "value": "TPS62171",
-        "label": "TPS62171"
-    },
-    {
-        "value": "TPS62172",
-        "label": "TPS62172"
-    },
-    {
-        "value": "LM20144-Q1",
-        "label": "LM20144-Q1"
-    },
-    {
-        "value": "LM20145-Q1",
-        "label": "LM20145-Q1"
-    },
-    {
-        "value": "TPS62170",
-        "label": "TPS62170"
-    },
-    {
-        "value": "TPS62173",
-        "label": "TPS62173"
-    },
-    {
-        "value": "TPS54329E",
-        "label": "TPS54329E"
-    },
-    {
-        "value": "TPS54229E",
-        "label": "TPS54229E"
-    },
-    {
-        "value": "TPS61256",
-        "label": "TPS61256"
-    },
-    {
-        "value": "LM25118-Q1",
-        "label": "LM25118-Q1"
-    },
-    {
-        "value": "LMR14203",
-        "label": "LMR14203"
-    },
-    {
-        "value": "LMR14206",
-        "label": "LMR14206"
-    },
-    {
-        "value": "LMR62421",
-        "label": "LMR62421"
-    },
-    {
-        "value": "LMR10510",
-        "label": "LMR10510"
-    },
-    {
-        "value": "LMR10515",
-        "label": "LMR10515"
-    },
-    {
-        "value": "LMR10520",
-        "label": "LMR10520"
-    },
-    {
-        "value": "TPS54362-Q1",
-        "label": "TPS54362-Q1"
-    },
-    {
-        "value": "TPS54821",
-        "label": "TPS54821"
-    },
-    {
-        "value": "TPS53211",
-        "label": "TPS53211"
-    },
-    {
-        "value": "LMR24210",
-        "label": "LMR24210"
-    },
-    {
-        "value": "LMR24220",
-        "label": "LMR24220"
-    },
-    {
-        "value": "LMR62014",
-        "label": "LMR62014"
-    },
-    {
-        "value": "TPS54229",
-        "label": "TPS54229"
-    },
-    {
-        "value": "TPS652510",
-        "label": "TPS652510"
-    },
-    {
-        "value": "TPS84320",
-        "label": "TPS84320"
-    },
-    {
-        "value": "TPS54519",
-        "label": "TPS54519"
-    },
-    {
-        "value": "TPS54623",
-        "label": "TPS54623"
-    },
-    {
-        "value": "TPS61170-Q1",
-        "label": "TPS61170-Q1"
-    },
-    {
-        "value": "TPS54329",
-        "label": "TPS54329"
-    },
-    {
-        "value": "TPS62080",
-        "label": "TPS62080"
-    },
-    {
-        "value": "TPS62081",
-        "label": "TPS62081"
-    },
-    {
-        "value": "TPS62082",
-        "label": "TPS62082"
-    },
-    {
-        "value": "TPS61254",
-        "label": "TPS61254"
-    },
-    {
-        "value": "LMR12010",
-        "label": "LMR12010"
-    },
-    {
-        "value": "LMR64010",
-        "label": "LMR64010"
-    },
-    {
-        "value": "TPS65270",
-        "label": "TPS65270"
-    },
-    {
-        "value": "TPS82676",
-        "label": "TPS82676"
-    },
-    {
-        "value": "TPS53353",
-        "label": "TPS53353"
-    },
-    {
-        "value": "TPS54527",
-        "label": "TPS54527"
-    },
-    {
-        "value": "TPS54528",
-        "label": "TPS54528"
-    },
-    {
-        "value": "TPS62362",
-        "label": "TPS62362"
-    },
-    {
-        "value": "LM27313-Q1",
-        "label": "LM27313-Q1"
-    },
-    {
-        "value": "TPS40400",
-        "label": "TPS40400"
-    },
-    {
-        "value": "TPS61256A",
-        "label": "TPS61256A"
-    },
-    {
-        "value": "LM25117",
-        "label": "LM25117"
-    },
-    {
-        "value": "TPS51123A",
-        "label": "TPS51123A"
-    },
-    {
-        "value": "LM3242",
-        "label": "LM3242"
-    },
-    {
-        "value": "TPS54225-Q1",
-        "label": "TPS54225-Q1"
-    },
-    {
-        "value": "TPS54325-Q1",
-        "label": "TPS54325-Q1"
-    },
-    {
-        "value": "TPS54478",
-        "label": "TPS54478"
-    },
-    {
-        "value": "TPS65253",
-        "label": "TPS65253"
-    },
-    {
-        "value": "LM20143-Q1",
-        "label": "LM20143-Q1"
-    },
-    {
-        "value": "TPS40322",
-        "label": "TPS40322"
-    },
-    {
-        "value": "TPS54429",
-        "label": "TPS54429"
-    },
-    {
-        "value": "TPS54429E",
-        "label": "TPS54429E"
-    },
-    {
-        "value": "LM21305",
-        "label": "LM21305"
-    },
-    {
-        "value": "TPS62360",
-        "label": "TPS62360"
-    },
-    {
-        "value": "TPS62361B",
-        "label": "TPS62361B"
-    },
-    {
-        "value": "TPS62730",
-        "label": "TPS62730"
-    },
-    {
-        "value": "TPS82677",
-        "label": "TPS82677"
-    },
-    {
-        "value": "TPS61261",
-        "label": "TPS61261"
-    },
-    {
-        "value": "TPS53314",
-        "label": "TPS53314"
-    },
-    {
-        "value": "TPS54062",
-        "label": "TPS54062"
-    },
-    {
-        "value": "TPS61260",
-        "label": "TPS61260"
-    },
-    {
-        "value": "TPS54227",
-        "label": "TPS54227"
-    },
-    {
-        "value": "TPS54228",
-        "label": "TPS54228"
-    },
-    {
-        "value": "LM5117",
-        "label": "LM5117"
-    },
-    {
-        "value": "LM5117-Q1",
-        "label": "LM5117-Q1"
-    },
-    {
-        "value": "LMZ13608",
-        "label": "LMZ13608"
-    },
-    {
-        "value": "LMZ13610",
-        "label": "LMZ13610"
-    },
-    {
-        "value": "LMZ23608",
-        "label": "LMZ23608"
-    },
-    {
-        "value": "TPS62061",
-        "label": "TPS62061"
-    },
-    {
-        "value": "TPS62063",
-        "label": "TPS62063"
-    },
-    {
-        "value": "TPS62671",
-        "label": "TPS62671"
-    },
-    {
-        "value": "TPS62675",
-        "label": "TPS62675"
-    },
-    {
-        "value": "LM21215A",
-        "label": "LM21215A"
-    },
-    {
-        "value": "LMZ12008",
-        "label": "LMZ12008"
-    },
-    {
-        "value": "LMZ12010",
-        "label": "LMZ12010"
-    },
-    {
-        "value": "LMZ22008",
-        "label": "LMZ22008"
-    },
-    {
-        "value": "LMZ22010",
-        "label": "LMZ22010"
-    },
-    {
-        "value": "LM5006",
-        "label": "LM5006"
-    },
-    {
-        "value": "TPS51220A-Q1",
-        "label": "TPS51220A-Q1"
-    },
-    {
-        "value": "TPS51317",
-        "label": "TPS51317"
-    },
-    {
-        "value": "TPS54622",
-        "label": "TPS54622"
-    },
-    {
-        "value": "TPS40170",
-        "label": "TPS40170"
-    },
-    {
-        "value": "LM34922",
-        "label": "LM34922"
-    },
-    {
-        "value": "TPS62690",
-        "label": "TPS62690"
-    },
-    {
-        "value": "LMZ22003",
-        "label": "LMZ22003"
-    },
-    {
-        "value": "LMZ22005",
-        "label": "LMZ22005"
-    },
-    {
-        "value": "LMZ23603",
-        "label": "LMZ23603"
-    },
-    {
-        "value": "TLV61224",
-        "label": "TLV61224"
-    },
-    {
-        "value": "TPS56121",
-        "label": "TPS56121"
-    },
-    {
-        "value": "TPS56221",
-        "label": "TPS56221"
-    },
-    {
-        "value": "LM34923",
-        "label": "LM34923"
-    },
-    {
-        "value": "TPS53355",
-        "label": "TPS53355"
-    },
-    {
-        "value": "LM25088-Q1",
-        "label": "LM25088-Q1"
-    },
-    {
-        "value": "LM5088-Q1",
-        "label": "LM5088-Q1"
-    },
-    {
-        "value": "LM22680-Q1",
-        "label": "LM22680-Q1"
-    },
-    {
-        "value": "LM22676-Q1",
-        "label": "LM22676-Q1"
-    },
-    {
-        "value": "LM22678-Q1",
-        "label": "LM22678-Q1"
-    },
-    {
-        "value": "LM21212-1",
-        "label": "LM21212-1"
-    },
-    {
-        "value": "LM21212-2",
-        "label": "LM21212-2"
-    },
-    {
-        "value": "LM21215",
-        "label": "LM21215"
-    },
-    {
-        "value": "TPS62260-Q1",
-        "label": "TPS62260-Q1"
-    },
-    {
-        "value": "TPS51219",
-        "label": "TPS51219"
-    },
-    {
-        "value": "TPS62651",
-        "label": "TPS62651"
-    },
-    {
-        "value": "TPS62679",
-        "label": "TPS62679"
-    },
-    {
-        "value": "LMZ14201H",
-        "label": "LMZ14201H"
-    },
-    {
-        "value": "LMZ14202H",
-        "label": "LMZ14202H"
-    },
-    {
-        "value": "LMZ14203H",
-        "label": "LMZ14203H"
-    },
-    {
-        "value": "TLV61225",
-        "label": "TLV61225"
-    },
-    {
-        "value": "TPS53315",
-        "label": "TPS53315"
-    },
-    {
-        "value": "TPS54260-Q1",
-        "label": "TPS54260-Q1"
-    },
-    {
-        "value": "TPS54240-Q1",
-        "label": "TPS54240-Q1"
-    },
-    {
-        "value": "TPS57140-Q1",
-        "label": "TPS57140-Q1"
-    },
-    {
-        "value": "TPS57160-Q1",
-        "label": "TPS57160-Q1"
-    },
-    {
-        "value": "TPS57040-Q1",
-        "label": "TPS57040-Q1"
-    },
-    {
-        "value": "TPS57060-Q1",
-        "label": "TPS57060-Q1"
-    },
-    {
-        "value": "TPS61240-Q1",
-        "label": "TPS61240-Q1"
-    },
-    {
-        "value": "TPS62590-Q1",
-        "label": "TPS62590-Q1"
-    },
-    {
-        "value": "TPS51461",
-        "label": "TPS51461"
-    },
-    {
-        "value": "TPS53310",
-        "label": "TPS53310"
-    },
-    {
-        "value": "TPS53321",
-        "label": "TPS53321"
-    },
-    {
-        "value": "LM8850",
-        "label": "LM8850"
-    },
-    {
-        "value": "TPS5401",
-        "label": "TPS5401"
-    },
-    {
-        "value": "TLV62065",
-        "label": "TLV62065"
-    },
-    {
-        "value": "TPS51211",
-        "label": "TPS51211"
-    },
-    {
-        "value": "TPS54328",
-        "label": "TPS54328"
-    },
-    {
-        "value": "TPS54327",
-        "label": "TPS54327"
-    },
-    {
-        "value": "TPS54618",
-        "label": "TPS54618"
-    },
-    {
-        "value": "TPS54331-Q1",
-        "label": "TPS54331-Q1"
-    },
-    {
-        "value": "TPS82671",
-        "label": "TPS82671"
-    },
-    {
-        "value": "TPS82675",
-        "label": "TPS82675"
-    },
-    {
-        "value": "LM8801",
-        "label": "LM8801"
-    },
-    {
-        "value": "TPS59620",
-        "label": "TPS59620"
-    },
-    {
-        "value": "TPS61251",
-        "label": "TPS61251"
-    },
-    {
-        "value": "TPS61252",
-        "label": "TPS61252"
-    },
-    {
-        "value": "PTD08A210W",
-        "label": "PTD08A210W"
-    },
-    {
-        "value": "TL2575HV-05-Q1",
-        "label": "TL2575HV-05-Q1"
-    },
-    {
-        "value": "TL2575HV-33-Q1",
-        "label": "TL2575HV-33-Q1"
-    },
-    {
-        "value": "TPS62290-Q1",
-        "label": "TPS62290-Q1"
-    },
-    {
-        "value": "TPS62293-Q1",
-        "label": "TPS62293-Q1"
-    },
-    {
-        "value": "TPS62665",
-        "label": "TPS62665"
-    },
-    {
-        "value": "LM25119",
-        "label": "LM25119"
-    },
-    {
-        "value": "LM5119",
-        "label": "LM5119"
-    },
-    {
-        "value": "TPS54320",
-        "label": "TPS54320"
-    },
-    {
-        "value": "TPS62120",
-        "label": "TPS62120"
-    },
-    {
-        "value": "TPS53128",
-        "label": "TPS53128"
-    },
-    {
-        "value": "TPS53129",
-        "label": "TPS53129"
-    },
-    {
-        "value": "TPS54425",
-        "label": "TPS54425"
-    },
-    {
-        "value": "TPS54426",
-        "label": "TPS54426"
-    },
-    {
-        "value": "TPS62421",
-        "label": "TPS62421"
-    },
-    {
-        "value": "LMZ12001EXT",
-        "label": "LMZ12001EXT"
-    },
-    {
-        "value": "LMZ12002EXT",
-        "label": "LMZ12002EXT"
-    },
-    {
-        "value": "LMZ12003EXT",
-        "label": "LMZ12003EXT"
-    },
-    {
-        "value": "LMZ14201EXT",
-        "label": "LMZ14201EXT"
-    },
-    {
-        "value": "LMZ14202EXT",
-        "label": "LMZ14202EXT"
-    },
-    {
-        "value": "LMZ14203EXT",
-        "label": "LMZ14203EXT"
-    },
-    {
-        "value": "TPS62122",
-        "label": "TPS62122"
-    },
-    {
-        "value": "LMZ10503EXT",
-        "label": "LMZ10503EXT"
-    },
-    {
-        "value": "LMZ10504EXT",
-        "label": "LMZ10504EXT"
-    },
-    {
-        "value": "LMZ10505EXT",
-        "label": "LMZ10505EXT"
-    },
-    {
-        "value": "TPS40210-HT",
-        "label": "TPS40210-HT"
-    },
-    {
-        "value": "TPS54521",
-        "label": "TPS54521"
-    },
-    {
-        "value": "LM34919B-Q1",
-        "label": "LM34919B-Q1"
-    },
-    {
-        "value": "SM72442",
-        "label": "SM72442"
-    },
-    {
-        "value": "SM72485",
-        "label": "SM72485"
-    },
-    {
-        "value": "TPS53311",
-        "label": "TPS53311"
-    },
-    {
-        "value": "TPS54319",
-        "label": "TPS54319"
-    },
-    {
-        "value": "LM34919B",
-        "label": "LM34919B"
-    },
-    {
-        "value": "PTD08D210W",
-        "label": "PTD08D210W"
-    },
-    {
-        "value": "TPS59621",
-        "label": "TPS59621"
-    },
-    {
-        "value": "TPS40304A",
-        "label": "TPS40304A"
-    },
-    {
-        "value": "TPS62404",
-        "label": "TPS62404"
-    },
-    {
-        "value": "TPS62674",
-        "label": "TPS62674"
-    },
-    {
-        "value": "TPS54240",
-        "label": "TPS54240"
-    },
-    {
-        "value": "TPS65251",
-        "label": "TPS65251"
-    },
-    {
-        "value": "TPS59610",
-        "label": "TPS59610"
-    },
-    {
-        "value": "TPS62410-Q1",
-        "label": "TPS62410-Q1"
-    },
-    {
-        "value": "TPS63020",
-        "label": "TPS63020"
-    },
-    {
-        "value": "TPS63021",
-        "label": "TPS63021"
-    },
-    {
-        "value": "TPS61071-Q1",
-        "label": "TPS61071-Q1"
-    },
-    {
-        "value": "LMZ12001",
-        "label": "LMZ12001"
-    },
-    {
-        "value": "LMZ12002",
-        "label": "LMZ12002"
-    },
-    {
-        "value": "LMZ14201",
-        "label": "LMZ14201"
-    },
-    {
-        "value": "LMZ14202",
-        "label": "LMZ14202"
-    },
-    {
-        "value": "TPS62612",
-        "label": "TPS62612"
-    },
-    {
-        "value": "TPS62616",
-        "label": "TPS62616"
-    },
-    {
-        "value": "TPS62619",
-        "label": "TPS62619"
-    },
-    {
-        "value": "TPS62660",
-        "label": "TPS62660"
-    },
-    {
-        "value": "TPS53127",
-        "label": "TPS53127"
-    },
-    {
-        "value": "TPS54260",
-        "label": "TPS54260"
-    },
-    {
-        "value": "TPS62060",
-        "label": "TPS62060"
-    },
-    {
-        "value": "LMZ23610",
-        "label": "LMZ23610"
-    },
-    {
-        "value": "TPS62065",
-        "label": "TPS62065"
-    },
-    {
-        "value": "TPS62067",
-        "label": "TPS62067"
-    },
-    {
-        "value": "LMZ10503",
-        "label": "LMZ10503"
-    },
-    {
-        "value": "LMZ10505",
-        "label": "LMZ10505"
-    },
-    {
-        "value": "TPS62110-Q1",
-        "label": "TPS62110-Q1"
-    },
-    {
-        "value": "LM3241",
-        "label": "LM3241"
-    },
-    {
-        "value": "LMZ10504",
-        "label": "LMZ10504"
-    },
-    {
-        "value": "LMZ12003",
-        "label": "LMZ12003"
-    },
-    {
-        "value": "LMZ14203",
-        "label": "LMZ14203"
-    },
-    {
-        "value": "TPS62261-Q1",
-        "label": "TPS62261-Q1"
-    },
-    {
-        "value": "TPS62262-Q1",
-        "label": "TPS62262-Q1"
-    },
-    {
-        "value": "TPS62263-Q1",
-        "label": "TPS62263-Q1"
-    },
-    {
-        "value": "TPS62404-Q1",
-        "label": "TPS62404-Q1"
-    },
-    {
-        "value": "TPS62420-Q1",
-        "label": "TPS62420-Q1"
-    },
-    {
-        "value": "TPS62615",
-        "label": "TPS62615"
-    },
-    {
-        "value": "TPS51125A",
-        "label": "TPS51125A"
-    },
-    {
-        "value": "TPS61085T",
-        "label": "TPS61085T"
-    },
-    {
-        "value": "TPS65232A0",
-        "label": "TPS65232A0"
-    },
-    {
-        "value": "TPS65232A2",
-        "label": "TPS65232A2"
-    },
-    {
-        "value": "PTD08A015W",
-        "label": "PTD08A015W"
-    },
-    {
-        "value": "TPS40303",
-        "label": "TPS40303"
-    },
-    {
-        "value": "TPS40304",
-        "label": "TPS40304"
-    },
-    {
-        "value": "TPS40305",
-        "label": "TPS40305"
-    },
-    {
-        "value": "TPS51611",
-        "label": "TPS51611"
-    },
-    {
-        "value": "LMZ23605",
-        "label": "LMZ23605"
-    },
-    {
-        "value": "TPS54290",
-        "label": "TPS54290"
-    },
-    {
-        "value": "TPS54291",
-        "label": "TPS54291"
-    },
-    {
-        "value": "TPS54292",
-        "label": "TPS54292"
-    },
-    {
-        "value": "TPS51621",
-        "label": "TPS51621"
-    },
-    {
-        "value": "TPS54226",
-        "label": "TPS54226"
-    },
-    {
-        "value": "TPS54225",
-        "label": "TPS54225"
-    },
-    {
-        "value": "TPS53125",
-        "label": "TPS53125"
-    },
-    {
-        "value": "TPS54326",
-        "label": "TPS54326"
-    },
-    {
-        "value": "TPS54162-Q1",
-        "label": "TPS54162-Q1"
-    },
-    {
-        "value": "TPS40200-HT",
-        "label": "TPS40200-HT"
-    },
-    {
-        "value": "TPS60151",
-        "label": "TPS60151"
-    },
-    {
-        "value": "TPS61029-Q1",
-        "label": "TPS61029-Q1"
-    },
-    {
-        "value": "TPS61093",
-        "label": "TPS61093"
-    },
-    {
-        "value": "LM3209-G3",
-        "label": "LM3209-G3"
-    },
-    {
-        "value": "TPS51513",
-        "label": "TPS51513"
-    },
-    {
-        "value": "TPS54262-Q1",
-        "label": "TPS54262-Q1"
-    },
-    {
-        "value": "TPS5410-Q1",
-        "label": "TPS5410-Q1"
-    },
-    {
-        "value": "TPS62751",
-        "label": "TPS62751"
-    },
-    {
-        "value": "TPS54318",
-        "label": "TPS54318"
-    },
-    {
-        "value": "TPS5410-EP",
-        "label": "TPS5410-EP"
-    },
-    {
-        "value": "LM25085-Q1",
-        "label": "LM25085-Q1"
-    },
-    {
-        "value": "TPS54218",
-        "label": "TPS54218"
-    },
-    {
-        "value": "TPS61086",
-        "label": "TPS61086"
-    },
-    {
-        "value": "TPS62650",
-        "label": "TPS62650"
-    },
-    {
-        "value": "TPS5450-EP",
-        "label": "TPS5450-EP"
-    },
-    {
-        "value": "TPS62621",
-        "label": "TPS62621"
-    },
-    {
-        "value": "TPS62622",
-        "label": "TPS62622"
-    },
-    {
-        "value": "TPS62623",
-        "label": "TPS62623"
-    },
-    {
-        "value": "TPS62624",
-        "label": "TPS62624"
-    },
-    {
-        "value": "TPS62625",
-        "label": "TPS62625"
-    },
-    {
-        "value": "TPS62750",
-        "label": "TPS62750"
-    },
-    {
-        "value": "LM5118-Q1",
-        "label": "LM5118-Q1"
-    },
-    {
-        "value": "REG71055-Q1",
-        "label": "REG71055-Q1"
-    },
-    {
-        "value": "TPS63000-Q1",
-        "label": "TPS63000-Q1"
-    },
-    {
-        "value": "TPS55332-Q1",
-        "label": "TPS55332-Q1"
-    },
-    {
-        "value": "PTD08A006W",
-        "label": "PTD08A006W"
-    },
-    {
-        "value": "TPS51217",
-        "label": "TPS51217"
-    },
-    {
-        "value": "LM10500",
-        "label": "LM10500"
-    },
-    {
-        "value": "TPS53126",
-        "label": "TPS53126"
-    },
-    {
-        "value": "TPS54325",
-        "label": "TPS54325"
-    },
-    {
-        "value": "TPS54620",
-        "label": "TPS54620"
-    },
-    {
-        "value": "LM26420",
-        "label": "LM26420"
-    },
-    {
-        "value": "TPS54418",
-        "label": "TPS54418"
-    },
-    {
-        "value": "LM5008A",
-        "label": "LM5008A"
-    },
-    {
-        "value": "LM5009A",
-        "label": "LM5009A"
-    },
-    {
-        "value": "TPS51163",
-        "label": "TPS51163"
-    },
-    {
-        "value": "TPS51218",
-        "label": "TPS51218"
-    },
-    {
-        "value": "TPS61241",
-        "label": "TPS61241"
-    },
-    {
-        "value": "TPS61240",
-        "label": "TPS61240"
-    },
-    {
-        "value": "TPS62230",
-        "label": "TPS62230"
-    },
-    {
-        "value": "LM3478Q-Q1",
-        "label": "LM3478Q-Q1"
-    },
-    {
-        "value": "LM3488Q-Q1",
-        "label": "LM3488Q-Q1"
-    },
-    {
-        "value": "TPS53114",
-        "label": "TPS53114"
-    },
-    {
-        "value": "LM26001-Q1",
-        "label": "LM26001-Q1"
-    },
-    {
-        "value": "TPS62000-HT",
-        "label": "TPS62000-HT"
-    },
-    {
-        "value": "TPS5130-Q1",
-        "label": "TPS5130-Q1"
-    },
-    {
-        "value": "TPS5430-EP",
-        "label": "TPS5430-EP"
-    },
-    {
-        "value": "TPS51113",
-        "label": "TPS51113"
-    },
-    {
-        "value": "TPS54040",
-        "label": "TPS54040"
-    },
-    {
-        "value": "LM25011",
-        "label": "LM25011"
-    },
-    {
-        "value": "LM25011-Q1",
-        "label": "LM25011-Q1"
-    },
-    {
-        "value": "TPS62620",
-        "label": "TPS62620"
-    },
-    {
-        "value": "TPS62272",
-        "label": "TPS62272"
-    },
-    {
-        "value": "TPS54060",
-        "label": "TPS54060"
-    },
-    {
-        "value": "LM25576-Q1",
-        "label": "LM25576-Q1"
-    },
-    {
-        "value": "TPS62113",
-        "label": "TPS62113"
-    },
-    {
-        "value": "TPS62225",
-        "label": "TPS62225"
-    },
-    {
-        "value": "LM20136",
-        "label": "LM20136"
-    },
-    {
-        "value": "LM20146",
-        "label": "LM20146"
-    },
-    {
-        "value": "LM25574-Q1",
-        "label": "LM25574-Q1"
-    },
-    {
-        "value": "LM25575-Q1",
-        "label": "LM25575-Q1"
-    },
-    {
-        "value": "LM25085A",
-        "label": "LM25085A"
-    },
-    {
-        "value": "TPS61220",
-        "label": "TPS61220"
-    },
-    {
-        "value": "TPS61221",
-        "label": "TPS61221"
-    },
-    {
-        "value": "TPS61222",
-        "label": "TPS61222"
-    },
-    {
-        "value": "TPS62590",
-        "label": "TPS62590"
-    },
-    {
-        "value": "LM27402",
-        "label": "LM27402"
-    },
-    {
-        "value": "PTH08T255W",
-        "label": "PTH08T255W"
-    },
-    {
-        "value": "TPS54332",
-        "label": "TPS54332"
-    },
-    {
-        "value": "TPS51220A",
-        "label": "TPS51220A"
-    },
-    {
-        "value": "TPS51123",
-        "label": "TPS51123"
-    },
-    {
-        "value": "PTH04T240F",
-        "label": "PTH04T240F"
-    },
-    {
-        "value": "TPS60150",
-        "label": "TPS60150"
-    },
-    {
-        "value": "TPS62562",
-        "label": "TPS62562"
-    },
-    {
-        "value": "TPS54232",
-        "label": "TPS54232"
-    },
-    {
-        "value": "LM22680",
-        "label": "LM22680"
-    },
-    {
-        "value": "TPS61175",
-        "label": "TPS61175"
-    },
-    {
-        "value": "LM25088",
-        "label": "LM25088"
-    },
-    {
-        "value": "LM5088",
-        "label": "LM5088"
-    },
-    {
-        "value": "TPS54140",
-        "label": "TPS54140"
-    },
-    {
-        "value": "TPS40197",
-        "label": "TPS40197"
-    },
-    {
-        "value": "LM25010-Q1",
-        "label": "LM25010-Q1"
-    },
-    {
-        "value": "LM5010A-Q1",
-        "label": "LM5010A-Q1"
-    },
-    {
-        "value": "TPS54617",
-        "label": "TPS54617"
-    },
-    {
-        "value": "TPS54917",
-        "label": "TPS54917"
-    },
-    {
-        "value": "TPS62561",
-        "label": "TPS62561"
-    },
-    {
-        "value": "LM25085",
-        "label": "LM25085"
-    },
-    {
-        "value": "TPS62250",
-        "label": "TPS62250"
-    },
-    {
-        "value": "LM7705",
-        "label": "LM7705"
-    },
-    {
-        "value": "TPS54233",
-        "label": "TPS54233"
-    },
-    {
-        "value": "TPS63030",
-        "label": "TPS63030"
-    },
-    {
-        "value": "TPS63031",
-        "label": "TPS63031"
-    },
-    {
-        "value": "TPS54160",
-        "label": "TPS54160"
-    },
-    {
-        "value": "LM5116WG",
-        "label": "LM5116WG"
-    },
-    {
-        "value": "LM22673",
-        "label": "LM22673"
-    },
-    {
-        "value": "LM22676",
-        "label": "LM22676"
-    },
-    {
-        "value": "LM22678",
-        "label": "LM22678"
-    },
-    {
-        "value": "LM22679",
-        "label": "LM22679"
-    },
-    {
-        "value": "LM5576-Q1",
-        "label": "LM5576-Q1"
-    },
-    {
-        "value": "TPS54231",
-        "label": "TPS54231"
-    },
-    {
-        "value": "LM5574-Q1",
-        "label": "LM5574-Q1"
-    },
-    {
-        "value": "TPS55065-Q1",
-        "label": "TPS55065-Q1"
-    },
-    {
-        "value": "TPS55383",
-        "label": "TPS55383"
-    },
-    {
-        "value": "TPS55386",
-        "label": "TPS55386"
-    },
-    {
-        "value": "LM22670",
-        "label": "LM22670"
-    },
-    {
-        "value": "LM22670-Q1",
-        "label": "LM22670-Q1"
-    },
-    {
-        "value": "LM22677",
-        "label": "LM22677"
-    },
-    {
-        "value": "LM22677-Q1",
-        "label": "LM22677-Q1"
-    },
-    {
-        "value": "LM3150",
-        "label": "LM3150"
-    },
-    {
-        "value": "LM5575-Q1",
-        "label": "LM5575-Q1"
-    },
-    {
-        "value": "TPS40210-Q1",
-        "label": "TPS40210-Q1"
-    },
-    {
-        "value": "TPS40211-Q1",
-        "label": "TPS40211-Q1"
-    },
-    {
-        "value": "TPS51610",
-        "label": "TPS51610"
-    },
-    {
-        "value": "TPS5450-Q1",
-        "label": "TPS5450-Q1"
-    },
-    {
-        "value": "TPS62701",
-        "label": "TPS62701"
-    },
-    {
-        "value": "TPS54331",
-        "label": "TPS54331"
-    },
-    {
-        "value": "LM20343",
-        "label": "LM20343"
-    },
-    {
-        "value": "LM5085",
-        "label": "LM5085"
-    },
-    {
-        "value": "LM5085-Q1",
-        "label": "LM5085-Q1"
-    },
-    {
-        "value": "TPS62273",
-        "label": "TPS62273"
-    },
-    {
-        "value": "TPS40090-Q1",
-        "label": "TPS40090-Q1"
-    },
-    {
-        "value": "TPS54110-Q1",
-        "label": "TPS54110-Q1"
-    },
-    {
-        "value": "TPS61085",
-        "label": "TPS61085"
-    },
-    {
-        "value": "TPS63010",
-        "label": "TPS63010"
-    },
-    {
-        "value": "TPS63011",
-        "label": "TPS63011"
-    },
-    {
-        "value": "TPS63012",
-        "label": "TPS63012"
-    },
-    {
-        "value": "LM3489-Q1",
-        "label": "LM3489-Q1"
-    },
-    {
-        "value": "TPS62601",
-        "label": "TPS62601"
-    },
-    {
-        "value": "LM20323",
-        "label": "LM20323"
-    },
-    {
-        "value": "LM20333",
-        "label": "LM20333"
-    },
-    {
-        "value": "TPS61087",
-        "label": "TPS61087"
-    },
-    {
-        "value": "TPS54310-EP",
-        "label": "TPS54310-EP"
-    },
-    {
-        "value": "LM5118",
-        "label": "LM5118"
-    },
-    {
-        "value": "TPS51427",
-        "label": "TPS51427"
-    },
-    {
-        "value": "TPS51727",
-        "label": "TPS51727"
-    },
-    {
-        "value": "LM22671",
-        "label": "LM22671"
-    },
-    {
-        "value": "LM22671-Q1",
-        "label": "LM22671-Q1"
-    },
-    {
-        "value": "LM22672",
-        "label": "LM22672"
-    },
-    {
-        "value": "LM22672-Q1",
-        "label": "LM22672-Q1"
-    },
-    {
-        "value": "LM2738",
-        "label": "LM2738"
-    },
-    {
-        "value": "LM2854",
-        "label": "LM2854"
-    },
-    {
-        "value": "PTD08A020W",
-        "label": "PTD08A020W"
-    },
-    {
-        "value": "TPS62291",
-        "label": "TPS62291"
-    },
-    {
-        "value": "LM34917A",
-        "label": "LM34917A"
-    },
-    {
-        "value": "TPS40210",
-        "label": "TPS40210"
-    },
-    {
-        "value": "TPS40211",
-        "label": "TPS40211"
-    },
-    {
-        "value": "LM2830-Q1",
-        "label": "LM2830-Q1"
-    },
-    {
-        "value": "TPS62263",
-        "label": "TPS62263"
-    },
-    {
-        "value": "LM2734Z-Q1",
-        "label": "LM2734Z-Q1"
-    },
-    {
-        "value": "PTD08A010W",
-        "label": "PTD08A010W"
-    },
-    {
-        "value": "TPS53124",
-        "label": "TPS53124"
-    },
-    {
-        "value": "TPS62560",
-        "label": "TPS62560"
-    },
-    {
-        "value": "TPS62293",
-        "label": "TPS62293"
-    },
-    {
-        "value": "LM2773",
-        "label": "LM2773"
-    },
-    {
-        "value": "LM22674",
-        "label": "LM22674"
-    },
-    {
-        "value": "LM22674-Q1",
-        "label": "LM22674-Q1"
-    },
-    {
-        "value": "LM22675",
-        "label": "LM22675"
-    },
-    {
-        "value": "LM22675-Q1",
-        "label": "LM22675-Q1"
-    },
-    {
-        "value": "TPS40200-Q1",
-        "label": "TPS40200-Q1"
-    },
-    {
-        "value": "LM2841",
-        "label": "LM2841"
-    },
-    {
-        "value": "LM2841-Q1",
-        "label": "LM2841-Q1"
-    },
-    {
-        "value": "TPS40042",
-        "label": "TPS40042"
-    },
-    {
-        "value": "TPS51620",
-        "label": "TPS51620"
-    },
-    {
-        "value": "TPS62700",
-        "label": "TPS62700"
-    },
-    {
-        "value": "TPS62356",
-        "label": "TPS62356"
-    },
-    {
-        "value": "TPS5420-Q1",
-        "label": "TPS5420-Q1"
-    },
-    {
-        "value": "TPS62270",
-        "label": "TPS62270"
-    },
-    {
-        "value": "TPS5430-Q1",
-        "label": "TPS5430-Q1"
-    },
-    {
-        "value": "TPS51220",
-        "label": "TPS51220"
-    },
-    {
-        "value": "TPS62112-EP",
-        "label": "TPS62112-EP"
-    },
-    {
-        "value": "TPS61170",
-        "label": "TPS61170"
-    },
-    {
-        "value": "LM3679",
-        "label": "LM3679"
-    },
-    {
-        "value": "LM20123",
-        "label": "LM20123"
-    },
-    {
-        "value": "LM20124",
-        "label": "LM20124"
-    },
-    {
-        "value": "LM20125",
-        "label": "LM20125"
-    },
-    {
-        "value": "LM20133",
-        "label": "LM20133"
-    },
-    {
-        "value": "LM20134",
-        "label": "LM20134"
-    },
-    {
-        "value": "LM20143",
-        "label": "LM20143"
-    },
-    {
-        "value": "LM20144",
-        "label": "LM20144"
-    },
-    {
-        "value": "LM20145",
-        "label": "LM20145"
-    },
-    {
-        "value": "LM20154",
-        "label": "LM20154"
-    },
-    {
-        "value": "TPS62242",
-        "label": "TPS62242"
-    },
-    {
-        "value": "TPS51125",
-        "label": "TPS51125"
-    },
-    {
-        "value": "LM2757",
-        "label": "LM2757"
-    },
-    {
-        "value": "TPS62355",
-        "label": "TPS62355"
-    },
-    {
-        "value": "LM4510",
-        "label": "LM4510"
-    },
-    {
-        "value": "TPS62111-EP",
-        "label": "TPS62111-EP"
-    },
-    {
-        "value": "LM3102",
-        "label": "LM3102"
-    },
-    {
-        "value": "LM3103",
-        "label": "LM3103"
-    },
-    {
-        "value": "TPS54283",
-        "label": "TPS54283"
-    },
-    {
-        "value": "TPS54286",
-        "label": "TPS54286"
-    },
-    {
-        "value": "TPS54383",
-        "label": "TPS54383"
-    },
-    {
-        "value": "TPS54386",
-        "label": "TPS54386"
-    },
-    {
-        "value": "PTH08T250W",
-        "label": "PTH08T250W"
-    },
-    {
-        "value": "LM3153",
-        "label": "LM3153"
-    },
-    {
-        "value": "TPS62240",
-        "label": "TPS62240"
-    },
-    {
-        "value": "TPS62243",
-        "label": "TPS62243"
-    },
-    {
-        "value": "TPS62260",
-        "label": "TPS62260"
-    },
-    {
-        "value": "TPS62261",
-        "label": "TPS62261"
-    },
-    {
-        "value": "TPS62262",
-        "label": "TPS62262"
-    },
-    {
-        "value": "TPS62290",
-        "label": "TPS62290"
-    },
-    {
-        "value": "TPS62351",
-        "label": "TPS62351"
-    },
-    {
-        "value": "LM34910C",
-        "label": "LM34910C"
-    },
-    {
-        "value": "LM34919",
-        "label": "LM34919"
-    },
-    {
-        "value": "TPS61073",
-        "label": "TPS61073"
-    },
-    {
-        "value": "LM26001B",
-        "label": "LM26001B"
-    },
-    {
-        "value": "PTH04T221W",
-        "label": "PTH04T221W"
-    },
-    {
-        "value": "PTH04T241W",
-        "label": "PTH04T241W"
-    },
-    {
-        "value": "LM25116",
-        "label": "LM25116"
-    },
-    {
-        "value": "TPS5450",
-        "label": "TPS5450"
-    },
-    {
-        "value": "TPS40192",
-        "label": "TPS40192"
-    },
-    {
-        "value": "TPS40193",
-        "label": "TPS40193"
-    },
-    {
-        "value": "TPS61200",
-        "label": "TPS61200"
-    },
-    {
-        "value": "TPS61201",
-        "label": "TPS61201"
-    },
-    {
-        "value": "TPS61202",
-        "label": "TPS61202"
-    },
-    {
-        "value": "LM5015",
-        "label": "LM5015"
-    },
-    {
-        "value": "TPS40131",
-        "label": "TPS40131"
-    },
-    {
-        "value": "TPS54311-EP",
-        "label": "TPS54311-EP"
-    },
-    {
-        "value": "TPS54313-EP",
-        "label": "TPS54313-EP"
-    },
-    {
-        "value": "TPS54314-EP",
-        "label": "TPS54314-EP"
-    },
-    {
-        "value": "TPS54315-EP",
-        "label": "TPS54315-EP"
-    },
-    {
-        "value": "TPS54316-EP",
-        "label": "TPS54316-EP"
-    },
-    {
-        "value": "TPS62354",
-        "label": "TPS62354"
-    },
-    {
-        "value": "TPS62353",
-        "label": "TPS62353"
-    },
-    {
-        "value": "TPS62402",
-        "label": "TPS62402"
-    },
-    {
-        "value": "TPS62410",
-        "label": "TPS62410"
-    },
-    {
-        "value": "LM27342",
-        "label": "LM27342"
-    },
-    {
-        "value": "LM27342-Q1",
-        "label": "LM27342-Q1"
-    },
-    {
-        "value": "TPIC74100-Q1",
-        "label": "TPIC74100-Q1"
-    },
-    {
-        "value": "LM3691",
-        "label": "LM3691"
-    },
-    {
-        "value": "TPS40195",
-        "label": "TPS40195"
-    },
-    {
-        "value": "LM26400Y",
-        "label": "LM26400Y"
-    },
-    {
-        "value": "LM25115A",
-        "label": "LM25115A"
-    },
-    {
-        "value": "TPS54312-EP",
-        "label": "TPS54312-EP"
-    },
-    {
-        "value": "TPS62110-EP",
-        "label": "TPS62110-EP"
-    },
-    {
-        "value": "TPS40077",
-        "label": "TPS40077"
-    },
-    {
-        "value": "TPS61080",
-        "label": "TPS61080"
-    },
-    {
-        "value": "TPS61081",
-        "label": "TPS61081"
-    },
-    {
-        "value": "LM25574",
-        "label": "LM25574"
-    },
-    {
-        "value": "LM25575",
-        "label": "LM25575"
-    },
-    {
-        "value": "LM25576",
-        "label": "LM25576"
-    },
-    {
-        "value": "LM5001",
-        "label": "LM5001"
-    },
-    {
-        "value": "LM5002",
-        "label": "LM5002"
-    },
-    {
-        "value": "LM5574",
-        "label": "LM5574"
-    },
-    {
-        "value": "LM5575",
-        "label": "LM5575"
-    },
-    {
-        "value": "LM5576",
-        "label": "LM5576"
-    },
-    {
-        "value": "TPS61072",
-        "label": "TPS61072"
-    },
-    {
-        "value": "TPS40200-EP",
-        "label": "TPS40200-EP"
-    },
-    {
-        "value": "TPS54354-EP",
-        "label": "TPS54354-EP"
-    },
-    {
-        "value": "LM5022",
-        "label": "LM5022"
-    },
-    {
-        "value": "PTH04T220W",
-        "label": "PTH04T220W"
-    },
-    {
-        "value": "TPS5420-EP",
-        "label": "TPS5420-EP"
-    },
-    {
-        "value": "LM27313",
-        "label": "LM27313"
-    },
-    {
-        "value": "TPS62352",
-        "label": "TPS62352"
-    },
-    {
-        "value": "TPS62403",
-        "label": "TPS62403"
-    },
-    {
-        "value": "TL2575HV-05",
-        "label": "TL2575HV-05"
-    },
-    {
-        "value": "TL2575HV-12",
-        "label": "TL2575HV-12"
-    },
-    {
-        "value": "TL2575HV-15",
-        "label": "TL2575HV-15"
-    },
-    {
-        "value": "TL2575HV-33",
-        "label": "TL2575HV-33"
-    },
-    {
-        "value": "TL2575HV-ADJ",
-        "label": "TL2575HV-ADJ"
-    },
-    {
-        "value": "LM3676",
-        "label": "LM3676"
-    },
-    {
-        "value": "LM3151",
-        "label": "LM3151"
-    },
-    {
-        "value": "LM3152",
-        "label": "LM3152"
-    },
-    {
-        "value": "PTH08T241W",
-        "label": "PTH08T241W"
-    },
-    {
-        "value": "LM2772",
-        "label": "LM2772"
-    },
-    {
-        "value": "LM34914",
-        "label": "LM34914"
-    },
-    {
-        "value": "LM2853",
-        "label": "LM2853"
-    },
-    {
-        "value": "TPS40101",
-        "label": "TPS40101"
-    },
-    {
-        "value": "PTH04T240W",
-        "label": "PTH04T240W"
-    },
-    {
-        "value": "TPS5410",
-        "label": "TPS5410"
-    },
-    {
-        "value": "LM3677",
-        "label": "LM3677"
-    },
-    {
-        "value": "TL7660",
-        "label": "TL7660"
-    },
-    {
-        "value": "LM2830",
-        "label": "LM2830"
-    },
-    {
-        "value": "LM2831",
-        "label": "LM2831"
-    },
-    {
-        "value": "LM2840",
-        "label": "LM2840"
-    },
-    {
-        "value": "LM2840-Q1",
-        "label": "LM2840-Q1"
-    },
-    {
-        "value": "LM2842",
-        "label": "LM2842"
-    },
-    {
-        "value": "LM2842-Q1",
-        "label": "LM2842-Q1"
-    },
-    {
-        "value": "TL2575-12",
-        "label": "TL2575-12"
-    },
-    {
-        "value": "TPS62400",
-        "label": "TPS62400"
-    },
-    {
-        "value": "TPS62401",
-        "label": "TPS62401"
-    },
-    {
-        "value": "TPS62420",
-        "label": "TPS62420"
-    },
-    {
-        "value": "LM3678",
-        "label": "LM3678"
-    },
-    {
-        "value": "LM2833",
-        "label": "LM2833"
-    },
-    {
-        "value": "TL2575-15",
-        "label": "TL2575-15"
-    },
-    {
-        "value": "TL2575-ADJ",
-        "label": "TL2575-ADJ"
-    },
-    {
-        "value": "TPS62350",
-        "label": "TPS62350"
-    },
-    {
-        "value": "LM1771",
-        "label": "LM1771"
-    },
-    {
-        "value": "PTH08T230W",
-        "label": "PTH08T230W"
-    },
-    {
-        "value": "TPS40075",
-        "label": "TPS40075"
-    },
-    {
-        "value": "LM2832",
-        "label": "LM2832"
-    },
-    {
-        "value": "LM26001",
-        "label": "LM26001"
-    },
-    {
-        "value": "LM3489",
-        "label": "LM3489"
-    },
-    {
-        "value": "TPS62510",
-        "label": "TPS62510"
-    },
-    {
-        "value": "LM2694",
-        "label": "LM2694"
-    },
-    {
-        "value": "TPS40056",
-        "label": "TPS40056"
-    },
-    {
-        "value": "TPS5420",
-        "label": "TPS5420"
-    },
-    {
-        "value": "TPS5431",
-        "label": "TPS5431"
-    },
-    {
-        "value": "TPS63000",
-        "label": "TPS63000"
-    },
-    {
-        "value": "TPS63001",
-        "label": "TPS63001"
-    },
-    {
-        "value": "TPS63002",
-        "label": "TPS63002"
-    },
-    {
-        "value": "TPS40040",
-        "label": "TPS40040"
-    },
-    {
-        "value": "TPS40041",
-        "label": "TPS40041"
-    },
-    {
-        "value": "TPS62227",
-        "label": "TPS62227"
-    },
-    {
-        "value": "LM2771",
-        "label": "LM2771"
-    },
-    {
-        "value": "TPS61026",
-        "label": "TPS61026"
-    },
-    {
-        "value": "TPS61029",
-        "label": "TPS61029"
-    },
-    {
-        "value": "LM5009",
-        "label": "LM5009"
-    },
-    {
-        "value": "LM27341",
-        "label": "LM27341"
-    },
-    {
-        "value": "LM27341-Q1",
-        "label": "LM27341-Q1"
-    },
-    {
-        "value": "TPS40200",
-        "label": "TPS40200"
-    },
-    {
-        "value": "TPS5430",
-        "label": "TPS5430"
-    },
-    {
-        "value": "TL2575-05",
-        "label": "TL2575-05"
-    },
-    {
-        "value": "TL2575-33",
-        "label": "TL2575-33"
-    },
-    {
-        "value": "LM3100",
-        "label": "LM3100"
-    },
-    {
-        "value": "LM25007",
-        "label": "LM25007"
-    },
-    {
-        "value": "LM25005",
-        "label": "LM25005"
-    },
-    {
-        "value": "LM2717-ADJ",
-        "label": "LM2717-ADJ"
-    },
-    {
-        "value": "TPS54317",
-        "label": "TPS54317"
-    },
-    {
-        "value": "LM3674",
-        "label": "LM3674"
-    },
-    {
-        "value": "PTH05T210W",
-        "label": "PTH05T210W"
-    },
-    {
-        "value": "PTH08T240W",
-        "label": "PTH08T240W"
-    },
-    {
-        "value": "TPS51117",
-        "label": "TPS51117"
-    },
-    {
-        "value": "TPS51124",
-        "label": "TPS51124"
-    },
-    {
-        "value": "TPS62304",
-        "label": "TPS62304"
-    },
-    {
-        "value": "LM25010",
-        "label": "LM25010"
-    },
-    {
-        "value": "TL1451A-EP",
-        "label": "TL1451A-EP"
-    },
-    {
-        "value": "LM5116",
-        "label": "LM5116"
-    },
-    {
-        "value": "LM5642X",
-        "label": "LM5642X"
-    },
-    {
-        "value": "LM25115",
-        "label": "LM25115"
-    },
-    {
-        "value": "PTH08T210W",
-        "label": "PTH08T210W"
-    },
-    {
-        "value": "PTV08T250W",
-        "label": "PTV08T250W"
-    },
-    {
-        "value": "TPS40222",
-        "label": "TPS40222"
-    },
-    {
-        "value": "LM5010A",
-        "label": "LM5010A"
-    },
-    {
-        "value": "TPS54350-EP",
-        "label": "TPS54350-EP"
-    },
-    {
-        "value": "LM2696",
-        "label": "LM2696"
-    },
-    {
-        "value": "PTV08040W",
-        "label": "PTV08040W"
-    },
-    {
-        "value": "TPS63700",
-        "label": "TPS63700"
-    },
-    {
-        "value": "PTN04050C",
-        "label": "PTN04050C"
-    },
-    {
-        "value": "LM5005",
-        "label": "LM5005"
-    },
-    {
-        "value": "TL5001A-Q1",
-        "label": "TL5001A-Q1"
-    },
-    {
-        "value": "TPS54610-EP",
-        "label": "TPS54610-EP"
-    },
-    {
-        "value": "LM20242",
-        "label": "LM20242"
-    },
-    {
-        "value": "TPS54615-EP",
-        "label": "TPS54615-EP"
-    },
-    {
-        "value": "LM3743",
-        "label": "LM3743"
-    },
-    {
-        "value": "TPS51120",
-        "label": "TPS51120"
-    },
-    {
-        "value": "TPS40190",
-        "label": "TPS40190"
-    },
-    {
-        "value": "LM3310",
-        "label": "LM3310"
-    },
-    {
-        "value": "TPS62111",
-        "label": "TPS62111"
-    },
-    {
-        "value": "TPS62112",
-        "label": "TPS62112"
-    },
-    {
-        "value": "TPS40055-EP",
-        "label": "TPS40055-EP"
-    },
-    {
-        "value": "MC33063A-Q1",
-        "label": "MC33063A-Q1"
-    },
-    {
-        "value": "TPS62110",
-        "label": "TPS62110"
-    },
-    {
-        "value": "LM3000",
-        "label": "LM3000"
-    },
-    {
-        "value": "TL1451A-Q1",
-        "label": "TL1451A-Q1"
-    },
-    {
-        "value": "TPS61028",
-        "label": "TPS61028"
-    },
-    {
-        "value": "TPS40100",
-        "label": "TPS40100"
-    },
-    {
-        "value": "LM3481",
-        "label": "LM3481"
-    },
-    {
-        "value": "LM3481-Q1",
-        "label": "LM3481-Q1"
-    },
-    {
-        "value": "LM2717",
-        "label": "LM2717"
-    },
-    {
-        "value": "PTN78000H",
-        "label": "PTN78000H"
-    },
-    {
-        "value": "PTN78020A",
-        "label": "PTN78020A"
-    },
-    {
-        "value": "LM2745",
-        "label": "LM2745"
-    },
-    {
-        "value": "PTN78000A",
-        "label": "PTN78000A"
-    },
-    {
-        "value": "PTN78060A",
-        "label": "PTN78060A"
-    },
-    {
-        "value": "PTH04040W",
-        "label": "PTH04040W"
-    },
-    {
-        "value": "LM5115A",
-        "label": "LM5115A"
-    },
-    {
-        "value": "LM3673",
-        "label": "LM3673"
-    },
-    {
-        "value": "LM3370",
-        "label": "LM3370"
-    },
-    {
-        "value": "PTV03010W",
-        "label": "PTV03010W"
-    },
-    {
-        "value": "PTV03020W",
-        "label": "PTV03020W"
-    },
-    {
-        "value": "PTV05010W",
-        "label": "PTV05010W"
-    },
-    {
-        "value": "PTH08080W",
-        "label": "PTH08080W"
-    },
-    {
-        "value": "PTV05020W",
-        "label": "PTV05020W"
-    },
-    {
-        "value": "TPS54073",
-        "label": "TPS54073"
-    },
-    {
-        "value": "MC33063A",
-        "label": "MC33063A"
-    },
-    {
-        "value": "MC34063A",
-        "label": "MC34063A"
-    },
-    {
-        "value": "LM2852",
-        "label": "LM2852"
-    },
-    {
-        "value": "LM2734Z",
-        "label": "LM2734Z"
-    },
-    {
-        "value": "TPS61040-Q1",
-        "label": "TPS61040-Q1"
-    },
-    {
-        "value": "TPS61041-Q1",
-        "label": "TPS61041-Q1"
-    },
-    {
-        "value": "PTV12010L",
-        "label": "PTV12010L"
-    },
-    {
-        "value": "PTV12010W",
-        "label": "PTV12010W"
-    },
-    {
-        "value": "TPS62026",
-        "label": "TPS62026"
-    },
-    {
-        "value": "PTN78020W",
-        "label": "PTN78020W"
-    },
-    {
-        "value": "PTH12040W",
-        "label": "PTH12040W"
-    },
-    {
-        "value": "PTN78060W",
-        "label": "PTN78060W"
-    },
-    {
-        "value": "LM3224",
-        "label": "LM3224"
-    },
-    {
-        "value": "LM3671",
-        "label": "LM3671"
-    },
-    {
-        "value": "LM5010",
-        "label": "LM5010"
-    },
-    {
-        "value": "TPS62228",
-        "label": "TPS62228"
-    },
-    {
-        "value": "TPS62229",
-        "label": "TPS62229"
-    },
-    {
-        "value": "TPS65131",
-        "label": "TPS65131"
-    },
-    {
-        "value": "LM34910",
-        "label": "LM34910"
-    },
-    {
-        "value": "TPS62300",
-        "label": "TPS62300"
-    },
-    {
-        "value": "TPS62301",
-        "label": "TPS62301"
-    },
-    {
-        "value": "TPS62302",
-        "label": "TPS62302"
-    },
-    {
-        "value": "TPS62303",
-        "label": "TPS62303"
-    },
-    {
-        "value": "TPS62305",
-        "label": "TPS62305"
-    },
-    {
-        "value": "TPS62320",
-        "label": "TPS62320"
-    },
-    {
-        "value": "TPS62321",
-        "label": "TPS62321"
-    },
-    {
-        "value": "TPS54010",
-        "label": "TPS54010"
-    },
-    {
-        "value": "TPS40091",
-        "label": "TPS40091"
-    },
-    {
-        "value": "TPS60400-Q1",
-        "label": "TPS60400-Q1"
-    },
-    {
-        "value": "TPS60401-Q1",
-        "label": "TPS60401-Q1"
-    },
-    {
-        "value": "TPS60402-Q1",
-        "label": "TPS60402-Q1"
-    },
-    {
-        "value": "TPS60403-Q1",
-        "label": "TPS60403-Q1"
-    },
-    {
-        "value": "TPS62207",
-        "label": "TPS62207"
-    },
-    {
-        "value": "TPS62021",
-        "label": "TPS62021"
-    },
-    {
-        "value": "TPS61070",
-        "label": "TPS61070"
-    },
-    {
-        "value": "TPS61071",
-        "label": "TPS61071"
-    },
-    {
-        "value": "PTH03010Y",
-        "label": "PTH03010Y"
-    },
-    {
-        "value": "PTH03050Y",
-        "label": "PTH03050Y"
-    },
-    {
-        "value": "PTH03060Y",
-        "label": "PTH03060Y"
-    },
-    {
-        "value": "TPS40007",
-        "label": "TPS40007"
-    },
-    {
-        "value": "TPS40009",
-        "label": "TPS40009"
-    },
-    {
-        "value": "TPS62223",
-        "label": "TPS62223"
-    },
-    {
-        "value": "LM26003",
-        "label": "LM26003"
-    },
-    {
-        "value": "LM26003-Q1",
-        "label": "LM26003-Q1"
-    },
-    {
-        "value": "LM2735",
-        "label": "LM2735"
-    },
-    {
-        "value": "LM2735-Q1",
-        "label": "LM2735-Q1"
-    },
-    {
-        "value": "TPS62208",
-        "label": "TPS62208"
-    },
-    {
-        "value": "PTH05010Y",
-        "label": "PTH05010Y"
-    },
-    {
-        "value": "PTH05050Y",
-        "label": "PTH05050Y"
-    },
-    {
-        "value": "PTH05060Y",
-        "label": "PTH05060Y"
-    },
-    {
-        "value": "PTH12010Y",
-        "label": "PTH12010Y"
-    },
-    {
-        "value": "PTH12050Y",
-        "label": "PTH12050Y"
-    },
-    {
-        "value": "PTH12060Y",
-        "label": "PTH12060Y"
-    },
-    {
-        "value": "PTH03030W",
-        "label": "PTH03030W"
-    },
-    {
-        "value": "LM2742",
-        "label": "LM2742"
-    },
-    {
-        "value": "TPS65130",
-        "label": "TPS65130"
-    },
-    {
-        "value": "LM2770",
-        "label": "LM2770"
-    },
-    {
-        "value": "LM5008",
-        "label": "LM5008"
-    },
-    {
-        "value": "LM5115",
-        "label": "LM5115"
-    },
-    {
-        "value": "PTH05030W",
-        "label": "PTH05030W"
-    },
-    {
-        "value": "TPS40055",
-        "label": "TPS40055"
-    },
-    {
-        "value": "TPS40057",
-        "label": "TPS40057"
-    },
-    {
-        "value": "LM1770",
-        "label": "LM1770"
-    },
-    {
-        "value": "LM3670",
-        "label": "LM3670"
-    },
-    {
-        "value": "TPS5120-Q1",
-        "label": "TPS5120-Q1"
-    },
-    {
-        "value": "PTH03050W",
-        "label": "PTH03050W"
-    },
-    {
-        "value": "PTH03060W",
-        "label": "PTH03060W"
-    },
-    {
-        "value": "PTH05060W",
-        "label": "PTH05060W"
-    },
-    {
-        "value": "PTH12050W",
-        "label": "PTH12050W"
-    },
-    {
-        "value": "TPS54110",
-        "label": "TPS54110"
-    },
-    {
-        "value": "TPS5120-EP",
-        "label": "TPS5120-EP"
-    },
-    {
-        "value": "REG71050",
-        "label": "REG71050"
-    },
-    {
-        "value": "TPS40050-Q1",
-        "label": "TPS40050-Q1"
-    },
-    {
-        "value": "TPS40051-Q1",
-        "label": "TPS40051-Q1"
-    },
-    {
-        "value": "TPS40090",
-        "label": "TPS40090"
-    },
-    {
-        "value": "TPS54350",
-        "label": "TPS54350"
-    },
-    {
-        "value": "TPS54680-EP",
-        "label": "TPS54680-EP"
-    },
-    {
-        "value": "PTH03010W",
-        "label": "PTH03010W"
-    },
-    {
-        "value": "TPS62220",
-        "label": "TPS62220"
-    },
-    {
-        "value": "TPS62221",
-        "label": "TPS62221"
-    },
-    {
-        "value": "TPS62222",
-        "label": "TPS62222"
-    },
-    {
-        "value": "TPS62224",
-        "label": "TPS62224"
-    },
-    {
-        "value": "PTH03020W",
-        "label": "PTH03020W"
-    },
-    {
-        "value": "TPS61020",
-        "label": "TPS61020"
-    },
-    {
-        "value": "TPS61024",
-        "label": "TPS61024"
-    },
-    {
-        "value": "TPS61025",
-        "label": "TPS61025"
-    },
-    {
-        "value": "TPS61027",
-        "label": "TPS61027"
-    },
-    {
-        "value": "PTH12010W",
-        "label": "PTH12010W"
-    },
-    {
-        "value": "LM5020",
-        "label": "LM5020"
-    },
-    {
-        "value": "LM2736",
-        "label": "LM2736"
-    },
-    {
-        "value": "TPS64200",
-        "label": "TPS64200"
-    },
-    {
-        "value": "TPS64201",
-        "label": "TPS64201"
-    },
-    {
-        "value": "TPS64202",
-        "label": "TPS64202"
-    },
-    {
-        "value": "TPS64203",
-        "label": "TPS64203"
-    },
-    {
-        "value": "TPS61090",
-        "label": "TPS61090"
-    },
-    {
-        "value": "TPS61091",
-        "label": "TPS61091"
-    },
-    {
-        "value": "TPS61092",
-        "label": "TPS61092"
-    },
-    {
-        "value": "TPS62020",
-        "label": "TPS62020"
-    },
-    {
-        "value": "PTH05010W",
-        "label": "PTH05010W"
-    },
-    {
-        "value": "PTH05020W",
-        "label": "PTH05020W"
-    },
-    {
-        "value": "TPS62040",
-        "label": "TPS62040"
-    },
-    {
-        "value": "TPS62042",
-        "label": "TPS62042"
-    },
-    {
-        "value": "TPS62043",
-        "label": "TPS62043"
-    },
-    {
-        "value": "TPS62044",
-        "label": "TPS62044"
-    },
-    {
-        "value": "TPS62046",
-        "label": "TPS62046"
-    },
-    {
-        "value": "LM5642",
-        "label": "LM5642"
-    },
-    {
-        "value": "REG71055",
-        "label": "REG71055"
-    },
-    {
-        "value": "LM2731",
-        "label": "LM2731"
-    },
-    {
-        "value": "TPS54973",
-        "label": "TPS54973"
-    },
-    {
-        "value": "TPS54980",
-        "label": "TPS54980"
-    },
-    {
-        "value": "TPS61045",
-        "label": "TPS61045"
-    },
-    {
-        "value": "TPS61030",
-        "label": "TPS61030"
-    },
-    {
-        "value": "TPS61031",
-        "label": "TPS61031"
-    },
-    {
-        "value": "TPS61032",
-        "label": "TPS61032"
-    },
-    {
-        "value": "LM5007",
-        "label": "LM5007"
-    },
-    {
-        "value": "TPS40060",
-        "label": "TPS40060"
-    },
-    {
-        "value": "TPS40061",
-        "label": "TPS40061"
-    },
-    {
-        "value": "TPS62050",
-        "label": "TPS62050"
-    },
-    {
-        "value": "TPS62051",
-        "label": "TPS62051"
-    },
-    {
-        "value": "TPS62052",
-        "label": "TPS62052"
-    },
-    {
-        "value": "TPS62054",
-        "label": "TPS62054"
-    },
-    {
-        "value": "TPS62056",
-        "label": "TPS62056"
-    },
-    {
-        "value": "LM2734",
-        "label": "LM2734"
-    },
-    {
-        "value": "LM2734-Q1",
-        "label": "LM2734-Q1"
-    },
-    {
-        "value": "LM2724A",
-        "label": "LM2724A"
-    },
-    {
-        "value": "LM2733",
-        "label": "LM2733"
-    },
-    {
-        "value": "LM2705",
-        "label": "LM2705"
-    },
-    {
-        "value": "TPS54880",
-        "label": "TPS54880"
-    },
-    {
-        "value": "TPS61107",
-        "label": "TPS61107"
-    },
-    {
-        "value": "TPS61120",
-        "label": "TPS61120"
-    },
-    {
-        "value": "TPS61121",
-        "label": "TPS61121"
-    },
-    {
-        "value": "TPS61122",
-        "label": "TPS61122"
-    },
-    {
-        "value": "TPS61130",
-        "label": "TPS61130"
-    },
-    {
-        "value": "TPS61131",
-        "label": "TPS61131"
-    },
-    {
-        "value": "TPS61100",
-        "label": "TPS61100"
-    },
-    {
-        "value": "TPS62008",
-        "label": "TPS62008"
-    },
-    {
-        "value": "TPS40000",
-        "label": "TPS40000"
-    },
-    {
-        "value": "TPS5130",
-        "label": "TPS5130"
-    },
-    {
-        "value": "TPS54910",
-        "label": "TPS54910"
-    },
-    {
-        "value": "LM2642",
-        "label": "LM2642"
-    },
-    {
-        "value": "LM2623",
-        "label": "LM2623"
-    },
-    {
-        "value": "LM3475",
-        "label": "LM3475"
-    },
-    {
-        "value": "TPS62200",
-        "label": "TPS62200"
-    },
-    {
-        "value": "TPS62201",
-        "label": "TPS62201"
-    },
-    {
-        "value": "TPS62202",
-        "label": "TPS62202"
-    },
-    {
-        "value": "TPS62203",
-        "label": "TPS62203"
-    },
-    {
-        "value": "TPS62204",
-        "label": "TPS62204"
-    },
-    {
-        "value": "TPS62205",
-        "label": "TPS62205"
-    },
-    {
-        "value": "TPS54810",
-        "label": "TPS54810"
-    },
-    {
-        "value": "TPS61040",
-        "label": "TPS61040"
-    },
-    {
-        "value": "TPS61041",
-        "label": "TPS61041"
-    },
-    {
-        "value": "LM5000",
-        "label": "LM5000"
-    },
-    {
-        "value": "LM2704",
-        "label": "LM2704"
-    },
-    {
-        "value": "TPS60240",
-        "label": "TPS60240"
-    },
-    {
-        "value": "TPS60242",
-        "label": "TPS60242"
-    },
-    {
-        "value": "TPS60243",
-        "label": "TPS60243"
-    },
-    {
-        "value": "TPS54310",
-        "label": "TPS54310"
-    },
-    {
-        "value": "TPS60500",
-        "label": "TPS60500"
-    },
-    {
-        "value": "TPS60501",
-        "label": "TPS60501"
-    },
-    {
-        "value": "TPS60503",
-        "label": "TPS60503"
-    },
-    {
-        "value": "TPS43000",
-        "label": "TPS43000"
-    },
-    {
-        "value": "LM2750",
-        "label": "LM2750"
-    },
-    {
-        "value": "TPS60241",
-        "label": "TPS60241"
-    },
-    {
-        "value": "TPS60300",
-        "label": "TPS60300"
-    },
-    {
-        "value": "TPS60301",
-        "label": "TPS60301"
-    },
-    {
-        "value": "TPS60302",
-        "label": "TPS60302"
-    },
-    {
-        "value": "TPS60303",
-        "label": "TPS60303"
-    },
-    {
-        "value": "TPS60310",
-        "label": "TPS60310"
-    },
-    {
-        "value": "TPS60311",
-        "label": "TPS60311"
-    },
-    {
-        "value": "TPS60312",
-        "label": "TPS60312"
-    },
-    {
-        "value": "TPS60313",
-        "label": "TPS60313"
-    },
-    {
-        "value": "REG710-27",
-        "label": "REG710-27"
-    },
-    {
-        "value": "REG710-3",
-        "label": "REG710-3"
-    },
-    {
-        "value": "REG710-33",
-        "label": "REG710-33"
-    },
-    {
-        "value": "REG710-5",
-        "label": "REG710-5"
-    },
-    {
-        "value": "TPS54616",
-        "label": "TPS54616"
-    },
-    {
-        "value": "TPS60400",
-        "label": "TPS60400"
-    },
-    {
-        "value": "TPS60401",
-        "label": "TPS60401"
-    },
-    {
-        "value": "TPS60402",
-        "label": "TPS60402"
-    },
-    {
-        "value": "TPS60403",
-        "label": "TPS60403"
-    },
-    {
-        "value": "LM3485",
-        "label": "LM3485"
-    },
-    {
-        "value": "LM3485-Q1",
-        "label": "LM3485-Q1"
-    },
-    {
-        "value": "TPS54610",
-        "label": "TPS54610"
-    },
-    {
-        "value": "TPS60204",
-        "label": "TPS60204"
-    },
-    {
-        "value": "TPS60205",
-        "label": "TPS60205"
-    },
-    {
-        "value": "REG710-25",
-        "label": "REG710-25"
-    },
-    {
-        "value": "TPS60502",
-        "label": "TPS60502"
-    },
-    {
-        "value": "TPS62000",
-        "label": "TPS62000"
-    },
-    {
-        "value": "TPS62002",
-        "label": "TPS62002"
-    },
-    {
-        "value": "TPS62003",
-        "label": "TPS62003"
-    },
-    {
-        "value": "TPS62004",
-        "label": "TPS62004"
-    },
-    {
-        "value": "TPS62005",
-        "label": "TPS62005"
-    },
-    {
-        "value": "TPS62006",
-        "label": "TPS62006"
-    },
-    {
-        "value": "TPS62007",
-        "label": "TPS62007"
-    },
-    {
-        "value": "LM2590HV",
-        "label": "LM2590HV"
-    },
-    {
-        "value": "LM2591HV",
-        "label": "LM2591HV"
-    },
-    {
-        "value": "LM2592HV",
-        "label": "LM2592HV"
-    },
-    {
-        "value": "LM2700",
-        "label": "LM2700"
-    },
-    {
-        "value": "LM2593HV",
-        "label": "LM2593HV"
-    },
-    {
-        "value": "LM2703",
-        "label": "LM2703"
-    },
-    {
-        "value": "REG711-25",
-        "label": "REG711-25"
-    },
-    {
-        "value": "REG711-3",
-        "label": "REG711-3"
-    },
-    {
-        "value": "REG711-33",
-        "label": "REG711-33"
-    },
-    {
-        "value": "REG711-5",
-        "label": "REG711-5"
-    },
-    {
-        "value": "LM2611",
-        "label": "LM2611"
-    },
-    {
-        "value": "LM2698",
-        "label": "LM2698"
-    },
-    {
-        "value": "TPS5140",
-        "label": "TPS5140"
-    },
-    {
-        "value": "TPS62100",
-        "label": "TPS62100"
-    },
-    {
-        "value": "TPS62101",
-        "label": "TPS62101"
-    },
-    {
-        "value": "TPS62102",
-        "label": "TPS62102"
-    },
-    {
-        "value": "TPS62103",
-        "label": "TPS62103"
-    },
-    {
-        "value": "TPS61010",
-        "label": "TPS61010"
-    },
-    {
-        "value": "TPS61012",
-        "label": "TPS61012"
-    },
-    {
-        "value": "TPS61013",
-        "label": "TPS61013"
-    },
-    {
-        "value": "TPS61014",
-        "label": "TPS61014"
-    },
-    {
-        "value": "TPS61015",
-        "label": "TPS61015"
-    },
-    {
-        "value": "TPS61016",
-        "label": "TPS61016"
-    },
-    {
-        "value": "TPS5120",
-        "label": "TPS5120"
-    },
-    {
-        "value": "TPS60124",
-        "label": "TPS60124"
-    },
-    {
-        "value": "TPS60125",
-        "label": "TPS60125"
-    },
-    {
-        "value": "TPS61000",
-        "label": "TPS61000"
-    },
-    {
-        "value": "TPS61002",
-        "label": "TPS61002"
-    },
-    {
-        "value": "TPS61005",
-        "label": "TPS61005"
-    },
-    {
-        "value": "TPS61006",
-        "label": "TPS61006"
-    },
-    {
-        "value": "TPS61007",
-        "label": "TPS61007"
-    },
-    {
-        "value": "LM3488",
-        "label": "LM3488"
-    },
-    {
-        "value": "UCC39411",
-        "label": "UCC39411"
-    },
-    {
-        "value": "TPS60210",
-        "label": "TPS60210"
-    },
-    {
-        "value": "TPS60211",
-        "label": "TPS60211"
-    },
-    {
-        "value": "TPS60212",
-        "label": "TPS60212"
-    },
-    {
-        "value": "TPS60213",
-        "label": "TPS60213"
-    },
-    {
-        "value": "LM2765",
-        "label": "LM2765"
-    },
-    {
-        "value": "LM2766",
-        "label": "LM2766"
-    },
-    {
-        "value": "TPS60200",
-        "label": "TPS60200"
-    },
-    {
-        "value": "TPS60201",
-        "label": "TPS60201"
-    },
-    {
-        "value": "TPS60202",
-        "label": "TPS60202"
-    },
-    {
-        "value": "TPS60203",
-        "label": "TPS60203"
-    },
-    {
-        "value": "LM3477",
-        "label": "LM3477"
-    },
-    {
-        "value": "LM3478",
-        "label": "LM3478"
-    },
-    {
-        "value": "LM2622",
-        "label": "LM2622"
-    },
-    {
-        "value": "TPS60140",
-        "label": "TPS60140"
-    },
-    {
-        "value": "TPS60141",
-        "label": "TPS60141"
-    },
-    {
-        "value": "LM2655",
-        "label": "LM2655"
-    },
-    {
-        "value": "LM2767",
-        "label": "LM2767"
-    },
-    {
-        "value": "LM2677",
-        "label": "LM2677"
-    },
-    {
-        "value": "TPS60120",
-        "label": "TPS60120"
-    },
-    {
-        "value": "TPS60121",
-        "label": "TPS60121"
-    },
-    {
-        "value": "TPS60122",
-        "label": "TPS60122"
-    },
-    {
-        "value": "TPS60123",
-        "label": "TPS60123"
-    },
-    {
-        "value": "TPS60130",
-        "label": "TPS60130"
-    },
-    {
-        "value": "TPS60131",
-        "label": "TPS60131"
-    },
-    {
-        "value": "TPS60132",
-        "label": "TPS60132"
-    },
-    {
-        "value": "TPS60133",
-        "label": "TPS60133"
-    },
-    {
-        "value": "LM2695",
-        "label": "LM2695"
-    },
-    {
-        "value": "LM2682",
-        "label": "LM2682"
-    },
-    {
-        "value": "TL5001AM",
-        "label": "TL5001AM"
-    },
-    {
-        "value": "TL5001M",
-        "label": "TL5001M"
-    },
-    {
-        "value": "TPS60100",
-        "label": "TPS60100"
-    },
-    {
-        "value": "TPS60101",
-        "label": "TPS60101"
-    },
-    {
-        "value": "TPS60110",
-        "label": "TPS60110"
-    },
-    {
-        "value": "TPS60111",
-        "label": "TPS60111"
-    },
-    {
-        "value": "LM2653",
-        "label": "LM2653"
-    },
-    {
-        "value": "LM828",
-        "label": "LM828"
-    },
-    {
-        "value": "MAX660",
-        "label": "MAX660"
-    },
-    {
-        "value": "LM2681",
-        "label": "LM2681"
-    },
-    {
-        "value": "UCC29421",
-        "label": "UCC29421"
-    },
-    {
-        "value": "LM2670",
-        "label": "LM2670"
-    },
-    {
-        "value": "LM2594HV",
-        "label": "LM2594HV"
-    },
-    {
-        "value": "LM2678",
-        "label": "LM2678"
-    },
-    {
-        "value": "LM2679",
-        "label": "LM2679"
-    },
-    {
-        "value": "LM2621",
-        "label": "LM2621"
-    },
-    {
-        "value": "LM2664",
-        "label": "LM2664"
-    },
-    {
-        "value": "LM2665",
-        "label": "LM2665"
-    },
-    {
-        "value": "LM2597HV",
-        "label": "LM2597HV"
-    },
-    {
-        "value": "LM2671",
-        "label": "LM2671"
-    },
-    {
-        "value": "LM2674",
-        "label": "LM2674"
-    },
-    {
-        "value": "LM2663",
-        "label": "LM2663"
-    },
-    {
-        "value": "LM2662",
-        "label": "LM2662"
-    },
-    {
-        "value": "LM2675",
-        "label": "LM2675"
-    },
-    {
-        "value": "LM2660",
-        "label": "LM2660"
-    },
-    {
-        "value": "LM2650",
-        "label": "LM2650"
-    },
-    {
-        "value": "LM2651",
-        "label": "LM2651"
-    },
-    {
-        "value": "LM2673",
-        "label": "LM2673"
-    },
-    {
-        "value": "LM2672",
-        "label": "LM2672"
-    },
-    {
-        "value": "TPS6735",
-        "label": "TPS6735"
-    },
-    {
-        "value": "LM2586",
-        "label": "LM2586"
-    },
-    {
-        "value": "LM2585",
-        "label": "LM2585"
-    },
-    {
-        "value": "LM2598",
-        "label": "LM2598"
-    },
-    {
-        "value": "LM2595",
-        "label": "LM2595"
-    },
-    {
-        "value": "LM2676",
-        "label": "LM2676"
-    },
-    {
-        "value": "LM2596",
-        "label": "LM2596"
-    },
-    {
-        "value": "LM2599",
-        "label": "LM2599"
-    },
-    {
-        "value": "UC2572",
-        "label": "UC2572"
-    },
-    {
-        "value": "UC2573",
-        "label": "UC2573"
-    },
-    {
-        "value": "LM2597",
-        "label": "LM2597"
-    },
-    {
-        "value": "LM2594",
-        "label": "LM2594"
-    },
-    {
-        "value": "LM2588",
-        "label": "LM2588"
-    },
-    {
-        "value": "LM2587",
-        "label": "LM2587"
-    },
-    {
-        "value": "TL5001",
-        "label": "TL5001"
-    },
-    {
-        "value": "TL5001A",
-        "label": "TL5001A"
-    },
-    {
-        "value": "LM2574",
-        "label": "LM2574"
-    },
-    {
-        "value": "LM2574HV",
-        "label": "LM2574HV"
-    },
-    {
-        "value": "LM2575",
-        "label": "LM2575"
-    },
-    {
-        "value": "LM2576",
-        "label": "LM2576"
-    },
-    {
-        "value": "LM2576HV",
-        "label": "LM2576HV"
-    },
-    {
-        "value": "LM2577",
-        "label": "LM2577"
-    },
-    {
-        "value": "LT1054",
-        "label": "LT1054"
-    },
-    {
-        "value": "TL497A",
-        "label": "TL497A"
-    },
-    {
-        "value": "TL499A",
-        "label": "TL499A"
-    },
-    {
-        "value": "LM2575-N",
-        "label": "LM2575-N"
-    },
-    {
-        "value": "LM2575HV",
-        "label": "LM2575HV"
-    },
-    {
-        "value": "TL1451",
-        "label": "TL1451"
-    },
-    {
-        "value": "TL1451A",
-        "label": "TL1451A"
-    },
-    {
-        "value": "LMC7660",
-        "label": "LMC7660"
-    },
-    {
-        "value": "LM2578A",
-        "label": "LM2578A"
-    },
-    {
-        "value": "LM3578A",
-        "label": "LM3578A"
-    },
-    {
-        "value": "LM78S40",
-        "label": "LM78S40"
-    }
-];
+export const defaultPartOptions = ["TPS61033",
+                                    "TPS568231",
+                                    "TPS62992-Q1",
+                                    "TPS62993-Q1",
+                                    "LM5149-Q1",
+                                    "TPSM365R6",
+                                    "LM5012",
+                                    "LM5012-Q1",
+                                    "LM5013",
+                                    "LM5169",
+                                    "TPS51383",
+                                    "TPS61376",
+                                    "TPS563252",
+                                    "TPS563257",
+                                    "TLV61070A",
+                                    "TPS62873-Q1",
+                                    "TPS544C26",
+                                    "TPS55289",
+                                    "LM5168-Q1",
+                                    "LM5169-Q1",
+                                    "TPS543B22",
+                                    "TPSM8D6B24",
+                                    "TPS56C231",
+                                    "TPS62872-Q1",
+                                    "TPS62933O",
+                                    "TPS62A02A",
+                                    "TPS628513",
+                                    "LMR51420",
+                                    "TPS62A02",
+                                    "TPS62870-Q1",
+                                    "TPS563300",
+                                    "TPS62933F",
+                                    "TPS62933P",
+                                    "TPS63901",
+                                    "TPS62441-Q1",
+                                    "TPS62442-Q1",
+                                    "LMR51430",
+                                    "TPS628503",
+                                    "LM25143-Q1",
+                                    "LM5143A-Q1",
+                                    "LM5177",
+                                    "TLVM13620",
+                                    "TPSM63602",
+                                    "TPSM63603E",
+                                    "TPS62A01A",
+                                    "TPS564242",
+                                    "TPS565242",
+                                    "TPS565247",
+                                    "TPS566242",
+                                    "TPS566247",
+                                    "TPS62903-Q1",
+                                    "TPS62871-Q1",
+                                    "TLVM13640",
+                                    "TLVM13660",
+                                    "TPSM63604",
+                                    "TPSM63606E",
+                                    "LM5152-Q1",
+                                    "LM51521-Q1",
+                                    "TPS629203-Q1",
+                                    "LM5013-Q1",
+                                    "LMR43610-Q1",
+                                    "TPS62A01",
+                                    "TPS629203",
+                                    "TPS629206",
+                                    "TPS629206-Q1",
+                                    "TPS629210E",
+                                    "TPS629211-Q1",
+                                    "LM25143",
+                                    "LM5143",
+                                    "TPSM82903",
+                                    "TPS62442",
+                                    "TPS62932",
+                                    "LMQ66430",
+                                    "LMQ66430-Q1",
+                                    "TPS62824",
+                                    "TLVM13630",
+                                    "TPS7H4003-SEP",
+                                    "LMR38010",
+                                    "TPS629210",
+                                    "TPSM5D1806E",
+                                    "TPS62843",
+                                    "TPS631000",
+                                    "LMR54406",
+                                    "LM63460-Q1",
+                                    "TPS62810M",
+                                    "TPS62812M",
+                                    "TPSM8D6C24",
+                                    "TPS62816-Q1",
+                                    "LM5123-Q1",
+                                    "TPSM82864A",
+                                    "TPSM82866A",
+                                    "TPS536C9",
+                                    "LM25148",
+                                    "LM25149",
+                                    "LMR43620-Q1",
+                                    "TPSM63606",
+                                    "TPSM8A28",
+                                    "TPSM8A29",
+                                    "TPS62933",
+                                    "LM5168",
+                                    "LM61480",
+                                    "LM61495",
+                                    "LM62460",
+                                    "TPS62089A",
+                                    "TPS629210-Q1",
+                                    "TPSM63603",
+                                    "LMR54410",
+                                    "TPSM82821A",
+                                    "TPSM82822A",
+                                    "TPSM82823A",
+                                    "LMR38020",
+                                    "TPS62088A",
+                                    "LM61430-Q1",
+                                    "TPS562212",
+                                    "TPS61094",
+                                    "TPS563212",
+                                    "LM5158",
+                                    "LM5158-Q1",
+                                    "LM51581",
+                                    "LM51581-Q1",
+                                    "TPS63807",
+                                    "TPS628503-Q1",
+                                    "TPS53689",
+                                    "TPSM5601R5",
+                                    "TPSM560R6",
+                                    "TPSM560R6H",
+                                    "TPS62811M",
+                                    "TPS62813M",
+                                    "TPS562211",
+                                    "TPS563211",
+                                    "TPS7H4002-SP",
+                                    "TPS628510",
+                                    "TPS628511",
+                                    "TPS628512",
+                                    "LM61480-Q1",
+                                    "TPS628501",
+                                    "TPS628502",
+                                    "TPSM831D31",
+                                    "TPS548B27",
+                                    "LM5157",
+                                    "LMR33620AP-Q1",
+                                    "LMR33630AP-Q1",
+                                    "LM25148-Q1",
+                                    "LM5157-Q1",
+                                    "LM5145-Q1",
+                                    "LM5146",
+                                    "LM62460-Q1",
+                                    "TPSM82823",
+                                    "TPS61379-Q1",
+                                    "TPS62865",
+                                    "TPS62867",
+                                    "LM61495-Q1",
+                                    "TPS541620",
+                                    "TPS62901",
+                                    "TPS62902",
+                                    "TPS62903",
+                                    "TPS62912",
+                                    "TPS62913",
+                                    "TPSM5D1806",
+                                    "TPSM13604H",
+                                    "TPSM5601R5H",
+                                    "TPSM5601R5HE",
+                                    "LM51571-Q1",
+                                    "TPS62824A",
+                                    "TPS62827A",
+                                    "LM5156",
+                                    "LM51561",
+                                    "TPS566231",
+                                    "TPS566238",
+                                    "TPS62868",
+                                    "LMR36015S",
+                                    "LMR36503",
+                                    "LMR36506",
+                                    "TLV62595",
+                                    "TPS543820E",
+                                    "TPS53676",
+                                    "TPS543820",
+                                    "TPS628501-Q1",
+                                    "TPS55288-Q1",
+                                    "TPS552882-Q1",
+                                    "LM25149-Q1",
+                                    "TPS536C7",
+                                    "TPS543320",
+                                    "TPS61288",
+                                    "TPS54622-EP",
+                                    "TPS548B28",
+                                    "LMQ62440-Q1",
+                                    "TPS62869",
+                                    "TPSM265R1",
+                                    "TPSM41615",
+                                    "TPSM41625",
+                                    "TPSM82810",
+                                    "TPSM82813",
+                                    "TPS62825A",
+                                    "TPS62826A",
+                                    "LMQ61460",
+                                    "TPS552882",
+                                    "TPSM82821",
+                                    "TPSM82822",
+                                    "TPS7H4010-SEP",
+                                    "TPS542A52",
+                                    "TPS543620",
+                                    "TPS628502-Q1",
+                                    "TPS562207S",
+                                    "LMR50410",
+                                    "TPS542A50",
+                                    "TPS546A24A",
+                                    "TPS54J061",
+                                    "TPS562202S",
+                                    "TPS563202S",
+                                    "TPS563207S",
+                                    "LMQ61460-Q1",
+                                    "TPS63900",
+                                    "TPS51397A",
+                                    "TPS562202",
+                                    "TPS563207",
+                                    "LM34966-Q1",
+                                    "TPS61378-Q1",
+                                    "LM51561H",
+                                    "LM51561H-Q1",
+                                    "LM5156H",
+                                    "LM5156H-Q1",
+                                    "TPS62860",
+                                    "TPS53688",
+                                    "TPS546B24A",
+                                    "LMR36503-Q1",
+                                    "TPS562207",
+                                    "TPS54618C-Q1",
+                                    "TPS55288",
+                                    "LM60430",
+                                    "LM60440",
+                                    "TPS563202",
+                                    "TPS62861",
+                                    "TPS54JB20",
+                                    "LMR50410-Q1",
+                                    "LM76005",
+                                    "LM76005-Q1",
+                                    "LM63610-Q1",
+                                    "TPS53820",
+                                    "TPS548A28",
+                                    "TPS548A29",
+                                    "LMR36506-Q1",
+                                    "LM60430-Q1",
+                                    "LM60440-Q1",
+                                    "LM5156-Q1",
+                                    "LM51561-Q1",
+                                    "TPS51215A",
+                                    "LM62435-Q1",
+                                    "LM62440-Q1",
+                                    "TPS62864",
+                                    "TPS62866",
+                                    "TPS7H4001-SP",
+                                    "TPS54J060",
+                                    "LM61440",
+                                    "TPS54JA20",
+                                    "LM61440-Q1",
+                                    "TPS59632-Q1",
+                                    "LM61435-Q1",
+                                    "LM61460",
+                                    "LMR36510",
+                                    "LMR36520",
+                                    "LM63635-Q1",
+                                    "LM5163H-Q1",
+                                    "TPS652353",
+                                    "LM61460-Q1",
+                                    "TPS546D24A",
+                                    "LM5170",
+                                    "TPSM53602",
+                                    "TPSM53603",
+                                    "TPSM53604",
+                                    "TPS61023",
+                                    "TPS61391",
+                                    "LMR33640",
+                                    "LMR33610",
+                                    "LM5163",
+                                    "TPS63810",
+                                    "TPS63811",
+                                    "TPS543C20A",
+                                    "LM63615-Q1",
+                                    "LM63625-Q1",
+                                    "TPS63802",
+                                    "LM5143-Q1",
+                                    "TPS56C230",
+                                    "TPS56637",
+                                    "TPS560430-Q1",
+                                    "TPS63806",
+                                    "TPS62811-Q1",
+                                    "TPS62812-Q1",
+                                    "TPS62840",
+                                    "TPS62152A-Q1",
+                                    "LM51551-Q1",
+                                    "LM5155-Q1",
+                                    "TLV61048",
+                                    "TPS61390",
+                                    "TPS62810-Q1",
+                                    "TPS62813-Q1",
+                                    "LM5163-Q1",
+                                    "TPS54A24",
+                                    "TPS56339",
+                                    "LMR34215-Q1",
+                                    "LMR34206-Q1",
+                                    "TPS566235",
+                                    "TPS562231",
+                                    "TPS568230",
+                                    "TPS61022",
+                                    "TPS62827",
+                                    "LM5164-Q1",
+                                    "TPS51396A",
+                                    "TPS563231",
+                                    "TPS62807",
+                                    "TPS62808",
+                                    "TPS54340B",
+                                    "TPS54540B",
+                                    "TPS54560B",
+                                    "TPS563249",
+                                    "TPS563240",
+                                    "LM5164",
+                                    "TPS6283810",
+                                    "LM51551",
+                                    "LM34936-Q1",
+                                    "LM5155",
+                                    "LMR36006",
+                                    "TPS54360B",
+                                    "TPS61372",
+                                    "TPS61088-Q1",
+                                    "LM5146-Q1",
+                                    "LMR36015",
+                                    "LMR36015-Q1",
+                                    "LM5122ZA",
+                                    "LMR33620-Q1",
+                                    "LMR33630-Q1",
+                                    "LMR36006-Q1",
+                                    "LMZM33604",
+                                    "LMZM33606",
+                                    "TPS63805",
+                                    "LM2775-Q1",
+                                    "LM5176-Q1",
+                                    "TPS61281D",
+                                    "TPS61282D",
+                                    "LM34936",
+                                    "TPS62422-Q1",
+                                    "TPS62423-Q1",
+                                    "TPS62424-Q1",
+                                    "TPS62800",
+                                    "TPS62802",
+                                    "TPS62823",
+                                    "TPS62825",
+                                    "TPS62826",
+                                    "LM51501-Q1",
+                                    "TLV62568A",
+                                    "TLV62569A",
+                                    "TPS560430",
+                                    "TPS62806",
+                                    "TPS62822",
+                                    "TPSM84209",
+                                    "LMZM23600",
+                                    "LMZM23601",
+                                    "TPS62147",
+                                    "TPS62148",
+                                    "TPSM84624",
+                                    "LMR14010A",
+                                    "TPSM82480",
+                                    "LMR23615",
+                                    "LMR23615-Q1",
+                                    "TPS62243-Q1",
+                                    "TPS62244-Q1",
+                                    "LMZM33602",
+                                    "LMZM33603",
+                                    "TPS62801",
+                                    "LMR33620",
+                                    "LMR33630",
+                                    "TPS62821",
+                                    "TPSM84424",
+                                    "TPSM84824",
+                                    "TPS65268-Q1",
+                                    "TPSM846C24",
+                                    "TPSM846C23",
+                                    "TPS61322",
+                                    "TPS61280D",
+                                    "TPS62097-Q1",
+                                    "LM73605-Q1",
+                                    "LM73606-Q1",
+                                    "LM76002-Q1",
+                                    "LM76003-Q1",
+                                    "TPS40345",
+                                    "TPS53119",
+                                    "TPS62088",
+                                    "TPS55160-Q1",
+                                    "TPS55162-Q1",
+                                    "TPS55165-Q1",
+                                    "TPS61085A-Q1",
+                                    "LM2623-Q1",
+                                    "LM76002",
+                                    "LM76003",
+                                    "LM5150-Q1",
+                                    "TPS63710",
+                                    "LM73605",
+                                    "LM73606",
+                                    "TPS565208",
+                                    "LMS3655-Q1",
+                                    "LMS3635-Q1",
+                                    "TPS565201",
+                                    "TLV62585",
+                                    "LV14360",
+                                    "LMS3655",
+                                    "TPS54424",
+                                    "TPSM84203",
+                                    "TPSM84205",
+                                    "TPSM84212",
+                                    "TPS543B20",
+                                    "TPS82140",
+                                    "TPS82150",
+                                    "TPS53681",
+                                    "LM25145",
+                                    "TPS549B22",
+                                    "LM5176",
+                                    "TPS54308",
+                                    "LM5145",
+                                    "TPS65263-1Q1",
+                                    "TPS561201",
+                                    "TPS561208",
+                                    "TLV61046A",
+                                    "TPS61096A",
+                                    "TPS57112C-Q1",
+                                    "TPS61253A",
+                                    "TPS62136",
+                                    "TPS53627",
+                                    "LM25141",
+                                    "LM5141",
+                                    "TPS54560B-Q1",
+                                    "TPS61178",
+                                    "LM25141-Q1",
+                                    "TPS6213013A-Q1",
+                                    "TPS54340B-Q1",
+                                    "TPS54360B-Q1",
+                                    "TPS54540B-Q1",
+                                    "TPS61256C",
+                                    "TPS568215OA",
+                                    "TPS62672",
+                                    "TPS548B22",
+                                    "TPS65235-1",
+                                    "TPS54260-EP",
+                                    "TPS54262-EP",
+                                    "TPSM84A21",
+                                    "TPSM84A22",
+                                    "LMR23625-Q1",
+                                    "TPS63027",
+                                    "LM5166",
+                                    "LMR23610-Q1",
+                                    "LMR23630-Q1",
+                                    "TLV62568",
+                                    "TLV62569",
+                                    "LM53603",
+                                    "TPS62162-Q1",
+                                    "TPS562210A",
+                                    "TPS562219A",
+                                    "TPS563210A",
+                                    "TPS563219A",
+                                    "TPS54824",
+                                    "LM5170-Q1",
+                                    "TPS53622",
+                                    "TPS53659",
+                                    "TPS53679",
+                                    "TPS568215",
+                                    "TPS65266-1",
+                                    "LM53602",
+                                    "LM27762",
+                                    "TPS62171-Q1",
+                                    "TLV62084A",
+                                    "TPS53667",
+                                    "TPS62135",
+                                    "TPS546C23",
+                                    "LM5141-Q1",
+                                    "TPS61099",
+                                    "LM5161-Q1",
+                                    "TPS546C20A",
+                                    "TPS548D21",
+                                    "TPS549D22",
+                                    "TPS61230A",
+                                    "TPS63070",
+                                    "TPS54335-2A",
+                                    "TPS54388C-Q1",
+                                    "TPS57114C-Q1",
+                                    "LMR23610",
+                                    "LMR23625",
+                                    "LMR23630",
+                                    "TPS61235P",
+                                    "TPS61236P",
+                                    "TPS53626",
+                                    "TPS54302",
+                                    "TPS61021A",
+                                    "TLV627432",
+                                    "TPS560200-Q1",
+                                    "TPS612592",
+                                    "LMR16010",
+                                    "LMR16020",
+                                    "LMR16030",
+                                    "LM53635-Q1",
+                                    "LM53625-Q1",
+                                    "TPS564201",
+                                    "TPS54202H",
+                                    "TPS548D22",
+                                    "LMZ34202",
+                                    "TPS610987",
+                                    "TPS61089",
+                                    "TPS54A20",
+                                    "LM5175-Q1",
+                                    "TPS54202",
+                                    "TPS564208",
+                                    "TLV62095",
+                                    "TPS62770",
+                                    "LM5165",
+                                    "LM5165-Q1",
+                                    "TPS56C215",
+                                    "LM5022-Q1",
+                                    "TPS82130",
+                                    "TPS62480",
+                                    "LM27761",
+                                    "TPS562208",
+                                    "LM5140-Q1",
+                                    "TPS563208",
+                                    "TPS610985",
+                                    "TPS610986",
+                                    "LMR14020-Q1",
+                                    "LMR14030-Q1",
+                                    "LMR14050-Q1",
+                                    "LM53600-Q1",
+                                    "LM53601-Q1",
+                                    "TPS562201",
+                                    "LM25122-Q1",
+                                    "TPS563201",
+                                    "TPS548A20",
+                                    "TPS549A20",
+                                    "TPS62097",
+                                    "TPS65265",
+                                    "TPS63020-Q1",
+                                    "TPS65235",
+                                    "TLV62085",
+                                    "TPS40210-EP",
+                                    "TPS54335-1A",
+                                    "LMZ36002",
+                                    "TPS62748",
+                                    "TPS65400-Q1",
+                                    "TPS57140-EP",
+                                    "TPS82084",
+                                    "LM46002-Q1",
+                                    "LM43601-Q1",
+                                    "LM46001-Q1",
+                                    "LM43600-Q1",
+                                    "LM46000-Q1",
+                                    "TPS610982",
+                                    "LMR16006Y-Q1",
+                                    "LM53602-Q1",
+                                    "LM53603-Q1",
+                                    "LM5160-Q1",
+                                    "TPS50601A-SP",
+                                    "TPS61098",
+                                    "TPS62745",
+                                    "TPS627451",
+                                    "LM2776",
+                                    "TPS62746",
+                                    "TPS8268120",
+                                    "TPS8268180",
+                                    "TPS610981",
+                                    "TPS62743",
+                                    "TPS53647",
+                                    "TPS51275B-1",
+                                    "TPS54334",
+                                    "LM2775",
+                                    "TPS544B25",
+                                    "TPS544C25",
+                                    "TPS61088",
+                                    "LM43602-Q1",
+                                    "LM43603-Q1",
+                                    "TPS82085",
+                                    "TPS61046",
+                                    "TPS566250",
+                                    "TPS826716",
+                                    "LM5175",
+                                    "LMR14020",
+                                    "LMR14030",
+                                    "LMR14050",
+                                    "TPS62184",
+                                    "TPS61093-Q1",
+                                    "LM5160A",
+                                    "TPS62134D",
+                                    "TPS62067-Q1",
+                                    "TPS65263-Q1",
+                                    "TPS62160-Q1",
+                                    "TPS62170-Q1",
+                                    "TPS62172-Q1",
+                                    "TPS54335A",
+                                    "TPS54336A",
+                                    "TPS61175-Q1",
+                                    "TPS62406-Q1",
+                                    "TPS62407-Q1",
+                                    "LMZ20501",
+                                    "LMZ20502",
+                                    "TPS53625",
+                                    "TPS63024",
+                                    "TPS630241",
+                                    "TPS630242",
+                                    "LM3281",
+                                    "TPS65400",
+                                    "TPS8268090",
+                                    "TPS8268105",
+                                    "TPS8268150",
+                                    "LMZ21700",
+                                    "LMZ21701",
+                                    "LMR16006",
+                                    "LV2862",
+                                    "TPS826721",
+                                    "TPS563209",
+                                    "TPS51623",
+                                    "TPS51633",
+                                    "TPS61291",
+                                    "TPS563200",
+                                    "TPS53632",
+                                    "TPS54561-Q1",
+                                    "TPS62180",
+                                    "TPS62182",
+                                    "LM43600",
+                                    "LM43601",
+                                    "TPS51632-Q1",
+                                    "TPS62134A",
+                                    "TPS62742",
+                                    "TPS57114-EP",
+                                    "LM46000",
+                                    "LM46001",
+                                    "TPS65263",
+                                    "TPS54060-EP",
+                                    "TPS55340-EP",
+                                    "TPS53631",
+                                    "TPS53641",
+                                    "TPS53661",
+                                    "TPS53640",
+                                    "TPS53640A",
+                                    "TPS62133A-Q1",
+                                    "TPS62153A-Q1",
+                                    "TPS82740A",
+                                    "TPS82740B",
+                                    "TPS55340-Q1",
+                                    "TPS626765",
+                                    "TPS62130A-Q1",
+                                    "TPS62150A-Q1",
+                                    "TPS40428",
+                                    "TPS544B20",
+                                    "TPS544C20",
+                                    "TPS630250",
+                                    "TPS630251",
+                                    "TPS630252",
+                                    "TPS62095",
+                                    "LM5001-Q1",
+                                    "TPS54361-Q1",
+                                    "TPS62684",
+                                    "LM43602",
+                                    "LM43603",
+                                    "LM46002",
+                                    "TPS61230",
+                                    "TPS82692",
+                                    "TPS826951",
+                                    "TPS40425",
+                                    "TLV62084",
+                                    "TPS63050",
+                                    "TPS562200",
+                                    "TPS562209",
+                                    "TPS61097A-33",
+                                    "LMZ10500",
+                                    "LMZ10501",
+                                    "TPS65279",
+                                    "TPS63060-EP",
+                                    "TPS626751",
+                                    "LMZ31520",
+                                    "LMZ31530",
+                                    "TPS65261",
+                                    "TPS65261-1",
+                                    "TPS54341",
+                                    "TPS54361",
+                                    "TPS54561",
+                                    "TPS54541",
+                                    "LMR14006",
+                                    "TPS82697",
+                                    "TPS563900",
+                                    "TPS53915",
+                                    "TPS53513",
+                                    "TPS53515",
+                                    "TPS54418A",
+                                    "TPS56520",
+                                    "TPS56628",
+                                    "TPS56C20",
+                                    "TPS62740",
+                                    "TPS51678",
+                                    "LMZ31704",
+                                    "LMZ31707",
+                                    "TPS40007-DIE",
+                                    "TLV62565",
+                                    "TLV62566",
+                                    "TPS62085",
+                                    "TPS62086",
+                                    "TPS62087",
+                                    "LM5116-HT",
+                                    "LM3248",
+                                    "TPS51624",
+                                    "TPS65581",
+                                    "LM5121",
+                                    "LM5121-Q1",
+                                    "TPS560200",
+                                    "TPS65580",
+                                    "LMZ30604",
+                                    "LMZ30606",
+                                    "LMZ31503",
+                                    "LMZ31506",
+                                    "LMZ31506H",
+                                    "LMZ31710",
+                                    "LMZ35003",
+                                    "LMZ30602",
+                                    "LMZ34002",
+                                    "TPS51622A",
+                                    "TPS51631A",
+                                    "LM27403",
+                                    "LM34919C-Q1",
+                                    "LMR12007",
+                                    "TPS61232",
+                                    "TPS54625",
+                                    "TPS54626",
+                                    "TPS62090-Q1",
+                                    "TPS62065-Q1",
+                                    "TPS63051",
+                                    "TPS82698",
+                                    "TPS62130A",
+                                    "TPS62737",
+                                    "LM3017",
+                                    "TLV62150A",
+                                    "TPS62150A",
+                                    "TPS62140A",
+                                    "LM3263",
+                                    "TLV62130A",
+                                    "TPS65133",
+                                    "LM5122",
+                                    "LM5122-Q1",
+                                    "TPS65132",
+                                    "TPS54540",
+                                    "TPS55330",
+                                    "TPS62402-Q1",
+                                    "TPS62405-Q1",
+                                    "TPS54531",
+                                    "TPS54627",
+                                    "TPS54628",
+                                    "TPS65251-1",
+                                    "TPS65251-2",
+                                    "TPS65251-3",
+                                    "TPS56428",
+                                    "TPS56528",
+                                    "TPS51285A",
+                                    "TPS51285B",
+                                    "TPS40170-EP",
+                                    "TPS51632",
+                                    "TPS62400-Q1",
+                                    "TPS53511",
+                                    "TPS84A20",
+                                    "LM3279",
+                                    "TPS51622",
+                                    "TPS54061-Q1",
+                                    "TPS62736",
+                                    "TPS51275B",
+                                    "TPS51362",
+                                    "TPS51363",
+                                    "TPS51367",
+                                    "TPS65273V",
+                                    "TPS65276V",
+                                    "TPS65279V",
+                                    "TPS82693",
+                                    "TPS43060",
+                                    "TPS54020",
+                                    "TPS54560",
+                                    "TPS53624",
+                                    "TPS65131-Q1",
+                                    "LM25119Q",
+                                    "LM5119Q",
+                                    "TPS54239",
+                                    "TPS54239E",
+                                    "TPS54339",
+                                    "TPS54010-EP",
+                                    "LM25017",
+                                    "LM25018",
+                                    "LM25019",
+                                    "TPS50601-SP",
+                                    "TPS826745",
+                                    "TPS51631",
+                                    "TPS54339E",
+                                    "TPS62698",
+                                    "TPS62693",
+                                    "TPS50301-HT",
+                                    "TPS62732",
+                                    "TPS43061",
+                                    "TPS62733",
+                                    "TPS53819A",
+                                    "TPS54340",
+                                    "TPS62175",
+                                    "TPS62177",
+                                    "TPS826765",
+                                    "LM22673-Q1",
+                                    "LM22679-Q1",
+                                    "TPS40021-EP",
+                                    "TPS51312",
+                                    "TPS51313",
+                                    "TPS61222-EP",
+                                    "TPS54360",
+                                    "TPS5402",
+                                    "TPS5403",
+                                    "TPS53015",
+                                    "TPS54362-HT",
+                                    "LM3262",
+                                    "TPS84259",
+                                    "TPS63036",
+                                    "TPS61259",
+                                    "TPS84250",
+                                    "LMR10530",
+                                    "LMR12015",
+                                    "LMR12020",
+                                    "LMR61428",
+                                    "LM5018",
+                                    "LM5019",
+                                    "TPS62203-DIE",
+                                    "TPS62366A",
+                                    "TPS62366B",
+                                    "TPS542951",
+                                    "TPS542941",
+                                    "LM3269",
+                                    "LMR70503",
+                                    "TPS54678",
+                                    "TPS5405",
+                                    "TPS51275",
+                                    "TPS51275C",
+                                    "TPS53318",
+                                    "TPS54394",
+                                    "TPS54395",
+                                    "TPS54494",
+                                    "TPS54495",
+                                    "TPS826711",
+                                    "TPS54525",
+                                    "TPS54526",
+                                    "TPS53319",
+                                    "TPS54719",
+                                    "TPS81256",
+                                    "TLV61220",
+                                    "TPS59641",
+                                    "TPS53014",
+                                    "TPS54061",
+                                    "TPS54140A",
+                                    "TPS54160A",
+                                    "TPS55340",
+                                    "TPS61253",
+                                    "TPS61258",
+                                    "TPS62125",
+                                    "LM2700Q-Q1",
+                                    "TPS82670",
+                                    "TPS82673",
+                                    "LM25117-Q1",
+                                    "TPS40170-Q1",
+                                    "TPS54386-Q1",
+                                    "TPS62242-Q1",
+                                    "TLV62090",
+                                    "TPS54233-Q1",
+                                    "TPS62090",
+                                    "TPS62091",
+                                    "TPS62092",
+                                    "TPS62093",
+                                    "TPS62650-Q1",
+                                    "TPS62080A",
+                                    "TPS54040A",
+                                    "TPS54060A",
+                                    "TPS62363",
+                                    "TPS54120",
+                                    "TPS5432",
+                                    "LM26420-Q1",
+                                    "TPS51463",
+                                    "TPS59650",
+                                    "TLV62080",
+                                    "SM72445",
+                                    "TLV62130",
+                                    "TLV62150",
+                                    "TPS51225",
+                                    "TPS51225B",
+                                    "LM5017",
+                                    "TPS82695",
+                                    "TPS82672",
+                                    "TPS51650",
+                                    "TPS51640A",
+                                    "TPS59640",
+                                    "TPS82674",
+                                    "LM3253-C",
+                                    "TPS51225C",
+                                    "TPS40422",
+                                    "LM3102-Q1",
+                                    "LM3243",
+                                    "TPS53219A",
+                                    "TPS51462",
+                                    "TPS61087-Q1",
+                                    "TPS62231-Q1",
+                                    "TPS622314-Q1",
+                                    "TPS63060",
+                                    "TPS63061",
+                                    "TPIC74101-Q1",
+                                    "TPS53316",
+                                    "LM25118",
+                                    "TPS51518",
+                                    "TPS84621",
+                                    "LM3671-Q1",
+                                    "TPS54294",
+                                    "TPS54428",
+                                    "TPS84610",
+                                    "TPS62150",
+                                    "TPS62151",
+                                    "TPS62152",
+                                    "TPS62153",
+                                    "TPS54295",
+                                    "TPS54427",
+                                    "TPS62130",
+                                    "TPS62131",
+                                    "TPS62132",
+                                    "TPS62133",
+                                    "TPS62140",
+                                    "TPS62141",
+                                    "TPS62142",
+                                    "TPS62143",
+                                    "TPS65135",
+                                    "TPS62160",
+                                    "TPS62161",
+                                    "TPS62162",
+                                    "TPS62163",
+                                    "TPS62171",
+                                    "TPS62172",
+                                    "LM20144-Q1",
+                                    "LM20145-Q1",
+                                    "TPS62170",
+                                    "TPS62173",
+                                    "TPS54329E",
+                                    "TPS54229E",
+                                    "TPS61256",
+                                    "LM25118-Q1",
+                                    "LMR14203",
+                                    "LMR14206",
+                                    "LMR62421",
+                                    "LMR10510",
+                                    "LMR10515",
+                                    "LMR10520",
+                                    "TPS54362-Q1",
+                                    "TPS54821",
+                                    "TPS53211",
+                                    "LMR24210",
+                                    "LMR24220",
+                                    "LMR62014",
+                                    "TPS54229",
+                                    "TPS652510",
+                                    "TPS84320",
+                                    "TPS54519",
+                                    "TPS54623",
+                                    "TPS61170-Q1",
+                                    "TPS54329",
+                                    "TPS62080",
+                                    "TPS62081",
+                                    "TPS62082",
+                                    "TPS61254",
+                                    "LMR12010",
+                                    "LMR64010",
+                                    "TPS65270",
+                                    "TPS82676",
+                                    "TPS53353",
+                                    "TPS54527",
+                                    "TPS54528",
+                                    "TPS62362",
+                                    "LM27313-Q1",
+                                    "TPS40400",
+                                    "TPS61256A",
+                                    "LM25117",
+                                    "TPS51123A",
+                                    "LM3242",
+                                    "TPS54225-Q1",
+                                    "TPS54325-Q1",
+                                    "TPS54478",
+                                    "TPS65253",
+                                    "LM20143-Q1",
+                                    "TPS40322",
+                                    "TPS54429",
+                                    "TPS54429E",
+                                    "LM21305",
+                                    "TPS62360",
+                                    "TPS62361B",
+                                    "TPS62730",
+                                    "TPS82677",
+                                    "TPS61261",
+                                    "TPS53314",
+                                    "TPS54062",
+                                    "TPS61260",
+                                    "TPS54227",
+                                    "TPS54228",
+                                    "LM5117",
+                                    "LM5117-Q1",
+                                    "LMZ13608",
+                                    "LMZ13610",
+                                    "LMZ23608",
+                                    "TPS62061",
+                                    "TPS62063",
+                                    "TPS62671",
+                                    "TPS62675",
+                                    "LM21215A",
+                                    "LMZ12008",
+                                    "LMZ12010",
+                                    "LMZ22008",
+                                    "LMZ22010",
+                                    "LM5006",
+                                    "TPS51220A-Q1",
+                                    "TPS51317",
+                                    "TPS54622",
+                                    "TPS40170",
+                                    "LM34922",
+                                    "TPS62690",
+                                    "LMZ22003",
+                                    "LMZ22005",
+                                    "LMZ23603",
+                                    "TLV61224",
+                                    "TPS56121",
+                                    "TPS56221",
+                                    "LM34923",
+                                    "TPS53355",
+                                    "LM25088-Q1",
+                                    "LM5088-Q1",
+                                    "LM22680-Q1",
+                                    "LM22676-Q1",
+                                    "LM22678-Q1",
+                                    "LM21212-1",
+                                    "LM21212-2",
+                                    "LM21215",
+                                    "TPS62260-Q1",
+                                    "TPS51219",
+                                    "TPS62651",
+                                    "TPS62679",
+                                    "LMZ14201H",
+                                    "LMZ14202H",
+                                    "LMZ14203H",
+                                    "TLV61225",
+                                    "TPS53315",
+                                    "TPS54260-Q1",
+                                    "TPS54240-Q1",
+                                    "TPS57140-Q1",
+                                    "TPS57160-Q1",
+                                    "TPS57040-Q1",
+                                    "TPS57060-Q1",
+                                    "TPS61240-Q1",
+                                    "TPS62590-Q1",
+                                    "TPS51461",
+                                    "TPS53310",
+                                    "TPS53321",
+                                    "LM8850",
+                                    "TPS5401",
+                                    "TLV62065",
+                                    "TPS51211",
+                                    "TPS54328",
+                                    "TPS54327",
+                                    "TPS54618",
+                                    "TPS54331-Q1",
+                                    "TPS82671",
+                                    "TPS82675",
+                                    "LM8801",
+                                    "TPS59620",
+                                    "TPS61251",
+                                    "TPS61252",
+                                    "PTD08A210W",
+                                    "TL2575HV-05-Q1",
+                                    "TL2575HV-33-Q1",
+                                    "TPS62290-Q1",
+                                    "TPS62293-Q1",
+                                    "TPS62665",
+                                    "LM25119",
+                                    "LM5119",
+                                    "TPS54320",
+                                    "TPS62120",
+                                    "TPS53128",
+                                    "TPS53129",
+                                    "TPS54425",
+                                    "TPS54426",
+                                    "TPS62421",
+                                    "LMZ12001EXT",
+                                    "LMZ12002EXT",
+                                    "LMZ12003EXT",
+                                    "LMZ14201EXT",
+                                    "LMZ14202EXT",
+                                    "LMZ14203EXT",
+                                    "TPS62122",
+                                    "LMZ10503EXT",
+                                    "LMZ10504EXT",
+                                    "LMZ10505EXT",
+                                    "TPS40210-HT",
+                                    "TPS54521",
+                                    "LM34919B-Q1",
+                                    "SM72442",
+                                    "SM72485",
+                                    "TPS53311",
+                                    "TPS54319",
+                                    "LM34919B",
+                                    "PTD08D210W",
+                                    "TPS59621",
+                                    "TPS40304A",
+                                    "TPS62404",
+                                    "TPS62674",
+                                    "TPS54240",
+                                    "TPS65251",
+                                    "TPS59610",
+                                    "TPS62410-Q1",
+                                    "TPS63020",
+                                    "TPS63021",
+                                    "TPS61071-Q1",
+                                    "LMZ12001",
+                                    "LMZ12002",
+                                    "LMZ14201",
+                                    "LMZ14202",
+                                    "TPS62612",
+                                    "TPS62616",
+                                    "TPS62619",
+                                    "TPS62660",
+                                    "TPS53127",
+                                    "TPS54260",
+                                    "TPS62060",
+                                    "LMZ23610",
+                                    "TPS62065",
+                                    "TPS62067",
+                                    "LMZ10503",
+                                    "LMZ10505",
+                                    "TPS62110-Q1",
+                                    "LM3241",
+                                    "LMZ10504",
+                                    "LMZ12003",
+                                    "LMZ14203",
+                                    "TPS62261-Q1",
+                                    "TPS62262-Q1",
+                                    "TPS62263-Q1",
+                                    "TPS62404-Q1",
+                                    "TPS62420-Q1",
+                                    "TPS62615",
+                                    "TPS51125A",
+                                    "TPS61085T",
+                                    "TPS65232A0",
+                                    "TPS65232A2",
+                                    "PTD08A015W",
+                                    "TPS40303",
+                                    "TPS40304",
+                                    "TPS40305",
+                                    "TPS51611",
+                                    "LMZ23605",
+                                    "TPS54290",
+                                    "TPS54291",
+                                    "TPS54292",
+                                    "TPS51621",
+                                    "TPS54226",
+                                    "TPS54225",
+                                    "TPS53125",
+                                    "TPS54326",
+                                    "TPS54162-Q1",
+                                    "TPS40200-HT",
+                                    "TPS60151",
+                                    "TPS61029-Q1",
+                                    "TPS61093",
+                                    "LM3209-G3",
+                                    "TPS51513",
+                                    "TPS54262-Q1",
+                                    "TPS5410-Q1",
+                                    "TPS62751",
+                                    "TPS54318",
+                                    "TPS5410-EP",
+                                    "LM25085-Q1",
+                                    "TPS54218",
+                                    "TPS61086",
+                                    "TPS62650",
+                                    "TPS5450-EP",
+                                    "TPS62621",
+                                    "TPS62622",
+                                    "TPS62623",
+                                    "TPS62624",
+                                    "TPS62625",
+                                    "TPS62750",
+                                    "LM5118-Q1",
+                                    "REG71055-Q1",
+                                    "TPS63000-Q1",
+                                    "TPS55332-Q1",
+                                    "PTD08A006W",
+                                    "TPS51217",
+                                    "LM10500",
+                                    "TPS53126",
+                                    "TPS54325",
+                                    "TPS54620",
+                                    "LM26420",
+                                    "TPS54418",
+                                    "LM5008A",
+                                    "LM5009A",
+                                    "TPS51163",
+                                    "TPS51218",
+                                    "TPS61241",
+                                    "TPS61240",
+                                    "TPS62230",
+                                    "LM3478Q-Q1",
+                                    "LM3488Q-Q1",
+                                    "TPS53114",
+                                    "LM26001-Q1",
+                                    "TPS62000-HT",
+                                    "TPS5130-Q1",
+                                    "TPS5430-EP",
+                                    "TPS51113",
+                                    "TPS54040",
+                                    "LM25011",
+                                    "LM25011-Q1",
+                                    "TPS62620",
+                                    "TPS62272",
+                                    "TPS54060",
+                                    "LM25576-Q1",
+                                    "TPS62113",
+                                    "TPS62225",
+                                    "LM20136",
+                                    "LM20146",
+                                    "LM25574-Q1",
+                                    "LM25575-Q1",
+                                    "LM25085A",
+                                    "TPS61220",
+                                    "TPS61221",
+                                    "TPS61222",
+                                    "TPS62590",
+                                    "LM27402",
+                                    "PTH08T255W",
+                                    "TPS54332",
+                                    "TPS51220A",
+                                    "TPS51123",
+                                    "PTH04T240F",
+                                    "TPS60150",
+                                    "TPS62562",
+                                    "TPS54232",
+                                    "LM22680",
+                                    "TPS61175",
+                                    "LM25088",
+                                    "LM5088",
+                                    "TPS54140",
+                                    "TPS40197",
+                                    "LM25010-Q1",
+                                    "LM5010A-Q1",
+                                    "TPS54617",
+                                    "TPS54917",
+                                    "TPS62561",
+                                    "LM25085",
+                                    "TPS62250",
+                                    "LM7705",
+                                    "TPS54233",
+                                    "TPS63030",
+                                    "TPS63031",
+                                    "TPS54160",
+                                    "LM5116WG",
+                                    "LM22673",
+                                    "LM22676",
+                                    "LM22678",
+                                    "LM22679",
+                                    "LM5576-Q1",
+                                    "TPS54231",
+                                    "LM5574-Q1",
+                                    "TPS55065-Q1",
+                                    "TPS55383",
+                                    "TPS55386",
+                                    "LM22670",
+                                    "LM22670-Q1",
+                                    "LM22677",
+                                    "LM22677-Q1",
+                                    "LM3150",
+                                    "LM5575-Q1",
+                                    "TPS40210-Q1",
+                                    "TPS40211-Q1",
+                                    "TPS51610",
+                                    "TPS5450-Q1",
+                                    "TPS62701",
+                                    "TPS54331",
+                                    "LM20343",
+                                    "LM5085",
+                                    "LM5085-Q1",
+                                    "TPS62273",
+                                    "TPS40090-Q1",
+                                    "TPS54110-Q1",
+                                    "TPS61085",
+                                    "TPS63010",
+                                    "TPS63011",
+                                    "TPS63012",
+                                    "LM3489-Q1",
+                                    "TPS62601",
+                                    "LM20323",
+                                    "LM20333",
+                                    "TPS61087",
+                                    "TPS54310-EP",
+                                    "LM5118",
+                                    "TPS51427",
+                                    "TPS51727",
+                                    "LM22671",
+                                    "LM22671-Q1",
+                                    "LM22672",
+                                    "LM22672-Q1",
+                                    "LM2738",
+                                    "LM2854",
+                                    "PTD08A020W",
+                                    "TPS62291",
+                                    "LM34917A",
+                                    "TPS40210",
+                                    "TPS40211",
+                                    "LM2830-Q1",
+                                    "TPS62263",
+                                    "LM2734Z-Q1",
+                                    "PTD08A010W",
+                                    "TPS53124",
+                                    "TPS62560",
+                                    "TPS62293",
+                                    "LM2773",
+                                    "LM22674",
+                                    "LM22674-Q1",
+                                    "LM22675",
+                                    "LM22675-Q1",
+                                    "TPS40200-Q1",
+                                    "LM2841",
+                                    "LM2841-Q1",
+                                    "TPS40042",
+                                    "TPS51620",
+                                    "TPS62700",
+                                    "TPS62356",
+                                    "TPS5420-Q1",
+                                    "TPS62270",
+                                    "TPS5430-Q1",
+                                    "TPS51220",
+                                    "TPS62112-EP",
+                                    "TPS61170",
+                                    "LM3679",
+                                    "LM20123",
+                                    "LM20124",
+                                    "LM20125",
+                                    "LM20133",
+                                    "LM20134",
+                                    "LM20143",
+                                    "LM20144",
+                                    "LM20145",
+                                    "LM20154",
+                                    "TPS62242",
+                                    "TPS51125",
+                                    "LM2757",
+                                    "TPS62355",
+                                    "LM4510",
+                                    "TPS62111-EP",
+                                    "LM3102",
+                                    "LM3103",
+                                    "TPS54283",
+                                    "TPS54286",
+                                    "TPS54383",
+                                    "TPS54386",
+                                    "PTH08T250W",
+                                    "LM3153",
+                                    "TPS62240",
+                                    "TPS62243",
+                                    "TPS62260",
+                                    "TPS62261",
+                                    "TPS62262",
+                                    "TPS62290",
+                                    "TPS62351",
+                                    "LM34910C",
+                                    "LM34919",
+                                    "TPS61073",
+                                    "LM26001B",
+                                    "PTH04T221W",
+                                    "PTH04T241W",
+                                    "LM25116",
+                                    "TPS5450",
+                                    "TPS40192",
+                                    "TPS40193",
+                                    "TPS61200",
+                                    "TPS61201",
+                                    "TPS61202",
+                                    "LM5015",
+                                    "TPS40131",
+                                    "TPS54311-EP",
+                                    "TPS54313-EP",
+                                    "TPS54314-EP",
+                                    "TPS54315-EP",
+                                    "TPS54316-EP",
+                                    "TPS62354",
+                                    "TPS62353",
+                                    "TPS62402",
+                                    "TPS62410",
+                                    "LM27342",
+                                    "LM27342-Q1",
+                                    "TPIC74100-Q1",
+                                    "LM3691",
+                                    "TPS40195",
+                                    "LM26400Y",
+                                    "LM25115A",
+                                    "TPS54312-EP",
+                                    "TPS62110-EP",
+                                    "TPS40077",
+                                    "TPS61080",
+                                    "TPS61081",
+                                    "LM25574",
+                                    "LM25575",
+                                    "LM25576",
+                                    "LM5001",
+                                    "LM5002",
+                                    "LM5574",
+                                    "LM5575",
+                                    "LM5576",
+                                    "TPS61072",
+                                    "TPS40200-EP",
+                                    "TPS54354-EP",
+                                    "LM5022",
+                                    "PTH04T220W",
+                                    "TPS5420-EP",
+                                    "LM27313",
+                                    "TPS62352",
+                                    "TPS62403",
+                                    "TL2575HV-05",
+                                    "TL2575HV-12",
+                                    "TL2575HV-15",
+                                    "TL2575HV-33",
+                                    "TL2575HV-ADJ",
+                                    "LM3676",
+                                    "LM3151",
+                                    "LM3152",
+                                    "PTH08T241W",
+                                    "LM2772",
+                                    "LM34914",
+                                    "LM2853",
+                                    "TPS40101",
+                                    "PTH04T240W",
+                                    "TPS5410",
+                                    "LM3677",
+                                    "TL7660",
+                                    "LM2830",
+                                    "LM2831",
+                                    "LM2840",
+                                    "LM2840-Q1",
+                                    "LM2842",
+                                    "LM2842-Q1",
+                                    "TL2575-12",
+                                    "TPS62400",
+                                    "TPS62401",
+                                    "TPS62420",
+                                    "LM3678",
+                                    "LM2833",
+                                    "TL2575-15",
+                                    "TL2575-ADJ",
+                                    "TPS62350",
+                                    "LM1771",
+                                    "PTH08T230W",
+                                    "TPS40075",
+                                    "LM2832",
+                                    "LM26001",
+                                    "LM3489",
+                                    "TPS62510",
+                                    "LM2694",
+                                    "TPS40056",
+                                    "TPS5420",
+                                    "TPS5431",
+                                    "TPS63000",
+                                    "TPS63001",
+                                    "TPS63002",
+                                    "TPS40040",
+                                    "TPS40041",
+                                    "TPS62227",
+                                    "LM2771",
+                                    "TPS61026",
+                                    "TPS61029",
+                                    "LM5009",
+                                    "LM27341",
+                                    "LM27341-Q1",
+                                    "TPS40200",
+                                    "TPS5430",
+                                    "TL2575-05",
+                                    "TL2575-33",
+                                    "LM3100",
+                                    "LM25007",
+                                    "LM25005",
+                                    "LM2717-ADJ",
+                                    "TPS54317",
+                                    "LM3674",
+                                    "PTH05T210W",
+                                    "PTH08T240W",
+                                    "TPS51117",
+                                    "TPS51124",
+                                    "TPS62304",
+                                    "LM25010",
+                                    "TL1451A-EP",
+                                    "LM5116",
+                                    "LM5642X",
+                                    "LM25115",
+                                    "PTH08T210W",
+                                    "PTV08T250W",
+                                    "TPS40222",
+                                    "LM5010A",
+                                    "TPS54350-EP",
+                                    "LM2696",
+                                    "PTV08040W",
+                                    "TPS63700",
+                                    "PTN04050C",
+                                    "LM5005",
+                                    "TL5001A-Q1",
+                                    "TPS54610-EP",
+                                    "LM20242",
+                                    "TPS54615-EP",
+                                    "LM3743",
+                                    "TPS51120",
+                                    "TPS40190",
+                                    "LM3310",
+                                    "TPS62111",
+                                    "TPS62112",
+                                    "TPS40055-EP",
+                                    "MC33063A-Q1",
+                                    "TPS62110",
+                                    "LM3000",
+                                    "TL1451A-Q1",
+                                    "TPS61028",
+                                    "TPS40100",
+                                    "LM3481",
+                                    "LM3481-Q1",
+                                    "LM2717",
+                                    "PTN78000H",
+                                    "PTN78020A",
+                                    "LM2745",
+                                    "PTN78000A",
+                                    "PTN78060A",
+                                    "PTH04040W",
+                                    "LM5115A",
+                                    "LM3673",
+                                    "LM3370",
+                                    "PTV03010W",
+                                    "PTV03020W",
+                                    "PTV05010W",
+                                    "PTH08080W",
+                                    "PTV05020W",
+                                    "TPS54073",
+                                    "MC33063A",
+                                    "MC34063A",
+                                    "LM2852",
+                                    "LM2734Z",
+                                    "TPS61040-Q1",
+                                    "TPS61041-Q1",
+                                    "PTV12010L",
+                                    "PTV12010W",
+                                    "TPS62026",
+                                    "PTN78020W",
+                                    "PTH12040W",
+                                    "PTN78060W",
+                                    "LM3224",
+                                    "LM3671",
+                                    "LM5010",
+                                    "TPS62228",
+                                    "TPS62229",
+                                    "TPS65131",
+                                    "LM34910",
+                                    "TPS62300",
+                                    "TPS62301",
+                                    "TPS62302",
+                                    "TPS62303",
+                                    "TPS62305",
+                                    "TPS62320",
+                                    "TPS62321",
+                                    "TPS54010",
+                                    "TPS40091",
+                                    "TPS60400-Q1",
+                                    "TPS60401-Q1",
+                                    "TPS60402-Q1",
+                                    "TPS60403-Q1",
+                                    "TPS62207",
+                                    "TPS62021",
+                                    "TPS61070",
+                                    "TPS61071",
+                                    "PTH03010Y",
+                                    "PTH03050Y",
+                                    "PTH03060Y",
+                                    "TPS40007",
+                                    "TPS40009",
+                                    "TPS62223",
+                                    "LM26003",
+                                    "LM26003-Q1",
+                                    "LM2735",
+                                    "LM2735-Q1",
+                                    "TPS62208",
+                                    "PTH05010Y",
+                                    "PTH05050Y",
+                                    "PTH05060Y",
+                                    "PTH12010Y",
+                                    "PTH12050Y",
+                                    "PTH12060Y",
+                                    "PTH03030W",
+                                    "LM2742",
+                                    "TPS65130",
+                                    "LM2770",
+                                    "LM5008",
+                                    "LM5115",
+                                    "PTH05030W",
+                                    "TPS40055",
+                                    "TPS40057",
+                                    "LM1770",
+                                    "LM3670",
+                                    "TPS5120-Q1",
+                                    "PTH03050W",
+                                    "PTH03060W",
+                                    "PTH05060W",
+                                    "PTH12050W",
+                                    "TPS54110",
+                                    "TPS5120-EP",
+                                    "REG71050",
+                                    "TPS40050-Q1",
+                                    "TPS40051-Q1",
+                                    "TPS40090",
+                                    "TPS54350",
+                                    "TPS54680-EP",
+                                    "PTH03010W",
+                                    "TPS62220",
+                                    "TPS62221",
+                                    "TPS62222",
+                                    "TPS62224",
+                                    "PTH03020W",
+                                    "TPS61020",
+                                    "TPS61024",
+                                    "TPS61025",
+                                    "TPS61027",
+                                    "PTH12010W",
+                                    "LM5020",
+                                    "LM2736",
+                                    "TPS64200",
+                                    "TPS64201",
+                                    "TPS64202",
+                                    "TPS64203",
+                                    "TPS61090",
+                                    "TPS61091",
+                                    "TPS61092",
+                                    "TPS62020",
+                                    "PTH05010W",
+                                    "PTH05020W",
+                                    "TPS62040",
+                                    "TPS62042",
+                                    "TPS62043",
+                                    "TPS62044",
+                                    "TPS62046",
+                                    "LM5642",
+                                    "REG71055",
+                                    "LM2731",
+                                    "TPS54973",
+                                    "TPS54980",
+                                    "TPS61045",
+                                    "TPS61030",
+                                    "TPS61031",
+                                    "TPS61032",
+                                    "LM5007",
+                                    "TPS40060",
+                                    "TPS40061",
+                                    "TPS62050",
+                                    "TPS62051",
+                                    "TPS62052",
+                                    "TPS62054",
+                                    "TPS62056",
+                                    "LM2734",
+                                    "LM2734-Q1",
+                                    "LM2724A",
+                                    "LM2733",
+                                    "LM2705",
+                                    "TPS54880",
+                                    "TPS61107",
+                                    "TPS61120",
+                                    "TPS61121",
+                                    "TPS61122",
+                                    "TPS61130",
+                                    "TPS61131",
+                                    "TPS61100",
+                                    "TPS62008",
+                                    "TPS40000",
+                                    "TPS5130",
+                                    "TPS54910",
+                                    "LM2642",
+                                    "LM2623",
+                                    "LM3475",
+                                    "TPS62200",
+                                    "TPS62201",
+                                    "TPS62202",
+                                    "TPS62203",
+                                    "TPS62204",
+                                    "TPS62205",
+                                    "TPS54810",
+                                    "TPS61040",
+                                    "TPS61041",
+                                    "LM5000",
+                                    "LM2704",
+                                    "TPS60240",
+                                    "TPS60242",
+                                    "TPS60243",
+                                    "TPS54310",
+                                    "TPS60500",
+                                    "TPS60501",
+                                    "TPS60503",
+                                    "TPS43000",
+                                    "LM2750",
+                                    "TPS60241",
+                                    "TPS60300",
+                                    "TPS60301",
+                                    "TPS60302",
+                                    "TPS60303",
+                                    "TPS60310",
+                                    "TPS60311",
+                                    "TPS60312",
+                                    "TPS60313",
+                                    "REG710-27",
+                                    "REG710-3",
+                                    "REG710-33",
+                                    "REG710-5",
+                                    "TPS54616",
+                                    "TPS60400",
+                                    "TPS60401",
+                                    "TPS60402",
+                                    "TPS60403",
+                                    "LM3485",
+                                    "LM3485-Q1",
+                                    "TPS54610",
+                                    "TPS60204",
+                                    "TPS60205",
+                                    "REG710-25",
+                                    "TPS60502",
+                                    "TPS62000",
+                                    "TPS62002",
+                                    "TPS62003",
+                                    "TPS62004",
+                                    "TPS62005",
+                                    "TPS62006",
+                                    "TPS62007",
+                                    "LM2590HV",
+                                    "LM2591HV",
+                                    "LM2592HV",
+                                    "LM2700",
+                                    "LM2593HV",
+                                    "LM2703",
+                                    "REG711-25",
+                                    "REG711-3",
+                                    "REG711-33",
+                                    "REG711-5",
+                                    "LM2611",
+                                    "LM2698",
+                                    "TPS5140",
+                                    "TPS62100",
+                                    "TPS62101",
+                                    "TPS62102",
+                                    "TPS62103",
+                                    "TPS61010",
+                                    "TPS61012",
+                                    "TPS61013",
+                                    "TPS61014",
+                                    "TPS61015",
+                                    "TPS61016",
+                                    "TPS5120",
+                                    "TPS60124",
+                                    "TPS60125",
+                                    "TPS61000",
+                                    "TPS61002",
+                                    "TPS61005",
+                                    "TPS61006",
+                                    "TPS61007",
+                                    "LM3488",
+                                    "UCC39411",
+                                    "TPS60210",
+                                    "TPS60211",
+                                    "TPS60212",
+                                    "TPS60213",
+                                    "LM2765",
+                                    "LM2766",
+                                    "TPS60200",
+                                    "TPS60201",
+                                    "TPS60202",
+                                    "TPS60203",
+                                    "LM3477",
+                                    "LM3478",
+                                    "LM2622",
+                                    "TPS60140",
+                                    "TPS60141",
+                                    "LM2655",
+                                    "LM2767",
+                                    "LM2677",
+                                    "TPS60120",
+                                    "TPS60121",
+                                    "TPS60122",
+                                    "TPS60123",
+                                    "TPS60130",
+                                    "TPS60131",
+                                    "TPS60132",
+                                    "TPS60133",
+                                    "LM2695",
+                                    "LM2682",
+                                    "TL5001AM",
+                                    "TL5001M",
+                                    "TPS60100",
+                                    "TPS60101",
+                                    "TPS60110",
+                                    "TPS60111",
+                                    "LM2653",
+                                    "LM828",
+                                    "MAX660",
+                                    "LM2681",
+                                    "UCC29421",
+                                    "LM2670",
+                                    "LM2594HV",
+                                    "LM2678",
+                                    "LM2679",
+                                    "LM2621",
+                                    "LM2664",
+                                    "LM2665",
+                                    "LM2597HV",
+                                    "LM2671",
+                                    "LM2674",
+                                    "LM2663",
+                                    "LM2662",
+                                    "LM2675",
+                                    "LM2660",
+                                    "LM2650",
+                                    "LM2651",
+                                    "LM2673",
+                                    "LM2672",
+                                    "TPS6735",
+                                    "LM2586",
+                                    "LM2585",
+                                    "LM2598",
+                                    "LM2595",
+                                    "LM2676",
+                                    "LM2596",
+                                    "LM2599",
+                                    "UC2572",
+                                    "UC2573",
+                                    "LM2597",
+                                    "LM2594",
+                                    "LM2588",
+                                    "LM2587",
+                                    "TL5001",
+                                    "TL5001A",
+                                    "LM2574",
+                                    "LM2574HV",
+                                    "LM2575",
+                                    "LM2576",
+                                    "LM2576HV",
+                                    "LM2577",
+                                    "LT1054",
+                                    "TL497A",
+                                    "TL499A",
+                                    "LM2575-N",
+                                    "LM2575HV",
+                                    "TL1451",
+                                    "TL1451A",
+                                    "LMC7660",
+                                    "LM2578A",
+                                    "LM3578A",
+                                    "LM78S40"];

@@ -1,6 +1,4 @@
 import React, {useRef} from "react";
-import Select from 'react-select';
-
 
 import { defaultDictOfParts, defaultPartOptions } from "./data";
 import createEngine, { 
@@ -36,6 +34,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
+import { Autocomplete, TextField } from "@mui/material";
 import ListItemText from '@mui/material/ListItemText';
 import { ThemeProvider, createTheme } from '@mui/material';
 
@@ -65,20 +64,13 @@ export default function App () {
     );
 }
 
-let statusOptions = [
-  {
-    label: "Loss",
-    value: -1
-  },
-  {
-    label: "Pending",
-    value: 0
-  },
-  {
-    label: "Win",
-    value: 1
-  }];
-  
+let statusOptions = [ "Loss", "Pending", "Win"];
+let statusRelation = {
+  "Loss" : -1,
+  "Pending": 0,
+  "Win": 1
+}
+
 let statusColors = [
   "rgb(255,60,50)",
   "rgb(255,235,110)",
@@ -87,9 +79,9 @@ let statusColors = [
 
 function PartInfoInput(props) {
   var [partVal, setPartVal] = new React.useState(props.partInfo);
-  return (<input 
+  return (<TextField variant="standard" key={`${props.dictKey}PartInfoSection`} label={props.dictKey}
     onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
-    type='text' style={{width:'100%'}} value= {props.currentNode.options.extras.miscInfo[props.dictKey]} onChange={(val) => {
+    style={{width:'100%'}} value= {props.currentNode.options.extras.miscInfo[props.dictKey]} onChange={(val) => {
       setPartVal(val.target.value)
       props.currentNode.options.extras.miscInfo[props.dictKey] = val.target.value;
     }}/>);
@@ -99,9 +91,7 @@ function GetPartDetails(props) {
   if (props.currentNode !== undefined) {
   let partInfo =  props.currentNode.options.extras.miscInfo;
   return(Object.keys(partInfo).map((key) => {
-      return (<div id="infoHeader" key={`PartInfo${key}`}> {key}: 
-              < PartInfoInput dictKey={key} partInfo={partInfo[key]} currentNode={props.currentNode}/>
-            </div>)}));
+      return (< PartInfoInput key={`${key}TopPartInfoSection`}dictKey={key} partInfo={partInfo[key]} currentNode={props.currentNode}/>)}));
   } else {
     return "";
   }
@@ -113,14 +103,16 @@ function GetPartDetails(props) {
     if (statusOptions[props.currentNode.options.extras.deviceStatus+1] !== currentStatus) {
       setCurrentStatus(statusOptions[props.currentNode.options.extras.deviceStatus+1]);
     }
-    return (<Select 
+    return (<Autocomplete 
               options={statusOptions}
               className="partInput"
-              style={customStyles}
               value={currentStatus}
+              renderInput={(params) => (
+                <TextField {...params} label="Device Status" variant="standard" />
+              )}
               onChange={(e)=> {
-                  props.currentNode.options.extras.deviceStatus = e.value;
-                  props.currentNode.options.color = statusColors[e.value+1];
+                  props.currentNode.options.extras.deviceStatus = statusRelation[e.target.innerHTML];
+                  props.currentNode.options.color = statusColors[statusRelation[e.target.innerHTML]+1];
                   setCurrentStatus(statusOptions[props.currentNode.options.extras.deviceStatus+1]);
                   engine.repaintCanvas();
                 }
@@ -135,14 +127,22 @@ function GetPartDetails(props) {
   if (props.currentNode !== undefined) {
     var [userNotes, setUserNotes] = new React.useState(props.currentNode.options.extras.userComments);
     return (
-      <div id="infoHeader"> Comments:
-    <textarea 
-      onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
-      style={{width:'100%', height:"100px"}} value= {props.currentNode.options.extras.userComments} onChange={(val) => {
-        setUserNotes(val.target.value)
-        props.currentNode.options.extras.userComments = val.target.value;
-      }}/>
-      </div>)
+      <TextField
+      key="UserComments"
+        onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+          id="standard-multiline-flexible"
+          label="Comments"
+          multiline
+          maxRows={4}
+          variant="standard"
+          style={{
+            width:"100%"
+          }}
+          value= {props.currentNode.options.extras.userComments} 
+          onChange={(val) => {
+            setUserNotes(val.target.value)
+            props.currentNode.options.extras.userComments = val.target.value;}}
+        />)
   } else {
     return ""
   }
@@ -375,13 +375,28 @@ function PersistentDrawerLeft(props) {
 
   function selectInfo(partOptions, dictOfParts) {
     return (<>
-    <Select 
-    onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
-    className="partInput" options={partOptions} styles={customStyles} onChange={(e) => {handleChange(e, dictOfParts[e.value])}} onKeyDown={(e) => {
-      if (e.key === 'Enter') {
-          addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
-      }
-        }}/>
+    <Autocomplete
+      style={{
+        margin:"1%",
+          marginLeft:"2.5%",
+          marginRight:"0%",
+          width:"95%"
+      }}
+      onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+        options={partOptions}
+        className="partInput" 
+        id="auto-select"
+        autoSelect
+        renderInput={(params) => (
+          <TextField {...params} label="Select A Part" variant="standard" />
+        )}
+        onChange={(e) => {handleChange(e.target.innerHTML, dictOfParts[e.target.innerHTML]);}}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+              addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
+          }
+        }}
+      />
         <button id="selectBtns" onClick={() => {
           addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
         }}> Add </button></>
@@ -424,7 +439,16 @@ function PersistentDrawerLeft(props) {
   
   function portInput() {
     return (
-        <input onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)} disabled={disabledSection} id="portInput" type="text" placeholder="New Port Name"></input>
+        <TextField 
+          id="portInput"
+          key="portInputField"
+          variant="standard"
+          onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+          disabled={disabledSection} label="New Port"
+          style={{margin:"1%",
+          marginLeft:"2.5%",
+          marginRight:"0%",
+          width:"95%"}}/>
     )
   }
   
@@ -492,19 +516,12 @@ function PersistentDrawerLeft(props) {
                 <ListItemText primary={selectInfo(props.parts, props.dict)} />
         </ListItem>
         <Divider/>
-        <CustomHeaders setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setSubheading={setSubheading}/>
+        <CustomHeaders engine={engine} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setSubheading={setSubheading}/>
         <Divider/>
         <CustomPart headers={Object.keys(Object.values(props.dict)[0])} addNode={addNewNode} engine={engine} setCurrentNode={setCurrentNode}/>
         <Divider/>
            <PartSearch drawerWidth={drawerWidth} addNode={addNewNode} setCurrentNode={setCurrentNode} engine={engine} dict={props.dict}/>
         <Divider/>
-        <ListItem>
-          <ListItemText sx={{
-            color: "white"
-          }}>
-            Part Selected: <div id="selectedPartName" style={{display:"inline-block"}}></div>
-          </ListItemText>
-          </ListItem>
           <ListItem key="NewPortText" disablePadding disabled={disabledSection}>
                 <ListItemText primary={portInput(disabledSection)} />
           </ListItem>
@@ -538,7 +555,7 @@ function PersistentDrawerLeft(props) {
 
 var selectedPart;
 function handleChange(selectedOption, partInfo)  {
-  selectedPart = [selectedOption['value'], partInfo];
+  selectedPart = [selectedOption, partInfo];
 }
 
 

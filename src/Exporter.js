@@ -12,7 +12,8 @@ function beginExcelExport(engine, dict) {
     let possibleStatus = ["Loss", "Pending", "Win"]
 
     for (var node in models) {
-        pageArray = [...pageArray, [models[node].options['name'], ...Object.values(models[node].miscInfo), possibleStatus[models[node].deviceStatus+1], models[node].userComments]];
+        console.log(models[node].extras)
+        pageArray = [...pageArray, [models[node].options.name, ...Object.values(models[node].options.extras.miscInfo), possibleStatus[models[node].options.extras.deviceStatus+1], models[node].options.extras.userComments]];
     }
     var ws = utils.aoa_to_sheet(pageArray);
     utils.book_append_sheet(wb, ws, "Sheet1");

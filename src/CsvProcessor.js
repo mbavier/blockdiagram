@@ -87,7 +87,7 @@ function submitHeaders(primary, allTextLines, setDictOfParts, setPartOptions, he
         var data = allTextLines[i].split(/(?!\B"[^"]*),(?![^"]*"\B)/g);
             if (data.length === headers.length) {
               newDictOfParts[data[primary]] = {}
-              newPartOptions[i] = {value: data[primary], label: data[primary]}
+              newPartOptions[i] = data[primary]
                 for (var j=0; j<headers.length; j++) {
                   if (selectedHeaders[j] && j !== primary) {
                       newDictOfParts[data[primary]][headers[j]] = data[j].replace(/\r\n/g, ' ').replace(/^"(.+(?="$))"$/, '$1');

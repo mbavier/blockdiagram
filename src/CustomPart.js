@@ -33,7 +33,9 @@ export default function CustomPart(props) {
         }
 
         let output = blockOptions.map((header) => {
-            return (<ListItem key={header} style={{marginLeft:"2.5%"}} disablePadding> <TextField style={{width:"95%"}} value={userOptions.header} id="standard-basic" label={header} variant="standard" onChange={(e) => handleChange(e, header)} /> </ListItem>)
+            return (<ListItem key={header} style={{marginLeft:"2.5%"}} disablePadding> 
+            <TextField onFocus={()=>{props.engine.getModel().setLocked(true)}} onBlur={()=>props.engine.getModel().setLocked(false)} 
+            style={{width:"95%"}} value={userOptions.header} id="standard-basic" label={header} variant="standard" onChange={(e) => handleChange(e, header)} /> </ListItem>)
         });
         return (
             output
