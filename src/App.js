@@ -34,9 +34,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
-import { Autocomplete, TextField } from "@mui/material";
+import { Autocomplete, TextField, Grid } from "@mui/material";
 import ListItemText from '@mui/material/ListItemText';
-import { ThemeProvider, createTheme } from '@mui/material';
+import { Button, ThemeProvider, createTheme } from '@mui/material';
 
 
 import './App.css';
@@ -374,32 +374,37 @@ function PersistentDrawerLeft(props) {
   };
 
   function selectInfo(partOptions, dictOfParts) {
-    return (<>
-    <Autocomplete
-      style={{
-        margin:"1%",
-          marginLeft:"2.5%",
-          marginRight:"0%",
-          width:"95%"
-      }}
-      onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
-        options={partOptions}
-        className="partInput" 
-        id="auto-select"
-        autoSelect
-        renderInput={(params) => (
-          <TextField {...params} label="Select A Part" variant="standard" />
-        )}
-        onChange={(e) => {handleChange(e.target.innerHTML, dictOfParts[e.target.innerHTML]);}}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-              addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
-          }
-        }}
-      />
-        <button id="selectBtns" onClick={() => {
-          addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
-        }}> Add </button></>
+    return (<Grid justify="flex-end" alignItems="center" container key="GridForAddParts" spacing={0}>
+      <Grid key="PartSelectAutocomplete" item xs={8}>
+        <Autocomplete
+          style={{
+            margin:"1%",
+              marginLeft:"2.5%",
+              marginRight:"0%",
+              width:"95%"
+          }}
+          onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+            options={partOptions}
+            className="partInput" 
+            id="auto-select"
+            autoSelect
+            renderInput={(params) => (
+              <TextField {...params} label="Select A Part" variant="standard" />
+            )}
+            onChange={(e) => {handleChange(e.target.innerHTML, dictOfParts[e.target.innerHTML]);}}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                  addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
+              }
+            }}
+          />
+        </Grid>
+        <Grid key="PartSelectAutocomplete" item xs={4}>
+          <Button style={{width:'95%'}} variant="contained" onClick={() => {
+            addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
+          }}> Add </Button>
+        </Grid>
+        </Grid>
         )
   }
   
@@ -454,10 +459,17 @@ function PersistentDrawerLeft(props) {
   
   function portButtons() {
     return (
-      <>
-        <button disabled={disabledSection} className="portButton" onClick={() => addNewPort("input", document.getElementById("portInput").value, engine)}> Input </button>
-        <button disabled={disabledSection} className="portButton" onClick={() => addNewPort("output", document.getElementById("portInput").value, engine)}> Output </button>
-      </>
+      <Grid style={{marginLeft:"2.5%"}} container spacing={0} key="GridForPortButtons">
+      <Grid item xs={6}>
+        <Button variant="contained" disabled={disabledSection} className="portButton" onClick={() => addNewPort("input", document.getElementById("portInput").value, engine)}> Input </Button>
+      </Grid>
+      <Grid style={{marginLeft:"0%"}} item xs={6}>
+        <Button variant="contained" disabled={disabledSection} className="portButton" onClick={() => addNewPort("output", document.getElementById("portInput").value, engine)}> Output </Button>
+      </Grid>
+      <Grid style={{marginTop:"1%"}} item xs={12}>
+        <Button variant="contained" disabled={disabledSection} style={{minWidth:"95%", marginBottom:"5px"}} className="portButton" onClick={() => deleteNode(engine)}> Delete </Button>
+      </Grid>
+      </Grid>
     )
   }
   
@@ -527,9 +539,6 @@ function PersistentDrawerLeft(props) {
           </ListItem>
           <ListItem key="NewPortButtons" disablePadding disabled={disabledSection}>
                 <ListItemText primary={portButtons(disabledSection)} />
-          </ListItem>
-          <ListItem disablePadding disabled={disabledSection}>
-            <button disabled={disabledSection} style={{minWidth:"95%", marginBottom:"5px"}} className="portButton" onClick={() => deleteNode(engine)}> Delete </button>
           </ListItem>
           <Divider />
           <ListItem key="PartInfoSection">

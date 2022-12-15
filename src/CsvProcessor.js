@@ -1,5 +1,5 @@
 import React, {useRef} from "react";
-import { ListItem, Checkbox, ListItemText, Radio, Grid } from "@mui/material";
+import { ListItem, Checkbox, ListItemText, Radio, Grid, Button } from "@mui/material";
 import { read, utils } from "xlsx";
 
 import { DiagramModel } from "@projectstorm/react-diagrams"
@@ -175,7 +175,7 @@ function Checkboxes(props) {
             </Grid>
             </React.Fragment> ); 
         })}
-        <button style={{width: `${props.drawerWidth*.95}px`, display: props.headers.length===0 ? "none" : ""}} key="headerButton" id="selectBtns" onClick={ (e) => handleSetHeadersClick(e)}>Set Headers</button>
+        <Button variant="contained" style={{width: `${props.drawerWidth*.95}px`, display: props.headers.length===0 ? "none" : ""}} key="headerButton" id="selectBtns" onClick={ (e) => handleSetHeadersClick(e)}>Set Headers</Button>
     </Grid>
     
     
@@ -213,7 +213,7 @@ export default function CsvProcessor (props) {
     }
     const createButton = () => {
         return (
-            <button id="selectBtns" onClick={onInputBtnClick} style={{width:`${props.drawerWidth*.95}px`, display:(bomUploadDisable ? "none" : "")}}>BoM/MBD Upload</button>
+            <Button variant="contained" id="selectBtns" onClick={onInputBtnClick} style={{width:`${props.drawerWidth*.95}px`, display:(bomUploadDisable ? "none" : "")}}>BoM/MBD Upload</Button>
         );
     }
 

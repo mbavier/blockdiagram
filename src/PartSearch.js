@@ -1,5 +1,5 @@
 import React from "react";
-import { ListItem, TextField, Chip, Autocomplete } from "@mui/material";
+import { ListItem, Button, TextField, Chip, Autocomplete } from "@mui/material";
 
 const createOption = (label, value) => ({
   label,
@@ -81,7 +81,7 @@ export default function PartSearch(props) {
 
   const createButton = () => {
     return (
-        <button id="selectBtns" onClick={onInputBtnClick} style={{width:`${props.drawerWidth*.95}px`}}>Search Part (Not Working)</button>
+        <Button variant="contained" id="selectBtns" onClick={onInputBtnClick} style={{width:`${props.drawerWidth*.95}px`}}>Search Part (Not Working)</Button>
     );
   }
   

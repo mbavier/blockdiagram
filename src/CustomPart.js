@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItem, ListItemText, ListItemButton, Collapse, TextField } from '@mui/material';
+import { List, ListItem, ListItemText, ListItemButton, Button, Collapse, TextField } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 
@@ -18,7 +18,7 @@ export default function CustomPart(props) {
 
     const createButton = () => {
         return (
-            <button id="selectBtns" onClick={onInputBtnClick} style={{width:"95%"}}>Add Part</button>
+            <Button variant="contained" id="selectBtns" onClick={onInputBtnClick} style={{width:"95%"}}>Add Part</Button>
         );
     }
 

@@ -62,7 +62,8 @@
 } */
 
 .portButton {
-  box-shadow:inset 0px 1px 0px 0px #97c4fe;
+  width:90%;
+  /* box-shadow:inset 0px 1px 0px 0px #97c4fe;
 	background-color:#3d94f6;
 	border-radius:5px;
 	border:1px solid #337fed;
@@ -77,15 +78,15 @@
   float: left;
   margin-left:2.5%;
   margin-right: 2.5%;
-  min-width:45%;
+  min-width:45%; */
 }
 .portButton:hover:enabled {
-	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
-	background-color:#1e62d0;
+	/* background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+	background-color:#1e62d0; */
 }
 .portButton:active:enabled {
-	position:relative;
-	top:1px;
+	/* position:relative;
+	top:1px; */
 }
 /* .css-jpiblr:hover {
   background-color: rgb(255, 55, 0);
@@ -94,7 +95,8 @@
 
 
 #selectBtns {
-	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+  margin-left:2.5%;
+	/* box-shadow:inset 0px 1px 0px 0px #97c4fe;
 	background-color:#3d94f6;
 	border-radius:5px;
 	border:1px solid #337fed;
@@ -111,20 +113,20 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #1570cd;
   float: left;
-  min-width: 22.5%;
+  min-width: 22.5%; */
 }
 
 #selectBtns:hover:enabled {
-	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
-	background-color:#1e62d0;
+	/* background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+	background-color:#1e62d0; */
 }
 #selectBtns:hover:enabled {
-	position:relative;
-	top:1px;
+	/* position:relative;
+	top:1px; */
 }
 
 #exportBtns {
-	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	/* box-shadow:inset 0px 1px 0px 0px #97c4fe;
 	background-color:#3d94f6;
 	border-radius:5px;
 	border:1px solid #337fed;
@@ -141,16 +143,16 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #1570cd;
   float: left;
-  min-width: 22.5%;
+  min-width: 22.5%; */
 }
 
 #exportBtns:hover:enabled {
-	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
-	background-color:#1e62d0;
+	/* background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+	background-color:#1e62d0; */
 }
 #exportBtns:hover:enabled {
-	position:relative;
-	top:1px;
+	/* position:relative;
+	top:1px; */
 }
 
 ::-webkit-scrollbar {

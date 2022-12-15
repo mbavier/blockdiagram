@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItem, ListItemIcon, ListItemText, ListItemButton, Collapse, TextField } from '@mui/material';
+import { Button, List, ListItem, ListItemIcon, ListItemText, ListItemButton, Collapse, TextField } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -50,7 +50,7 @@ export default function CustomHeaders(props) {
 
     const createButton = () => {
         return (
-            <button id="selectBtns" onClick={onInputBtnClick} style={{width:"95%"}}>Set Headers</button>
+            <Button variant='contained' id="selectBtns" onClick={onInputBtnClick} style={{width:"95%"}}>Set Headers</Button>
         );
     }
 

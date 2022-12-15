@@ -1,5 +1,6 @@
 import React from "react";
 import ListItemText from '@mui/material/ListItemText'
+import { Button, Grid } from '@mui/material'
 import { writeFile, utils } from "xlsx";
 import { DiagramModel } from "@projectstorm/react-diagrams"
 
@@ -66,11 +67,15 @@ export default function Exporter (props) {
 
     const createButton = () => {
         return (
-            <div style={{width:`${props.drawerWidth*.95}px`, margin: "auto"}}>
-                <button id="exportBtns" onClick={() => {beginBDExport(props.engine, props.dictOfParts)}} style={{width:'45%'}}>Export Save File</button>
-                <button id="exportBtns" onClick={() => {beginExcelExport(props.engine, props.dictOfParts)}} style={{width:'45%'}}>Export Excel</button>
+                <Grid style={{marginLeft:"2.5%"}} container spacing={0} key="GridForExport">
+                    <Grid item xs={6}>
+                        <Button variant="contained" id="exportBtns" onClick={() => {beginBDExport(props.engine, props.dictOfParts)}} className="portButton">Export Save File</Button>
+                    </Grid>
+                    <Grid style={{marginLeft:"0%"}} item xs={6}>
+                        <Button variant="contained" id="exportBtns" onClick={() => {beginExcelExport(props.engine, props.dictOfParts)}} className="portButton">Export Excel</Button>
+                    </Grid>
                 {/* <button id="exportBtns" onClick={() => {beginCanvasExport(props.engine, props.dictOfParts)}} style={{width:'45%'}}>Export PDF</button> */}
-            </div>
+                </Grid>
         );
     }
 
