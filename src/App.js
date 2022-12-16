@@ -48,7 +48,8 @@ import CustomHeaders from "./CustomHeaders";
 
 export class RightAnglePortModel extends DefaultPortModel {
 	createLinkModel() {
-		return new RightAngleLinkModel();
+		return new RightAngleLinkModel(
+      {color: (this.options.color !== undefined) ? this.options.color : 'gray'});
 	}
 }
 
@@ -172,13 +173,23 @@ function PartInfo(props) {
 
 
 var lastClick, selectedNode;
+let commOptions = ["I2C", "SPI", "CLK", "Data", "GPIO", "UART"];
+let powerOptions = ["V", "Vout", "Vin"]
 
 function addNewPort(type, name, engine) {
   if (name !== "") {
+    let newPort;
     if (type === "output") {
-      selectedNode.addPort(new RightAnglePortModel(false, `${name}$-${selectedNode.options['id']}`, name));;
+      newPort = selectedNode.addPort(new RightAnglePortModel(false, `${name}$-${selectedNode.options['id']}`, name));
     } else {
-      selectedNode.addPort(new RightAnglePortModel(true, `${name}$-${selectedNode.options['id']}`, name));
+      newPort = selectedNode.addPort(new RightAnglePortModel(true, `${name}$-${selectedNode.options['id']}`, name));
+    }
+    if (commOptions.includes(name)) {
+      newPort.options.color = "blue"
+    } else if (powerOptions.includes(name)) {
+      newPort.options.color = "red"
+    } else {
+      newPort.options.color = "gray"
     }
     engine.repaintCanvas();
   }

@@ -38,6 +38,7 @@ export class DeviceNodeModel extends NodeModel {
     }
     addPort(port) {
         super.addPort(port);
+        console.log(port)
         if (port.getOptions().in) {
             if (this.portsIn.indexOf(port) === -1) {
                 this.portsIn.push(port);
