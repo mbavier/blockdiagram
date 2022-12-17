@@ -4,6 +4,7 @@ import { read, utils } from "xlsx";
 
 import { DiagramModel } from "@projectstorm/react-diagrams"
 import { DeviceNodeModel, RightAnglePortModel } from './components/Device/DeviceNodeModel';
+import { GroupingNodeModel } from "./components/Grouping/GroupingNodeModel";
 
 const primarySelectLabel = { inputProps: { 'aria-label': 'primarySelect' } };
 const headerLabel = { inputProps: { 'aria-label': 'headerSelect' } };
@@ -31,25 +32,40 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
                 }
             }
             Object.values(uploadedModel.layers[nodeLayer].models).map((node) => {
-                let newNode = new DeviceNodeModel({
-                    name: node.name,
-                    subname: node.subname,
-                    color: node.color,
-                    id: node.id,
-                    extras: node.extras
-                })
-                newNode.setPosition(node.x, node.y)
-                node.ports.map((port) => {
-                    let newPort = new RightAnglePortModel(port.in, port.name, port.label)
-                    newPort.options.id = port.id;
-                    
-                    newNode.addPort(newPort);
-                    console.log(port.id, newPort.id)
-                })
-                newModel.addNode(newNode);
+                if (node.type === 'device') {
+                    let newNode = new DeviceNodeModel({
+                        name: node.name,
+                        subname: node.subname,
+                        color: node.color,
+                        id: node.id,
+                        extras: node.extras
+                    })
+                    newNode.setPosition(node.x, node.y)
+                    node.ports.map((port) => {
+                        let newPort = new RightAnglePortModel(port.in, port.name, port.label)
+                        newPort.options.id = port.id;
+                        
+                        newNode.addPort(newPort);
+                        console.log(port.id, newPort.id)
+                    })
+                    newModel.addNode(newNode);
+                } else if (node.type === 'grouping') {
+                    let newNode = new GroupingNodeModel({
+                        name: node.name,
+                        subname: node.subname,
+                        color: node.color,
+                        id: node.id,
+                        extras: node.extras,
+                        width: node.width,
+                        height: node.height
+                    })
+                    newNode.setPosition(node.x, node.y)
+                    newModel.addNode(newNode);
+                }
                 return 1;
             })
             Object.values(uploadedModel.layers[linkLayer].models).map((link) => {
+                console.log(link.source)
                 let newLink = newModel.getNode(link.source).getPortFromID(link.sourcePort).link(newModel.getNode(link.target).getPortFromID(link.targetPort));
                 newModel.addLink(newLink)
                 return 1;

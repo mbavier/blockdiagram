@@ -451,6 +451,7 @@ function PersistentDrawerLeft(props) {
     return (<Grid justify="flex-end" alignItems="center" container key="GridForNewGroup" spacing={0}>
       <Grid key="GroupInfoAutocomplete" item xs={8}>
           <TextField 
+          onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
           value={textValue}
           style={{
             margin:"1%",
@@ -482,27 +483,29 @@ function PersistentDrawerLeft(props) {
     if (mbdUploaded) {
       let models = engine.getModel().getActiveNodeLayer().getModels();
       Object.values(models).map((node) => {
-        node.registerListener({
-          selectionChanged: (e) => {
-            if (e.isSelected) {
-              selectedNode = node;
-              setCurrentNode(node);
-              setDisabled(false);
-            } else {
+        if (node.options.type === 'device') {
+          node.registerListener({
+            selectionChanged: (e) => {
+              if (e.isSelected) {
+                selectedNode = node;
+                setCurrentNode(node);
+                setDisabled(false);
+              } else {
+                selectedNode = undefined;
+                setDisabled(true);
+                engine.getModel().setLocked(false)
+                setCurrentNode(undefined);
+              }
+            },
+            entityRemoved: (e) => {
               selectedNode = undefined;
               setDisabled(true);
               engine.getModel().setLocked(false)
               setCurrentNode(undefined);
             }
-          },
-          entityRemoved: (e) => {
-            selectedNode = undefined;
-            setDisabled(true);
-            engine.getModel().setLocked(false)
-            setCurrentNode(undefined);
-          }
-      
-        })
+        
+          })
+        }
       });
       setMBDUploaded(false);
     }

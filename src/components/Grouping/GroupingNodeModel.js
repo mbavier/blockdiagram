@@ -91,6 +91,8 @@ export class GroupingNodeModel extends NodeModel {
         this.options.color = event.data.color;
 		this.options.subname = event.data.subname;
 		this.options.extras = event.data.extras;
+        this.options.weight = event.data.weight;
+        this.options.height = event.data.height;
         this.portsIn = _.map(event.data.portsInOrder, (id) => {
 			return this.getPortFromID(id);
         });
@@ -99,7 +101,7 @@ export class GroupingNodeModel extends NodeModel {
         });
     }
     serialize() {
-        return Object.assign(Object.assign({}, super.serialize()), { name: this.options.name, color: this.options.color, subname: this.options.subname, portsInOrder: _.map(this.portsIn, (port) => {
+        return Object.assign(Object.assign({}, super.serialize()), { name: this.options.name, color: this.options.color, subname: this.options.subname, width: this.options.width, height: this.options.height, portsInOrder: _.map(this.portsIn, (port) => {
                 return port.getID();
             }), portsOutOrder: _.map(this.portsOut, (port) => {
                 return port.getID();
