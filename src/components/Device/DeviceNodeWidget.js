@@ -13,6 +13,8 @@ var S;
 		border: solid 2px black;
 		overflow: visible;
 		font-size: 11px;
+		z-index: 1;
+		position: absolute;
 		border: solid 2px ${(p) => (p.selected ? 'rgb(0,192,255)' : 'black')};
 	`;
     S.Title = styled.div `

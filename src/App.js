@@ -17,6 +17,8 @@ import {
 import { DeviceNodeFactory } from './components/Device/DeviceNodeFactory';
 import { DeviceNodeModel } from './components/Device/DeviceNodeModel';
 
+import { GroupingNodeFactory } from "./components/Grouping/GroupingNodeFactory";
+import { GroupingNodeModel } from "./components/Grouping/GroupingNodeModel";
 
 import $ from 'jquery';
 
@@ -171,6 +173,19 @@ function PartInfo(props) {
   )
 }
 
+function GroupInfoSetting(props) {
+  if (props.currentGroup !== undefined) {
+    console.log(props.currentGroup)
+    return (
+      <div>
+        {props.currentGroup.options.name}
+      </div>
+    )
+  } else {
+    return ("")
+  }
+}
+
 
 var lastClick, selectedNode;
 let commOptions = ["I2C", "SPI", "CLK", "Data", "GPIO", "UART"];
@@ -220,22 +235,32 @@ function deleteNode(engine) {
   setDisabled(true);
   $("div#selectedPartName").html("")
 }
+let selectedGroup;
 
-
-function handleClick(e) {
-    if (selectedNode !== undefined) {
-        if (e.clientX > selectedNode.position.x && e.clientX < selectedNode.position.x + selectedNode.width) {
-            if (e.clientY > selectedNode.position.y && e.clientY < selectedNode.position.y + selectedNode.height) {
-            if (e.timeStamp - lastClick < 200) {
-                $("div.newPortDiv").css("display","block");
-            }
-            }
-        }
-        
-        lastClick = e.timeStamp;
-    }
+function handleMouseUp(e) {
+  if (selectedGroup !== undefined) {
+    selectedGroup.options.clicked = false;
+  }
 }
 
+
+function addNewGrouping(engine, name) {
+  let model = engine.getModel();
+  let newNode = new GroupingNodeModel({name: name, width: 50, height: 50, clicked:false});
+  newNode.setPosition( ($(document ).width())/2, ($(document).height())/2);
+  newNode.registerListener({
+    selectionChanged: (e) => {
+      if (e.isSelected) {
+        selectedGroup = newNode;
+      } else {
+        selectedGroup = undefined;
+      }
+    }});
+  model.addNode(newNode)
+  console.log(newNode)
+  engine.repaintCanvas();
+
+}
 
 
 
@@ -292,6 +317,7 @@ function DiagramApp() {
    //registerDefaultDeleteItemsAction: false
   });
   engine.getLinkFactories().registerFactory(new RightAngleLinkFactory());
+  engine.getNodeFactories().registerFactory(new GroupingNodeFactory());
   engine.getNodeFactories().registerFactory(new DeviceNodeFactory());
   const state = engine.getStateMachine().getCurrentState();
   state.dragNewLink.config.allowLooseLinks = false;
@@ -300,12 +326,11 @@ function DiagramApp() {
   var model = new DiagramModel();
   // For use when importing, see smart routing example
   //5) load model into engine
-
+  
   engine.setModel(model);
   //6) render the diagram!
-  
   return (
-    <div id='containerDiv' style={{zIndex:'-1', position:'absolute', left:0, top:0}} onMouseDown={(e) => handleClick(e)}  >
+    <div id='containerDiv' style={{zIndex:'-1', position:'absolute', left:0, top:0}} /*onMouseDown={(e) => handleMouseDown(e)}*/ onMouseUp={(e) => handleMouseUp(e)} >
       <CanvasWidget engine={engine} />
     </div>
   );
@@ -361,6 +386,8 @@ function PersistentDrawerLeft(props) {
   const [disabledSection, setDisabledSection] = React.useState(true);
   const [subheading, setSubheading] = React.useState("");
   var [currentNode, setCurrentNode] = React.useState();
+  var [currentGroup, setCurrentGroup] = React.useState();
+
   subtitle = subheading;
   setDisabled = setDisabledSection;
 
@@ -410,9 +437,40 @@ function PersistentDrawerLeft(props) {
             }}
           />
         </Grid>
-        <Grid key="PartSelectAutocomplete" item xs={4}>
+        <Grid key="PartSelectAutocompleteGrid" item xs={4}>
           <Button style={{width:'95%'}} variant="contained" onClick={() => {
             addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
+          }}> Add </Button>
+        </Grid>
+        </Grid>
+        )
+  }
+
+  function GroupInfo() {
+    var [textValue, setTextValue] = React.useState("")
+    return (<Grid justify="flex-end" alignItems="center" container key="GridForNewGroup" spacing={0}>
+      <Grid key="GroupInfoAutocomplete" item xs={8}>
+          <TextField 
+          value={textValue}
+          style={{
+            margin:"1%",
+              marginLeft:"2.5%",
+              marginRight:"0%",
+              width:"95%"
+          }} label="Add A Grouping" variant="standard" onChange={(e) => {
+            setTextValue(e.target.value);
+          }
+          } onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              addNewGrouping(engine, textValue);
+              setTextValue("");
+            }
+          }}/>
+        </Grid>
+        <Grid key="NewGroupAutocompleteGrid" item xs={4}>
+          <Button style={{width:'95%'}} variant="contained" onClick={() => {
+            addNewGrouping(engine, textValue);
+            setTextValue("");
           }}> Add </Button>
         </Grid>
         </Grid>
@@ -538,6 +596,9 @@ function PersistentDrawerLeft(props) {
         <ListItem key="Selection" disablePadding>
                 <ListItemText primary={selectInfo(props.parts, props.dict)} />
         </ListItem>
+        <ListItem key="GroupSelection" disablePadding>
+                <GroupInfo />
+        </ListItem>
         <Divider/>
         <CustomHeaders engine={engine} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setSubheading={setSubheading}/>
         <Divider/>
@@ -555,8 +616,7 @@ function PersistentDrawerLeft(props) {
           <ListItem key="PartInfoSection">
             <ListItemText key="PartInfoText">
               <PartInfo key="PartFunction" currentNode={currentNode}/>
-            {/* <div id="PartInfoName" style={{fontSize:16}}> </div>
-            <div id="PartInfoDetails" style={{fontSize:12}}> </div> */}
+              <GroupInfoSetting key="GroupFunction" currentGroup={currentGroup}/>
             </ListItemText>
           </ListItem>
           <Divider />
