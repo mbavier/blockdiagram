@@ -17,9 +17,13 @@ export class GroupingNodeModel extends NodeModel {
 		});
 		this.color = options.color || { options: 'red' };
         this.name = options.name || { options: 'name' };
-		this.subname = options.subname || { options: 'subname' }
+		this.userComments = options.userComments || { options: '' }
         this.width = options.width || {options: '10'};
         this.height = options.height || {options: '10'};
+        this.titleFontSize = options.titleFontSize || {options: 12};
+        this.titleFontAlignment = options.titleFontAlignment || {options: 'center'};
+        this.commentFontSize = options.commentFontSize || {options: 10};
+        this.commentFontAlignment = options.commentFontAlignment || {options: 'center'};
 		// setup an in and out port
 		this.portsOut = [];
 		this.portsIn = [];
@@ -89,22 +93,25 @@ export class GroupingNodeModel extends NodeModel {
         super.deserialize(event);
         this.options.name = event.data.name;
         this.options.color = event.data.color;
-		this.options.subname = event.data.subname;
+		this.options.userComments = event.data.userComments;
 		this.options.extras = event.data.extras;
         this.options.weight = event.data.weight;
         this.options.height = event.data.height;
-        this.portsIn = _.map(event.data.portsInOrder, (id) => {
-			return this.getPortFromID(id);
-        });
-        this.portsOut = _.map(event.data.portsOutOrder, (id) => {
-            return this.getPortFromID(id);
-        });
+        this.options.titleFontSize = event.data.titleFontSize;
+        this.options.titleFontAlignment = event.data.titleFontAlignment;
+        this.options.commentFontSize = event.data.commentFontSize;
+        this.options.commentFontAlignment = event.data.commentFontAlignment;
     }
     serialize() {
-        return Object.assign(Object.assign({}, super.serialize()), { name: this.options.name, color: this.options.color, subname: this.options.subname, width: this.options.width, height: this.options.height, portsInOrder: _.map(this.portsIn, (port) => {
-                return port.getID();
-            }), portsOutOrder: _.map(this.portsOut, (port) => {
-                return port.getID();
-            }) });
+        return Object.assign(Object.assign({}, super.serialize()), { 
+            name: this.options.name, 
+            color: this.options.color, 
+            userComments: this.options.userComments, 
+            width: this.options.width, 
+            height: this.options.height, 
+            titleFontSize: this.options.titleFontSize, 
+            titleFontAlignment: this.options.titleFontAlignment, 
+            commentFontSize: this.options.commentFontSize, 
+            commentFontAlignment: this.options.commentFontAlignment});
+        }
     }
-}

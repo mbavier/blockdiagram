@@ -52,12 +52,15 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
                 } else if (node.type === 'grouping') {
                     let newNode = new GroupingNodeModel({
                         name: node.name,
-                        subname: node.subname,
+                        userComments: node.userComments,
                         color: node.color,
                         id: node.id,
-                        extras: node.extras,
                         width: node.width,
-                        height: node.height
+                        height: node.height,
+                        titleFontSize: node.titleFontSize, 
+                        titleFontAlignment: node.titleFontAlignment, 
+                        commentFontSize: node.commentFontSize, 
+                        commentFontAlignment: node.commentFontAlignment
                     })
                     newNode.setPosition(node.x, node.y)
                     newModel.addNode(newNode);

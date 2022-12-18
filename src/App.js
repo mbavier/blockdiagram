@@ -35,6 +35,13 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
+import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
+import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import TextIncreaseIcon from '@mui/icons-material/TextIncrease';
+import TextDecreaseIcon from '@mui/icons-material/TextDecrease';
+
 import ListItem from '@mui/material/ListItem';
 import { Autocomplete, TextField, Grid } from "@mui/material";
 import ListItemText from '@mui/material/ListItemText';
@@ -160,9 +167,6 @@ function PartInfo(props) {
     partName = props.currentNode.options.name
   }
 
-  
-
-  
   return (
     <div key="PartInfoTop">
       <div id="infoHeader"> {partName} </div>
@@ -173,13 +177,104 @@ function PartInfo(props) {
   )
 }
 
-function GroupInfoSetting(props) {
-  if (props.currentGroup !== undefined) {
-    console.log(props.currentGroup)
+function GroupNameSetting(props) {
+  var [partVal, setPartVal] = new React.useState(props.currentGroup.options.name);
+  return (
+  <Grid item xs={12}>
+  <TextField variant="standard" key="GroupName" label="Grouping Name"
+    onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+    style={{width:'100%'}} value= {props.currentGroup.options.name} onChange={(val) => {
+      setPartVal(val.target.value)
+      props.currentGroup.options.name = val.target.value;
+      engine.repaintCanvas();
+    }}/>
+    </Grid>
+    );
+}
+
+function GroupCommentSetting(props) {
+    var [userNotes, setUserNotes] = new React.useState(props.currentGroup.options.userComments);
     return (
-      <div>
-        {props.currentGroup.options.name}
-      </div>
+      <Grid item xs={12}>
+      <TextField
+      key="UserComments"
+        onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+          id="standard-multiline-flexible"
+          label="Comments"
+          multiline
+          maxRows={4}
+          variant="standard"
+          style={{
+            width:"100%"
+          }}
+          value= {props.currentGroup.options.userComments} 
+          onChange={(val) => {
+            setUserNotes(val.target.value);
+            props.currentGroup.options.userComments = val.target.value;
+            engine.repaintCanvas();
+          }}
+        />
+      </Grid>)
+}
+
+function FontSetting(props) {
+  var [textVal, setTextVal] = React.useState()
+  return (
+    <React.Fragment>
+      <Grid item xs={5}>
+        <Button style={{width:"100%"}} variant="contained" aria-label="TextDecrease" onClick={() => {
+          if (props.textGroup === "title") {
+            props.textSize.options.titleFontSize--;
+            setTextVal(props.textSize.options.titleFontSize);
+          } else if (props.textGroup === "comment") {
+            props.textSize.options.commentFontSize--;
+            setTextVal(props.textSize.options.commentFontSize);
+          }
+          engine.repaintCanvas();
+        }
+        }>
+          <TextDecreaseIcon />
+        </Button>
+      </Grid>
+      <Grid style={{textAlign:"center", width:"50%", margin:"auto"}}item xs={2}>
+      {props.textGroup === "title" ? props.textSize.options.titleFontSize : props.textSize.options.commentFontSize} </Grid>
+      <Grid item xs={5}>
+      <Button style={{width:"100%"}} variant="contained" aria-label="TextIncrease" onClick={() => {
+          if (props.textGroup === "title") {
+            props.textSize.options.titleFontSize++;
+            setTextVal(props.textSize.options.titleFontSize);
+          } else if (props.textGroup === "comment") {
+            props.textSize.options.commentFontSize++;
+            setTextVal(props.textSize.options.commentFontSize);
+          }
+          engine.repaintCanvas();
+        }}>
+          <TextIncreaseIcon />
+        </Button>
+      </Grid>
+
+      {/* <Grid item xs={2}></Grid>
+      <Grid item xs={2}></Grid>
+      <Grid item xs={2}></Grid> */}
+    </React.Fragment>
+
+  )
+}
+
+function GroupInfoSetting(props) {
+
+  if (props.currentGroup !== undefined) {
+    return (
+      <React.Fragment key="GroupInfoSettings">
+        <Grid key="GroupNameSetting" justify="flex-end" alignItems="center" container spacing={1}>
+          <GroupNameSetting currentGroup={props.currentGroup}/>
+          <FontSetting textSize={props.currentGroup} textGroup="title"/>
+        </Grid>
+        <Grid key="GroupCommentSetting" justify="flex-end" alignItems="center" container spacing={1}>
+          <GroupCommentSetting currentGroup={props.currentGroup}/>
+          <FontSetting textSize={props.currentGroup} textGroup="comment" />
+        </Grid>
+      </React.Fragment>
     )
   } else {
     return ("")
@@ -244,17 +339,34 @@ function handleMouseUp(e) {
 }
 
 
-function addNewGrouping(engine, name) {
+function addNewGrouping(engine, name, setCurrentGroup) {
   let model = engine.getModel();
-  let newNode = new GroupingNodeModel({name: name, width: 50, height: 50, clicked:false});
+  let newNode = new GroupingNodeModel({
+    name: name, 
+    width: 50, 
+    height: 50, 
+    clicked:false,
+    userComments: "",
+    titleFontSize: 12,
+    titleFontAlignment: "center",
+    commentFontSize: 12,
+    commentFontAlignment: "center"});
+
   newNode.setPosition( ($(document ).width())/2, ($(document).height())/2);
   newNode.registerListener({
     selectionChanged: (e) => {
       if (e.isSelected) {
         selectedGroup = newNode;
+        setCurrentGroup(newNode);
       } else {
         selectedGroup = undefined;
+        setCurrentGroup(undefined);
       }
+    },
+    entityRemoved: (e) => {
+      selectedGroup = undefined;
+      engine.getModel().setLocked(false)
+      setCurrentGroup(undefined);
     }});
   model.addNode(newNode)
   console.log(newNode)
@@ -446,7 +558,7 @@ function PersistentDrawerLeft(props) {
         )
   }
 
-  function GroupInfo() {
+  function GroupInfo(props) {
     var [textValue, setTextValue] = React.useState("")
     return (<Grid justify="flex-end" alignItems="center" container key="GridForNewGroup" spacing={0}>
       <Grid key="GroupInfoAutocomplete" item xs={8}>
@@ -463,14 +575,15 @@ function PersistentDrawerLeft(props) {
           }
           } onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              addNewGrouping(engine, textValue);
+              addNewGrouping(engine, textValue, props.setCurrentGroup);
               setTextValue("");
+              e.target.blur();
             }
           }}/>
         </Grid>
         <Grid key="NewGroupAutocompleteGrid" item xs={4}>
           <Button style={{width:'95%'}} variant="contained" onClick={() => {
-            addNewGrouping(engine, textValue);
+            addNewGrouping(engine, textValue, props.setCurrentGroup);
             setTextValue("");
           }}> Add </Button>
         </Grid>
@@ -505,6 +618,22 @@ function PersistentDrawerLeft(props) {
             }
         
           })
+        } else if (node.options.type === 'grouping') {
+          node.registerListener({
+            selectionChanged: (e) => {
+              if (e.isSelected) {
+                selectedGroup = node;
+                setCurrentGroup(node);
+              } else {
+                selectedGroup = undefined;
+                setCurrentGroup(undefined);
+              }
+            },
+            entityRemoved: (e) => {
+              selectedGroup = undefined;
+              engine.getModel().setLocked(false)
+              setCurrentGroup(undefined);
+            }});
         }
       });
       setMBDUploaded(false);
@@ -600,7 +729,7 @@ function PersistentDrawerLeft(props) {
                 <ListItemText primary={selectInfo(props.parts, props.dict)} />
         </ListItem>
         <ListItem key="GroupSelection" disablePadding>
-                <GroupInfo />
+                <GroupInfo setCurrentGroup={setCurrentGroup}/>
         </ListItem>
         <Divider/>
         <CustomHeaders engine={engine} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setSubheading={setSubheading}/>
@@ -619,6 +748,10 @@ function PersistentDrawerLeft(props) {
           <ListItem key="PartInfoSection">
             <ListItemText key="PartInfoText">
               <PartInfo key="PartFunction" currentNode={currentNode}/>
+            </ListItemText>
+          </ListItem>
+          <ListItem key="GroupInfoSection">
+            <ListItemText key="GroupInfoText">
               <GroupInfoSetting key="GroupFunction" currentGroup={currentGroup}/>
             </ListItemText>
           </ListItem>

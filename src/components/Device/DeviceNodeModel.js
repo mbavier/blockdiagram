@@ -97,7 +97,7 @@ export class DeviceNodeModel extends NodeModel {
         });
     }
     serialize() {
-        return Object.assign(Object.assign({}, super.serialize()), { name: this.options.name, color: this.options.color, subname: this.options.subname, portsInOrder: _.map(this.portsIn, (port) => {
+        return Object.assign(Object.assign({}, super.serialize()), { name: this.options.name, color: this.options.color, subname: this.options.subname, extras: this.options.extras, portsInOrder: _.map(this.portsIn, (port) => {
                 return port.getID();
             }), portsOutOrder: _.map(this.portsOut, (port) => {
                 return port.getID();
