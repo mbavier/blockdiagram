@@ -221,14 +221,14 @@ function FontSetting(props) {
   var [textVal, setTextVal] = React.useState()
   return (
     <React.Fragment>
-      <Grid item xs={5}>
+      <Grid item xs={2}>
         <Button style={{width:"100%"}} variant="contained" aria-label="TextDecrease" onClick={() => {
           if (props.textGroup === "title") {
-            props.textSize.options.titleFontSize--;
-            setTextVal(props.textSize.options.titleFontSize);
+            props.currentGroup.options.titleFontSize--;
+            setTextVal(props.currentGroup.options.titleFontSize);
           } else if (props.textGroup === "comment") {
-            props.textSize.options.commentFontSize--;
-            setTextVal(props.textSize.options.commentFontSize);
+            props.currentGroup.options.commentFontSize--;
+            setTextVal(props.currentGroup.options.commentFontSize);
           }
           engine.repaintCanvas();
         }
@@ -237,15 +237,15 @@ function FontSetting(props) {
         </Button>
       </Grid>
       <Grid style={{textAlign:"center", width:"50%", margin:"auto"}}item xs={2}>
-      {props.textGroup === "title" ? props.textSize.options.titleFontSize : props.textSize.options.commentFontSize} </Grid>
-      <Grid item xs={5}>
+      {props.textGroup === "title" ? props.currentGroup.options.titleFontSize : props.currentGroup.options.commentFontSize} </Grid>
+      <Grid item xs={2}>
       <Button style={{width:"100%"}} variant="contained" aria-label="TextIncrease" onClick={() => {
           if (props.textGroup === "title") {
-            props.textSize.options.titleFontSize++;
-            setTextVal(props.textSize.options.titleFontSize);
+            props.currentGroup.options.titleFontSize++;
+            setTextVal(props.currentGroup.options.titleFontSize);
           } else if (props.textGroup === "comment") {
-            props.textSize.options.commentFontSize++;
-            setTextVal(props.textSize.options.commentFontSize);
+            props.currentGroup.options.commentFontSize++;
+            setTextVal(props.currentGroup.options.commentFontSize);
           }
           engine.repaintCanvas();
         }}>
@@ -253,9 +253,42 @@ function FontSetting(props) {
         </Button>
       </Grid>
 
-      {/* <Grid item xs={2}></Grid>
-      <Grid item xs={2}></Grid>
-      <Grid item xs={2}></Grid> */}
+      <Grid item xs={2}>
+        <Button style={{width:"100%"}} variant="contained" aria-label="AlignLeft" onClick={() => {
+          if (props.textGroup === "title") {
+            props.currentGroup.options.titleFontAlignment = "left";
+          } else if (props.textGroup === "comment") {
+            props.currentGroup.options.commentFontAlignment = "left";
+          }
+          engine.repaintCanvas();
+        }}>
+          <FormatAlignLeftIcon/>
+        </Button>
+      </Grid>
+      <Grid item xs={2}>
+        <Button style={{width:"100%"}} variant="contained" aria-label="AlignCenter" onClick={() => {
+          if (props.textGroup === "title") {
+            props.currentGroup.options.titleFontAlignment = "center";
+          } else if (props.textGroup === "comment") {
+            props.currentGroup.options.commentFontAlignment = "center";
+          }
+          engine.repaintCanvas();
+         }}>
+          <FormatAlignCenterIcon/>
+        </Button>
+      </Grid>
+      <Grid item xs={2}>
+        <Button style={{width:"100%"}} variant="contained" aria-label="AlignRight" onClick={() => {
+          if (props.textGroup === "title") {
+            props.currentGroup.options.titleFontAlignment = "right";
+          } else if (props.textGroup === "comment") {
+            props.currentGroup.options.commentFontAlignment = "right";
+          }
+          engine.repaintCanvas();
+        }}>
+          <FormatAlignRightIcon/>
+        </Button>
+      </Grid>
     </React.Fragment>
 
   )
@@ -268,11 +301,11 @@ function GroupInfoSetting(props) {
       <React.Fragment key="GroupInfoSettings">
         <Grid key="GroupNameSetting" justify="flex-end" alignItems="center" container spacing={1}>
           <GroupNameSetting currentGroup={props.currentGroup}/>
-          <FontSetting textSize={props.currentGroup} textGroup="title"/>
+          <FontSetting currentGroup={props.currentGroup} textGroup="title"/>
         </Grid>
         <Grid key="GroupCommentSetting" justify="flex-end" alignItems="center" container spacing={1}>
           <GroupCommentSetting currentGroup={props.currentGroup}/>
-          <FontSetting textSize={props.currentGroup} textGroup="comment" />
+          <FontSetting currentGroup={props.currentGroup} textGroup="comment" />
         </Grid>
       </React.Fragment>
     )

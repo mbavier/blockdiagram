@@ -103,8 +103,8 @@ export class GroupingNodeWidget extends React.Component {
 				<div style={{backgroundColor:'rgba(0,0,0,0.5)', borderRadius: '3px', width:'10px', height:'10px', position:"absolute", top: 0, left: 0}} 
 						onMouseDown={(e) => {this.props.node.options.clicked = true; 
 											document.addEventListener('mousemove', this.handleMouseMoveTop)}} />
-				<div style={{textAlign:"center", margin:"auto", width:"50%", fontSize: this.props.node.options.titleFontSize}}> {this.props.node.options.name} </div>
-				<div style={{textAlign:"center", margin:"auto", width:"50%", fontSize: this.props.node.options.commentFontSize}}> {this.props.node.options.userComments} </div>
+				<div style={{textAlign: this.props.node.options.titleFontAlignment, width:"90%", overflow:"hidden", margin:"auto", fontSize: this.props.node.options.titleFontSize}}> {this.props.node.options.name} </div>
+				<div style={{textAlign: this.props.node.options.commentFontAlignment, width:"90%", overflow:"hidden", margin:"auto", fontSize: this.props.node.options.commentFontSize}}> {this.props.node.options.userComments} </div>
 				<div style={{backgroundColor:'rgba(0,0,0,0.5)', borderRadius: '3px', width:'10px', height:'10px', position:"absolute", bottom: 2, right: 2}} 
 						onMouseDown={(e) => {this.storedPosition = this.props.node.position; 
 											this.props.node.options.clicked = true; 
