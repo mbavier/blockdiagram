@@ -13,8 +13,10 @@ var S;
 		border: solid 2px black;
 		overflow: visible;
 		font-size: 11px;
-		z-index: 1;
-		position: absolute;
+		min-width: 25px;
+		width: ${(p) => (p.width)}px;
+		min-height:25px;
+		height: ${(p) => (p.height)}px;
 		border: solid 2px ${(p) => (p.selected ? 'rgb(0,192,255)' : 'black')};
 	`;
     S.Title = styled.div `
@@ -32,9 +34,6 @@ var S;
 		font-size: 9px;
 		overflow-wrap: break-word;
 		width: 100px;
-		height: 2em;
-		line-height: 1em;
-		overflow: hidden;
 		white-space: normal;
 		padding: 0px 5px 0.5px 5px;
 	`;
@@ -61,7 +60,8 @@ var S;
  * for both all the input ports on the left, and the output ports on the right.
  */
 
-export class DeviceNodeWidget extends React.Component {
+
+export class MouseNodeWidget extends React.Component {
 	constructor() {
 		super(...arguments);
 		this.generatePort = (port) => {
@@ -69,20 +69,11 @@ export class DeviceNodeWidget extends React.Component {
         };
 	}
 
+
 	render() {
-		return (
-			<S.Node data-default-node-name={this.props.node.options.name} selected={this.props.node.isSelected()} background={this.props.node.getOptions().color}> 
-				<S.Title>
-					<S.TitleName> {this.props.node.options.name} </S.TitleName>
-					
-				</S.Title>
-				<S.Title>
-					<S.SubtitleName> {this.props.node.options.subname} </S.SubtitleName>
-				</S.Title>
-				<S.Ports>
-					<S.PortsContainer> {_.map(this.props.node.getInPorts(), this.generatePort)} </S.PortsContainer>
-					<S.PortsContainer> {_.map(this.props.node.getOutPorts(), this.generatePort)} </S.PortsContainer>
-				</S.Ports>
+		return (	
+			<S.Node data-default-node-name={this.props.node.options.name} width={this.props.node.options.width} height={this.props.node.options.height} selected={this.props.node.isSelected()} background={this.props.node.getOptions().color}> 
+				<div> {this.props.node.options.name} </div>
 			</S.Node>
 		)
 	}

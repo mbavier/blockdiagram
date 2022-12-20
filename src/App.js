@@ -20,7 +20,10 @@ import { DeviceNodeModel } from './components/Device/DeviceNodeModel';
 import { GroupingNodeFactory } from "./components/Grouping/GroupingNodeFactory";
 import { GroupingNodeModel } from "./components/Grouping/GroupingNodeModel";
 
-import $ from 'jquery';
+import { MouseNodeFactory } from "./components/Mouse/MouseNodeFactory";
+import { MouseNodeModel } from "./components/Mouse/MouseNodeModel";
+
+import $, { data } from 'jquery';
 
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -62,7 +65,9 @@ export class RightAnglePortModel extends DefaultPortModel {
 	}
 }
 
-let setDisabled, subtitle;
+const client = new WebSocket('ws://localhost:3001/websocket');
+
+let setDisabled, subtitle, userID;
 
 export default function App () {
 
@@ -371,7 +376,6 @@ function handleMouseUp(e) {
   }
 }
 
-
 function addNewGrouping(engine, name, setCurrentGroup) {
   let model = engine.getModel();
   let newNode = new GroupingNodeModel({
@@ -407,7 +411,27 @@ function addNewGrouping(engine, name, setCurrentGroup) {
 
 }
 
-
+const handleSelectionChange = (e, node, setCurrentNode) => {
+  if (node.options.extras.currentUser === "") {
+    if (e.isSelected) {
+      selectedNode = node;
+      node.currentUser = userID;
+      setCurrentNode(node);
+      setDisabled(false);
+      client.send(JSON.stringify({type: "nodeClaim", data: {node: node.options.id}}))
+    } else {
+      selectedNode = undefined;
+      setDisabled(true);
+      node.currentUser = "";
+      engine.getModel().setLocked(false)
+      setCurrentNode(undefined);
+      client.send(JSON.stringify({type: "nodeUpdate", data: {updatedNode: node.serialize()}}))
+    }
+  } else {
+    node.options.selected = false;
+    node.setLocked(true);
+  }
+}
 
 
 function addNewNode(engine, partName, partInfo, setCurrentNode) {
@@ -419,7 +443,8 @@ function addNewNode(engine, partName, partInfo, setCurrentNode) {
     extras: {
       miscInfo: {...partInfo},
       deviceStatus: 0,
-      userComments: ""
+      userComments: "",
+      currentUser: ""
     }
   });
   node.setPosition( ($(document ).width())/2 + numOfNodes*5, ($(document).height())/2 + numOfNodes*5);
@@ -429,16 +454,7 @@ function addNewNode(engine, partName, partInfo, setCurrentNode) {
   engine.getModel().addNode(node);
   node.registerListener({
     selectionChanged: (e) => {
-      if (e.isSelected) {
-        selectedNode = node;
-        setCurrentNode(node);
-        setDisabled(false);
-      } else {
-        selectedNode = undefined;
-        setDisabled(true);
-        engine.getModel().setLocked(false)
-        setCurrentNode(undefined);
-      }
+      handleSelectionChange(e, node, setCurrentNode);
     },
     entityRemoved: (e) => {
       selectedNode = undefined;
@@ -448,6 +464,7 @@ function addNewNode(engine, partName, partInfo, setCurrentNode) {
     }
 
   })
+  client.send(JSON.stringify({data: {newNode: node.serialize()}}))
   engine.repaintCanvas();
 }
 
@@ -463,6 +480,7 @@ function DiagramApp() {
   });
   engine.getLinkFactories().registerFactory(new RightAngleLinkFactory());
   engine.getNodeFactories().registerFactory(new GroupingNodeFactory());
+  engine.getNodeFactories().registerFactory(new MouseNodeFactory());
   engine.getNodeFactories().registerFactory(new DeviceNodeFactory());
   const state = engine.getStateMachine().getCurrentState();
   state.dragNewLink.config.allowLooseLinks = false;
@@ -471,7 +489,14 @@ function DiagramApp() {
   var model = new DiagramModel();
   // For use when importing, see smart routing example
   //5) load model into engine
-  
+  model.registerListener({
+    nodesUpdated: (e) => {
+      console.log(e)
+    },
+    gridUpdated: (e) => {
+      console.log(e)
+    }
+  })
   engine.setModel(model);
   //6) render the diagram!
   return (
@@ -525,6 +550,8 @@ const customStyles = {
   })
 }
 
+let setCN, setCG;
+
 function PersistentDrawerLeft(props) {
   const [open, setOpen] = React.useState(false);
   const [mbdUploaded, setMBDUploaded] = React.useState(false);
@@ -535,7 +562,8 @@ function PersistentDrawerLeft(props) {
 
   subtitle = subheading;
   setDisabled = setDisabledSection;
-
+  setCN = setCurrentNode;
+  setCG = setCurrentGroup;
   const theme = createTheme({
     palette: {
       primary: {
@@ -632,16 +660,7 @@ function PersistentDrawerLeft(props) {
         if (node.options.type === 'device') {
           node.registerListener({
             selectionChanged: (e) => {
-              if (e.isSelected) {
-                selectedNode = node;
-                setCurrentNode(node);
-                setDisabled(false);
-              } else {
-                selectedNode = undefined;
-                setDisabled(true);
-                engine.getModel().setLocked(false)
-                setCurrentNode(undefined);
-              }
+              handleSelectionChange(e, node, setCurrentNode)
             },
             entityRemoved: (e) => {
               selectedNode = undefined;
@@ -825,3 +844,130 @@ function PartSelect() {
   );
 }
 
+function multiuserNode(node) {
+  let newNode;
+  if (node.type === 'device') {
+    newNode = new DeviceNodeModel({
+        name: node.name,
+        subname: node.subname,
+        color: node.color,
+        id: node.id,
+        extras: node.extras
+    })
+    newNode.setPosition(node.x, node.y)
+    node.ports.map((port) => {
+        let newPort = new RightAnglePortModel(port.in, port.name, port.label)
+        newPort.options.id = port.id;
+        
+        newNode.addPort(newPort);
+        console.log(port.id, newPort.id)
+    })
+    newNode.registerListener({
+      selectionChanged: (e) => {
+        handleSelectionChange(e, newNode, setCN);
+      },
+      entityRemoved: (e) => {
+        selectedNode = undefined;
+        setDisabled(true);
+        engine.getModel().setLocked(false)
+        setCN(undefined);
+      }
+  
+    })
+} else if (node.type === 'grouping') {
+    newNode = new GroupingNodeModel({
+        name: node.name,
+        userComments: node.userComments,
+        color: node.color,
+        id: node.id,
+        width: node.width,
+        height: node.height,
+        titleFontSize: node.titleFontSize, 
+        titleFontAlignment: node.titleFontAlignment, 
+        commentFontSize: node.commentFontSize, 
+        commentFontAlignment: node.commentFontAlignment
+    })
+    newNode.setPosition(node.x, node.y)
+    newNode.registerListener({
+      selectionChanged: (e) => {
+        if (e.isSelected) {
+          selectedGroup = newNode;
+          setCG(newNode);
+        } else {
+          selectedGroup = undefined;
+          setCG(undefined);
+        }
+      },
+      entityRemoved: (e) => {
+        selectedGroup = undefined;
+        engine.getModel().setLocked(false)
+        setCG(undefined);
+      }});
+  }
+  return newNode;
+}
+
+let mouseNodes = {}
+
+client.onopen = e => {
+  client.send(JSON.stringify({data: "New Connection"}));
+}
+client.onmessage = e => {
+  let parsedData = JSON.parse(e.data);
+  if (parsedData.data === "New Connection") {
+    let mouseNode = new MouseNodeModel({name: "Name", id: parsedData.id})
+    engine.getModel().addNode(mouseNode);
+    mouseNodes[parsedData.id] = mouseNode;
+    return
+  }
+  console.log(parsedData.type)
+  let dataKeys = Object.keys(parsedData.data)
+  if (dataKeys.includes('mousePosition')) {
+    if (Object.keys(mouseNodes).includes(parsedData.id)) {
+      mouseNodes[parsedData.id].setPosition(parsedData.data['mousePosition'][0], parsedData.data['mousePosition'][1])
+    } else {
+      let mouseNode = new MouseNodeModel({name: "Name", id: parsedData.id})
+      mouseNode.setPosition(parsedData.data['mousePosition'][0], parsedData.data['mousePosition'][1])
+      engine.getModel().addNode(mouseNode);
+    }
+      engine.repaintCanvas();
+  } else if (dataKeys.includes('newNode')) {
+      engine.getModel().addNode(multiuserNode(parsedData.data.newNode));
+      engine.repaintCanvas()
+  } else if (parsedData.type === "Welcome") {
+    userID = parsedData.data;
+  } else if (parsedData.type === "nodeClaim") {
+    console.log(parsedData.data.node)
+    engine.getModel().getNode(parsedData.data.node).options.extras.currentUser = parsedData.id;
+  } else if (parsedData.type === "nodeUpdate") {
+    engine.getModel().removeNode(engine.getModel().getNode(parsedData.data.updatedNode.id));
+    engine.getModel().addNode(multiuserNode(parsedData.data.updatedNode));
+    engine.repaintCanvas()
+    console.log(parsedData.data);
+  }
+}
+
+let isMouseDown = false;
+function handleMouseMove(e) {
+  if (e.composedPath().includes(document.getElementById('containerDiv'))) {
+    client.send(JSON.stringify({data: {mousePosition:[e.clientX - engine.getModel().options.offsetX, e.clientY - engine.getModel().options.offsetY], mouseDown: isMouseDown}}))
+  }
+}
+
+function handleMouseDown(e) {
+  isMouseDown = true;
+  if (e.composedPath().includes(document.getElementById('containerDiv'))) {
+    client.send(JSON.stringify({data: {mousePosition:[e.clientX - engine.getModel().options.offsetX, e.clientY - engine.getModel().options.offsetY], mouseDown: isMouseDown}}))
+  }
+}
+
+function handleMouseUpConnection(e) {
+  isMouseDown = false
+  if (e.composedPath().includes(document.getElementById('containerDiv'))) {
+    client.send(JSON.stringify({data: {mousePosition:[e.clientX - engine.getModel().options.offsetX, e.clientY - engine.getModel().options.offsetY], mouseDown: isMouseDown}}))
+  }
+}
+
+document.addEventListener('mousemove', handleMouseMove);
+document.addEventListener('mousedown', handleMouseDown);
+document.addEventListener('mouseup', handleMouseUpConnection);
