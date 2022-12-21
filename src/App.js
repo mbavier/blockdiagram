@@ -26,7 +26,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar from '@mui/material/AppBar';
+import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
@@ -43,7 +43,7 @@ import TextIncreaseIcon from '@mui/icons-material/TextIncrease';
 import TextDecreaseIcon from '@mui/icons-material/TextDecrease';
 
 import ListItem from '@mui/material/ListItem';
-import { Autocomplete, TextField, Grid } from "@mui/material";
+import { Autocomplete, TextField, Grid, Menu, MenuItem, Modal } from "@mui/material";
 import ListItemText from '@mui/material/ListItemText';
 import { Button, ThemeProvider, createTheme } from '@mui/material';
 
@@ -484,22 +484,23 @@ function DiagramApp() {
 
 
 const drawerWidth = 425;
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
+
+// const AppBar = styled(MuiAppBar, {
+//   shouldForwardProp: (prop) => prop !== 'open',
+// })(({ theme, open }) => ({
+//   transition: theme.transitions.create(['margin', 'width'], {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   ...(open && {
+//     width: `calc(100% - ${drawerWidth}px)`,
+//     marginRight: `${drawerWidth}px`,
+//     transition: theme.transitions.create(['margin', 'width'], {
+//       easing: theme.transitions.easing.easeOut,
+//       duration: theme.transitions.duration.enteringScreen,
+//     }),
+//   })
+// }));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -510,23 +511,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-const customStyles = {
-  container: (provided) => ({
-    ...provided,
-    marginLeft:"2.5%",
-    marginRight:"0%",
-    width: "70%",
-    float: "left",
-    fontFamily: ["Roboto","Helvetica","Arial","sans-serif"],
-  }),
-  menu: (provided) => ({
-    ...provided,
-    zIndex: 100,
-  })
-}
-
 function PersistentDrawerLeft(props) {
   const [open, setOpen] = React.useState(false);
+  const [rightOpen, setRightOpen] = React.useState(false);
   const [mbdUploaded, setMBDUploaded] = React.useState(false);
   const [disabledSection, setDisabledSection] = React.useState(true);
   const [subheading, setSubheading] = React.useState("");
@@ -556,7 +543,23 @@ function PersistentDrawerLeft(props) {
     setOpen(false);
   };
 
-  function selectInfo(partOptions, dictOfParts) {
+  const handleRightDrawerOpen = () => {
+    setRightOpen(true);
+  };
+
+  const handleRightDrawerClose = () => {
+    setRightOpen(false);
+  }
+
+  var allOpenStatus = (open || rightOpen);
+  const handleAllDrawerClose = () => {
+    setRightOpen(false);
+    setOpen(false);
+  }
+
+  function SelectInfo(props) {
+    let partOptions = props.partOptions;
+    let dictOfParts = props.dictOfParts;
     return (<Grid justify="flex-end" alignItems="center" container key="GridForAddParts" spacing={0}>
       <Grid key="PartSelectAutocomplete" item xs={8}>
         <Autocomplete
@@ -624,7 +627,7 @@ function PersistentDrawerLeft(props) {
         )
   }
   
-  function bomChange() {
+  function BomChange() {
     
     if (mbdUploaded) {
       let models = engine.getModel().getActiveNodeLayer().getModels();
@@ -672,11 +675,11 @@ function PersistentDrawerLeft(props) {
       setMBDUploaded(false);
     }
     return (<div>
-      <CsvProcessor setSubheading={setSubheading} setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={drawerWidth} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
+      <CsvProcessor setSubheading={setSubheading} setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={'425px'} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
       </div>)
   }
   
-  function portInput() {
+  function PortInput() {
     return (
         <TextField 
           id="portInput"
@@ -691,7 +694,7 @@ function PersistentDrawerLeft(props) {
     )
   }
   
-  function portButtons() {
+  function PortButtons() {
     return (
       <Grid style={{marginLeft:"2.5%"}} container spacing={0} key="GridForPortButtons">
       <Grid item xs={6}>
@@ -705,28 +708,201 @@ function PersistentDrawerLeft(props) {
       </Grid>
       </Grid>
     )
+    }
+    
+    function AddPart() {
+      return(
+      <React.Fragment>
+        <MenuItem key='Add Part' onClick={() => {handleRightDrawerOpen(); handleClosePartsMenu();}}>
+                  <Typography textAlign="center">Add Block</Typography>
+        </MenuItem>
+        
+      </React.Fragment>
+      )
+    }
+
+  function PartDrawer() {
+    return (
+      <React.Fragment>
+          <MenuItem key='Part Info' onClick={() => {handleDrawerOpen(); handleClosePartsMenu();}}>
+                    <Typography textAlign="center">Part Info</Typography>
+          </MenuItem>
+          
+    </React.Fragment>
+    )
   }
   
+  const [anchorElFile, setAnchorElFile] = React.useState(null);
+  const [anchorElProject, setAnchorElProject] = React.useState(null);
+  const [anchorElHeaders, setAnchorElHeaders] = React.useState(null);
+  const [anchorElParts, setAnchorElParts] = React.useState(null);
+  
+
+  const handleOpenFileMenu = (event) => {
+    setAnchorElFile(event.currentTarget);
+  }
+
+  const handleOpenProjectMenu = (event) => {
+    setAnchorElProject(event.currentTarget);
+  }
+
+  const handleOpenHeadersMenu = (event) => {
+    setAnchorElHeaders(event.currentTarget);
+  }
+  const handleOpenPartsMenu = (event) => {
+    setAnchorElParts(event.currentTarget);
+  }
+
+  const handleCloseFileMenu = (event) => {
+    setAnchorElFile(null);
+  }
+  const handleCloseProjectMenu = (event) => {
+    setAnchorElProject(null);
+  }
+  const handleCloseHeadersMenu = (event) => {
+    setAnchorElHeaders(null);
+  }
+  const handleClosePartsMenu = (event) => {
+    setAnchorElParts(null);
+  }
   return (
     <ThemeProvider theme={theme}>
     <Box sx={{ display: 'flex'}}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Box sx={{flex: '1'}}>
           <Typography variant="h6" noWrap component="div">
             Block Diagram Maker
           </Typography>
-        </Toolbar>
-      </AppBar>
+          <Button variant="h6" onClick={handleOpenFileMenu}>
+            File
+          </Button>
+          <Menu
+            sx={{ mt: '45px' }}
+            id="file-appbar"
+            anchorEl={anchorElFile}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={Boolean(anchorElFile)}
+            onClose={handleCloseFileMenu}
+            >
+             <Exporter engine={engine} dictOfParts={props.dict}/>
+             <BomChange />
+            </Menu>
+            <Button variant="h6" onClick={handleOpenProjectMenu}>
+            Project
+          </Button>
+          <Menu
+            sx={{ mt: '45px' }}
+            id="file-appbar"
+            anchorEl={anchorElProject}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={Boolean(anchorElProject)}
+            onClose={handleCloseProjectMenu}
+            >
+             <Exporter engine={engine} dictOfParts={props.dict}/>
+             <BomChange />
+            </Menu>
+          <Button variant="h6" onClick={handleOpenHeadersMenu}>
+            Headers
+          </Button>
+          <Menu
+            sx={{ mt: '45px' }}
+            id="headers-appbar"
+            anchorEl={anchorElHeaders}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={Boolean(anchorElHeaders)}
+            onClose={handleCloseHeadersMenu}
+            >
+             <CustomHeaders engine={engine} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setSubheading={setSubheading}/>
+            </Menu>
+            <Button variant="h6" onClick={handleOpenPartsMenu}>
+            Parts
+          </Button>
+          <Menu
+            sx={{ mt: '45px' }}
+            id="parts-appbar"
+            anchorEl={anchorElParts}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={Boolean(anchorElParts)}
+            onClose={handleClosePartsMenu}
+            >
+              <AddPart/>
+              <PartDrawer/>
+            </Menu>
+            </Box>
+            <IconButton onClick={() => {((allOpenStatus) ? handleAllDrawerClose() : handleDrawerOpen())}}>
+              {(allOpenStatus) ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+            </IconButton>
+            </Toolbar>
+          </AppBar>
+            <Drawer
+          sx={{
+            width: drawerWidth,
+            flexShrink: 0,
+            '& .MuiDrawer-paper': {
+              width: drawerWidth,
+              boxSizing: 'border-box',
+              background: '%6F6F6F'
+            }
+          }}
+          anchor="right"
+          open={open}
+          variant="persistent"
+          >
+            <DrawerHeader/>
+          <List>
+            <ListItem key="NewPortText" disablePadding disabled={disabledSection}>
+                  <PortInput disabledSection={disabledSection} />
+            </ListItem>
+            <ListItem key="NewPortButtons" disablePadding disabled={disabledSection}>
+                  <PortButtons disabledSection={disabledSection} />
+            </ListItem>
+            <Divider />
+            <ListItem key="PartInfoSection">
+              <ListItemText key="PartInfoText">
+                <PartInfo key="PartFunction" currentNode={currentNode}/>
+              </ListItemText>
+            </ListItem>
+            <ListItem key="GroupInfoSection">
+              <ListItemText key="GroupInfoText">
+                <GroupInfoSetting key="GroupFunction" currentGroup={currentGroup}/>
+              </ListItemText>
+            </ListItem>
+        </List>
+      </Drawer>
       <Drawer
         sx={{
           width: drawerWidth,
@@ -734,66 +910,27 @@ function PersistentDrawerLeft(props) {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
-            background: "#6F6F6F"
+            background: '%6F6F6F'
           }
         }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader sx={{
-          background: "#3d94f6",
-          color: "white"
-        }}>
-          <ListItemText>
-            Edit
-          </ListItemText> 
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
+        anchor="right"
+        open={rightOpen}
+        onClose={handleRightDrawerClose}
+        >
+          <DrawerHeader/>
         <List>
-        <ListItem key="BoM" disablePadding>
-          {bomChange()}
-        </ListItem>
-        <Divider/>
-        <ListItem key="Selection" disablePadding>
-                <ListItemText primary={selectInfo(props.parts, props.dict)} />
-        </ListItem>
-        <ListItem key="GroupSelection" disablePadding>
-                <GroupInfo setCurrentGroup={setCurrentGroup}/>
-        </ListItem>
-        <Divider/>
-        <CustomHeaders engine={engine} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setSubheading={setSubheading}/>
-        <Divider/>
-        <CustomPart headers={Object.keys(Object.values(props.dict)[0])} addNode={addNewNode} engine={engine} setCurrentNode={setCurrentNode}/>
-        <Divider/>
-           <PartSearch drawerWidth={drawerWidth} addNode={addNewNode} setCurrentNode={setCurrentNode} engine={engine} dict={props.dict}/>
-        <Divider/>
-          <ListItem key="NewPortText" disablePadding disabled={disabledSection}>
-                <ListItemText primary={portInput(disabledSection)} />
+          <ListItem key="Selection" disablePadding>
+                  <SelectInfo partOptions={props.parts} dictOfParts={props.dict} />
           </ListItem>
-          <ListItem key="NewPortButtons" disablePadding disabled={disabledSection}>
-                <ListItemText primary={portButtons(disabledSection)} />
+          <ListItem key="GroupSelection" disablePadding>
+                  <GroupInfo setCurrentGroup={setCurrentGroup}/>
           </ListItem>
-          <Divider />
-          <ListItem key="PartInfoSection">
-            <ListItemText key="PartInfoText">
-              <PartInfo key="PartFunction" currentNode={currentNode}/>
-            </ListItemText>
-          </ListItem>
-          <ListItem key="GroupInfoSection">
-            <ListItemText key="GroupInfoText">
-              <GroupInfoSetting key="GroupFunction" currentGroup={currentGroup}/>
-            </ListItemText>
-          </ListItem>
-          <Divider />
-          <ListItem disablePadding>
-            <Exporter drawerWidth={drawerWidth} engine={engine} dictOfParts={props.dict}/>
-          </ListItem>
-        </List>
-        <Divider />
+          <Divider/>
+          <CustomPart headers={Object.keys(Object.values(props.dict)[0])} addNode={addNewNode} engine={engine} setCurrentNode={setCurrentNode}/>
+          <Divider/>
+            <PartSearch drawerWidth={'425px'} addNode={addNewNode} setCurrentNode={setCurrentNode} engine={engine} dict={props.dict}/>
+          <Divider/>
+      </List>
       </Drawer>
     </Box>
     </ThemeProvider>

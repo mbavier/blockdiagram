@@ -1,8 +1,6 @@
 import React from "react";
-import ListItemText from '@mui/material/ListItemText'
-import { Button, Grid } from '@mui/material'
+import { MenuItem, Typography } from '@mui/material'
 import { writeFile, utils } from "xlsx";
-import { DiagramModel } from "@projectstorm/react-diagrams"
 
 
 function beginExcelExport(engine, dict) {
@@ -65,24 +63,14 @@ async function beginBDExport(engine) {
 }
 
 export default function Exporter (props) {
-
-    const createButton = () => {
-        return (
-                <Grid style={{marginLeft:"2.5%"}} container spacing={0} key="GridForExport">
-                    <Grid item xs={6}>
-                        <Button variant="contained" id="exportBtns" onClick={() => {beginBDExport(props.engine, props.dictOfParts)}} className="portButton">Export Save File</Button>
-                    </Grid>
-                    <Grid style={{marginLeft:"0%"}} item xs={6}>
-                        <Button variant="contained" id="exportBtns" onClick={() => {beginExcelExport(props.engine, props.dictOfParts)}} className="portButton">Export Excel</Button>
-                    </Grid>
-                {/* <button id="exportBtns" onClick={() => {beginCanvasExport(props.engine, props.dictOfParts)}} style={{width:'45%'}}>Export PDF</button> */}
-                </Grid>
-        );
-    }
-
     return (
         <>
-        <ListItemText primary={createButton()}/>
+        <MenuItem key='Save' onClick={() => {beginBDExport(props.engine, props.dictOfParts)}}>
+                 <Typography textAlign="center">Save</Typography>
+        </MenuItem>
+        <MenuItem key='exportBom' onClick={() => {beginExcelExport(props.engine, props.dictOfParts)}}>
+            <Typography textAlign="center">Export Bom</Typography>
+        </MenuItem>
         </>
     )
 }

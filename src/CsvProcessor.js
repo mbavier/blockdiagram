@@ -1,16 +1,17 @@
 import React, {useRef} from "react";
-import { ListItem, Checkbox, ListItemText, Radio, Grid, Button } from "@mui/material";
+import { MenuItem, Checkbox, Typography, Radio, Grid, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 import { read, utils } from "xlsx";
 
 import { DiagramModel } from "@projectstorm/react-diagrams"
 import { DeviceNodeModel, RightAnglePortModel } from './components/Device/DeviceNodeModel';
 import { GroupingNodeModel } from "./components/Grouping/GroupingNodeModel";
+import { Check } from "@mui/icons-material";
 
 const primarySelectLabel = { inputProps: { 'aria-label': 'primarySelect' } };
 const headerLabel = { inputProps: { 'aria-label': 'headerSelect' } };
 
 async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
-                                    setMBDUploaded, setBomUploadDisable, addNewNode) {
+                                    setMBDUploaded, addNewNode, handleClickOpen) {
     let file = e.target.files;
     let f = file[0];
     let type = f.name.split(".")[1];
@@ -76,7 +77,6 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
             //uploadedModel.deserializeModel(JSON.parse(e.target.result), engine)
             engine.setModel(newModel);
             setMBDUploaded(true);
-            setBomUploadDisable(false);
         } else {
             let processData = e.target.result;
             if (typeof(processData) === 'object') {
@@ -85,7 +85,7 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
                 
             }
 
-            process(processData, setDictOfParts, setPartOptions);
+            process(processData, setDictOfParts, setPartOptions, handleClickOpen);
         }
     });
       
@@ -174,39 +174,44 @@ function Checkboxes(props) {
         props.setBomUploadDisable(false);
     }
     checkboxes = 
+    <React.Fragment>
     <Grid key="GridForChecks" container spacing={0}>
     {titleSet()}
     {props.headers.map((object, i) => {
         selectedHeaders = [...selectedHeaders, false];
         return ( 
             <React.Fragment key={`GridOption${i}`}>
-            <Grid key={`Object${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`, display:"flex", alignItems:"center"}} item xs={6}>
+            <Grid key={`Object${i}`} style={{backgroundColor:`rgba(61,148,246,${(i%2===1)*0.3})`, display:"flex", alignItems:"center"}} item xs={6}>
                 <div style={{marginLeft:"2.5%"}}>{object}</div>
             </Grid>
-            <Grid key={`primary${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`}} item xs={2}>
+            <Grid key={`primary${i}`} style={{backgroundColor:`rgba(61,148,246,${(i%2===1)*0.3})`}} item xs={2}>
                 <Radio checked={i === checked} key={"primarySwitch" + i} {...primarySelectLabel} onClick={() => handleChecked(checked, setChecked, i)}/>
             </Grid>
-            <Grid key={`Subheader${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`}} item xs={2}>
+            <Grid key={`Subheader${i}`} style={{backgroundColor:`rgba(61,148,246,${(i%2===1)*0.3})`}} item xs={2}>
                 <Radio checked={i === subChecked} key={"subheaderSwitch" + i} {...primarySelectLabel} onClick={(e) => {handleChecked(subChecked, setSubChecked, i); handleSelectedHeader(selectedHeaders, i, subChecked, e.target.checked);}}/>
             </Grid>
-            <Grid key={`Misc${i}`} style={{backgroundColor:`rgba(0,0,0,${(i%2==1)*0.3})`}} item xs={2}>
+            <Grid key={`Misc${i}`} style={{backgroundColor:`rgba(61,148,246,${(i%2===1)*0.3})`}} item xs={2}>
                 <Checkbox edge="end" key={"header" + i} {...headerLabel} onClick={(e) => {handleSelectedHeader(selectedHeaders, i, subChecked, e.target.checked);}}/>
             </Grid>
             </React.Fragment> ); 
         })}
-        <Button variant="contained" style={{width: `${props.drawerWidth*.95}px`, display: props.headers.length===0 ? "none" : ""}} key="headerButton" id="selectBtns" onClick={ (e) => handleSetHeadersClick(e)}>Set Headers</Button>
+        
     </Grid>
-    
-    
+    <DialogActions>
+        <Button variant="contained" style={{width: '100%', margin: '0'}} key="headerButton" id="selectBtns" onClick={ (e) => handleSetHeadersClick(e)}>Set Headers</Button>
+    </DialogActions>
+    </React.Fragment>
+
     return (
         checkboxes
         );
 }
 
-function process(allText, setAllTextLines, setHeaders) {
+function process(allText, setAllTextLines, setHeaders, handleClickOpen) {
     var allTextLines = allText.match(/(?:[^\r\n"]+|"[^"]*")+/g)
     var headers = allTextLines[0].match(/(?:[^,"]+|"[^"]*")+/g);
     setHeaders(headers)
+    handleClickOpen();
     
     setAllTextLines(allTextLines);
   }
@@ -217,31 +222,34 @@ export default function CsvProcessor (props) {
     var setPartOptions = props.setPartOptions;
     var [headers, setHeaders] = React.useState([]);
     var [allTextLines, setAllTextLines] = React.useState();
-    var [bomUploadDisable, setBomUploadDisable] = React.useState(false);
+    var [open, setOpen] = React.useState(false);
     const inputFile = useRef(null);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    }
+
+    const handleClose = () => {
+        setOpen(false);
+    }
 
     const onInputBtnClick = () => {
         inputFile.current.click();
-        setBomUploadDisable(true)
-    }
-
-    const createCheckboxes = () => {
-        return (
-            <Checkboxes key="Checkboxes" setSubheading={props.setSubheading} setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} headers={headers} setHeaders={setHeaders} allTextLines={allTextLines} setAllTextLines={setAllTextLines} setBomUploadDisable={setBomUploadDisable} drawerWidth={props.drawerWidth}/>
-        );
-    }
-    const createButton = () => {
-        return (
-            <Button variant="contained" id="selectBtns" onClick={onInputBtnClick} style={{width:`${props.drawerWidth*.95}px`, display:(bomUploadDisable ? "none" : "")}}>BoM/MBD Upload</Button>
-        );
+        
     }
 
     return (
        <>
-           <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders, props.engine, 
-                                                                                                                    props.setMBDUploaded, setBomUploadDisable, props.addNewNode);}}/>
-           <ListItemText primary={createCheckboxes()}/>
-           <ListItemText primary={createButton()}/>
+            <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders, props.engine, props.setMBDUploaded, props.addNewNode, handleClickOpen);}}/>
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>Set Headers</DialogTitle>
+                <DialogContent>
+                    <Checkboxes key="Checkboxes" setSubheading={props.setSubheading} setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} headers={headers} setHeaders={setHeaders} allTextLines={allTextLines} setAllTextLines={setAllTextLines} drawerWidth={props.drawerWidth}/>
+                </DialogContent>
+            </Dialog>                                                                                                        
+            <MenuItem key={'Upload'} onClick={onInputBtnClick}>
+                 <Typography textAlign="center">Upload</Typography>
+            </MenuItem>
            
         </>
       );
