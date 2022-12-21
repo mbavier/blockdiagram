@@ -32,7 +32,6 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
@@ -43,7 +42,7 @@ import TextIncreaseIcon from '@mui/icons-material/TextIncrease';
 import TextDecreaseIcon from '@mui/icons-material/TextDecrease';
 
 import ListItem from '@mui/material/ListItem';
-import { Autocomplete, TextField, Grid, Menu, MenuItem, Modal } from "@mui/material";
+import { Autocomplete, TextField, Grid, Menu, MenuItem, Input, InputLabel } from "@mui/material";
 import ListItemText from '@mui/material/ListItemText';
 import { Button, ThemeProvider, createTheme } from '@mui/material';
 
@@ -82,9 +81,9 @@ let statusRelation = {
 }
 
 let statusColors = [
-  "rgb(255,60,50)",
-  "rgb(255,235,110)",
-  "rgb(150,255,110)"
+  "#FF3C32",
+  "#FFEB6E",
+  "#96FF6E"
 ];
 
 function PartInfoInput(props) {
@@ -415,7 +414,7 @@ function addNewNode(engine, partName, partInfo, setCurrentNode) {
   let node = new DeviceNodeModel({
     name: partName,
     subname: partInfo[subtitle],
-    color: "rgb(255,235,110)",
+    color: "#FFEB6E",
     extras: {
       miscInfo: {...partInfo},
       deviceStatus: 0,
@@ -518,6 +517,7 @@ function PersistentDrawerLeft(props) {
   const [disabledSection, setDisabledSection] = React.useState(true);
   const [subheading, setSubheading] = React.useState("");
   var [currentNode, setCurrentNode] = React.useState();
+  var [currentColor, setCurrentColor] = React.useState();
   var [currentGroup, setCurrentGroup] = React.useState();
 
   subtitle = subheading;
@@ -884,13 +884,23 @@ function PersistentDrawerLeft(props) {
           >
             <DrawerHeader/>
           <List>
+            <ListItem key="ColorSelect"  disablePadding disabled={disabledSection}>
+                  <InputLabel style={{marginLeft:'2.5%', marginRight:'2.5%'}}>Block Color:</InputLabel>
+                  <Input aria-label="test" type="color" style={{width:'72.5%'}} disabled={disabledSection} value={(currentNode !== undefined ? currentNode.options.color : "#000000")} onChange={ (e) => {
+                    setCurrentColor(e.target.value)
+                    currentNode.options.color = e.target.value
+                    engine.repaintCanvas();
+                  }
+                  }/>
+            </ListItem>
+            <Divider style={{height:'10px'}}/>
             <ListItem key="NewPortText" disablePadding disabled={disabledSection}>
                   <PortInput disabledSection={disabledSection} />
             </ListItem>
             <ListItem key="NewPortButtons" disablePadding disabled={disabledSection}>
                   <PortButtons disabledSection={disabledSection} />
             </ListItem>
-            <Divider />
+            <Divider style={{height:'10px'}}/>
             <ListItem key="PartInfoSection">
               <ListItemText key="PartInfoText">
                 <PartInfo key="PartFunction" currentNode={currentNode}/>
