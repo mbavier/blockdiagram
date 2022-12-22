@@ -6,12 +6,12 @@ import { utils } from "xlsx";
 function BeginBoMGeneration(props) {
 
     let models = props.engine.getModel().activeNodeLayer.models;
-    
+    let statusOptions = ["Lost", "Pending", "Win"]
     let devices = []
     let id = 0;
     for (var node in models) {
         if (models[node].options.type === "device") {
-            let newDict = {id: id, "Name": models[node].options.name || "", "Subtext": models[node].options.subname || "", "Device Status": models[node].options.extras.deviceStatus || "", "Comments": models[node].options.extras.userComments || ""}
+            let newDict = {id: id, "Name": models[node].options.name || "", "Subtext": models[node].options.subname || "", "Device Status": statusOptions[models[node].options.extras.deviceStatus+1] || "", "Comments": models[node].options.extras.userComments || ""}
             if (models[node].options.extras.miscInfo !== undefined) {
                 Object.keys(models[node].options.extras.miscInfo).map((info) => {
                     newDict[info] = models[node].options.extras.miscInfo[info]
@@ -33,6 +33,7 @@ function BeginBoMGeneration(props) {
     const columns = Object.keys(devices[0]).map((header) => {
         return {
             field: header,
+            flex: 1,
             headerName: header,
             editable: true
         }
@@ -56,8 +57,27 @@ function BeginBoMGeneration(props) {
 
 }
 
-export default function ProjectInfo(props) {
+function DisplayProjectDetails() {
     return (
-        <BeginBoMGeneration engine={props.engine} />
+        <Box sx={{ height: 520, width: '100%'}}>
+            <Typography variant="h6">
+                Project Name
+            </Typography>
+        </Box>
     )
+}
+
+export default function ProjectInfo(props) {
+
+    if (props.displayingInfo === 'bom') {
+        return (
+            <BeginBoMGeneration engine={props.engine} />
+        )
+    } else if (props.displayingInfo === 'project') {
+        return (
+            <DisplayProjectDetails />
+        )
+    } else {
+        return ""
+    }
 }

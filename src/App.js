@@ -524,6 +524,8 @@ function PersistentDrawerLeft(props) {
   var [currentNode, setCurrentNode] = React.useState();
   var [currentColor, setCurrentColor] = React.useState();
   var [currentGroup, setCurrentGroup] = React.useState();
+  var [displayingInfo, setDisplayingInfo] = React.useState(null);
+  
 
   subtitle = subheading;
   setDisabled = setDisabledSection;
@@ -562,6 +564,7 @@ function PersistentDrawerLeft(props) {
 
   const handleBottomDrawerClose = () => {
     setBottomOpen(false);
+    setDisplayingInfo(null);
   }
 
   var allOpenStatus = (open || rightOpen);
@@ -842,9 +845,13 @@ function PersistentDrawerLeft(props) {
             open={Boolean(anchorElProject)}
             onClose={handleCloseProjectMenu}
             >
-             <MenuItem key='exportBom' onClick={() => {handleBottomDrawerOpen(); handleCloseProjectMenu();}}>
-                <Typography textAlign="center">View Bom</Typography>
+              <MenuItem key='viewDetails' onClick={() => {handleBottomDrawerOpen(); handleCloseProjectMenu(); setDisplayingInfo('project')}}>
+                <Typography textAlign="center">View Project Details</Typography>
             </MenuItem>
+             <MenuItem key='viewBoM' onClick={() => {handleBottomDrawerOpen(); handleCloseProjectMenu(); setDisplayingInfo('bom')}}>
+                <Typography textAlign="center">View BoM</Typography>
+            </MenuItem>
+
             </Menu>
           <Button variant="h6" onClick={handleOpenHeadersMenu}>
             Headers
@@ -985,7 +992,7 @@ function PersistentDrawerLeft(props) {
         open={bottomOpen}
         onClose={handleBottomDrawerClose}
         >
-          <ProjectInfo engine={engine} />
+          <ProjectInfo engine={engine} displayingInfo={displayingInfo} />
       </Drawer>
       
     </Box>
