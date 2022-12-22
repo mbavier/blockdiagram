@@ -9,13 +9,25 @@ function beginExcelExport(engine, dict) {
     let pageArray = [headerArray];
     var wb = utils.book_new();
     let possibleStatus = ["Loss", "Pending", "Win"]
-
+    let devices = []
     for (var node in models) {
-        if (Object.keys(models[node].options.extras.miscInfo).length == Object.keys(dict[Object.keys(dict)[0]]).length) {
-            pageArray = [...pageArray, [models[node].options.name, ...Object.values(models[node].options.extras.miscInfo), possibleStatus[models[node].options.extras.deviceStatus+1], models[node].options.extras.userComments]];
+        if (models[node].options.type === "device") {
+            let newDict = {"Name": models[node].options.name || "", "Subtext": models[node].options.subname || "", "Status": models[node].options.extras.deviceStatus || "", "Comments": models[node].options.extras.userComments || ""}
+            if (models[node].options.extras.miscInfo !== undefined) {
+                Object.keys(models[node].options.extras.miscInfo).map((info) => {
+                    newDict[info] = models[node].options.extras.miscInfo[info]
+                })
+            }
+            devices = [...devices, newDict]
+            // console.log(Object.keys(models[node].options.extras.miscInfo))
+            // if (Object.keys(models[node].options.extras.miscInfo).length == Object.keys(dict[Object.keys(dict)[0]]).length) {
+            //     pageArray = [...pageArray, [models[node].options.name, ...Object.values(models[node].options.extras.miscInfo), possibleStatus[models[node].options.extras.deviceStatus+1], models[node].options.extras.userComments]];
+            // }
         }
     }
-    var ws = utils.aoa_to_sheet(pageArray);
+    // var ws = utils.aoa_to_sheet(pageArray);
+    var ws = utils.json_to_sheet(devices)
+    console.log(ws)
     utils.book_append_sheet(wb, ws, "Sheet1");
     writeFile(wb, "BoM.xlsx");
     
