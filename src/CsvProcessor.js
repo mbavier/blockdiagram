@@ -1,5 +1,7 @@
 import React, {useRef} from "react";
 import { MenuItem, Checkbox, Typography, Radio, Grid, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+
+
 import { read, utils } from "xlsx";
 
 import { DiagramModel } from "@projectstorm/react-diagrams"
@@ -77,6 +79,7 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
             //uploadedModel.deserializeModel(JSON.parse(e.target.result), engine)
             engine.setModel(newModel);
             setMBDUploaded(true);
+
         } else {
             let processData = e.target.result;
             if (typeof(processData) === 'object') {
@@ -99,7 +102,7 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
     e.target.value = null;
   }
 
-function submitHeaders(primary, allTextLines, setDictOfParts, setPartOptions, headers, selectedHeaders) {
+function submitHeaders(primary, allTextLines, setDictOfParts, setPartOptions, headers, selectedHeaders, handleAlertOpen) {
     let newDictOfParts = {};
     let newPartOptions = [];
     for (var i=1; i<allTextLines.length; i++) {
@@ -117,6 +120,7 @@ function submitHeaders(primary, allTextLines, setDictOfParts, setPartOptions, he
       }
       setDictOfParts(newDictOfParts);
       setPartOptions(newPartOptions)
+      handleAlertOpen()
 
 }
 
@@ -167,11 +171,10 @@ function Checkboxes(props) {
 
     function handleSetHeadersClick(e) {
         selectedHeaders[subChecked] = true;
-        submitHeaders(checked, props.allTextLines, props.setDictOfParts, props.setPartOptions, props.headers, selectedHeaders);
+        submitHeaders(checked, props.allTextLines, props.setDictOfParts, props.setPartOptions, props.headers, selectedHeaders, props.handleAlertOpen);
         props.setSubheading(props.headers[subChecked].replace(/\r\n/g, ' ').replace(/^"(.+(?="$))"$/, '$1'))
         props.setHeaders([]); 
         props.setAllTextLines(undefined); 
-        props.setBomUploadDisable(false);
     }
     checkboxes = 
     <React.Fragment>
@@ -244,13 +247,12 @@ export default function CsvProcessor (props) {
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Set Headers</DialogTitle>
                 <DialogContent>
-                    <Checkboxes key="Checkboxes" setSubheading={props.setSubheading} setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} headers={headers} setHeaders={setHeaders} allTextLines={allTextLines} setAllTextLines={setAllTextLines} drawerWidth={props.drawerWidth}/>
+                    <Checkboxes key="Checkboxes" setSubheading={props.setSubheading} setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} headers={headers} setHeaders={setHeaders} allTextLines={allTextLines} setAllTextLines={setAllTextLines} drawerWidth={props.drawerWidth} handleAlertOpen={props.handleAlertOpen}/>
                 </DialogContent>
-            </Dialog>                                                                                                        
+            </Dialog>                                                                                                      
             <MenuItem key={'Upload'} onClick={onInputBtnClick}>
                  <Typography textAlign="center">Upload</Typography>
-            </MenuItem>
-           
+            </MenuItem> 
         </>
       );
   }

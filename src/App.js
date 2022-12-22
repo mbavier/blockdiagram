@@ -45,7 +45,8 @@ import ListItem from '@mui/material/ListItem';
 import { Autocomplete, TextField, Grid, Menu, MenuItem, Input, InputLabel } from "@mui/material";
 import ListItemText from '@mui/material/ListItemText';
 import { Button, ThemeProvider, createTheme } from '@mui/material';
-
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 import './App.css';
 import CsvProcessor from "./CsvProcessor";
@@ -53,6 +54,7 @@ import PartSearch from "./PartSearch";
 import Exporter from "./Exporter";
 import CustomPart from "./CustomPart";
 import CustomHeaders from "./CustomHeaders";
+import ProjectInfo from "./ProjectInfo";
 
 export class RightAnglePortModel extends DefaultPortModel {
 	createLinkModel() {
@@ -60,6 +62,9 @@ export class RightAnglePortModel extends DefaultPortModel {
       {color: (this.options.color !== undefined) ? this.options.color : 'gray'});
 	}
 }
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 let setDisabled, subtitle;
 
@@ -168,7 +173,6 @@ function PartInfo(props) {
 
   return (
     <div key="PartInfoTop">
-      <div id="infoHeader"> {partName} </div>
       < SelectStatus currentNode={props.currentNode} />
       < GetPartDetails currentNode={props.currentNode} />
       < GetUserComments currentNode={props.currentNode} />
@@ -513,6 +517,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 function PersistentDrawerLeft(props) {
   const [open, setOpen] = React.useState(false);
   const [rightOpen, setRightOpen] = React.useState(false);
+  const [bottomOpen, setBottomOpen] = React.useState(false);
   const [mbdUploaded, setMBDUploaded] = React.useState(false);
   const [disabledSection, setDisabledSection] = React.useState(true);
   const [subheading, setSubheading] = React.useState("");
@@ -549,6 +554,14 @@ function PersistentDrawerLeft(props) {
 
   const handleRightDrawerClose = () => {
     setRightOpen(false);
+  }
+
+  const handleBottomDrawerOpen = () => {
+    setBottomOpen(true);
+  }
+
+  const handleBottomDrawerClose = () => {
+    setBottomOpen(false);
   }
 
   var allOpenStatus = (open || rightOpen);
@@ -626,9 +639,23 @@ function PersistentDrawerLeft(props) {
         </Grid>
         )
   }
+
+  const [alertOpen, setAlertOpen] = React.useState(false);
+
+  const handleAlertOpen = () => {
+    setAlertOpen(true);
+    console.log()
+}
+
+  const handleAlertClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+
+      setAlertOpen(false);
+  }
   
   function BomChange() {
-    
     if (mbdUploaded) {
       let models = engine.getModel().getActiveNodeLayer().getModels();
       Object.values(models).map((node) => {
@@ -675,7 +702,7 @@ function PersistentDrawerLeft(props) {
       setMBDUploaded(false);
     }
     return (<div>
-      <CsvProcessor setSubheading={setSubheading} setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={'425px'} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
+      <CsvProcessor handleAlertOpen={handleAlertOpen} setSubheading={setSubheading} setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={'425px'} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
       </div>)
   }
   
@@ -736,7 +763,6 @@ function PersistentDrawerLeft(props) {
   const [anchorElProject, setAnchorElProject] = React.useState(null);
   const [anchorElHeaders, setAnchorElHeaders] = React.useState(null);
   const [anchorElParts, setAnchorElParts] = React.useState(null);
-  
 
   const handleOpenFileMenu = (event) => {
     setAnchorElFile(event.currentTarget);
@@ -816,8 +842,9 @@ function PersistentDrawerLeft(props) {
             open={Boolean(anchorElProject)}
             onClose={handleCloseProjectMenu}
             >
-             <Exporter engine={engine} dictOfParts={props.dict}/>
-             <BomChange />
+             <MenuItem key='exportBom' onClick={() => {handleBottomDrawerOpen(); handleCloseProjectMenu();}}>
+                <Typography textAlign="center">View Bom</Typography>
+            </MenuItem>
             </Menu>
           <Button variant="h6" onClick={handleOpenHeadersMenu}>
             Headers
@@ -884,6 +911,7 @@ function PersistentDrawerLeft(props) {
           >
             <DrawerHeader/>
           <List>
+            <Typography variant="h6" style={{marginLeft:'2.5%'}}>{disabledSection ? "No Device Selected"  : currentNode.options.name} </Typography>
             <ListItem key="ColorSelect"  disablePadding disabled={disabledSection}>
                   <InputLabel style={{marginLeft:'2.5%', marginRight:'2.5%'}}>Block Color:</InputLabel>
                   <Input aria-label="test" type="color" style={{width:'72.5%'}} disabled={disabledSection} value={(currentNode !== undefined ? currentNode.options.color : "#000000")} onChange={ (e) => {
@@ -929,6 +957,7 @@ function PersistentDrawerLeft(props) {
         >
           <DrawerHeader/>
         <List>
+          
           <ListItem key="Selection" disablePadding>
                   <SelectInfo partOptions={props.parts} dictOfParts={props.dict} />
           </ListItem>
@@ -942,7 +971,29 @@ function PersistentDrawerLeft(props) {
           <Divider/>
       </List>
       </Drawer>
+      <Drawer
+        sx={{
+          width: '100%',
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: '100%',
+            boxSizing: 'border-box',
+            background: '%6F6F6F'
+          }
+        }}
+        anchor="bottom"
+        open={bottomOpen}
+        onClose={handleBottomDrawerClose}
+        >
+          <ProjectInfo engine={engine} />
+      </Drawer>
+      
     </Box>
+    <Snackbar open={alertOpen} autoHideDuration={6000} onClose={handleAlertClose}>
+      <Alert onClose={handleAlertClose} severity="success" sx={{ width: '100%' }}>
+              Success!
+      </Alert>
+    </Snackbar> 
     </ThemeProvider>
   );
 }
@@ -971,4 +1022,3 @@ function PartSelect() {
    </div>
   );
 }
-
