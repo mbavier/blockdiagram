@@ -7,13 +7,12 @@ import { read, utils } from "xlsx";
 import { DiagramModel } from "@projectstorm/react-diagrams"
 import { DeviceNodeModel, RightAnglePortModel } from './components/Device/DeviceNodeModel';
 import { GroupingNodeModel } from "./components/Grouping/GroupingNodeModel";
-import { Check } from "@mui/icons-material";
 
 const primarySelectLabel = { inputProps: { 'aria-label': 'primarySelect' } };
 const headerLabel = { inputProps: { 'aria-label': 'headerSelect' } };
 
 async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
-                                    setMBDUploaded, addNewNode, handleClickOpen) {
+                                    setMBDUploaded, setModelPages, handleClickOpen) {
     let file = e.target.files;
     let f = file[0];
     let type = f.name.split(".")[1];
@@ -21,63 +20,70 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
     
     reader.onload = (function(e) {
         if (type === "mbd") {
-            let newModel = new DiagramModel();
-            let uploadedModel = JSON.parse(e.target.result);
-            newModel.setOffset(uploadedModel.offsetX, uploadedModel.offsetY);
-            newModel.setZoomLevel(uploadedModel.zoom);
-            newModel.setGridSize(uploadedModel.gridSize);
-            let nodeLayer, linkLayer;
-            for (let layer in uploadedModel.layers) {
-                if (uploadedModel.layers[layer].type === 'diagram-nodes') {
-                    nodeLayer = layer;
-                } else if (uploadedModel.layers[layer].type === 'diagram-links') {
-                    linkLayer = layer;
+            let uploadedModels = JSON.parse(e.target.result);
+            let convertedModels = {}
+            Object.keys(uploadedModels).map((modelKey) => {
+                let uploadedModel = uploadedModels[modelKey];
+                let newModel = new DiagramModel();
+                newModel.setOffset(uploadedModel.offsetX, uploadedModel.offsetY);
+                newModel.setZoomLevel(uploadedModel.zoom);
+                newModel.setGridSize(uploadedModel.gridSize);
+                let nodeLayer, linkLayer;
+                for (let layer in uploadedModel.layers) {
+                    if (uploadedModel.layers[layer].type === 'diagram-nodes') {
+                        nodeLayer = layer;
+                    } else if (uploadedModel.layers[layer].type === 'diagram-links') {
+                        linkLayer = layer;
+                    }
                 }
-            }
-            Object.values(uploadedModel.layers[nodeLayer].models).map((node) => {
-                if (node.type === 'device') {
-                    let newNode = new DeviceNodeModel({
-                        name: node.name,
-                        subname: node.subname,
-                        color: node.color,
-                        id: node.id,
-                        extras: node.extras
-                    })
-                    newNode.setPosition(node.x, node.y)
-                    node.ports.map((port) => {
-                        let newPort = new RightAnglePortModel(port.in, port.name, port.label)
-                        newPort.options.id = port.id;
-                        
-                        newNode.addPort(newPort);
-                        console.log(port.id, newPort.id)
-                    })
-                    newModel.addNode(newNode);
-                } else if (node.type === 'grouping') {
-                    let newNode = new GroupingNodeModel({
-                        name: node.name,
-                        userComments: node.userComments,
-                        color: node.color,
-                        id: node.id,
-                        width: node.width,
-                        height: node.height,
-                        titleFontSize: node.titleFontSize, 
-                        titleFontAlignment: node.titleFontAlignment, 
-                        commentFontSize: node.commentFontSize, 
-                        commentFontAlignment: node.commentFontAlignment
-                    })
-                    newNode.setPosition(node.x, node.y)
-                    newModel.addNode(newNode);
-                }
-                return 1;
+                Object.values(uploadedModel.layers[nodeLayer].models).map((node) => {
+                    if (node.type === 'device') {
+                        let newNode = new DeviceNodeModel({
+                            name: node.name,
+                            subname: node.subname,
+                            color: node.color,
+                            id: node.id,
+                            extras: node.extras
+                        })
+                        newNode.setPosition(node.x, node.y)
+                        node.ports.map((port) => {
+                            let newPort = new RightAnglePortModel(port.in, port.name, port.label)
+                            newPort.options.id = port.id;
+                            
+                            newNode.addPort(newPort);
+                            console.log(port.id, newPort.id)
+                        })
+                        newModel.addNode(newNode);
+                    } else if (node.type === 'grouping') {
+                        let newNode = new GroupingNodeModel({
+                            name: node.name,
+                            userComments: node.userComments,
+                            color: node.color,
+                            id: node.id,
+                            width: node.width,
+                            height: node.height,
+                            titleFontSize: node.titleFontSize, 
+                            titleFontAlignment: node.titleFontAlignment, 
+                            commentFontSize: node.commentFontSize, 
+                            commentFontAlignment: node.commentFontAlignment
+                        })
+                        newNode.setPosition(node.x, node.y)
+                        newModel.addNode(newNode);
+                    }
+                    return 1;
+                })
+                Object.values(uploadedModel.layers[linkLayer].models).map((link) => {
+                    console.log(link.source)
+                    let newLink = newModel.getNode(link.source).getPortFromID(link.sourcePort).link(newModel.getNode(link.target).getPortFromID(link.targetPort));
+                    newModel.addLink(newLink)
+                    return 1;
+                })
+                convertedModels[modelKey] = newModel;
             })
-            Object.values(uploadedModel.layers[linkLayer].models).map((link) => {
-                console.log(link.source)
-                let newLink = newModel.getNode(link.source).getPortFromID(link.sourcePort).link(newModel.getNode(link.target).getPortFromID(link.targetPort));
-                newModel.addLink(newLink)
-                return 1;
-            })
+            console.log(convertedModels)
             //uploadedModel.deserializeModel(JSON.parse(e.target.result), engine)
-            engine.setModel(newModel);
+            engine.setModel(convertedModels[Object.keys(convertedModels)[0]]);
+            setModelPages(convertedModels)
             setMBDUploaded(true);
 
         } else {
@@ -243,7 +249,7 @@ export default function CsvProcessor (props) {
 
     return (
        <>
-            <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders, props.engine, props.setMBDUploaded, props.addNewNode, handleClickOpen);}}/>
+            <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders, props.engine, props.setMBDUploaded, props.setModelPages, handleClickOpen, );}}/>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Set Headers</DialogTitle>
                 <DialogContent>

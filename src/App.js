@@ -42,11 +42,12 @@ import TextIncreaseIcon from '@mui/icons-material/TextIncrease';
 import TextDecreaseIcon from '@mui/icons-material/TextDecrease';
 
 import ListItem from '@mui/material/ListItem';
-import { Autocomplete, TextField, Grid, Menu, MenuItem, Input, InputLabel } from "@mui/material";
+import { Autocomplete, TextField, Grid, Menu, MenuItem, Input, InputLabel, DialogContentText, DialogActions } from "@mui/material";
 import ListItemText from '@mui/material/ListItemText';
 import { Button, ThemeProvider, createTheme } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import {Dialog, DialogContent} from '@mui/material'
 
 import './App.css';
 import CsvProcessor from "./CsvProcessor";
@@ -474,7 +475,6 @@ function DiagramApp() {
   var model = new DiagramModel();
   // For use when importing, see smart routing example
   //5) load model into engine
-  
   engine.setModel(model);
   //6) render the diagram!
   return (
@@ -518,6 +518,7 @@ function PersistentDrawerLeft(props) {
   const [open, setOpen] = React.useState(false);
   const [rightOpen, setRightOpen] = React.useState(false);
   const [bottomOpen, setBottomOpen] = React.useState(false);
+  const [pageEditOpen, setPageEditOpen] = React.useState(false);
   const [mbdUploaded, setMBDUploaded] = React.useState(false);
   const [disabledSection, setDisabledSection] = React.useState(true);
   const [subheading, setSubheading] = React.useState("");
@@ -525,10 +526,36 @@ function PersistentDrawerLeft(props) {
   var [currentColor, setCurrentColor] = React.useState();
   var [currentGroup, setCurrentGroup] = React.useState();
   var [displayingInfo, setDisplayingInfo] = React.useState(null);
-  
+  var [modelPages, setModelPages] = React.useState({'Page 1': engine.getModel()});
+  var [pageEditSelected, setPageEditSelected] = React.useState();
 
   subtitle = subheading;
   setDisabled = setDisabledSection;
+
+  function handleAddPage() {
+    console.log(modelPages); 
+    var newModel = new DiagramModel();
+    let newModelPages = {...modelPages}
+    newModelPages[`Page ${Object.keys(modelPages).length + 1}`] = newModel
+    setModelPages(newModelPages);
+    engine.setModel(newModel)
+  }
+
+  function handlePageEditOpen(e) {
+    setPageEditSelected(e.target.textContent);
+    setPageEditOpen(true);
+  }
+
+  function handlePageEditClose() {
+    setPageEditOpen(false);
+    let newKey = document.getElementById("pageNameInput").value;
+    if (pageEditSelected !== newKey && newKey !== "" && modelPages[pageEditSelected] && !modelPages[newKey]) {
+      Object.defineProperty(modelPages, newKey,
+          Object.getOwnPropertyDescriptor(modelPages, pageEditSelected));
+      delete modelPages[pageEditSelected];
+      setModelPages(modelPages);
+    }
+  }
 
   const theme = createTheme({
     palette: {
@@ -705,7 +732,7 @@ function PersistentDrawerLeft(props) {
       setMBDUploaded(false);
     }
     return (<div>
-      <CsvProcessor handleAlertOpen={handleAlertOpen} setSubheading={setSubheading} setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={'425px'} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
+      <CsvProcessor handleAlertOpen={handleAlertOpen} setModelPages={setModelPages} setSubheading={setSubheading} setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={'425px'} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
       </div>)
   }
   
@@ -823,7 +850,7 @@ function PersistentDrawerLeft(props) {
             open={Boolean(anchorElFile)}
             onClose={handleCloseFileMenu}
             >
-             <Exporter engine={engine} dictOfParts={props.dict}/>
+             <Exporter engine={engine} dictOfParts={props.dict} modelPages={modelPages}/>
              <BomChange />
             </Menu>
             <Button variant="h6" onClick={handleOpenProjectMenu}>
@@ -993,6 +1020,42 @@ function PersistentDrawerLeft(props) {
         onClose={handleBottomDrawerClose}
         >
           <ProjectInfo engine={engine} displayingInfo={displayingInfo} />
+      </Drawer>
+      <Drawer
+      sx={{
+          width: '100%',
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: '100%',
+            boxSizing: 'border-box',
+            background: '%6F6F6F'
+          }
+        }}
+        variant="permanent"
+        anchor="bottom">
+          <ListItem>
+          {Object.keys(modelPages).map((pageKey) => {
+              return (<Button 
+                      style={{width:`${1/(Object.keys(modelPages).length+2) * 100}%`}} 
+                      onDoubleClick={handlePageEditOpen} 
+                      onClick={() => {engine.setModel(modelPages[pageKey]);}} 
+                      primary="HI"> 
+                          {pageKey}
+                      </Button>)
+          })}
+          <Button style={{width:'10%'}} onClick={handleAddPage}>+</Button>
+          </ListItem>
+          <Dialog open={pageEditOpen} onClose={handlePageEditClose}>
+            <DialogContent>
+              <DialogContentText>
+                Set Page Name:
+              </DialogContentText>
+              <TextField id="pageNameInput" variant="standard" onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}/>
+              <DialogActions>
+                <Button onClick={handlePageEditClose}>Set Page Name</Button>
+              </DialogActions>
+            </DialogContent>
+          </Dialog>
       </Drawer>
       
     </Box>
