@@ -56,6 +56,7 @@ import Exporter from "./Exporter";
 import CustomPart from "./CustomPart";
 import CustomHeaders from "./CustomHeaders";
 import ProjectInfo from "./ProjectInfo";
+import { divide } from "lodash";
 
 export class RightAnglePortModel extends DefaultPortModel {
 	createLinkModel() {
@@ -524,6 +525,7 @@ function PersistentDrawerLeft(props) {
   const [subheading, setSubheading] = React.useState("");
   var [currentNode, setCurrentNode] = React.useState();
   var [currentColor, setCurrentColor] = React.useState();
+  var [currentPage, setCurrentPage] = React.useState(engine.getModel());
   var [currentGroup, setCurrentGroup] = React.useState();
   var [displayingInfo, setDisplayingInfo] = React.useState(null);
   var [modelPages, setModelPages] = React.useState({'Page 1': engine.getModel()});
@@ -537,8 +539,11 @@ function PersistentDrawerLeft(props) {
     var newModel = new DiagramModel();
     let newModelPages = {...modelPages}
     newModelPages[`Page ${Object.keys(modelPages).length + 1}`] = newModel
+    setCurrentPage(newModel)
     setModelPages(newModelPages);
+    
     engine.setModel(newModel)
+    
   }
 
   function handlePageEditOpen(e) {
@@ -827,11 +832,13 @@ function PersistentDrawerLeft(props) {
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
+          <Grid container>
+            <Grid item xs={11}>
           <Box sx={{flex: '1'}}>
           <Typography variant="h6" noWrap component="div">
             Block Diagram Maker
           </Typography>
-          <Button variant="h6" onClick={handleOpenFileMenu}>
+          <Button id="headerButton" variant="outlined" onClick={handleOpenFileMenu}>
             File
           </Button>
           <Menu
@@ -853,7 +860,7 @@ function PersistentDrawerLeft(props) {
              <Exporter engine={engine} dictOfParts={props.dict} modelPages={modelPages}/>
              <BomChange />
             </Menu>
-            <Button variant="h6" onClick={handleOpenProjectMenu}>
+            <Button id="headerButton" variant="outlined" onClick={handleOpenProjectMenu}>
             Project
           </Button>
           <Menu
@@ -880,7 +887,7 @@ function PersistentDrawerLeft(props) {
             </MenuItem>
 
             </Menu>
-          <Button variant="h6" onClick={handleOpenHeadersMenu}>
+          <Button id="headerButton" variant="outlined" onClick={handleOpenHeadersMenu}>
             Headers
           </Button>
           <Menu
@@ -901,7 +908,7 @@ function PersistentDrawerLeft(props) {
             >
              <CustomHeaders engine={engine} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setSubheading={setSubheading}/>
             </Menu>
-            <Button variant="h6" onClick={handleOpenPartsMenu}>
+            <Button id="headerButton" variant="outlined" onClick={handleOpenPartsMenu}>
             Parts
           </Button>
           <Menu
@@ -924,9 +931,15 @@ function PersistentDrawerLeft(props) {
               <PartDrawer/>
             </Menu>
             </Box>
+            </Grid>
+            <Grid item xs={1} >
+              <Grid style={{height:'100%'}}>
             <IconButton onClick={() => {((allOpenStatus) ? handleAllDrawerClose() : handleDrawerOpen())}}>
               {(allOpenStatus) ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
             </IconButton>
+              </Grid>
+            </Grid>
+            </Grid>
             </Toolbar>
           </AppBar>
             <Drawer
@@ -1033,14 +1046,20 @@ function PersistentDrawerLeft(props) {
         }}
         variant="permanent"
         anchor="bottom">
-          <ListItem>
+          <ListItem disablePadding>
           {Object.keys(modelPages).map((pageKey) => {
               return (<Button 
-                      style={{width:`${1/(Object.keys(modelPages).length+2) * 100}%`}} 
+                      style={{width:`${1/(Object.keys(modelPages).length+2) * 100}%`, 
+                              backgroundColor: `rgba(0,0,0,${0.5*(currentPage !== modelPages[pageKey])}`,
+                              borderRadius:0,
+                              color: 'rgb(0,0,0)'}} 
+                      variant="outlined"
                       onDoubleClick={handlePageEditOpen} 
-                      onClick={() => {engine.setModel(modelPages[pageKey]);}} 
-                      primary="HI"> 
-                          {pageKey}
+                      onClick={() => {
+                        engine.setModel(modelPages[pageKey]);
+                        setCurrentPage(modelPages[pageKey])}} 
+                        > 
+                          {pageKey} 
                       </Button>)
           })}
           <Button style={{width:'10%'}} onClick={handleAddPage}>+</Button>
