@@ -12,7 +12,7 @@ const primarySelectLabel = { inputProps: { 'aria-label': 'primarySelect' } };
 const headerLabel = { inputProps: { 'aria-label': 'headerSelect' } };
 
 async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
-                                    setMBDUploaded, setModelPages, handleClickOpen) {
+                                    setMBDUploaded, setModelPages, handleClickOpen, setProjectInfoData) {
     let file = e.target.files;
     let f = file[0];
     let type = f.name.split(".")[1];
@@ -20,10 +20,12 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
     
     reader.onload = (function(e) {
         if (type === "mbd") {
-            let uploadedModels = JSON.parse(e.target.result);
-            let convertedModels = {}
-            Object.keys(uploadedModels).map((modelKey) => {
-                let uploadedModel = uploadedModels[modelKey];
+            let uploadedProject = JSON.parse(e.target.result);
+            setProjectInfoData(uploadedProject.projectDetails);
+            let uploadedPages = uploadedProject.models;
+            let convertedPages = [];
+            (uploadedPages).map((page, i) => {
+                let uploadedModel = page['model'];
                 let newModel = new DiagramModel();
                 newModel.setOffset(uploadedModel.offsetX, uploadedModel.offsetY);
                 newModel.setZoomLevel(uploadedModel.zoom);
@@ -73,17 +75,17 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
                     return 1;
                 })
                 Object.values(uploadedModel.layers[linkLayer].models).map((link) => {
-                    console.log(link.source)
                     let newLink = newModel.getNode(link.source).getPortFromID(link.sourcePort).link(newModel.getNode(link.target).getPortFromID(link.targetPort));
                     newModel.addLink(newLink)
                     return 1;
                 })
-                convertedModels[modelKey] = newModel;
+                console.log(newModel)
+                convertedPages[i] = {name: page['name'], model: newModel};
             })
-            console.log(convertedModels)
+            console.log(convertedPages)
             //uploadedModel.deserializeModel(JSON.parse(e.target.result), engine)
-            engine.setModel(convertedModels[Object.keys(convertedModels)[0]]);
-            setModelPages(convertedModels)
+            engine.setModel(convertedPages[0]['model']);
+            setModelPages(convertedPages)
             setMBDUploaded(true);
 
         } else {
@@ -249,7 +251,7 @@ export default function CsvProcessor (props) {
 
     return (
        <>
-            <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders, props.engine, props.setMBDUploaded, props.setModelPages, handleClickOpen, );}}/>
+            <input type="file" id="file" ref={inputFile} style={{display:"none"}} onChange={(e) => {handleFileSelect(e, setAllTextLines, setHeaders, props.engine, props.setMBDUploaded, props.setModelPages, handleClickOpen, props.setProjectInfoData);}}/>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Set Headers</DialogTitle>
                 <DialogContent>

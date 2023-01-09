@@ -56,6 +56,7 @@ import Exporter from "./Exporter";
 import CustomPart from "./CustomPart";
 import CustomHeaders from "./CustomHeaders";
 import ProjectInfo from "./ProjectInfo";
+import JsonConnect from "./JsonConnect";
 import { divide } from "lodash";
 
 export class RightAnglePortModel extends DefaultPortModel {
@@ -515,7 +516,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-function PersistentDrawerLeft(props) {
+function BlockDiagramMenu(props) {
   const [open, setOpen] = React.useState(false);
   const [rightOpen, setRightOpen] = React.useState(false);
   const [bottomOpen, setBottomOpen] = React.useState(false);
@@ -525,11 +526,13 @@ function PersistentDrawerLeft(props) {
   const [subheading, setSubheading] = React.useState("");
   var [currentNode, setCurrentNode] = React.useState();
   var [currentColor, setCurrentColor] = React.useState();
-  var [currentPage, setCurrentPage] = React.useState(engine.getModel());
+  
   var [currentGroup, setCurrentGroup] = React.useState();
   var [displayingInfo, setDisplayingInfo] = React.useState(null);
-  var [modelPages, setModelPages] = React.useState({'Page 1': engine.getModel()});
+  var [modelPages, setModelPages] = React.useState([{name: 'Page 1', model: engine.getModel()}]);
+  var [currentPage, setCurrentPage] = React.useState(modelPages[0]);
   var [pageEditSelected, setPageEditSelected] = React.useState();
+  var [projectInfoData, setProjectInfoData] = React.useState({name: "", timeline: "", category: "", projectType: "", keyPeople: "", comments: ""});
 
   subtitle = subheading;
   setDisabled = setDisabledSection;
@@ -537,29 +540,28 @@ function PersistentDrawerLeft(props) {
   function handleAddPage() {
     console.log(modelPages); 
     var newModel = new DiagramModel();
-    let newModelPages = {...modelPages}
-    newModelPages[`Page ${Object.keys(modelPages).length + 1}`] = newModel
-    setCurrentPage(newModel)
+    let newModelPages = [...modelPages]
+    newModelPages[modelPages.length] = {name: `Page ${modelPages.length + 1}`, model: newModel}
+    setCurrentPage(newModelPages[modelPages.length])
     setModelPages(newModelPages);
     
     engine.setModel(newModel)
     
   }
 
-  function handlePageEditOpen(e) {
-    setPageEditSelected(e.target.textContent);
+  function handlePageEditOpen(i) {
+    setPageEditSelected(i);
     setPageEditOpen(true);
   }
 
   function handlePageEditClose() {
     setPageEditOpen(false);
-    let newKey = document.getElementById("pageNameInput").value;
-    if (pageEditSelected !== newKey && newKey !== "" && modelPages[pageEditSelected] && !modelPages[newKey]) {
-      Object.defineProperty(modelPages, newKey,
-          Object.getOwnPropertyDescriptor(modelPages, pageEditSelected));
-      delete modelPages[pageEditSelected];
-      setModelPages(modelPages);
-    }
+    let newName = document.getElementById("pageNameInput").value;
+    let newModelPages = modelPages;
+    console.log(newModelPages)
+    newModelPages[pageEditSelected]['name'] = newName;
+    //setModelPages(modelPages);
+    
   }
 
   const theme = createTheme({
@@ -737,7 +739,7 @@ function PersistentDrawerLeft(props) {
       setMBDUploaded(false);
     }
     return (<div>
-      <CsvProcessor handleAlertOpen={handleAlertOpen} setModelPages={setModelPages} setSubheading={setSubheading} setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={'425px'} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions}/>
+      <CsvProcessor handleAlertOpen={handleAlertOpen} setModelPages={setModelPages} setSubheading={setSubheading} setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={'425px'} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setProjectInfoData={setProjectInfoData}/>
       </div>)
   }
   
@@ -857,8 +859,9 @@ function PersistentDrawerLeft(props) {
             open={Boolean(anchorElFile)}
             onClose={handleCloseFileMenu}
             >
-             <Exporter engine={engine} dictOfParts={props.dict} modelPages={modelPages}/>
+             <Exporter engine={engine} projectInfoData={projectInfoData} dictOfParts={props.dict} modelPages={modelPages}/>
              <BomChange />
+             <JsonConnect />
             </Menu>
             <Button id="headerButton" variant="outlined" onClick={handleOpenProjectMenu}>
             Project
@@ -1032,7 +1035,7 @@ function PersistentDrawerLeft(props) {
         open={bottomOpen}
         onClose={handleBottomDrawerClose}
         >
-          <ProjectInfo engine={engine} displayingInfo={displayingInfo} />
+          <ProjectInfo engine={engine} displayingInfo={displayingInfo} setProjectInfoData={setProjectInfoData} projectInfoData={projectInfoData} />
       </Drawer>
       <Drawer
       sx={{
@@ -1047,19 +1050,19 @@ function PersistentDrawerLeft(props) {
         variant="permanent"
         anchor="bottom">
           <ListItem disablePadding>
-          {Object.keys(modelPages).map((pageKey) => {
+          {modelPages.map((page, i) => {
               return (<Button 
-                      style={{width:`${1/(Object.keys(modelPages).length+2) * 100}%`, 
-                              backgroundColor: `rgba(0,0,0,${0.5*(currentPage !== modelPages[pageKey])}`,
+                      style={{width:`${1/(modelPages.length+2) * 100}%`, 
+                              backgroundColor: `rgba(0,0,0,${0.5*(currentPage !== page)}`,
                               borderRadius:0,
                               color: 'rgb(0,0,0)'}} 
                       variant="outlined"
-                      onDoubleClick={handlePageEditOpen} 
+                      onDoubleClick={() => {handlePageEditOpen(i)}} 
                       onClick={() => {
-                        engine.setModel(modelPages[pageKey]);
-                        setCurrentPage(modelPages[pageKey])}} 
+                        engine.setModel(page['model']);
+                        setCurrentPage(page)}} 
                         > 
-                          {pageKey} 
+                          {page['name']} 
                       </Button>)
           })}
           <Button style={{width:'10%'}} onClick={handleAddPage}>+</Button>
@@ -1107,7 +1110,7 @@ function PartSelect() {
 
   return (
     <div id="selectDiv">
-        <PersistentDrawerLeft setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} parts={partOptions} dict={dictOfParts} inputFileInfo={[onInputBtnClick, inputFile]}> </PersistentDrawerLeft>
+        <BlockDiagramMenu setDictOfParts={setDictOfParts} setPartOptions={setPartOptions} parts={partOptions} dict={dictOfParts} inputFileInfo={[onInputBtnClick, inputFile]}> </BlockDiagramMenu>
    </div>
   );
 }

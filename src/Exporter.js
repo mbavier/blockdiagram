@@ -53,13 +53,14 @@ async function beginCanvasExport(engine) {
     // engine.repaintCanvas();
 }
 
-async function beginBDExport(engine, modelPages) {
-    let savedModels = {}
-    Object.keys(modelPages).map((model) => {
-        savedModels[model] = modelPages[model].serialize()
+async function beginBDExport(engine, modelPages, projectInfoData) {
+    let exportedValue = {projectDetails: projectInfoData}
+    let savedModels = [];
+    (modelPages).map((page, i) => {
+        savedModels[i] = {'name': page['name'], 'model': page['model'].serialize()}
     })
-
-    const file = new Blob([JSON.stringify(savedModels)], {type: 'text/json'});
+    exportedValue.models = savedModels;
+    const file = new Blob([JSON.stringify(exportedValue)], {type: 'text/json'});
     const href = await URL.createObjectURL(file);
     const link = document.createElement('a');
     link.href = href;
@@ -72,7 +73,7 @@ async function beginBDExport(engine, modelPages) {
 export default function Exporter (props) {
     return (
         <>
-        <MenuItem key='Save' onClick={() => {beginBDExport(props.engine, props.modelPages)}}>
+        <MenuItem key='Save' onClick={() => {beginBDExport(props.engine, props.modelPages, props.projectInfoData)}}>
                  <Typography textAlign="center">Save</Typography>
         </MenuItem>
         <MenuItem key='exportBom' onClick={() => {beginExcelExport(props.engine, props.dictOfParts)}}>

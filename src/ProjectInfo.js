@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, MenuItem, Typography } from '@mui/material';
+import { Box, MenuItem, Typography, TextField } from '@mui/material';
 import { DataGrid, GridColDeff } from '@mui/x-data-grid';
 import { utils } from "xlsx";
 
@@ -57,12 +57,67 @@ function BeginBoMGeneration(props) {
 
 }
 
-function DisplayProjectDetails() {
+function DisplayProjectDetails(props) {
     return (
-        <Box sx={{ height: 520, width: '100%'}}>
+        <Box sx={{ height: 520, width: '95%', marginLeft:'2.5%'}}>
             <Typography variant="h6">
-                Project Name
+                Project Info
             </Typography>
+            <TextField variant="standard" key='projectNameInput' label="Project Name:"
+                onFocus={()=>{props.engine.getModel().setLocked(true)}} onBlur={()=>props.engine.getModel().setLocked(false)}
+                style={{width:'100%'}} value= {props.projectInfoData.name} 
+                onChange={(val) => {
+                    let newProjectInfo = {...props.projectInfoData}
+                    newProjectInfo.name = val.target.value
+                    props.setProjectInfoData(newProjectInfo)
+            }}/>
+            <TextField variant="standard" key='projectTimelineInput' label="Project Timeline:"
+                onFocus={()=>{props.engine.getModel().setLocked(true)}} onBlur={()=>props.engine.getModel().setLocked(false)}
+                style={{width:'100%'}} value= {props.projectInfoData.timeline} 
+                onChange={(val) => {
+                    let newProjectInfo = {...props.projectInfoData}
+                    newProjectInfo.timeline = val.target.value
+                    props.setProjectInfoData(newProjectInfo)
+            }}/>
+            <TextField variant="standard" key='projectCategoryInput' label="Project Category:"
+                onFocus={()=>{props.engine.getModel().setLocked(true)}} onBlur={()=>props.engine.getModel().setLocked(false)}
+                style={{width:'100%'}} value= {props.projectInfoData.category} 
+                onChange={(val) => {
+                    let newProjectInfo = {...props.projectInfoData}
+                    newProjectInfo.category = val.target.value
+                    props.setProjectInfoData(newProjectInfo)
+            }}/>
+            <TextField variant="standard" key='projectTypeInput' label="Project Type:"
+                onFocus={()=>{props.engine.getModel().setLocked(true)}} onBlur={()=>props.engine.getModel().setLocked(false)}
+                style={{width:'100%'}} value= {props.projectInfoData.projectType} 
+                onChange={(val) => {
+                    let newProjectInfo = {...props.projectInfoData}
+                    newProjectInfo.projectType = val.target.value
+                    props.setProjectInfoData(newProjectInfo)
+            }}/>
+            <TextField variant="standard" key='projectKeyPeopleInput' label="Key People:"
+                id='standard-multiline-flexible'
+                multiline
+                maxRows={6}
+                onFocus={()=>{props.engine.getModel().setLocked(true)}} onBlur={()=>props.engine.getModel().setLocked(false)}
+                style={{width:'100%'}} value= {props.projectInfoData.keyPeople} 
+                onChange={(val) => {
+                    let newProjectInfo = {...props.projectInfoData}
+                    newProjectInfo.keyPeople = val.target.value
+                    props.setProjectInfoData(newProjectInfo)
+            }}/>
+            <TextField 
+                id='standard-multiline-flexible'
+                multiline
+                maxRows={6}
+                variant="standard" key='projectCommnetsInput' label="Project Comments:"
+                onFocus={()=>{props.engine.getModel().setLocked(true)}} onBlur={()=>props.engine.getModel().setLocked(false)}
+                style={{width:'100%'}} value= {props.projectInfoData.comments} 
+                onChange={(val) => {
+                    let newProjectInfo = {...props.projectInfoData}
+                    newProjectInfo.comments = val.target.value
+                    props.setProjectInfoData(newProjectInfo)
+            }}/>
         </Box>
     )
 }
@@ -75,7 +130,7 @@ export default function ProjectInfo(props) {
         )
     } else if (props.displayingInfo === 'project') {
         return (
-            <DisplayProjectDetails />
+            <DisplayProjectDetails engine={props.engine} projectInfoData={props.projectInfoData} setProjectInfoData={props.setProjectInfoData} />
         )
     } else {
         return ""
