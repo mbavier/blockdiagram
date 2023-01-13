@@ -644,6 +644,7 @@ function BlockDiagramMenu(props) {
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
                   addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
+                  props.closeDialog();
               }
             }}
           />
@@ -678,6 +679,7 @@ function BlockDiagramMenu(props) {
             if (e.key === 'Enter') {
               addNewGrouping(engine, textValue, props.setCurrentGroup);
               setTextValue("");
+              props.closeDialog();
               e.target.blur();
             }
           }}/>
