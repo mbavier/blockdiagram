@@ -15,7 +15,7 @@ import {
   CanvasWidget,
 } from '@projectstorm/react-canvas-core';
 import { DeviceNodeFactory } from './components/Device/DeviceNodeFactory';
-import { DeviceNodeModel } from './components/Device/DeviceNodeModel';
+import { DeviceNodeModel, RightAnglePortModel } from './components/Device/DeviceNodeModel';
 
 import { GroupingNodeFactory } from "./components/Grouping/GroupingNodeFactory";
 import { GroupingNodeModel } from "./components/Grouping/GroupingNodeModel";
@@ -32,14 +32,23 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialAction from "@mui/material/SpeedDialAction";
+
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
 import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
 import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
 import TextIncreaseIcon from '@mui/icons-material/TextIncrease';
 import TextDecreaseIcon from '@mui/icons-material/TextDecrease';
+import AddIcon from '@mui/icons-material/Add';
+import SearchIcon from '@mui/icons-material/Search';
+import GroupWorkOutlinedIcon from '@mui/icons-material/GroupWorkOutlined'
+import SpeedDialIcon from '@mui/material/SpeedDialIcon'
+import CreateIcon from '@mui/icons-material/Create';
 
 import ListItem from '@mui/material/ListItem';
 import { Autocomplete, TextField, Grid, Menu, MenuItem, Input, InputLabel, DialogContentText, DialogActions } from "@mui/material";
@@ -59,12 +68,6 @@ import ProjectInfo from "./ProjectInfo";
 import JsonConnect from "./JsonConnect";
 import { divide } from "lodash";
 
-export class RightAnglePortModel extends DefaultPortModel {
-	createLinkModel() {
-		return new RightAngleLinkModel(
-      {color: (this.options.color !== undefined) ? this.options.color : 'gray'});
-	}
-}
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -225,10 +228,16 @@ function GroupCommentSetting(props) {
 
 function FontSetting(props) {
   var [textVal, setTextVal] = React.useState()
+  var [alignment, setAlignment] = React.useState('left');
+
+  const handleAlignment = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+
   return (
     <React.Fragment>
       <Grid item xs={2}>
-        <Button style={{width:"100%"}} variant="contained" aria-label="TextDecrease" onClick={() => {
+        <Button style={{width:"100%", paddingTop:"12px", paddingBottom:"12px"}} variant="contained" aria-label="TextDecrease" onClick={() => {
           if (props.textGroup === "title") {
             props.currentGroup.options.titleFontSize--;
             setTextVal(props.currentGroup.options.titleFontSize);
@@ -245,7 +254,7 @@ function FontSetting(props) {
       <Grid style={{textAlign:"center", width:"50%", margin:"auto"}}item xs={2}>
       {props.textGroup === "title" ? props.currentGroup.options.titleFontSize : props.currentGroup.options.commentFontSize} </Grid>
       <Grid item xs={2}>
-      <Button style={{width:"100%"}} variant="contained" aria-label="TextIncrease" onClick={() => {
+      <Button style={{width:"100%", paddingTop:"12px", paddingBottom:"12px"}} variant="contained" aria-label="TextIncrease" onClick={() => {
           if (props.textGroup === "title") {
             props.currentGroup.options.titleFontSize++;
             setTextVal(props.currentGroup.options.titleFontSize);
@@ -258,9 +267,14 @@ function FontSetting(props) {
           <TextIncreaseIcon />
         </Button>
       </Grid>
-
-      <Grid item xs={2}>
-        <Button style={{width:"100%"}} variant="contained" aria-label="AlignLeft" onClick={() => {
+      <Grid xs={5} style={{paddingLeft: '10px', paddingTop: '10px'}}>
+      <ToggleButtonGroup
+      style={{height:"50%"}}
+      value={alignment}
+      exclusive
+      onChange={handleAlignment}
+      aria-label="text alignment">
+        <ToggleButton value="left" style={{width:"100%"}} variant="contained" aria-label="AlignLeft" onClick={() => {
           if (props.textGroup === "title") {
             props.currentGroup.options.titleFontAlignment = "left";
           } else if (props.textGroup === "comment") {
@@ -269,10 +283,8 @@ function FontSetting(props) {
           engine.repaintCanvas();
         }}>
           <FormatAlignLeftIcon/>
-        </Button>
-      </Grid>
-      <Grid item xs={2}>
-        <Button style={{width:"100%"}} variant="contained" aria-label="AlignCenter" onClick={() => {
+        </ToggleButton>
+        <ToggleButton value="center" style={{width:"100%"}} variant="contained" aria-label="AlignCenter" onClick={() => {
           if (props.textGroup === "title") {
             props.currentGroup.options.titleFontAlignment = "center";
           } else if (props.textGroup === "comment") {
@@ -281,10 +293,8 @@ function FontSetting(props) {
           engine.repaintCanvas();
          }}>
           <FormatAlignCenterIcon/>
-        </Button>
-      </Grid>
-      <Grid item xs={2}>
-        <Button style={{width:"100%"}} variant="contained" aria-label="AlignRight" onClick={() => {
+        </ToggleButton>
+        <ToggleButton value="right" style={{width:"100%"}} variant="contained" aria-label="AlignRight" onClick={() => {
           if (props.textGroup === "title") {
             props.currentGroup.options.titleFontAlignment = "right";
           } else if (props.textGroup === "comment") {
@@ -293,7 +303,8 @@ function FontSetting(props) {
           engine.repaintCanvas();
         }}>
           <FormatAlignRightIcon/>
-        </Button>
+        </ToggleButton>
+      </ToggleButtonGroup>
       </Grid>
     </React.Fragment>
 
@@ -325,25 +336,23 @@ var lastClick, selectedNode;
 let commOptions = ["I2C", "SPI", "CLK", "Data", "GPIO", "UART"];
 let powerOptions = ["V", "Vout", "Vin"]
 
-function addNewPort(type, name, engine) {
+function addNewPort(side, name, type, engine) {
   if (name !== "") {
     let newPort;
-    if (type === "output") {
-      newPort = selectedNode.addPort(new RightAnglePortModel(false, `${name}$-${selectedNode.options['id']}`, name));
-    } else {
-      newPort = selectedNode.addPort(new RightAnglePortModel(true, `${name}$-${selectedNode.options['id']}`, name));
-    }
-    if (commOptions.includes(name)) {
+    newPort = selectedNode.addPort(new RightAnglePortModel(side, `${name}$-${selectedNode.options['id']}`, name));
+
+    if (type === "Data") {
+      
       newPort.options.color = "blue"
-    } else if (powerOptions.includes(name)) {
+    } else if (type === "Power") {
       newPort.options.color = "red"
     } else {
       newPort.options.color = "gray"
     }
     engine.repaintCanvas();
   }
-  $("div.newPortDiv").css("display","none");
-  $("input#portInput")[0].value = null;
+  // $("div.newPortDiv").css("display","none");
+  // $("input#portInput")[0].value = null;
 }
 
 function deleteNode(engine) {
@@ -533,6 +542,8 @@ function BlockDiagramMenu(props) {
   var [currentPage, setCurrentPage] = React.useState(modelPages[0]);
   var [pageEditSelected, setPageEditSelected] = React.useState();
   var [projectInfoData, setProjectInfoData] = React.useState({name: "", timeline: "", category: "", projectType: "", keyPeople: "", comments: ""});
+  var [partDialogOption, setPartDialogOption] = React.useState("none");
+
 
   subtitle = subheading;
   setDisabled = setDisabledSection;
@@ -552,6 +563,14 @@ function BlockDiagramMenu(props) {
   function handlePageEditOpen(i) {
     setPageEditSelected(i);
     setPageEditOpen(true);
+  }
+
+  function handlePartDialogOpen(dialogOption) {
+    setPartDialogOption(dialogOption);
+  }
+
+  function handlePartDialogClose() {
+    setPartDialogOption("none");
   }
 
   function handlePageEditClose() {
@@ -610,15 +629,9 @@ function BlockDiagramMenu(props) {
   function SelectInfo(props) {
     let partOptions = props.partOptions;
     let dictOfParts = props.dictOfParts;
-    return (<Grid justify="flex-end" alignItems="center" container key="GridForAddParts" spacing={0}>
-      <Grid key="PartSelectAutocomplete" item xs={8}>
+    return (<Grid justify="flex-end" alignItems="center" container key="GridForAddParts" spacing={1}>
+      <Grid key="PartSelectAutocomplete" item xs={12}>
         <Autocomplete
-          style={{
-            margin:"1%",
-              marginLeft:"2.5%",
-              marginRight:"0%",
-              width:"95%"
-          }}
           onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
             options={partOptions}
             className="partInput" 
@@ -635,28 +648,30 @@ function BlockDiagramMenu(props) {
             }}
           />
         </Grid>
-        <Grid key="PartSelectAutocompleteGrid" item xs={4}>
-          <Button style={{width:'95%'}} variant="contained" onClick={() => {
+        <Grid key="PartSelectAutocompleteGrid" item xs={6}>
+          <Button fullWidth variant="contained" onClick={() => {
             addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
           }}> Add </Button>
         </Grid>
+          <Grid key="PartSelectAutocompleteGridClose" item xs={6}>
+            <Button fullWidth variant="contained" onClick={() => {
+              addNewNode(engine, selectedPart[0], selectedPart[1], setCurrentNode);
+              props.closeDialog();
+            }}> Add and Close </Button>
+          </Grid>
         </Grid>
         )
   }
 
   function GroupInfo(props) {
     var [textValue, setTextValue] = React.useState("")
-    return (<Grid justify="flex-end" alignItems="center" container key="GridForNewGroup" spacing={0}>
-      <Grid key="GroupInfoAutocomplete" item xs={8}>
+    return (<Grid justify="flex-end" alignItems="center" container key="GridForNewGroup" spacing={1}>
+      <Grid key="GroupInfoAutocomplete" item xs={12}>
           <TextField 
+          fullWidth
           onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
           value={textValue}
-          style={{
-            margin:"1%",
-              marginLeft:"2.5%",
-              marginRight:"0%",
-              width:"95%"
-          }} label="Add A Grouping" variant="standard" onChange={(e) => {
+          label="Add A Grouping" variant="standard" onChange={(e) => {
             setTextValue(e.target.value);
           }
           } onKeyDown={(e) => {
@@ -667,11 +682,18 @@ function BlockDiagramMenu(props) {
             }
           }}/>
         </Grid>
-        <Grid key="NewGroupAutocompleteGrid" item xs={4}>
-          <Button style={{width:'95%'}} variant="contained" onClick={() => {
+        <Grid key="NewGroupAutocompleteGrid" item xs={6}>
+          <Button fullWidth variant="contained" onClick={() => {
             addNewGrouping(engine, textValue, props.setCurrentGroup);
             setTextValue("");
           }}> Add </Button>
+        </Grid>
+        <Grid key="NewGroupAutocompleteAndCloseGrid" item xs={6}>
+          <Button fullWidth variant="contained" onClick={() => {
+            addNewGrouping(engine, textValue, props.setCurrentGroup);
+            setTextValue("");
+            props.closeDialog();
+          }}> Add and Close</Button>
         </Grid>
         </Grid>
         )
@@ -695,7 +717,7 @@ function BlockDiagramMenu(props) {
   function BomChange() {
     if (mbdUploaded) {
       let models = engine.getModel().getActiveNodeLayer().getModels();
-      Object.values(models).map((node) => {
+      Promise.all(Object.values(models).map((node) => {
         if (node.options.type === 'device') {
           node.registerListener({
             selectionChanged: (e) => {
@@ -735,8 +757,7 @@ function BlockDiagramMenu(props) {
               setCurrentGroup(undefined);
             }});
         }
-      });
-      setMBDUploaded(false);
+      })).then(() => setMBDUploaded(false));
     }
     return (<div>
       <CsvProcessor handleAlertOpen={handleAlertOpen} setModelPages={setModelPages} setSubheading={setSubheading} setMBDUploaded={setMBDUploaded} engine={engine} drawerWidth={'425px'} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setProjectInfoData={setProjectInfoData}/>
@@ -745,45 +766,96 @@ function BlockDiagramMenu(props) {
   
   function PortInput() {
     return (
-        <TextField 
-          id="portInput"
-          key="portInputField"
-          variant="standard"
-          onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
-          disabled={disabledSection} label="New Port"
-          style={{margin:"1%",
+      <Autocomplete
+      style={{
+          margin:"1%",
           marginLeft:"2.5%",
           marginRight:"0%",
-          width:"95%"}}/>
+          width:"95%"
+      }}
+      onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+        options={(selectedNode !== undefined ? Object.keys(selectedNode.getPorts()).map((port) => {
+          return (selectedNode.getPorts()[port].options.label)
+        }) : ["Port Select"])}
+        disabled={disabledSection}
+        className="portTypeSelect" 
+        id="portInput"
+        key="portInputField"
+        autoSelect
+        defaultValue="New Port"
+        renderInput={(params) => (
+          <TextField {...params} label="Selected Port" variant="standard" />
+        )}
+      />
     )
   }
   
   function PortButtons() {
+    var [alignment, setAlignment] = React.useState('left');
+    var [portType, setPortType] = React.useState('General');
+
+
+    const handleAlignment = (event, newAlignment) => {
+      console.log(newAlignment)
+      if (newAlignment !== null) {
+        setAlignment(newAlignment);
+      }
+    };
     return (
       <Grid style={{marginLeft:"2.5%"}} container spacing={0} key="GridForPortButtons">
-      <Grid item xs={6}>
-        <Button variant="contained" disabled={disabledSection} className="portButton" onClick={() => addNewPort("input", document.getElementById("portInput").value, engine)}> Input </Button>
-      </Grid>
-      <Grid style={{marginLeft:"0%"}} item xs={6}>
-        <Button variant="contained" disabled={disabledSection} className="portButton" onClick={() => addNewPort("output", document.getElementById("portInput").value, engine)}> Output </Button>
-      </Grid>
-      <Grid style={{marginTop:"1%"}} item xs={12}>
-        <Button variant="contained" disabled={disabledSection} style={{minWidth:"95%", marginBottom:"5px"}} className="portButton" onClick={() => deleteNode(engine)}> Delete </Button>
-      </Grid>
+        
+        <Grid item xs={6}>
+        <Grid container>
+          <Grid item xs={12}>
+          <Autocomplete
+          style={{
+            marginBottom: "1%",
+            marginRight: "2.5%"
+          }}
+          onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}
+            options={["General", "Power", "Data"]}
+            disabled={disabledSection}
+            className="portTypeSelect" 
+            id="auto-select"
+            autoSelect
+            defaultValue="General"
+            renderInput={(params) => (
+              <TextField {...params} label="Set Port Type" variant="standard" />
+            )}
+            onChange={(e) => {setPortType(e.target.innerHTML)}}
+          />
+          </Grid>
+          <Grid item xs={12}>
+          <ToggleButtonGroup
+            value={alignment}
+            exclusive
+            size="small"
+            onChange={handleAlignment}
+            aria-label="text alignment"
+            style={{width:'98%'}}>
+            <ToggleButton disabled={disabledSection} style={{width:'50%'}} value="left" aria-label="left port">
+              Left
+            </ToggleButton>
+            <ToggleButton disabled={disabledSection} style={{width:'50%'}} value="right" aria-label="right port">
+              Right
+            </ToggleButton>
+          </ToggleButtonGroup>
+          </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={6}>
+        <Grid container height="100%">
+          <Grid item xs={12}>
+            <Button variant="contained" disabled={disabledSection} style={{minWidth:"95%", height:"38.75px", marginTop:"10px"}} className="portButton" onClick={() => addNewPort(alignment==="left", document.getElementById("portInput").value, portType, engine)}> Add </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Button variant="contained" disabled={disabledSection} style={{minWidth:"95%", marginTop:"3px", height:"38.75px",}} className="portButton" onClick={() => deleteNode(engine)}> Delete </Button>
+          </Grid>
+          </Grid>
+        </Grid>
       </Grid>
     )
-    }
-    
-    function AddPart() {
-      return(
-      <React.Fragment>
-        <MenuItem key='Add Part' onClick={() => {handleRightDrawerOpen(); handleClosePartsMenu();}}>
-                  <Typography textAlign="center">Add Block</Typography>
-        </MenuItem>
-        
-      </React.Fragment>
-      )
-    }
+  }
 
   function PartDrawer() {
     return (
@@ -828,6 +900,72 @@ function BlockDiagramMenu(props) {
   const handleClosePartsMenu = (event) => {
     setAnchorElParts(null);
   }
+
+  function AddPartDialog() {
+    return (<Dialog fullWidth maxWidth={'sm'} open={partDialogOption === 'uploaded'} onClose={handlePartDialogClose}>
+            <DialogContent>
+              <DialogContentText>
+                Add Uploaded Part:
+              </DialogContentText>
+              <DialogActions>
+                <SelectInfo partOptions={props.parts} dictOfParts={props.dict} closeDialog={handlePartDialogClose}/>
+              </DialogActions>
+            </DialogContent>
+          </Dialog>
+    )
+  }
+
+  function SearchPartDialog() {
+    return (<Dialog fullWidth maxWidth={'sm'} open={partDialogOption === 'search'} onClose={handlePartDialogClose}>
+      <DialogContent>
+        <DialogContentText>
+          Search for a part:
+        </DialogContentText>
+        <TextField id="pageNameInput" variant="standard" onFocus={()=>{engine.getModel().setLocked(true)}} onBlur={()=>engine.getModel().setLocked(false)}/>
+        <DialogActions>
+          <Button onClick={handlePartDialogClose}>Set Page Name</Button>
+        </DialogActions>
+      </DialogContent>
+    </Dialog>
+)
+  }
+
+  function CustomPartDialog() {
+    return (<Dialog fullWidth maxWidth={'sm'} open={partDialogOption === 'custom'} onClose={handlePartDialogClose}>
+      <DialogContent>
+        <DialogContentText>
+          Add Custom Part:
+        </DialogContentText>
+        <DialogActions>
+          <CustomPart headers={Object.keys(Object.values(props.dict)[0])} addNode={addNewNode} engine={engine} setCurrentNode={setCurrentNode} closeDialog={handlePartDialogClose}/>
+        </DialogActions>
+      </DialogContent>
+    </Dialog>
+)
+  }
+
+  function AddGroupingDialog() {
+    return (<Dialog open={partDialogOption === 'group'} onClose={handlePartDialogClose}>
+      <DialogContent>
+        <DialogContentText>
+          Add Grouping:
+        </DialogContentText>
+        <DialogActions>
+          <GroupInfo setCurrentGroup={setCurrentGroup} closeDialog={handlePartDialogClose}/>
+        </DialogActions>
+      </DialogContent>
+    </Dialog>
+)
+  }
+
+  const speedDialActions = [
+    { icon: <AddIcon/>, name: 'Add Uploaded Part', actionClick: () => handlePartDialogOpen('uploaded') },
+    { icon: <SearchIcon/>, name: 'Search for a part', actionClick: () => handlePartDialogOpen('search') },
+    { icon: <CreateIcon/>, name: 'Add Custom Part', actionClick: () => handlePartDialogOpen('custom') },
+    { icon: <GroupWorkOutlinedIcon/>, name: 'Add Grouping', actionClick: () => handlePartDialogOpen('group') }
+  ];
+
+
   return (
     <ThemeProvider theme={theme}>
     <Box sx={{ display: 'flex'}}>
@@ -930,7 +1068,6 @@ function BlockDiagramMenu(props) {
             open={Boolean(anchorElParts)}
             onClose={handleClosePartsMenu}
             >
-              <AddPart/>
               <PartDrawer/>
             </Menu>
             </Box>
@@ -1086,6 +1223,20 @@ function BlockDiagramMenu(props) {
               Success!
       </Alert>
     </Snackbar> 
+    <SpeedDial color="primary" ariaLabel="Add Part SpeedDial" sx= {{position:'absolute', bottom:'50px', right:'16px'}} icon={<SpeedDialIcon/>}>
+          {speedDialActions.map((action) => (
+            <SpeedDialAction
+              key={action.name}
+              icon={action.icon}
+              tooltipTitle={action.name}
+              onClick={action.actionClick}
+            />
+          ))}
+    </SpeedDial>
+    <AddPartDialog/>
+    <SearchPartDialog/>
+    <CustomPartDialog/>
+    <AddGroupingDialog/>
     </ThemeProvider>
   );
 }

@@ -8,17 +8,16 @@ export default function CustomPart(props) {
     let blockOptions = ["Block Name", ...props.headers]
     var [blockName, setBlockName] = React.useState("")
     var [userOptions, setUserOptions] = React.useState({})
-    const handleClick = () => {
-        setOpen(!open);
-    }
     const onInputBtnClick = () => {
         props.addNode(props.engine, blockName, userOptions, props.setCurrentNode)
-        setOpen(!open);
     }
 
     const createButton = () => {
         return (
-            <Button variant="contained" id="selectBtns" onClick={onInputBtnClick} style={{width:"95%"}}>Add Part</Button>
+            <React.Fragment>
+                <Button variant="contained" id="selectBtns" onClick={onInputBtnClick} style={{width:"95%"}}>Add</Button>
+                <Button variant="contained" id="selectBtns" onClick={() => {onInputBtnClick(); props.closeDialog()}} style={{width:"95%"}}>Add and Close</Button>
+            </React.Fragment>
         );
     }
 
@@ -33,9 +32,9 @@ export default function CustomPart(props) {
         }
 
         let output = blockOptions.map((header) => {
-            return (<ListItem key={header} style={{marginLeft:"2.5%"}} disablePadding> 
+            return (<ListItem key={header} disablePadding> 
             <TextField onFocus={()=>{props.engine.getModel().setLocked(true)}} onBlur={()=>props.engine.getModel().setLocked(false)} 
-            style={{width:"95%"}} value={userOptions.header} id="standard-basic" label={header} variant="standard" onChange={(e) => handleChange(e, header)} /> </ListItem>)
+            fullWidth value={userOptions.header} id="standard-basic" label={header} variant="standard" onChange={(e) => handleChange(e, header)} /> </ListItem>)
         });
         return (
             output
@@ -44,18 +43,12 @@ export default function CustomPart(props) {
 
     return (
         <React.Fragment key="ListOfStuff">
-            <ListItemButton key="ExpandCustomBlock" onClick={handleClick}>
-                <ListItemText primary="Add Custom Block"/>
-                {open ? <ExpandLess/> : <ExpandMore/>}
-            </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-                <List key="CustomPartInputAndButton" component="div" disablePadding>
+                <List style={{width:"100%"}} key="CustomPartInputAndButton" component="div" disablePadding>
                     {createInputs()}
                     <ListItem key="CustomPartAdd" disablePadding style={{marginTop:"1%"}}>
                         {createButton()}
                     </ListItem>
                 </List>
-            </Collapse>
         </React.Fragment>
     )
 }

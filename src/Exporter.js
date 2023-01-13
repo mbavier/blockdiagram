@@ -1,7 +1,7 @@
 import React from "react";
 import { MenuItem, Typography } from '@mui/material'
 import { writeFile, utils } from "xlsx";
-
+import toolInfo from "./toolInfo.js";
 
 function beginExcelExport(engine, dict) {
     let models = engine.getModel().activeNodeLayer.models;
@@ -54,7 +54,7 @@ async function beginCanvasExport(engine) {
 }
 
 async function beginBDExport(engine, modelPages, projectInfoData) {
-    let exportedValue = {projectDetails: projectInfoData}
+    let exportedValue = {exportVersion: toolInfo.version, projectDetails: projectInfoData}
     let savedModels = [];
     (modelPages).map((page, i) => {
         savedModels[i] = {'name': page['name'], 'model': page['model'].serialize()}

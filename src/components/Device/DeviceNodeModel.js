@@ -3,8 +3,13 @@ import _ from "lodash";
 
 export class RightAnglePortModel extends DefaultPortModel {
 	createLinkModel() {
-		return new RightAngleLinkModel();
+		return new RightAngleLinkModel(
+      {color: (this.options.color !== undefined) ? this.options.color : 'gray'});
 	}
+    canLinkToPort(port) {
+		return this !== port;
+	}
+
 }
 /**
  * Example of a custom model using pure javascript
@@ -38,7 +43,6 @@ export class DeviceNodeModel extends NodeModel {
     }
     addPort(port) {
         super.addPort(port);
-        console.log(port)
         if (port.getOptions().in) {
             if (this.portsIn.indexOf(port) === -1) {
                 this.portsIn.push(port);

@@ -1,12 +1,12 @@
 import React, {useRef} from "react";
 import { MenuItem, Checkbox, Typography, Radio, Grid, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 
-
 import { read, utils } from "xlsx";
 
 import { DiagramModel } from "@projectstorm/react-diagrams"
 import { DeviceNodeModel, RightAnglePortModel } from './components/Device/DeviceNodeModel';
 import { GroupingNodeModel } from "./components/Grouping/GroupingNodeModel";
+import toolInfo from "./toolInfo";
 
 const primarySelectLabel = { inputProps: { 'aria-label': 'primarySelect' } };
 const headerLabel = { inputProps: { 'aria-label': 'headerSelect' } };
@@ -21,6 +21,9 @@ async function handleFileSelect(e, setDictOfParts, setPartOptions, engine,
     reader.onload = (function(e) {
         if (type === "mbd") {
             let uploadedProject = JSON.parse(e.target.result);
+            if (toolInfo.version !== uploadedProject.exportVersion) {
+                alert("Export from previous version, some details may be lost!");
+            }
             setProjectInfoData(uploadedProject.projectDetails);
             let uploadedPages = uploadedProject.models;
             let convertedPages = [];
