@@ -695,7 +695,7 @@ function BlockDiagramMenu(props) {
             addNewGrouping(engine, textValue, props.setCurrentGroup);
             setTextValue("");
             props.closeDialog();
-          }}> Add and Close</Button>
+          }}>Add and Close</Button>
         </Grid>
         </Grid>
         )
@@ -974,112 +974,115 @@ function BlockDiagramMenu(props) {
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
-          <Grid container>
+          <Grid container alignItems="center">
             <Grid item xs={11}>
-          <Box sx={{flex: '1'}}>
-          <Typography variant="h6" noWrap component="div">
-            Block Diagram Maker
-          </Typography>
-          <Button id="headerButton" variant="outlined" onClick={handleOpenFileMenu}>
-            File
-          </Button>
-          <Menu
-            sx={{ mt: '45px' }}
-            id="file-appbar"
-            anchorEl={anchorElFile}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElFile)}
-            onClose={handleCloseFileMenu}
-            >
-             <Exporter engine={engine} projectInfoData={projectInfoData} dictOfParts={props.dict} modelPages={modelPages}/>
-             <BomChange />
-             <JsonConnect />
-            </Menu>
-            <Button id="headerButton" variant="outlined" onClick={handleOpenProjectMenu}>
-            Project
-          </Button>
-          <Menu
-            sx={{ mt: '45px' }}
-            id="file-appbar"
-            anchorEl={anchorElProject}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElProject)}
-            onClose={handleCloseProjectMenu}
-            >
-              <MenuItem key='viewDetails' onClick={() => {handleBottomDrawerOpen(); handleCloseProjectMenu(); setDisplayingInfo('project')}}>
-                <Typography textAlign="center">View Project Details</Typography>
-            </MenuItem>
-             <MenuItem key='viewBoM' onClick={() => {handleBottomDrawerOpen(); handleCloseProjectMenu(); setDisplayingInfo('bom')}}>
-                <Typography textAlign="center">View BoM</Typography>
-            </MenuItem>
+              {/* <Box sx={{flex: '1'}}> */}
+              <Grid container>
+                <Grid item xs={12}>
+                  <Typography variant="h6" noWrap component="div">
+                    Block Diagram Maker
+                  </Typography>
+                </Grid>
+              <Grid item xs={12}>
+                <Button id="headerButton" variant="outlined" onClick={handleOpenFileMenu}>
+                  File
+                </Button>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="file-appbar"
+                  anchorEl={anchorElFile}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElFile)}
+                  onClose={handleCloseFileMenu}
+                  >
+                  <Exporter engine={engine} projectInfoData={projectInfoData} dictOfParts={props.dict} modelPages={modelPages}/>
+                  <BomChange />
+                  <JsonConnect />
+                  </Menu>
+                  <Button id="headerButton" variant="outlined" onClick={handleOpenProjectMenu}>
+                  Project
+                </Button>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="file-appbar"
+                  anchorEl={anchorElProject}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElProject)}
+                  onClose={handleCloseProjectMenu}
+                  >
+                    <MenuItem key='viewDetails' onClick={() => {handleBottomDrawerOpen(); handleCloseProjectMenu(); setDisplayingInfo('project')}}>
+                      <Typography textAlign="center">View Project Details</Typography>
+                  </MenuItem>
+                  <MenuItem key='viewBoM' onClick={() => {handleBottomDrawerOpen(); handleCloseProjectMenu(); setDisplayingInfo('bom')}}>
+                      <Typography textAlign="center">View BoM</Typography>
+                  </MenuItem>
 
-            </Menu>
-          <Button id="headerButton" variant="outlined" onClick={handleOpenHeadersMenu}>
-            Headers
-          </Button>
-          <Menu
-            sx={{ mt: '45px' }}
-            id="headers-appbar"
-            anchorEl={anchorElHeaders}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElHeaders)}
-            onClose={handleCloseHeadersMenu}
-            >
-             <CustomHeaders engine={engine} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setSubheading={setSubheading}/>
-            </Menu>
-            <Button id="headerButton" variant="outlined" onClick={handleOpenPartsMenu}>
-            Parts
-          </Button>
-          <Menu
-            sx={{ mt: '45px' }}
-            id="parts-appbar"
-            anchorEl={anchorElParts}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElParts)}
-            onClose={handleClosePartsMenu}
-            >
-              <PartDrawer/>
-            </Menu>
-            </Box>
+                  </Menu>
+                <Button id="headerButton" variant="outlined" onClick={handleOpenHeadersMenu}>
+                  Headers
+                </Button>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="headers-appbar"
+                  anchorEl={anchorElHeaders}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElHeaders)}
+                  onClose={handleCloseHeadersMenu}
+                  >
+                  <CustomHeaders engine={engine} setDictOfParts={props.setDictOfParts} setPartOptions={props.setPartOptions} setSubheading={setSubheading}/>
+                  </Menu>
+                  <Button id="headerButton" variant="outlined" onClick={handleOpenPartsMenu}>
+                  Parts
+                </Button>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="parts-appbar"
+                  anchorEl={anchorElParts}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElParts)}
+                  onClose={handleClosePartsMenu}
+                  >
+                    <PartDrawer/>
+                  </Menu>
+                  </Grid>
+                </Grid>
             </Grid>
-            <Grid item xs={1} >
-              <Grid style={{height:'100%'}}>
-            <IconButton onClick={() => {((allOpenStatus) ? handleAllDrawerClose() : handleDrawerOpen())}}>
-              {(allOpenStatus) ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
-            </IconButton>
-              </Grid>
+            <Grid item xs={1} justifyContent="flex-end" display="flex" height="100%" >
+              <IconButton onClick={() => {((allOpenStatus) ? handleAllDrawerClose() : handleDrawerOpen())}}>
+                {(allOpenStatus) ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+              </IconButton>
             </Grid>
             </Grid>
             </Toolbar>
